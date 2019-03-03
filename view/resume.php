@@ -12,7 +12,7 @@
 		<meta name="description" content="" />
 		<meta name="author" content="" />
 	
-		<title>Pascal van Gemert - Interactive Resume</title>
+		<title>Tonyleekorea - Interactive Resume</title>
 		
 		<!-- Bootstrap core CSS -->
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css" />
@@ -40,7 +40,7 @@
 	
 		<div class="jumbotron" data-src="<?= $current_header['source']; ?>" data-position="<?= $current_header['position']; ?>">
 			<div class="container">
-				<h1>Pascal van Gemert</h1>
+				<h1>Tonyleekorea</h1>
 				<p class="lead">Interactive resume</p>
 			</div>
 			
