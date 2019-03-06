@@ -12,7 +12,7 @@
 		<meta name="description" content="" />
 		<meta name="author" content="" />
 	
-		<title>Pascal van Gemert - Interactive Resume</title>
+		<title>Tonyleekorea - Interactive Resume</title>
 		
 		<!-- Bootstrap core CSS -->
 		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css" />
