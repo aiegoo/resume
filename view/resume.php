@@ -15,7 +15,7 @@
 		<title>Tonyleekorea - Interactive Resume</title>
 		
 		<!-- Bootstrap core CSS -->
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css" />
 		<link href="<?= VIEW_PATH; ?>css/bootstrap.min.css" rel="stylesheet" />
 		<link href="<?= VIEW_PATH; ?>css/jquery.iedialog.min.css" rel="stylesheet" />
 		<link href="<?= VIEW_PATH; ?>style.css" rel="stylesheet" />
@@ -591,13 +591,13 @@
 							<li>
 								<a href="">
 									<span class="icon icon-twitter"></span>
-									http://twitter.com/pascalvgemert
+									http://twitter.com/tonylee
 								</a>
 							</li>
 							<li>
 								<a href="">
 									<span class="icon icon-linkedin"></span>
-									http://linkedin.com/in/pascalvgemert
+									http://linkedin.com/in/tonylee
 								</a>
 							</li>
 						</ul>
@@ -607,13 +607,13 @@
 							<li>
 								<a href="">
 									<span class="icon icon-skype"></span>
-									pascalvangemert
+									tonylee
 								</a>
 							</li>
 							<li>
 								<a href="">
 									<span class="icon icon-email"></span>
-									pascal@pascalvangemert.nl
+									master@tonyleekorea.com
 								</a>
 							</li>
 						</ul>
@@ -623,7 +623,7 @@
 		</div>
 		
 		<!-- Bootstrap core JavaScript -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script type="text/javascript" src="<?= VIEW_PATH; ?>js/jquery.iedialog.min.js"></script>
 		<script type="text/javascript">
 			
