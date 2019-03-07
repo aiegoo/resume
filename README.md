@@ -1,4 +1,10 @@
 resume
+
+On Mar 7, I broke for lunch and got back to work, and found that about 80% of files were deleted physically (I mean in the folder those are nowhere to find). Here's the solution.
+git reset --  //unstaged cahnges after reset
+git checkout --force //restore the deleted files to the working directory.
+
+
 ======
 $ git push resume
 Enumerating objects: 77, done.
