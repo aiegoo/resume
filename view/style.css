@@ -140,13 +140,7 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 	.hidden-phone { display: none; }
 	
 	#profile .row * { text-align: center; }
-	.profile-image:hover {
-		-webkit-transform: rotate(-20deg);
-		-moz-transform: rotate(-20deg);
-		-ms-transform: rotate(-20deg);
-		-o-transform: rotate(-20deg);
-	background:url(./images/tonyillust_gray.svg) center no-repeat;
-	}	
+	
 	#experiences .experience .experience-details > span { display: block; margin-bottom: 6px; }
 	#experiences .experience .experience-details .seperator { display: none; }
 	
