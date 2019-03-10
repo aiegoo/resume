@@ -21,7 +21,7 @@
 		<link href="style.css" rel="stylesheet" />
 	</head>
 	<body data-spy="scroll" data-target="#navbar-example">		
-		<div class="jumbotron" data-src="images/kitten_animation.gif">
+		<div class="jumbotron" data-src="images/bike_animation.gif">
 			<div class="container">
 				<h1>Tonyleekorea</h1>
 				<p class="lead">Interactive resume<br>
@@ -65,7 +65,7 @@
 				
 				<hr />
 				
-				<div class="row">
+				<div class="row profile-fade">
 					<div class="col-md-4">
 						<h3>About me</h3>
 						<p>
@@ -74,7 +74,7 @@ For the duration of 140 days of NCS course, I have completely absorbed myself in
 						</p>
 					</div>
 					<div class="col-md-4 col-xs-4 text-center">
-						<img class="profile-image" src="images/tonyillust_dark.svg" alt="tonyleekorea" />
+						<img class="profile-image" src="images/tonyillust_atwork_dark.svg" alt="tonyleekorea" />
 					</div>
 					<div class="col-md-4 col-xs-8">
 						<h3>Front to Backend</h3>
@@ -658,6 +658,44 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					$('body').removeClass('fixed');   
 				}  
 			}
+
+		function isInView(elem){
+       return $(elem).offset().top - $(window).scrollTop() < $(elem).height() ;
+			}
+			
+			$(window).scroll(function(){
+        if (isInView($('.profile-fade')))
+         
+			  $(".profile-image").attr('src','images/tonyillust_gray.svg');
+       })
+
+		 /* $(".profile-fade").hover(function(){
+        $(".profile-image").attr('src','images/tonyillust_gray.svg')
+				});
+	 	 $('body').on('touchstart', function() {}); */
+  
+  /* $('div.profile-image').hover(function() {
+    // on hovering over, find the element we want to fade *up*
+    var fade = $('> div', this);
+    
+    // if the element is currently being animated (to a fadeOut)...
+    if (fade.is(':animated')) {
+      // ...take it's current opacity back up to 1
+      fade.stop().fadeTo(250, 1);
+    } else {
+      // fade in quickly
+      fade.fadeIn(250);
+    }
+  }, function () {
+    // on hovering out, fade the element out
+    var fade = $('> div', this);
+    if (fade.is(':animated')) {
+      fade.stop().fadeTo(3000, 0);
+    } else {
+      // fade away slowly
+      fade.fadeOut(3000);
+    }
+  }); */
 		</script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</body>
