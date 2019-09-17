@@ -130,8 +130,11 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 	.jumbotron .container { top: 20%; padding-top: 0px; }
 	.jumbotron .scroll-down { width: 100%; right: 0px; }
 	
-  .jumbotron .container .lead {
+  /* .jumbotron .container .lead {
     display: none;
+} */
+.jumbotron .container > h1 {
+	bottom: 20%;
 }
 
 	.navbar  { left: 0px; width: 100%; }
