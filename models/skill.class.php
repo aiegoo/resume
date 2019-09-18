@@ -3,7 +3,11 @@
 	namespace Models;
 	
 	/* LOAD DEPENDECIES */
+<<<<<<< HEAD
 	require_once('presenters/skill.class.php');
+=======
+	require_once('models/skilldto.class.php');
+>>>>>>> tmp
 	
 	/**
 	 * Skill Class which contains the skill information.

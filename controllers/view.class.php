@@ -5,15 +5,6 @@
 	class View
 	{
 		private $iaVariables 			= array();
-		private $iaStatusCodes			= array(
-			200	=> '200 OK',
-			301 => '301 Moved Permanently',
-			303 => '303 See Other',
-			307 => '307 Temporary Redirect',
-			401 => '401 Unauthorized',
-			403 => '403 Forbidden',
-			404 => '404 Not Found'
-		);
 		private $istrNotFoundTemplate 	= '';
 		
 		/* CONSTRUCTOR */
@@ -32,22 +23,30 @@
 		 */
 		public function showTemplate($pstrTemplate)
 		{
-			if(!$this->templateExists(VIEW_INCLUDE_PATH . $pstrTemplate))
+			if(!@isset($pstrTemplate) || !@file_exists(VIEW_INCLUDE_PATH . $pstrTemplate))
 			{
 				$this->showPageNotFound();
 			}
 			
-			$this->renderTemplate(VIEW_INCLUDE_PATH . $pstrTemplate);
+			foreach($this->iaVariables as $lstrVariable => $lmValue)
+			{
+				$$lstrVariable = $lmValue; 
+			}
+				
+			header('Content-Type: text/html; charset=utf-8');
+			@include_once(VIEW_INCLUDE_PATH . $pstrTemplate);
 		}
 		
 		/**
 		 * Show template page not found
 		 */
 		public function showPageNotFound()
-		{			
-			if($this->templateExists($this->istrNotFoundTemplate))
+		{
+			header("HTTP/1.0 404 Not Found");
+			
+			if(@file_exists($this->istrNotFoundTemplate))
 			{
-				$this->renderTemplate($this->istrNotFoundTemplate, 404);
+				@include_once($this->istrNotFoundTemplate);
 			}
 			
 			exit();
@@ -63,6 +62,7 @@
 		{
 			$this->iaVariables[$pstrVariable] = $pmValue;
 		}
+<<<<<<< HEAD:controllers/view.class.php
 		
 		/* PRIVATE METHODS */
 		
@@ -106,4 +106,6 @@
 			
 			header("HTTP/1.0 " . $lstrStatusCode);
 		}
+=======
+>>>>>>> tmp:controllers/viewcontroller.class.php
 	}
