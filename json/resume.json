@@ -8,7 +8,7 @@
         "biography": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio alias mollitia similique voluptas harum quaerat deserunt cum molestiae.",
         "current_location": {
             "street": "Hosuro 688",
-            "housenumber": A523,
+            "housenumber": "A523",
             "zipcode": "10364",
             "city": "'Goyang",
             "country": "S. Korea",
