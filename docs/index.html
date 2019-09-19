@@ -22,13 +22,13 @@
 	</head>
 	<body data-spy="scroll" data-target="#navbar-example">		
 		<div class="jumbotron" data-src="images/bike_animation.gif">
-			<noscript><img src="images/bike_animation.gif" alt="bike"></noscript>
+			<noscript id="noscript"><img src="images/bike_animation.gif" alt="bike"></noscript>
 			<div class="container">
 				<h1>Tonyleekorea</h1>
 				<p class="lead">Interactive resume<!-- <br>
 				until next time ciao&Tilde; --></p>
 			</div>
-			
+			<script>document.getElementById('noscript').style.display='none';</script>
 			<div class="overlay"></div>
 			
 			<a href="#profile" class="scroll-down">	
