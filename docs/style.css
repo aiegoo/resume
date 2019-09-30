@@ -26,14 +26,9 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 .icon.icon-email { background-position: 0px -96px; }
 
 .jumbotron {
-<<<<<<< HEAD:view/style.css
-	background: no-repeat center right fixed url(images/background.jpg);
-
-=======
 	background: no-repeat center center fixed; /* url(images/background.jpg) */
 	/*background-image: url(images/tower_scope_animation.gif); */
 	
->>>>>>> tmp:docs/style.css
 	-webkit-background-size: 100%; 
     -moz-background-size: 100%; 
     -o-background-size: 100%; 
@@ -120,6 +115,17 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
     transition: all 0.3s;
 }
 #abilities ul > li .ability-score .glyphicon.filled { color: #22A39F; }
+/* glyphicon star half filled */
+.half {position:relative; letter-spacing: -0.5em;}
+.half:after {
+    content:'';
+    position:absolute;
+    z-index:1;
+    background: white;
+    width: 0.5em;
+    height: 1em;
+    left: 0.6em;
+}
 
 #abilities ul > li:hover .ability-score .glyphicon { margin-left: 2px; } 
 
@@ -364,3 +370,47 @@ figure.effect:hover p {
 	-webkit-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
 }
+
+/* footer star rating using input and pseudo selectors */
+/* Ratings widget */
+fieldset {letter-spacing: 2rem; font-size: 1.8rem;}
+.rate {
+    display: inline-block;
+    border: 0;
+}
+/* Hide radio */
+.rate > input {
+    display: none;
+}
+/* Order correctly by floating highest to the right */
+.rate > label {
+    float: right;
+}
+/* The star of the show */
+.rate > label:before {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: .3rem .2rem;
+    margin: 0;
+    cursor: pointer;
+    font-family: FontAwesome !important;
+    content: "\f005 " !important; /* full star */
+}
+/* Zero stars rating */
+.rate > label:last-child:before {
+    content: "\f006 " !important; /* empty star outline */
+}
+/* Half star trick */
+.rate .half:before {
+    content: "\f089 " !important; /* half star no outline */
+    position: absolute;
+    padding-right: 0;
+}
+/* Click + hover color */
+input:checked ~ label, /* color current and previous stars on checked */
+label:hover, label:hover ~ label { color: #73B100;  } /* color previous stars on hover */
+
+/* Hover highlights */
+input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
+input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #A6E72D;  } 
