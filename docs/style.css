@@ -90,6 +90,13 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 
 .background-white { background: #FFFFFF; }
 .background-gray { background: #434242; }
+.githubstyle {
+	color: rgba(255,255,255,0.65);
+    background-color: #24292e;
+    background-image: url(images/star-bg1.svg),linear-gradient(#191c20, #24292e 15%);
+    background-repeat: repeat-x;
+    background-position: center 0, 0 0, 0 0;
+}
 .container { max-width: 1280px; padding: 40px 180px; }
 
 #profile .row > div { margin-bottom: 20px; }
