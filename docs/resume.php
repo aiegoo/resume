@@ -78,11 +78,9 @@
 
 	<div id="top" class="jumbotron" data-src="<?= $current_header['source']; ?>" data-position="<?= $current_header['position']; ?>">
 		<div class="container">
-			<<<<<<< HEAD:view/resume.php <h1><?= $profile->full_name; ?></h1>
-				=======
-				<h1>Tonyleekorea</h1>
-				>>>>>>> tmp:docs/resume.php
-				<p class="lead">Interactive resume</p>
+			 <h1><?= $profile->full_name; ?></h1>
+			 <h1>Tonyleekorea</h1>
+			 <p class="lead">Interactive resume</p>
 		</div>
 
 		<div class="overlay"></div>
