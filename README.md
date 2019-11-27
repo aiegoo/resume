@@ -6,7 +6,7 @@ An oversized application for showing off some of my coding skills
 
 ### See website in action
 
-[http://pascalvangemert.nl/](http://pascalvangemert.nl/?ref=github)
+
 =======
 $ git push resume
 Enumerating objects: 77, done.
