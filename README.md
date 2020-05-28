@@ -1,6 +1,5 @@
 resume
-======
-<<<<<<< HEAD
+
 
 An oversized application for showing off some of my coding skills
 
@@ -16,4 +15,4 @@ Total 77 (delta 7), reused 51 (delta 2)
 remote: Resolving deltas: 100% (7/7), done.
 To https://github.com/aiegoo/resume.git
  * [new branch]      tony -> tony
->>>>>>> tmp
+
