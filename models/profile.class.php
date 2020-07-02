@@ -6,11 +6,8 @@
 	use \Libraries\Helper as Helper;
 	
 	/* LOAD DEPENDECIES */
-<<<<<<< HEAD
 	require_once('presenters/profile.class.php');
-=======
 	require_once('models/profiledto.class.php');
->>>>>>> tmp
 	
 	/**
 	 * Profile Class which contains the profile information.
