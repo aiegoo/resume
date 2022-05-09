@@ -90,6 +90,13 @@ hr { margin: 40px 0px; border-color: #727878; opacity: 0.2; filter:alpha(opacity
 
 .background-white { background: #FFFFFF; }
 .background-gray { background: #434242; }
+.githubstyle {
+	color: rgba(255,255,255,0.65);
+    background-color: #24292e;
+    background-image: url(images/star-bg1.svg),linear-gradient(#191c20, #24292e 15%);
+    background-repeat: no-repeat;
+    background-position: center 0, 0 0, 0 0;
+}
 .container { max-width: 1280px; padding: 40px 180px; }
 
 #profile .row > div { margin-bottom: 20px; }
@@ -373,13 +380,13 @@ figure.effect:hover p {
 
 /* footer star rating using input and pseudo selectors */
 .rating {
-    --star-size: 3;  /* use CSS variables to calculate dependent dimensions later */
+    --star-size: 1.5;  /* use CSS variables to calculate dependent dimensions later */
     padding: 0;  /* to prevent flicker when mousing over padding */
     border: none;  /* to prevent flicker when mousing over border */
     unicode-bidi: bidi-override; direction: rtl;  /* for CSS-only style change on hover */
     text-align: left;  /* revert the RTL direction */
     user-select: none;  /* disable mouse/touch selection */
-    font-size: 3em;  /* fallback - IE doesn't support CSS variables */
+    font-size: 1.5em;  /* fallback - IE doesn't support CSS variables */
     font-size: calc(var(--star-size) * 1em);  /* because `var(--star-size)em` would be too good to be true */
     cursor: pointer;
     /* disable touch feedback on cursor: pointer - http://stackoverflow.com/q/25704650/1269037 */
@@ -392,7 +399,7 @@ figure.effect:hover p {
     display: inline-block;
     position: relative;
     width: 1.1em;  /* magic number to overlap the radio buttons on top of the stars */
-    width: calc(var(--star-size) / 3 * 1.1em);
+    width: calc(var(--star-size) / 1.5 * 1.1em);
   }
   .rating > *:hover,
   .rating > *:hover ~ label,
