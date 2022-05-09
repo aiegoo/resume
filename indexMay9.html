@@ -21,14 +21,14 @@
 		<link href="style.css" rel="stylesheet" />
 	</head>
 	<body data-spy="scroll" data-target="#navbar-example">		
-		<div class="jumbotron" data-src="images/bike_animation.gif">
-			<noscript><img src="images/bike_animation.gif" alt="bike"></noscript>
+		<div class="jumbotron" data-src="images/giraf_animation.gif" style="background-position: center;">
+			<noscript id="noscript"><img src="images/giraf_animation.gif" alt="giraf"></noscript>
 			<div class="container">
 				<h1>Tonyleekorea</h1>
 				<p class="lead">Interactive resume<!-- <br>
 				until next time ciao&Tilde; --></p>
 			</div>
-			
+			<script>document.getElementById('noscript').style.display='none';</script>
 			<div class="overlay"></div>
 			
 			<a href="#profile" class="scroll-down">	
@@ -63,6 +63,7 @@
 			<div id="profile" class="container">
 				<h2>Profile</h2>
 				<p class="lead">Tonyleekorea BN Lee</p>
+				<p style="text-align: center; margin-top: -20px;"><a href="javascript: popUp();">resume in bare mode</a></p>
 				
 				<hr />
 				
@@ -70,7 +71,7 @@
 					<div class="col-md-4">
 						<h3>About me</h3>
 						<p>
-							YOU'RE GOING TO FALL IN LOVE WITH THE WAY I WORK, TO BUILD MY CAREER <br>
+							YOU'RE GOING TO FALL IN LOVE WITH THE WAY I WORK, IN BUILDING MY CAREER <br>
 For the duration of 140 days of NCS course, I have completely absorbed myself in learning; 1120 class hours, 320+ hours of reading, 130+ hours of online video courses and much much more.
 						</p>
 					</div>
@@ -81,7 +82,7 @@ For the duration of 140 days of NCS course, I have completely absorbed myself in
 						<h3>Front to Backend</h3>
 						<p>
 							SIMPLE AND HUMBLE BEGINNING
-From the graphic designer with hands-on experience in the industry, I witnessed myself transform into a full-fledged web developer covering both front-end and back-end offices
+From the graphic designer with hands-on experience in the industry, I witnessed myself transform into a full-fledged web developer covering both front-end and back-end offices (FULL/MEAN STACK HOPEFUL)
 						</p>
 					</div>
 				</div>
@@ -100,22 +101,22 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 			
 			<h3>Educations</h3>
 			
-			<div class="experiences">
+			<div class="experiences">				
 				<div class="experience row">
 					<div class="col-md-4">
-						<h4>U. Penn</h4>
+						<h4>U of M</h4>
 						<p class="experience-period">sep 1991 - jun 1994</p>
 					</div>
 					<div class="col-md-8">
 						<p>
 							<strong>Bachelor - SMBA</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								The Classes I took and projects I completed there contributed greatly to my development of skills such as teamwork and project-oriented work management. Presentations with classmates helped to hone my ability to colloborate constructively, which is still essential to my successful career path. 
+								My motto then was 'Divde and Conquer'.
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;U.Penn
+								&#039;College Park &#039;
 							</span>
 						</p>
 					</div>
@@ -128,14 +129,13 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					</div>
 					<div class="col-md-8">
 						<p>
-							<strong>Accounting major to quit and transfer</strong>
+							<strong>Accounting major</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								I first enrolled in Biology Department of Kunkuk University with a dream for a big-shot future biochemist. I took to the USIS library, poring over books then realizing I should pursue the dream in America. With a almost perfect TOEFL score, I was admitted and started taking classes offered  to US 8th Army GIs in Seoul, as a part of UM extension programs. It was a long years because I kept a job as an English Instructor. This is still true; I am always trying to balance work and study at the same time.
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;U Maryland
+								&#039;U Maryland &#039;
 							</span>
 						</p>
 					</div>
@@ -147,6 +147,22 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 			<h3>Careers</h3>
 			
 			<div class="experiences">
+				<!-- .experience.row>.col-md-4>h4{Onofflink}+p.experience-period^div.col-md-8>p>strong{Asterisk Freepbx}+span.hidden-phone+span.location>span.glyphicon.glyphicon-map-marker -->
+				<div class="experience row">
+					<div class="col-md-4">
+						<h4>Onofflink</h4>
+						<p class="experience-period">mar 2019 - sep 2019<br>php, python, codeignitor</p>
+					</div>
+					<div class="col-md-8">
+						<p><strong class="hidden-phone">Asterisk Freepbx</strong><span class="hidden-phone">
+							No prior knowledge or a mentor to guide me through the development, but I did it!!<br>
+							A call center and conference solution based on Freepbx and asterisk. All feature codes and built-in modules are configured for deployment to DO servers. <a href="http://eggs.or.kr/index.php">credentials: admin 12345</a> &#8678; <a href="http://gui.eggs.or.kr">Freepbx gui</a>
+						</span><br>
+						<span class="location"><span class="glyphicon glyphicon-map-marker"></span>&#039; onfflink &#039;</span>					
+					</p>
+					</div>
+				</div>
+				
 				<div class="experience row">
 					<div class="col-md-4">
 						<h4>Eozz Inc. (aka Yulim Ads)</h4>
@@ -156,12 +172,17 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 						<p>
 							<strong>Translation and Design Department</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								It's most devastating and tumultuous year for me. I had to come home as Korea and the world in a sense had fallen to the deep dark years of economic chaos. I took up a night-shift as a building guard and worked as a freelancing teacher and translator to survive the few years economic aftermath. I joined Yulim Ads as an apprentice and became the chief operating director until I resigned in 2014.<br>
+								<p>The company had clients such as Hana Tour, LG Ads, Sisa English, SK Constructions and small-medium-sized art/design companies in Seoul metro area. </p>
+								<ul class="list margin-b-30">
+									<li>Sisa English billboards</li>
+									<li>LG Ads for commercial building interior graphic works.</li>
+									<li>Freelancing translator and English instructor</li>
+								</ul>
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Eozz Inc.
+								&#039;Eozz Inc. &#039;
 							</span>
 						</p>
 					</div>
@@ -170,18 +191,18 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				<div class="experience row">
 					<div class="col-md-4">
 						<h4>Himedia Computer</h4>
-						<p class="experience-period">sep 2018 - jun 2019</p>
+						<p class="experience-period">sep 2018 - feb 2019</p>
 					</div>
 					<div class="col-md-8">
 						<p>
 							<strong>NCS course with focus on web App development and programming</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								<p class="margin-b-50">
+									I took up a NCI course of 7 months, 8 hours of classes a day and extra curriculum of reading intensive reference books two books every month. I never had this kind of challenge all my life. I passed the national GTQ Photoshop 1st Level test, and the National Web Technical Written test in the span of two months,a feat which I never thought I would achieve. <br> This portfolio is going to be another example how far and high I can aim to reach my goal.</p>
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Hi-media
+								&#039;Hi-media &#039;
 							</span>
 						</p>
 					</div>
@@ -194,14 +215,13 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					</div>
 					<div class="col-md-8">
 						<p>
-							<strong>TOEIC & TOEFL</strong>
+							TOEIC & TOEFL
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+									
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Sisa English Institute
+								&#039;Sisa English Institute &#039;
 							</span>
 						</p>
 					</div>
@@ -216,12 +236,12 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 						<p>
 							<strong>Pratt Institute of Arts - College Extension</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+									
+									The courses with the renowned institute has kept my artistic juice flowing ever since, if not as a profession. Hence, when the opportunity arose with the government stipends and sponsorship, I joined the 7 months of coding and web publishing with Hi-media Institute. I learned fast and became fluent in coding (html5, css3, jquery and bootstrap). I am resourceful and can be very inventive. Trust is what counts most when your job is to fulfill the goal of my clients.
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;UC
+								&#039;UC &#039;
 							</span>
 						</p>
 					</div>
@@ -229,19 +249,19 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				
 				<div class="experience row">
 					<div class="col-md-4">
-						<h4>Chu Art LA</h4>
+						<h4>Art Studio LA</h4>
 						<p class="experience-period">sep 1996 - jun 1997</p>
 					</div>
 					<div class="col-md-8">
 						<p>
-							<strong>Chu Art - Signage, CAD & silk-screen</strong>
+							<strong>Art Studio - Signage, CAD & silk-screen</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								<p class="font-semi-white margin-tb-30">My duty included coordinating outdoor signage, 4-color process printing, and silk-printing and I spent most of the work time with studio people whose work led to tangible outputs. 
+								</p>
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Chu Art
+								&#039;Chu Art &#039;
 							</span>
 						</p>
 					</div>
@@ -256,12 +276,11 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 						<p>
 							<strong>SHP and Hynix - Training Instructor</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								I taught numerous in-house classes for major companies in Korea including Hynix and Samsung but not limited to them.
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Hynix
+								&#039;Hynix &#039;
 							</span>
 						</p>
 					</div>
@@ -275,8 +294,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 			<div id="abilities" class="container">
 				<h2>Abilities</h2>
 				<p class="lead">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. At natus commodi adipisci repellendus omnis fugit magnam tempore porro! 
-					Voluptas earum pariatur eveniet dolor blanditiis aspernatur exercitationem sapiente ducimus nihil accusamus.
+					Age is just a number when body and mind are refusing to succumb to the conventional norms and ideas how we should conform to the world. 
 				</p>
 				
 				<hr />
@@ -287,7 +305,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">PHP</span>
+								<span class="ability-title">Python</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -297,7 +315,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">MySQL</span>
+								<span class="ability-title">C++</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -307,7 +325,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">WordPress</span>
+								<span class="ability-title">Django</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -321,7 +339,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">HTML(5)</span>
+								<span class="ability-title">HTML(5)-web</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -331,7 +349,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">CSS(3)</span>
+								<span class="ability-title">Firmware</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -417,7 +435,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">Notepad++</span>
+								<span class="ability-title">VIM</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -431,9 +449,9 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 							<li>
@@ -441,9 +459,9 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 							<li>
@@ -451,7 +469,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star"></span>
 									<span class="glyphicon glyphicon-star"></span>
 								</span>
@@ -471,7 +489,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">Mac OS</span>
+								<span class="ability-title">Linux, MacOS</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -509,7 +527,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				<div class="col-md-8 interest-content">
 					<h3>Sports</h3>
 					<p>
-						I seriously asked myself what I wanted from my life ever since my young adult years. How I die is one thing; what to decide at the right moment is another; and seeking a transcending level of awareness is the other. I believe yoga in a sheer sense encompasses all of three. Time, space and the fifth dimension I create during the yoga session are part of the process to achive them. Interacting with computer and world of internet provides me with means to reach my goals through commitment and devotion.
+						I seriously asked myself what I wanted from my life ever since my young adult years. How I die is one thing; what to decide at the right moment is another; and seeking a transcending level of awareness is the other. I chose reading, working out and practicing yoga as a way of melding these into my body and mind.
 					</p>
 				</div>
 			</div>
@@ -519,9 +537,9 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				<div class="col-md-8 interest-content">
 					<h3>Languages</h3>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-						Explicabo voluptatum delectus illum non animi libero nesciunt saepe sequi deleniti itaque repudiandae veniam facere harum ipsa ut ducimus velit quibusdam provident.
-					</p>
+						I believed that I could command at least 3 foreign tongues after I started teaching AFKN at Sisa. But I enjoyed too much reading. It virtually devoured all of my free time at the speed of a book over the weekend. (see the list <a href="javascript: popUpBooks();">here</a>). <br>
+						Computer language is my second tryout on the passion about language I left off at the time.
+					</a>
 				</div>
 			</div>
 			
@@ -530,14 +548,15 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				<div class="col-md-8 interest-content">
 					<h3>Yoga</h3>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-						Explicabo voluptatum delectus illum non animi libero nesciunt saepe sequi deleniti itaque repudiandae veniam facere harum ipsa ut ducimus velit quibusdam provident.
+							I took up yoga at the time when everyone seemed to accept the notion of 'over the hill'. Instead, I chose to keep my body flexible and in shape despite the age factors. Breathing, harmony, immersion in the pursuit of finding the inner most self is what I gained after 5 years of passionate yoga journey.
+						<br>
+						I believe yoga in a sheer sense encompasses all of the following three. Time, space and the fifth dimension I create during the yoga session are a part of the process to achieve my true self. Interacting with computer and world of internet provides me with means to reach my goals through commitment and devotion.
 					</p>
 				</div>
 			</div>
 		</div>
 		
-		<div class="background-gray">
+		<div class="background-gray githubstyle">
 			<div id="contact" class="container">
 				<h2>Contact</h2>
 				<p class="lead">
@@ -566,7 +585,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<a href="">
+								<a href="skype:hsyyulim">
 									<span class="icon icon-skype"></span>
 									Tonyleekorea
 								</a>
@@ -574,29 +593,89 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 							<li>
 								<a href="">
 									<span class="icon icon-email"></span>
-									master@tonyleekorea.com
+									aiegoo@naver.com
 								</a>
 							</li>
 						</ul>
 					</div>
+					<div class="col-md-6 col-md-offset-4">
+						
+					<!-- star ratings using input psuedo selectors -->
+					<form id="rating"
+							method="post"
+							action-xhr="https://amp.dev/documentation/examples/interactivity-dynamic-content/star_rating/set"
+							target="_blank">
+							<fieldset class="rating">
+							<input name="rating"
+								type="radio"
+								id="rating5"
+								value="5"
+								on="change:rating.submit">
+							<label for="rating5"
+								title="5 stars">☆</label>
+
+							<input name="rating"
+								type="radio"
+								id="rating4"
+								value="4"
+								on="change:rating.submit">
+							<label for="rating4"
+								title="4 stars">☆</label>
+
+							<input name="rating"
+								type="radio"
+								id="rating3"
+								value="3"
+								on="change:rating.submit">
+							<label for="rating3"
+								title="3 stars">☆</label>
+
+							<input name="rating"
+								type="radio"
+								id="rating2"
+								value="2"
+								on="change:rating.submit"
+								checked="checked">
+							<label for="rating2"
+								title="2 stars">☆</label>
+
+							<input name="rating"
+								type="radio"
+								id="rating1"
+								value="1"
+								on="change:rating.submit">
+							<label for="rating1"
+								title="1 stars">☆</label> em etar
+							</fieldset>
+							<div submit-success>
+							<template type="amp-mustache">
+								<p>Thanks for rating {{rating}} star(s)!</p>
+							</template>
+							</div>
+							<div submit-error>
+							<template type="amp-mustache">
+								Looks like something went wrong. Please try to rate again. {{error}}
+							</template>
+							</div>
+					</form>
+					</div>
 				</div>
 			</div>
 		</div>
-		
-		<!-- Bootstrap core JavaScript -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.iedialog.min.js"></script>
-		<script type="text/javascript">
-			
-			$('body').ieDialog({
-				closable: false
-			});  
-			
-			var lnStickyNavigation;
-			
-			$(document).ready(function()
-			{	
-				lnStickyNavigation = $('.scroll-down').offset().top + 20;
+									<!-- Bootstrap core JavaScript -->
+									<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+									<script type="text/javascript" src="js/jquery.iedialog.min.js"></script>
+									<script type="text/javascript">
+										
+										$('body').ieDialog({
+											closable: false
+										});  
+										
+										var lnStickyNavigation;
+										
+										$(document).ready(function()
+										{	
+											lnStickyNavigation = $('.scroll-down').offset().top + 20;
 				
 				$('.jumbotron').css({ height: ($(window).height() -10) +'px' });
 				
@@ -611,7 +690,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 						$('html, body').animate(
 						{
 							scrollTop: $( $.attr(this, 'href') ).offset().top
-						}, 400);
+						}, 800);
 					}
 					return false;
 				});
@@ -661,7 +740,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 			}
 
 		function isInView(elem){
-       return $(elem).offset().top - $(window).scrollTop() < $(elem).height() ;
+       return $(elem).offset().top - $(window).scrollTop() < $(elem).height()-90;
 			}
 			
 			$(window).scroll(function(){
@@ -697,7 +776,16 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
       fade.fadeOut(3000);
     }
   }); */
+  function popUp(){
+	  window.open("tonyresume.html", "tony", "width=500, height=500, top=200; left=300, scrollbars=no, menubar=no, toolbar=no, resizable=no, location=no, status=no, directories=no, addressbar=no");
+  }
+  function popUpBooks(){
+	  window.open("tonyresume.html#book-list", "tony", "width=500, height=500, top=200; left=300, menubar=no, toolbar=no, resizable=no, location=no, status=no, directories=no, addressbar=no");
+  }
+  
 		</script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+		<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
 	</body>
 </html>
