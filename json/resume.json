@@ -16,10 +16,10 @@
         }
     },
     "contact_details": {
-        "email": "master@tonyleekorea.com",
+        "email": "aiegoo@naver.com",
         "phone": "+82(0)10 5044 6037",
         "skype": "",
-        "website": "http://tonyleekorea.com/",
+        "website": "http://pf7.36io.co/",
         "twitter": "",
         "linkedin": ""
     },
@@ -32,16 +32,6 @@
             "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum culpa cupiditate omnis at debitis.",
             "start_date": "1985-08-01",
             "end_date": "1990-06-01",
-            "completed": true
-        },
-        {
-            "title": "University of Pennsylvania",
-            "specification": "SMBA",
-            "location": "Rosmalen",
-            "level": "Bachelor",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum culpa cupiditate omnis at debitis.",
-            "start_date": "1990-08-01",
-            "end_date": "1992-06-01",
             "completed": true
         }
     ],
