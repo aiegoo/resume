@@ -868,64 +868,58 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					</div>
 					<div class="col-md-6 col-md-offset-4">
 						
-					<!-- star ratings using input psuedo selectors -->
-					<form id="rating"
-							method="post"
-							action-xhr="https://amp.dev/documentation/examples/interactivity-dynamic-content/star_rating/set"
-							target="_blank">
-							<fieldset class="rating">
-							<input name="rating"
-								type="radio"
-								id="rating5"
-								value="5"
-								on="change:rating.submit">
-							<label for="rating5"
-								title="5 stars">☆</label>
-
-							<input name="rating"
-								type="radio"
-								id="rating4"
-								value="4"
-								on="change:rating.submit">
-							<label for="rating4"
-								title="4 stars">☆</label>
-
-							<input name="rating"
-								type="radio"
-								id="rating3"
-								value="3"
-								on="change:rating.submit">
-							<label for="rating3"
-								title="3 stars">☆</label>
-
-							<input name="rating"
-								type="radio"
-								id="rating2"
-								value="2"
-								on="change:rating.submit"
-								checked="checked">
-							<label for="rating2"
-								title="2 stars">☆</label>
-
-							<input name="rating"
-								type="radio"
-								id="rating1"
-								value="1"
-								on="change:rating.submit">
-							<label for="rating1"
-								title="1 stars">☆</label> em etar
-							</fieldset>
-							<div submit-success>
-							<template type="amp-mustache">
-								<p>Thanks for rating {{rating}} star(s)!</p>
-							</template>
-							</div>
-							<div submit-error>
-							<template type="amp-mustache">
-								Looks like something went wrong. Please try to rate again. {{error}}
-							</template>
-							</div>
-					</form>
+					<!-- Interactive Star Rating -->
+					<div class="star-rating-container">
+						<h4 style="text-align: center; margin-bottom: 15px; color: #666;">Rate My Resume</h4>
+						<div class="star-rating" id="starRating">
+							<span class="star" data-value="1">★</span>
+							<span class="star" data-value="2">★</span>
+							<span class="star" data-value="3">★</span>
+							<span class="star" data-value="4">★</span>
+							<span class="star" data-value="5">★</span>
+						</div>
+						<div id="rating-feedback" style="text-align: center; margin-top: 10px; min-height: 20px; color: #666; font-size: 14px;"></div>
+					</div>
+					
+					<style>
+					.star-rating-container {
+						text-align: center;
+						padding: 20px;
+						background: rgba(255,255,255,0.1);
+						border-radius: 10px;
+						margin: 20px 0;
+					}
+					.star-rating {
+						font-size: 30px;
+						color: #ddd;
+						cursor: pointer;
+						user-select: none;
+					}
+					.star {
+						transition: color 0.3s;
+						margin: 0 2px;
+					}
+					.star:hover,
+					.star.active {
+						color: #ffd700;
+					}
+					.star:hover ~ .star {
+						color: #ddd;
+					}
+					</style>
+					</div>
+				</div>
+				
+				<!-- Last Updated Footer -->
+				<div class="row" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
+					<div class="col-md-12 text-center">
+						<p style="color: #888; font-size: 12px;">
+							<i class="glyphicon glyphicon-time"></i> Last updated: <span id="last-updated">October 18, 2025</span>
+							<br><small>Built with ❤️ using GitHub Pages | 
+							<a href="https://github.com/aiegoo/resume" target="_blank" style="color: #888;">
+								<i class="glyphicon glyphicon-new-window"></i> View Source
+							</a></small>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -1051,9 +1045,85 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 	  window.open("tonyresume.html#book-list", "tony", "width=500, height=500, top=200; left=300, menubar=no, toolbar=no, resizable=no, location=no, status=no, directories=no, addressbar=no");
   }
   
+  // Star Rating System
+  $(document).ready(function() {
+      const stars = $('.star');
+      const feedback = $('#rating-feedback');
+      let currentRating = 0;
+      
+      // Load saved rating from localStorage
+      const savedRating = localStorage.getItem('resume-rating');
+      if (savedRating) {
+          currentRating = parseInt(savedRating);
+          updateStars(currentRating);
+          showFeedback(currentRating);
+      }
+      
+      stars.on('click', function() {
+          const rating = parseInt($(this).data('value'));
+          currentRating = rating;
+          
+          // Save to localStorage (persistent across sessions)
+          localStorage.setItem('resume-rating', rating);
+          
+          updateStars(rating);
+          showFeedback(rating);
+          
+          // Optional: Send to analytics or external service
+          // gtag('event', 'resume_rating', { 'rating': rating });
+      });
+      
+      stars.on('mouseenter', function() {
+          const hoverRating = parseInt($(this).data('value'));
+          updateStars(hoverRating);
+      });
+      
+      $('.star-rating').on('mouseleave', function() {
+          updateStars(currentRating);
+      });
+      
+      function updateStars(rating) {
+          stars.each(function() {
+              const starValue = parseInt($(this).data('value'));
+              if (starValue <= rating) {
+                  $(this).addClass('active');
+              } else {
+                  $(this).removeClass('active');
+              }
+          });
+      }
+      
+      function showFeedback(rating) {
+          const messages = {
+              1: "Thanks for the feedback! I'll keep improving 💪",
+              2: "Appreciate the input! Working on getting better 📈",
+              3: "Thank you! Always room for improvement 🚀",
+              4: "Great! Thanks for the positive feedback 😊",
+              5: "Awesome! You made my day! 🌟"
+          };
+          
+          if (rating > 0) {
+              feedback.html(`⭐ You rated: ${rating}/5 - ${messages[rating]}`);
+              feedback.css('color', '#666');
+          }
+      }
+  });
+  
+  // Auto-update last modified date
+  $(document).ready(function() {
+      // Get the current date
+      const now = new Date();
+      const options = { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          timeZone: 'Asia/Seoul'
+      };
+      const formattedDate = now.toLocaleDateString('en-US', options);
+      $('#last-updated').text(formattedDate);
+  });
+  
 		</script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
-		<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
 	</body>
 </html>
