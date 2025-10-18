@@ -19,6 +19,41 @@
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
 		<link href="css/jquery.iedialog.min.css" rel="stylesheet" />
 		<link href="style.css" rel="stylesheet" />
+		
+		<!-- Star Rating System CSS -->
+		<style>
+			.star-rating-container {
+				margin: 20px 0;
+				text-align: center;
+			}
+			
+			.star-rating {
+				font-size: 24px;
+				margin: 10px 0;
+			}
+			
+			.star {
+				color: #ddd !important;
+				cursor: pointer;
+				transition: color 0.2s ease;
+				margin: 0 2px;
+			}
+			
+			.star:hover {
+				color: #22A39F !important;
+			}
+			
+			.star.active {
+				color: #22A39F !important;
+			}
+			
+			.rating-feedback {
+				margin-top: 10px;
+				font-size: 14px;
+				color: #666;
+				min-height: 20px;
+			}
+		</style>
 	</head>
 	<body data-spy="scroll" data-target="#navbar-example">		
 		<div class="jumbotron" data-src="images/giraf_animation.gif" style="background-position: center;">
@@ -868,62 +903,35 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					</div>
 					<div class="col-md-6 col-md-offset-4">
 						
-					<!-- Interactive Star Rating -->
+					<!-- Star Rating System -->
 					<div class="star-rating-container">
-						<h4 style="text-align: center; margin-bottom: 15px; color: #666;">Rate My Resume</h4>
-						<div class="star-rating" id="starRating">
+						<h4>Rate My Resume</h4>
+						<div class="star-rating">
 							<span class="star" data-value="1">★</span>
 							<span class="star" data-value="2">★</span>
 							<span class="star" data-value="3">★</span>
 							<span class="star" data-value="4">★</span>
 							<span class="star" data-value="5">★</span>
 						</div>
-						<div id="rating-feedback" style="text-align: center; margin-top: 10px; min-height: 20px; color: #666; font-size: 14px;"></div>
+						<div id="rating-feedback" class="rating-feedback"></div>
 					</div>
-					
-					<style>
-					.star-rating-container {
-						text-align: center;
-						padding: 20px;
-						background: rgba(255,255,255,0.1);
-						border-radius: 10px;
-						margin: 20px 0;
-					}
-					.star-rating {
-						font-size: 30px;
-						color: #ddd;
-						cursor: pointer;
-						user-select: none;
-					}
-					.star {
-						transition: color 0.3s;
-						margin: 0 2px;
-					}
-					.star:hover,
-					.star.active {
-						color: #ffd700;
-					}
-					.star:hover ~ .star {
-						color: #ddd;
-					}
-					</style>
-					</div>
-				</div>
-				
-				<!-- Last Updated Footer -->
-				<div class="row" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd;">
-					<div class="col-md-12 text-center">
-						<p style="color: #888; font-size: 12px;">
-							<i class="glyphicon glyphicon-time"></i> Last updated: <span id="last-updated">October 18, 2025</span>
-							<br><small>Built with ❤️ using GitHub Pages | 
-							<a href="https://github.com/aiegoo/resume" target="_blank" style="color: #888;">
-								<i class="glyphicon glyphicon-new-window"></i> View Source
-							</a></small>
-						</p>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<!-- Footer -->
+		<footer class="footer" style="background-color: #f8f9fa; padding: 20px 0; border-top: 1px solid #e9ecef; margin-top: 40px;">
+			<div class="container text-center">
+				<p class="text-muted">
+					Last published: <span id="last-updated">Loading...</span>
+				</p>
+				<p class="text-muted">
+					<small>© 2025 Tonyleekorea. Built with ❤️ and lots of ☕</small>
+				</p>
+			</div>
+		</footer>
+		
 									<!-- Bootstrap core JavaScript -->
 									<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 									<script type="text/javascript" src="js/jquery.iedialog.min.js"></script>
@@ -1049,32 +1057,28 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
   $(document).ready(function() {
       const stars = $('.star');
       const feedback = $('#rating-feedback');
-      let currentRating = 0;
+      let currentRating = localStorage.getItem('resumeRating') || 0;
       
-      // Load saved rating from localStorage
-      const savedRating = localStorage.getItem('resume-rating');
-      if (savedRating) {
-          currentRating = parseInt(savedRating);
-          updateStars(currentRating);
+      // Initialize display
+      updateStars(currentRating);
+      if (currentRating > 0) {
           showFeedback(currentRating);
       }
       
+      // Star click handler
+      console.log('Found', stars.length, 'stars');
       stars.on('click', function() {
-          const rating = parseInt($(this).data('value'));
+          const rating = $(this).data('value');
+          console.log('Star clicked with rating:', rating);
           currentRating = rating;
-          
-          // Save to localStorage (persistent across sessions)
-          localStorage.setItem('resume-rating', rating);
-          
+          localStorage.setItem('resumeRating', rating);
           updateStars(rating);
           showFeedback(rating);
-          
-          // Optional: Send to analytics or external service
-          // gtag('event', 'resume_rating', { 'rating': rating });
       });
       
+      // Hover effects
       stars.on('mouseenter', function() {
-          const hoverRating = parseInt($(this).data('value'));
+          const hoverRating = $(this).data('value');
           updateStars(hoverRating);
       });
       
@@ -1083,12 +1087,18 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
       });
       
       function updateStars(rating) {
+          console.log('Updating stars with rating:', rating);
           stars.each(function() {
               const starValue = parseInt($(this).data('value'));
+              const $star = $(this);
               if (starValue <= rating) {
-                  $(this).addClass('active');
+                  $star.addClass('active');
+                  $star.css('color', '#22A39F'); // Force color directly
+                  console.log('Added active class to star', starValue);
               } else {
-                  $(this).removeClass('active');
+                  $star.removeClass('active');
+                  $star.css('color', '#ddd'); // Force default color directly
+                  console.log('Removed active class from star', starValue);
               }
           });
       }
