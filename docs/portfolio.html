@@ -363,7 +363,6 @@
 ---
 
 ## 📌 1. 인적사항 · 지원목표 · 학력 · 핵심스킬 (Profile / Objective / Education / Skillset)
-> *※ 이력서 도입부 핵심 요약 (0.5 페이지)*
 
 <table style="width: 100%; border: none; margin-bottom: 12px;">
   <tr>
@@ -396,7 +395,7 @@
             <a href="https://github.com/aiegoo" target="_blank">github.com/aiegoo</a> &nbsp;|&nbsp; 
             <a href="https://elbee.yogaman.club/modoo" target="_blank">YogaQ 사업·기술 슬라이드</a> &nbsp;|&nbsp; 
             <a href="https://aiegoo.github.io/yoga/chat" target="_blank">YogaQ AI 라이브 데모</a> &nbsp;|&nbsp; 
-            <a href="https://pf7.eggs.or.kr" target="_blank">기술문서 포털</a>
+            <a href="https://pf1.eggs.or.kr/portfolio.html" target="_blank">통합 포트폴리오 포털</a>
           </td>
         </tr>
       </table>
@@ -405,16 +404,16 @@
 </table>
 
 ### 🎯 지원 목표 (Objective)
-**"상용 클라우드 API 호출에 의존하지 않고, 자체 온프레미스 GPU 환경에서 오픈소스 LLM을 서빙하며 Typesense 초저지연 하이브리드 RAG 시스템을 구축하여 기업의 데이터 주권 확보와 즉시 가치 창출에 기여하겠습니다."**
+**"고가 클라우드 GPU 비용에 의존하지 않고, Hailo-8L NPU 기반 2단계 온디바이스 비전 AI와 Typesense 초저지연 하이브리드 RAG 및 온프레미스 로컬 LLM 서빙 시스템을 1인 완결형으로 구축하여 기업의 인프라 비용 0원화와 데이터 주권 확보에 기여하겠습니다."**
 
 ### 🎓 학력 사항 (Education)
 - **University of Maryland (미국 메릴랜드 대학교)** | **1985.08 ~ 1994.06 (졸업)**
   - 전공: **경영학 학사 (Management / Computer & Information Science)**
 
 ### 🛠️ 직무 핵심 코딩 스킬셋 (Coding Skillset)
-- **Languages**: **Python** (FastAPI, PyTorch, HuggingFace), **C/C++** (llama.cpp, 소켓 프로토콜), **TypeScript/JS** (Node.js, React, WebSocket), **SQL** (PostgreSQL, Prisma)
-- **AI / LLM & RAG**: **Typesense Hybrid Search** (Dense bge-m3 + BM25 동적 가중치), **Ollama / llama.cpp**, **CUDA GPU 가속**, **GGUF 4/8-bit 양자화** (VRAM 65% 절감), **AEO / GEO** (schema.org JSON-LD 구조화 데이터, AI 검색엔진 인용 최적화), 슬라이딩 청킹, **OpenCV / Tesseract OCR 파이프라인**
-- **Backend & Streaming**: **WebSocket 풀듀플렉스 & SSE 실시간 토큰 스트리밍** (TTFT 340ms), **Redis Pub/Sub 비동기 큐** (동시 50건 무중단), RESTful API, WeasyPrint PDF 파이프라인
+- **Edge AI & Vision NPU**: **Hailo-8L (13 TOPS) DFC 컴파일 (INT8 HEF)**, **YOLOv8s-Pose**, **COCO-17 / 3-Layer Landmark Engine**, **3D 공간 리프팅 & Safe Torso Scale Guard**, **Pure NumPy AsanaClassifier (0.018ms)**, PyHailoRT, OpenCV
+- **AI / LLM & RAG**: **Typesense Hybrid Search** (Dense bge-m3 1024차원 + BM25 동적 가중치), **신체 금기 조건(디스크·임신) 페널티 마스킹**, **Ollama / llama.cpp**, **GGUF 4/8-bit 양자화** (VRAM 65% 절감), **AEO/GEO** (schema.org JSON-LD 구조화 데이터 AI 검색엔진 직인용), OpenCV/Tesseract OCR
+- **Backend & Streaming**: **WebSocket 풀듀플렉스 & SSE 실시간 토큰 스트리밍** (TTFT 340ms), **Redis Pub/Sub 비동기 큐** (동시 50건 무중단), FastAPI, Three.js 3D 실시간 뷰어, C/C++ 소켓 통신
 - **Cloud & DevOps**: **AWS (CLF-C02 자격 취득)**, **ECS Fargate**, **OpenSearch Serverless**, **AWS Bedrock 무중단 Failover**, Docker, Linux/WSL2
 
 ---
@@ -423,9 +422,9 @@
 
 | 핵심 수행 역량 | 내가 분명히 수행할 수 있는 구체적 실무 역량 | 검증 지표 및 산출물 |
 | :--- | :--- | :--- |
-| **1. 로컬 LLM 서빙 & 가속** | • 사내 온프레미스 CUDA GPU 환경에 Ollama, llama.cpp, vLLM 직접 셋업<br>• GGUF 4/8-bit 양자화로 모델 메모리 65% 절감 및 상용 API 비용 100% 절감<br>• Redis 비동기 큐 기반 동시 요청 제어로 VRAM OOM 원천 방지 | • 초당 토큰 생성 32 TPS, 동시 50건 안정 처리<br>• [GPU 인프라 설정 명세서](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md) |
-| **2. 초저지연 하이브리드 RAG & AEO/GEO** | • Typesense 기반 Dense Vector(1024차원) + BM25 키워드 결합 인덱싱 스키마 설계<br>• 신체 금기 조건(허리 디스크, 부상 등) 패널티 마스킹 및 안전 대체 자세 RAG 추천<br>• 165쪽 도서 OCR(28k 단어) 지식베이스 및 schema.org JSON-LD 기반 AI 검색엔진(ChatGPT/Perplexity) 인용 최적화 | • **p95 검색 레이턴시 42ms** (ES 320ms 대비 87% 단축)<br>• **할루시네이션 발생률 85% 감소** 실측<br>• [YogaQ 사업·기술 슬라이드](https://elbee.yogaman.club/modoo)<br>• [YogaQ 검색 데모](https://aiegoo.github.io/yoga/search) |
-| **3. 실시간 토큰 스트리밍 & 엔드투엔드 케어** | • WebSocket 풀듀플렉스 & SSE 통신을 통해 생성 토큰을 청크 단위로 브라우저에 푸시<br>• 첫 토큰 생성(TTFT) 350ms 미만 초저지연 반응형 UX 구현<br>• 해부학 온보딩, 마이솔(Mysore) 자가 수련 트래킹, 스튜디오 위치/날씨 연동 풀스택 구축 | • [YogaQ AI 챗봇 라이브 데모](https://aiegoo.github.io/yoga/chat)<br>• [RAG 워크플로우 문서](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) |
+| **1. 온디바이스 비전 AI & 3D 생체역학 복원**<br>*(YogaQ Edge AI — 비중 25%)* | • Raspberry Pi 5 + Hailo-8L(13 TOPS) 기반 2단계 분리 가속 파이프라인 구축 (Stage-1 NPU 비전 20.4ms + Stage-2 ARM CPU 분류 0.018ms)<br>• 2D 광학 섀도우의 깊이 소실 및 전굴 시 몸통 12배 수축을 Safe Torso Scale Guard로 방어 (25배 좌표 폭발 방지)<br>• 마르코프 후보 윈도우 & 5-프레임 히스테리시스 디바운서로 라벨 지터 제로화 (수리야 나마스카라 99.9% 잠금) | • **30.0 FPS 풀 프레임레이트 고정 실측**<br>• 전굴 시 좌표 폭발 0%, 라벨 지터 제로<br>• **$140 단일 어플라이언스로 월 GPU $720 0원화**<br>• [YogaQ 사업·기술 슬라이드](https://elbee.yogaman.club/modoo) |
+| **2. 초저지연 하이브리드 RAG & AEO/GEO**<br>*(YogaQ RAG & GEO)* | • Typesense 기반 Dense Vector(1024차원) + BM25 키워드 결합 인덱싱 스키마 설계<br>• 해부학적 신체 제약(허리 디스크, 부상 등) 패널티 마스킹 및 안전 대체 자세 RAG 추천<br>• 165쪽 도서 OCR(28k 단어) 지식베이스 및 schema.org JSON-LD 기반 AI 검색엔진(ChatGPT/Perplexity) 직인용 최적화 | • **p95 검색 레이턴시 42ms** (ES 320ms 대비 87% 단축)<br>• **할루시네이션 발생률 85% 감소** 실측<br>• [YogaQ 검색 데모](https://aiegoo.github.io/yoga/search)<br>• [YogaQ AI 챗봇 데모](https://aiegoo.github.io/yoga/chat) |
+| **3. 온프레미스 GPU 로컬 LLM 서빙 & 가속** | • 사내 온프레미스 CUDA GPU 환경에 Ollama, llama.cpp, vLLM 직접 셋업<br>• GGUF 4/8-bit 양자화로 모델 메모리 65% 절감 및 상용 API 비용 100% 절감<br>• Redis 비동기 큐 기반 동시 요청 제어로 VRAM OOM 원천 방지 및 WebSocket 실시간 토큰 스트리밍 | • 초당 토큰 생성 32 TPS, 동시 50건 안정 처리<br>• 첫 토큰 생성(TTFT) 340ms 초저지연 달성<br>• [GPU 인프라 설정 명세서](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md) |
 
 ---
 
@@ -434,92 +433,71 @@
 ### 1. 유콘크리에이티브주식회사 (Ucon Creative Co., Ltd.)
 - **직책**: **개발 실장 / Head of Engineering** (정규직) | **2023.05 ~ 2025.08 (2년 4개월)**
 - **핵심 역할 및 성과**:
-  - **온프레미스 로컬 LLM 서빙**: Ollama/llama.cpp/CUDA 기반 자체 서빙 인프라 구축, GGUF 양자화로 VRAM 메모리 65% 절감 및 외부 API 비용 100% 절감.
-  - **요가큐(YogaQ / your yoga curator) RAG & GEO 플랫폼 개발**:
-    - 해부학적 온보딩 기반 신체 제약(허리 디스크, 임신 등) 금기 동작 자동 필터링 및 맞춤형 마이솔(Mysore) 자가 수련 엔드투엔드 케어 시스템 구현.
-    - Typesense Dense + BM25 하이브리드 인덱싱으로 **p95 검색 42ms 달성 및 할루시네이션 85% 감소**.
-    - schema.org JSON-LD 구조화 데이터 발행으로 ChatGPT·Perplexity·Naver Cue 직인용(AEO/GEO) 유입 루프 구축.
-    - 스튜디오 무료 디렉토리 연계 및 지도자 과정(TTC)/워크숍 수강 관리 시스템 설계.
-  - **실시간 스트리밍 백엔드**: WebSocket 풀듀플렉스 통신 및 Redis 비동기 큐를 구축하여 TTFT 340ms 실시간 토큰 스트리밍과 동시 50건 이상 무중단 안정 처리 구현.
+  - **요가큐(YogaQ) 온디바이스 비전 AI 엣지 인식 & 생체역학 RAG 플랫폼 총괄 (비중 25%)**:
+    - **2단계 분리 가속 파이프라인**: 13 TOPS Hailo-8L NPU(YOLOv8s-Pose 20.4ms) + ARM Cortex-A76 CPU(순수 NumPy 분류기 0.018ms) 분리 배치로 소형 텐서의 PCIe DMA 오버헤드(0.5ms) 대비 25배 빠른 초저지연 추론 달성.
+    - **3D 생체역학 복원 & 라벨 안정화**: 2D 섀도우 텐서의 전굴 좌표 폭발을 Safe Torso Scale Guard($\text{scale} = \max(H_{\text{torso}}, 0.250 \cdot \text{ref})$)로 방어하고, 5프레임 히스테리시스 디바운서로 라벨 지터 제로화 (Surya Namaskara 99.9% 확정 잠금).
+    - **초저지연 하이브리드 RAG & AEO/GEO**: 해부학적 신체 제약(디스크, 임신 등) 금기 동작 페널티 마스킹 및 대체 자세 추천, Typesense p95 42ms 및 할루시네이션 85% 차단, schema.org JSON-LD 구조화 데이터 발행으로 AI 검색엔진 직인용 최적화.
+    - **B2B 상용화 Unit Economics**: $140 단일 PoE 엣지 어플라이언스로 스튜디오당 월 $720 클라우드 GPU 인프라 비용을 $0으로 제거하고 Zero Cloud Ingress(수련자 영상 외부 유출 제로) 실현.
+  - **온프레미스 로컬 LLM 서빙**: Ollama/llama.cpp/CUDA 기반 서빙 인프라 구축, GGUF 양자화로 VRAM 65% 절감 및 외부 API 비용 100% 절감 (32 TPS).
   - **글로벌 비즈니스 총괄**: 미국 메릴랜드대 학사 기반 원어민급 영어로 카자흐스탄 현지 대학 MOU 및 **10만 달러($100,000) 규모 중계무역 계약 직접 체결**.
 
 ---
 
 ### 2. 제주오르미캠프 (AI / Cloud Intensive)
 - **역할**: **팀 리드 & 클라우드 AI 아키텍트** | **2025.10 ~ 2025.12 (2개월 풀타임)**
-- **핵심 역할 및 성과**:
-  - **AWS ECS Fargate & OpenSearch RAG**: Terraform IaC 기반 서버리스 컨테이너 클러스터 및 k-NN 벡터 인덱스 자동 배포.
-  - **설명가능한 AI (XAI) 엔진**: 생성 문장과 원문 청크 간 역코사인 유사도를 계산하여 인용 출처 및 신뢰도 점수를 클라이언트에 시각화.
-  - **고가용성 Failover 서킷 브레이커**: 로컬 서버 장애 시 1.2초 내 AWS Bedrock(Claude 3.5 Sonnet)으로 무중단 자동 전환되는 복원력 설계.
-  - **성과**: 40여 개 참가 팀 중 **종합 1위 팀 프로젝트 우수상 & 개인 성적 최우수상** 동시 수상.
+- **핵심 성과**: Terraform IaC 기반 AWS ECS Fargate & OpenSearch RAG 클러스터 자동 배포. 코사인 유사도 역추적 XAI 엔진 설계. 로컬 장애 시 1.2초 내 AWS Bedrock 무중단 자동 전환 서킷 브레이커 구축. **캠프 전체 1위 팀 우수상 & 개인 최우수상 동시 수상**.
 
 ---
 
 ### 3. 주식회사 제이디랩 (JDLab Co., Ltd.)
 - **직책**: **수석연구원 / Principal Engineer** (정규직) | **2022.02 ~ 2022.05 (4개월)**
-- **핵심 역할**: C++ 기반 지상관제 통신 프로토콜 변환 어댑터 설계 및 200ms 이하 저지연 네트워크 스트리밍 파이프라인 개발 (NDA 준수).
-
----
-
-### 4. 하이테크 (Hitech)
-- **직책**: **개발팀장 / Lead Engineer** (정규직) | **2020.02 ~ 2020.12 (11개월)**
-- **핵심 역할**: 임베디드 리눅스 기반 저전력 환경 감지 센서 펌웨어 및 MQTT/LTE 원격 데이터 전송 시스템 개발.
-
----
-
-### 5. 온오프링크주식회사 (ONOFFLINK Co., Ltd.)
-- **직책**: **개발책임 / Senior Developer** (정규직) | **2019.03 ~ 2019.09 (7개월)**
-- **핵심 역할**: Asterisk/FreePBX 기반 대용량 VoIP CTI 음성 솔루션 구축 및 현대모비스 CES 2020 전시용 VR 시스템 통신 인터페이스 연동.
+- **핵심 성과**: 5G MAVLink v2 / ROS2 이기종 드론 지상관제 통신 프로토콜 변환 어댑터 설계 및 200ms 이하 WebRTC 저지연 영상/텔레메트리 스트리밍 파이프라인 개발.
 
 ---
 
 ### 📌 이전 경력 요약 (Foundational Experience Overview)
-- **2005.12 ~ 2014.06**: 주식회사 이오즈 / 유림ADS — 기획 실장 / 총괄 PM (전자정부 대규모 정보화 사업 제안 및 대기업 B2B 계약 총괄)
-- **1985.03 ~ 2014.02**: 어학 교육 및 기업 출강 — 대표강사 / 비즈니스 영어 컨설턴트 (삼성HP, SK, 현대 사내 연수 및 10,000+ 글로벌 인재 배출)
+- **2020.02 ~ 2020.12**: 하이테크 개발팀장 — 임베디드 리눅스 기반 저전력 IoT 센서 노드 펌웨어 및 MQTT/LTE 원격 관제 (배터리 수명 2.5배 연장)
+- **2019.03 ~ 2019.09**: 온오프링크 개발책임 — Asterisk/FreePBX 기반 대용량 VoIP CTI 음성 솔루션 및 현대모비스 CES 2020 전시용 VR 통신 연동
+- **2005.12 ~ 2014.06**: 주식회사 이오즈 / 유림ADS 기획실장/총괄 PM — 전자정부 공공 정보화 사업 제안 및 대기업 B2B 계약 총괄
+- **1985.03 ~ 2014.02**: 어학 교육 및 기업 출강 대표강사 / 비즈니스 영어 컨설턴트 (삼성HP, SK, 현대 사내 연수 및 10,000+ 글로벌 인재 배출)
 
 ---
 
-## 📚 4. 직무 교육 이수 사항 (Professional Training - By Period)
+## 📚 4. 직무 교육 및 자격·수상 (Professional Training & Awards)
 
-| 기간 | 교육 기관 및 과정명 | 교육 시간 | 핵심 학습 내용 및 성과 |
-| :--- | :--- | :--- | :--- |
-| **2025.10 ~ 2025.12** | **제주오르미캠프 (AI/Cloud)** | 2개월 풀타임 | • AWS ECS Fargate, OpenSearch, Bedrock 기반 RAG/XAI 아키텍처<br>• **캠프 전체 1위 팀프로젝트 우수상 & 개인 성적 최우수상 수상** |
-| **2020.07 ~ 2021.06** | **한국전파진흥협회(RAPA)** | 136일 / **1,080시간** | • 5G AI 제어 시스템 (C++, ROS, Linux, OpenCV 컴퓨터 비전, 딥러닝)<br>• 저지연 데이터 통신 및 임베디드 관제 소프트웨어 통합 |
-| **2018.07 ~ 2019.01** | **하이미디어 아카데미 (NCS 풀스택)** | 140일 / **1,120시간** | • 웹 표준, JavaScript, PHP, MySQL, 비동기 통신 등 풀스택 기초 이수<br>• 1,120시간 집중 수업 및 원서 320시간 독파로 소프트웨어 전업 기초 확립 |
-
----
-
-## 📜 5. 자격증 및 대외 수상 (Certifications & Awards)
-
-- 🏆 **제주오르미캠프 우수상 (AI/클라우드 팀 프로젝트 1위 & 개인 성적 최우수)** | (2025.12)
-- ☁️ **AWS Certified Cloud Practitioner (CLF-C02)** | Amazon Web Services (2025.11)
-- 🗣️ **TOEFL (627점)** | ETS (원어민급 비즈니스 영어)
+| 기간 | 기관 및 과정명 | 핵심 내용 및 검증 성과 |
+| :--- | :--- | :--- |
+| **2025.10 ~ 2025.12** | **제주오르미캠프 (AI/Cloud)** | AWS ECS Fargate, OpenSearch, Bedrock 기반 RAG/XAI 아키텍처<br>• 🏆 **캠프 전체 1위 팀프로젝트 우수상 & 개인 성적 최우수상 수상** |
+| **2020.07 ~ 2021.06** | **한국전파진흥협회 (RAPA, 1,080h)** | 5G AI 제어 시스템 (C++, ROS, Linux, Hailo-8 NPU 컴퓨터 비전 딥러닝)<br>• 🚁 **초경량비행장치 멀티콥터 1종 조종자 취득** (1,000+ 비행시간) |
+| **2018.07 ~ 2019.01** | **하이미디어 아카데미 (1,120h)** | 풀스택 소프트웨어 엔지니어링 집중 이수 (Java, JS, PHP, MySQL, 비동기 통신) |
+| **2025.11** | **AWS 자격증** | ☁️ **AWS Certified Cloud Practitioner (CLF-C02)** 취득 |
+| **1994.06** | **학위 및 어학** | 🎓 **미국 메릴랜드대학교 경영학 학사** (Management/CS) & 🗣️ **TOEFL 627점** (원어민급) |
 
 ---
 
 > 🔗 **상세 기술 검증 자료 안내**:
-> 각 프로젝트별 아키텍처 다이어그램, STAR 상세 구현 내용, 실제 화면 캡처 및 15대 엔지니어링 명세서는 **[02_경력기술서_이병남.md](02_경력기술서_이병남.md)** 및 **[03_포트폴리오_이병남.md](03_포트폴리오_이병남.md)**에 별도 기술되어 있습니다.
+> 2단계 온디바이스 NPU 파이프라인, 생체역학 수식, Typesense RAG 스키마 및 15대 엔지니어링 명세서는 **[02_경력기술서_이병남.md](02_경력기술서_이병남.md)**, **[03_포트폴리오_이병남.md](03_포트폴리오_이병남.md)**, **[04_포트폴리오_기술문서_이병남.md](04_포트폴리오_기술문서_이병남.md)**에 상세 기술되어 있습니다.
   </script>
 
   <script type="text/plain" id="raw-md-career">
 # 이병남 (Byungnam "Tony" Lee) — 기술 경력서 (Technical Career Description)
 ### AI 시스템 & RAG 엔지니어 실무 기술 경력서
 
-> 📄 **이력서 요약본(2.5장)**: [01_이력서_이병남.md](01_이력서_이병남.md) | **포트폴리오 요약**: [03_포트폴리오_이병남.md](03_포트폴리오_이병남.md) | **기술 명세서(15건)**: [04_포트폴리오_기술문서_이병남.md](04_포트폴리오_기술문서_이병남.md) | **요가큐 사업·기술 슬라이드**: [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo) | **인터랙티브 웹 포털**: [docs/portfolio.html](docs/portfolio.html)  
-> **"27년간의 글로벌 교육과 비즈니스 경험, 은퇴 후 귀농에서 발견한 삶의 소명, 그리고 3,000시간 이상의 극한 아카데미 몰입 훈련을 거쳐 현업 AI 시스템 아키텍트로 거듭난 기술 엔지니어링 여정입니다."**
+> 📄 **이력서 요약**: [01_이력서_이병남.md](01_이력서_이병남.md) | **포트폴리오 요약**: [03_포트폴리오_이병남.md](03_포트폴리오_이병남.md) | **기술 명세서(15건)**: [04_포트폴리오_기술문서_이병남.md](04_포트폴리오_기술문서_이병남.md) | **웹 포털**: [docs/portfolio.html](docs/portfolio.html)  
+> **"27년간의 글로벌 교육과 비즈니스 경험, 3,000시간 이상의 극한 아카데미 몰입 훈련을 거쳐 Hailo-8L NPU 온디바이스 비전 AI와 Typesense 초저지연 하이브리드 RAG 시스템을 1인 완결형으로 구축하는 기술 엔지니어링 여정입니다."**
 
 ---
 
 ## 🎯 지원 직무 및 입증된 핵심 역량 (Target Role & Verified Competencies)
 
 ### **지원 분야: AI 시스템 & RAG 엔지니어 (AI Systems & RAG Engineer)**
-> **"회사에 합류한 첫날부터 자체 온프레미스 GPU 환경에 로컬 LLM을 서빙하고, Typesense 기반 초저지연 하이브리드 RAG 및 AEO/GEO 파이프라인을 독립적으로 구축·운영할 수 있는 역량을 입증합니다."**
+> **"입사 첫날부터 자체 온프레미스 GPU 환경에 로컬 LLM을 서빙하고, Hailo-8L NPU 기반 2단계 온디바이스 비전 AI 및 Typesense 하이브리드 RAG 파이프라인을 독립적으로 설계·운영할 수 있는 완결형 역량을 입증합니다."**
 
-| 핵심 수행 역량 (What I Can Definitively Do) | 대표 프로젝트 및 실증 성과 |
-| :--- | :--- |
-| **1. 온프레미스 GPU 로컬 LLM 서빙 & 가속**<br>• Ollama/llama.cpp/vLLM을 사내 CUDA GPU 환경에 구축<br>• GGUF 4/8-bit 양자화로 VRAM 메모리 65% 절감 및 무중단 서빙<br>• Redis Pub/Sub 비동기 큐 기반 동시 요청 제어로 VRAM OOM 원천 방지 | • 온프레미스 GPU 서빙 인프라 구축<br>• 초당 토큰 생성 32 TPS, 동시 50건 안정 처리<br>• [GPU 인프라 설정 명세서](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md) |
-| **2. 초저지연 하이브리드 RAG & AEO/GEO 아키텍처**<br>• Typesense 기반 Dense Vector(bge-m3 1024차원) + BM25 키워드 결합 인덱싱 스키마 설계<br>• 해부학적 신체 제약(금기 사항) 패널티 필터링 및 안전 대체 자세 RAG 추천<br>• schema.org JSON-LD 기반 AI 검색엔진(ChatGPT/Perplexity) 직인용 최적화 | • [YogaQ 사업·기술 슬라이드](https://elbee.yogaman.club/modoo)<br>• [YogaQ 시맨틱 검색 데모](https://aiegoo.github.io/yoga/search)<br>• **p95 검색 레이턴시 42ms** (Elasticsearch 320ms 대비 87% 단축)<br>• **할루시네이션 발생률 85% 감소** 실측 |
-| **3. 실시간 토큰 스트리밍 백엔드 & 풀스택 연동**<br>• WebSocket 풀듀플렉스 & SSE 통신으로 생성 토큰을 청크 단위로 즉시 브라우저에 푸시<br>• 첫 토큰 생성(TTFT) 350ms 미만 반응형 UX 구현<br>• FastAPI / Node.js 백엔드와 React (Vite, TailwindCSS) 대화형 프론트엔드 연동 | • [YogaQ Studio AI 챗봇 라이브 데모](https://aiegoo.github.io/yoga/chat)<br>• [RAG 엔드-투-엔드 워크플로우 문서](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) |
+| 핵심 수행 역량 | 내가 분명히 수행할 수 있는 구체적 실무 역량 | 검증 지표 및 산출물 |
+| :--- | :--- | :--- |
+| **1. 온디바이스 비전 AI & 3D 생체역학 복원**<br>*(YogaQ Edge AI — 비중 25%)* | • Raspberry Pi 5 + Hailo-8L(13 TOPS) 2단계 분리 가속 파이프라인 구축 (Stage-1 NPU YOLOv8s-Pose 20.4ms + Stage-2 ARM CPU 분류 0.018ms)<br>• 2D 광학 섀도우의 깊이 소실 및 전굴 시 몸통 12배 수축을 Safe Torso Scale Guard로 방어 (25배 좌표 폭발 방지)<br>• 마르코프 후보 윈도우 & 5-프레임 히스테리시스 디바운서로 라벨 지터 제로화 (Surya Namaskara 99.9% 확정 잠금) | • **30.0 FPS 풀 프레임레이트 고정 실측**<br>• 전굴 시 좌표 폭발 0%, 라벨 지터 제로<br>• **$140 단일 어플라이언스로 월 GPU $720 0원화**<br>• [YogaQ 사업·기술 슬라이드](https://elbee.yogaman.club/modoo) |
+| **2. 초저지연 하이브리드 RAG & AEO/GEO**<br>*(YogaQ RAG & GEO)* | • Typesense 기반 Dense Vector(1024차원 bge-m3) + BM25 키워드 결합 인덱싱 스키마 설계<br>• 해부학적 신체 제약(허리 디스크, 부상 등) 패널티 마스킹 및 안전 대체 자세 RAG 추천<br>• 165쪽 도서 OCR(28k 단어) 지식베이스 및 schema.org JSON-LD 기반 AI 검색엔진(ChatGPT/Perplexity) 직인용 최적화 | • **p95 검색 레이턴시 42ms** (ES 320ms 대비 87% 단축)<br>• **할루시네이션 발생률 85% 감소** 실측<br>• [YogaQ 검색 데모](https://aiegoo.github.io/yoga/search)<br>• [YogaQ AI 챗봇 데모](https://aiegoo.github.io/yoga/chat) |
+| **3. 온프레미스 GPU 로컬 LLM 서빙 & 가속** | • 사내 온프레미스 CUDA GPU 환경에 Ollama, llama.cpp, vLLM 직접 셋업<br>• GGUF 4/8-bit 양자화로 모델 메모리 65% 절감 및 상용 API 비용 100% 절감<br>• Redis 비동기 큐 기반 동시 요청 제어로 VRAM OOM 원천 방지 및 WebSocket 실시간 토큰 스트리밍 | • 초당 토큰 생성 32 TPS, 동시 50건 안정 처리<br>• 첫 토큰 생성(TTFT) 340ms 초저지연 달성<br>• [GPU 인프라 설정 명세서](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md) |
 
 ---
 
@@ -528,230 +506,83 @@
 ```mermaid
 flowchart TD
     subgraph S1["1. 비즈니스 교육 & IT 프로젝트 관리 (1985 ~ 2014)"]
-        A1["미국 메릴랜드대 학사 (Management/CS)<br>영어 비즈니스 협상 및 교육"] --> A2["삼성HP · SK · 현대 대기업 출강<br>전자정부 공공 프로젝트 총괄 PM"]
+        A1["미 메릴랜드대 학사 (Management/CS)<br>영어 비즈니스 협상 & 대기업 출강"] --> A2["(주)이오즈 기획실장 / 총괄 PM<br>전자정부 공공 정보화 사업 제안/수주"]
     end
-
     subgraph S2["2. 소프트웨어 엔지니어링 집중 훈련 (2018 ~ 2025)"]
-        B1["하이미디어 1,120h 웹 풀스택 수료<br>Java / JS / PHP / MySQL"] --> B2["RAPA 1,080h 5G AI 드론 통제 수료<br>C++ / ROS / MAVLink / 1종 조종"]
+        B1["하이미디어 1,120h 풀스택<br>Java / JS / PHP / MySQL"] --> B2["RAPA 1,080h 5G AI 드론<br>C++ / ROS / Hailo-8 NPU / 1종 조종"]
         B2 --> B3["제주오르미캠프 (AI/Cloud)<br>팀 1위 우수상 & 개인 최우수상"]
     end
-
     subgraph S3["3. 현업 시스템 엔지니어링 & AI 인프라 (2019 ~ 현재)"]
-        C1["온오프링크 · 하이테크 · 제이디랩<br>CTI / IoT / 5G 드론 GCS 개발"] --> C2["유콘크리에이티브 개발실장 (2년 4개월)<br>로컬 LLM / Typesense RAG / 3D 데이터"]
+        C1["온오프링크 · 하이테크 · 제이디랩<br>CTI / 저전력 IoT / 5G 드론 GCS"] --> C2["유콘크리에이티브 개발실장 (2년 4개월)<br>YogaQ 온디바이스 NPU / Typesense RAG"]
     end
-
     S1 --> S2 --> S3
 ```
 
-- **비즈니스 교육 & IT 프로젝트 관리 (1985 ~ 2014)**:
-  - 미국 메릴랜드대학교 학사(Management/CS) 기반 영어 비즈니스 커뮤니케이션. 삼성HP, SK텔레콤, 현대자동차 등 주요 기업 대상 테크니컬 프레젠테이션 컨설팅 수행.
-  - 주식회사 이오즈/유림ADS 기획실장으로서 공공 전자정부 정보화 사업 제안 및 프로젝트 관리 총괄.
-- **소프트웨어 엔지니어링 전문 훈련 (2018 ~ 2025)**:
-  - 하이미디어 풀스택 과정(1,120시간), RAPA 5G AI 통제 과정(1,080시간) 및 초경량비행장치 멀티콥터 1종 조종자 취득.
-  - 제주오르미캠프 클라우드 AI 과정에서 AWS ECS/OpenSearch 기반 XAI 프로젝트를 총괄하여 팀 1위 우수상 및 개인 최우수상 수상.
-- **현업 시스템 개발 및 AI 인프라 구축 (2019 ~ 현재)**:
-  - VoIP CTI, 저전력 IoT 센서, 5G MAVLink 드론 지상관제(GCS) 시스템 개발.
-  - 유콘크리에이티브 개발실장으로서 온프레미스 GPU 로컬 LLM 서빙 및 Typesense 기반 RAG 시스템 구축 총괄.
+- **비즈니스 교육 & IT 프로젝트 관리 (1985 ~ 2014)**: 미국 메릴랜드대학교 학사(Management/CS) 기반 원어민급 영어 능력. 삼성HP, SK텔레콤, 현대자동차 출강 및 이오즈 기획실장으로서 대규모 전자정부 사업 제안/PM 총괄.
+- **소프트웨어 엔지니어링 전문 훈련 (2018 ~ 2025)**: 하이미디어 풀스택(1,120h), RAPA 5G AI 통제(1,080h, 멀티콥터 1종 조종자), 제주오르미캠프 종합 1위 우수상 & 개인 최우수상 수상.
+- **현업 시스템 개발 및 AI 인프라 구축 (2019 ~ 현재)**: CTI, 저전력 IoT, 5G MAVLink 드론 GCS 개발에 이어, 유콘크리에이티브 개발실장으로서 YogaQ 온디바이스 비전 AI 엣지 인식 및 Typesense 하이브리드 RAG 시스템 구축 총괄.
 
 ---
 
-## 💼 2. 도메인 및 주요 기관별 프로젝트 심층 기술서 (Project Technical Descriptions by Domain & Major Institutions)
-> 지원자의 프로젝트 경험을 **4대 핵심 도메인**과 **주요 공공·민간 기관별**로 체계화하여 기술적 깊이와 실증적 비즈니스 가치를 입증합니다.
+## 💼 2. 도메인 및 주요 기관별 프로젝트 심층 기술서 (Project Technical Descriptions)
 
-```
-┌────────────────────────────────────────────────────────────────────────────────────────┐
-│ [도메인 1] ⚡ 생성형 AI & 초저지연 시맨틱 RAG 시스템  │ 🏛️ 유콘크리에이티브(주)                 │
-│ [도메인 2] ☁️ 엔터프라이즈 클라우드 AI & 설명가능한 AI │ 🏛️ 제주오르미캠프 (카카오·구름·고용노동부)│
-│ [도메인 3] 🛸 5G 드론 지상관제(GCS) & 엣지 온디바이스 AI │ 🏛️ (주)제이디랩 / RAPA / 하이테크      │
-│ [도메인 4] 🌐 공공·엔터프라이즈 SI & 글로벌 기술 무역 │ 🏛️ 중앙행정기관(전자정부) / (주)이오즈    │
-└────────────────────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-### [도메인 1] ⚡ 생성형 AI & 초저지연 시맨틱 RAG 시스템 (Generative AI & Semantic RAG)
-
-#### 🏛️ 주요 기관: 유콘크리에이티브주식회사 (Ucon Creative Co., Ltd.)
+### [도메인 1] ⚡ 온디바이스 비전 AI 엣지 인식 & 초저지연 하이브리드 RAG (유콘크리에이티브)
 - **직책/기간**: 개발 실장 / Head of Engineering (정규직) | 2023.05 ~ 2025.08 (2년 4개월)
-- **사업 분야**: 생성형 AI 솔루션, 지능형 시맨틱 검색 엔진, 3D 메타버스 공간 데이터
-- **핵심 기술 스택**: Local LLM (Ollama, llama.cpp, Mistral-7B, Solar-10.7B), CUDA GPU, GGUF 4/8-bit, Typesense, Sentence-Transformers (bge-m3), Python, FastAPI, Node.js, WebSocket, GraphQL Yoga, Redis Pub/Sub, Prisma, PostgreSQL, React, Vite, TailwindCSS
-
----
+- **핵심 기술**: Hailo-8L NPU (13 TOPS), YOLOv8s-Pose INT8 HEF, ARM Cortex-A76, Pure NumPy Classifier, Typesense, Sentence-Transformers (bge-m3), Local LLM (Ollama GGUF), FastAPI, WebSocket, Three.js
 
 #### 📌 Project 1-1: 온프레미스 GPU 환경 로컬 LLM 서빙 및 도메인 분석 플랫폼
-- **기술 스택**: Local LLM (Ollama, llama.cpp, Mistral-7B, Solar-10.7B), CUDA, WSL2, Python, FastAPI, Node.js, GraphQL Yoga, Redis Pub/Sub, Prisma, PostgreSQL
-- **연계 기술 문서**: [technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md)
-- **1) 배경 및 당면 과제 (Situation & Challenge)**:
-  - 사내 민감 데이터 유출 방지와 외부 상용 API(OpenAI 등)의 높은 호출 비용 및 토큰 제약을 극복하기 위해, 완전 독립적인 온프레미스 GPU 기반 로컬 LLM 인프라 구축이 요구됨.
-  - 제한된 VRAM(24GB GPU) 환경에서 고품질 도메인 질의응답 및 다중 사용자 동시 처리를 보장해야 하는 엔지니어링 난제 발생.
-- **2) 아키텍처 및 구현 (Architecture & Action)**:
-  - **GGUF 양자화 최적화**: 16-bit 부동소수점 모델을 4-bit/8-bit GGUF 포맷으로 양자화하여 모델 메모리 점유율을 65% 이상 절감하고 llama.cpp 및 Ollama를 통해 GPU 레이어 오프로딩 극대화.
-  - **비동기 이벤트 큐 시스템**: Redis Pub/Sub을 활용한 요청 큐(Request Queue)를 설계하여 순간적인 트래픽 폭증 시에도 GPU VRAM OOM(Out of Memory)을 원천 차단하고 순차 안정적 추론 보장.
-  - **통합 GraphQL API 게이트웨이**: GraphQL Yoga와 Prisma ORM을 결합하여 다양한 프론트엔드 서비스가 필요한 필드만을 오버페칭(Over-fetching) 없이 유연하게 요청할 수 있는 API 계층 구현.
-- **3) 정량적 성과 (Quantifiable Results)**:
-  - 외부 클라우드 LLM API 비용 **월 100% 절감 (완전 사내 온프레미스 전환)**
-  - 초당 토큰 생성 속도(TPS) 32 tokens/sec 유지, 동시 요청 50건 이상 무중단 안정 처리
-  - 모델 로딩 시간 기존 대비 **40% 단축**
+- **기술 스택**: Local LLM (Ollama, llama.cpp, Mistral-7B, Solar-10.7B), CUDA, WSL2, Python, FastAPI, Node.js, Redis Pub/Sub, PostgreSQL
+- **1) 과제**: 사내 민감 데이터 유출 차단 및 외부 상용 API 비용 절감을 위한 온프레미스 독립 인프라 구축.
+- **2) 구현**: 4/8-bit GGUF 양자화로 VRAM 65% 절감, Redis 비동기 큐 기반 동시 요청 제어로 VRAM OOM 원천 방지, GraphQL Yoga/Prisma 게이트웨이 구축.
+- **3) 성과**: 클라우드 API 비용 **월 100% 절감**, 초당 토큰 생성 32 TPS, 동시 50건 안정 처리.
 
----
-
-#### 📌 Project 1-2: 요가큐(YogaQ) — 한국어 RAG × GEO 기반 맞춤형 요가 큐레이션 & 자가 수련 플랫폼 (aeogeo / elbee)
+#### 📌 Project 1-2: 요가큐(YogaQ) — 온디바이스 비전 AI 엣지 인식 & 생체역학 RAG 플랫폼 (플래그십)
 - **라이브 서비스 & 데모**:
-  - **대화형 AI 챗봇 데모**: [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) (해부학 정렬 코칭, TTFT 340ms 스트리밍, RAG 인용)
+  - **사업·기술 발표 슬라이드**: [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo) | [원페이저 PDF](https://elbee.yogaman.club/modoo/print.pdf)
+  - **대화형 AI 챗봇 데모**: [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) (TTFT 340ms, 해부학 정렬 코칭, RAG 원문 인용)
   - **시맨틱 검색 데모**: [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search) (Dense + BM25 동적 가중치, 42ms 패싯 검색)
-  - **사업·기술 발표 슬라이드**: [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo)
-  - **사업계획서 요약 PDF**: [elbee.yogaman.club/modoo/print.pdf](https://elbee.yogaman.club/modoo/print.pdf)
-- **기술 스택**: Typesense, Sentence-Transformers (bge-m3), Local LLM (Ollama / Llama3 GGUF), LangGraph, OpenCV / Tesseract OCR, schema.org JSON-LD (AEO/GEO), WebSocket, SSE, React, Vite, TailwindCSS
-- **연계 기술 문서**: [technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md)
+  - **3D 아바타 & 엣지 실증 HUD**: [pf1.eggs.or.kr/portfolio.html](https://pf1.eggs.or.kr/portfolio.html)
 - **1) 배경 및 당면 과제**:
-  - 기존 요가 서비스의 신체 제약(디스크, 임신 등) 미고려로 인한 위험 자세 추천 및 전문 질의응답 부재.
-  - 정보 검색이 생성형 AI(ChatGPT, Perplexity 등)로 전환됨에 따라 로컬 스튜디오의 구조화 데이터(GEO) 직접 노출 대응 필요.
-- **2) 주요 구현 내용**:
-  - **해부학 온보딩 & 금기 필터링 RAG**: 회원 신체 상태(디스크, 부상 등) 등록 기반 위험 동작 자동 배제 및 대체 자세 안내. 165p 전문 도서 OCR(28k 단어) 지식베이스 연동.
-  - **마이솔(Mysore) 자가 수련 트래커**: 개인 맞춤 시퀀스 가이드 및 일일 수련 달성률 기록 기능.
-  - **AEO / GEO 구조화 데이터 발행**: schema.org 호환 JSON-LD 자동 생성으로 외부 AI 검색엔진의 직접 인용 최적화.
-  - **온프레미스 Zero-PII 로컬 LLM 서빙**: 민감 건강 데이터 외부 전송 차단(Ollama GGUF), WebSocket/SSE 기반 TTFT 340ms 실시간 토큰 전송.
-  - **비즈니스 연계**: 전국 요가 스튜디오 무료 디렉토리 구축 및 지도자 과정(TTC)/워크숍 수강 연계.
+  - 2D 카메라로 요가 동작 촬영 시 깊이 소실(Depth Z=0) 및 전굴 자세에서 몸통 12배 수축으로 인한 정규화 좌표 25배 폭발($max\_abs = 61.70$), 역투영 다의성으로 인한 극심한 라벨 지터 발생.
+  - 고가 클라우드 GPU 비디오 스트리밍 비용(매트당 $720/월) 및 탈의/수련 영상 외부 전송 시 프라이버시 침해 위험.
+- **2) 주요 구현 내용 (STAR)**:
+  - **2-Stage Decoupled Edge Perception**: 13 TOPS Hailo-8L NPU(YOLOv8s-Pose HEF 20.4ms) + ARM Cortex-A76 CPU(순수 NumPy 분류기 0.018ms) 분리 배치. 소형 텐서의 PCIe DMA 전송 오버헤드(0.5ms) 대비 CPU 직접 연산이 25배 빠름을 실증하여 최적 분산 배치 확립.
+  - **Safe Torso Scale Guard & 3D 공간 리프팅**: 전굴 시 몸통 축소에 따른 분모 발산을 방어하는 수식($scale = \max(H_{\text{torso}}, 0.250 \cdot ref)$) 적용, 좌표를 4.81 이하로 완벽 통제하고 45° 사각 매트 지오메트리 기반 3D 깊이 복원.
+  - **마르코프 후보 윈도우 & 5-프레임 디바운서**: 72개 클래스 중 비물리적 전이를 배제하고, `vinyasa_transition` 완충을 통해 라벨 지터 제로화 (Surya Namaskara 전 구간 99.9% 확정 잠금).
+  - **Typesense 하이브리드 RAG & AEO/GEO**: 해부학적 금기 조건(허리 디스크, 임신 등) 패널티 마스킹, 165p 도서 OCR(28k 단어) 지식베이스 연동, schema.org JSON-LD 발행으로 AI 검색엔진(ChatGPT/Perplexity) 직인용 최적화.
 - **3) 정량적 성과**:
-  - Typesense p95 검색 레이턴시 **42ms** (Elasticsearch 대비 약 87% 단축)
-  - 신체 제약 필터링 적용으로 **할루시네이션 및 부적절 동작 추천 85% 차단**
-  - 실시간 첫 토큰 응답 속도(TTFT) **340ms** 유지
+  - **30.0 FPS 고정 실측** (E2E 파이프라인 22.6ms: NPU 20.4ms + CPU 0.018ms)
+  - 전굴 시 좌표 발산 100% 방어 및 라벨 튐 제로화
+  - Typesense p95 검색 레이턴시 **42ms** & 할루시네이션 **85% 차단**
+  - **$140 단일 PoE 어플라이언스로 월 인프라 비용 $0 달성** (클라우드 대비 월 $720 절감, B2B 마진 92%+)
 
 ---
 
-#### 📌 Project 1-3: 메타버스 3D 라이다 포인트 클라우드 데이터 파이프라인
-- **기술 스택**: Python, Open3D, CloudCompare, C++, MAVLink, WebSocket, Redis
-- **연계 기술 문서**: [technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md](technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md)
-- **1) 업무 개요 및 역할**:
-  - 드론 및 모바일 라이다 센서를 통해 수집된 수천만 개의 3D 포인트 클라우드 좌표 데이터를 메타버스 가상 공간 구축용 3D 에셋으로 정합·변환하는 분산 데이터 파이프라인 설계.
-  - 대용량 PCD/LAS 파일의 다운샘플링(Voxel Grid Filtering) 및 노이즈 제거 알고리즘 적용으로 파일 크기를 70% 압축하면서도 형상 정밀도 유지.
+### [도메인 2] ☁️ 엔터프라이즈 클라우드 AI & 설명가능한 AI (제주오르미캠프)
+- **직책/기간**: 팀 리드 & 클라우드 AI 아키텍트 | 2025.10 ~ 2025.12 | 🏆 **종합 1위 팀 우수상 & 개인 최우수상**
+- **기술 스택**: AWS ECS Fargate, OpenSearch, AWS Bedrock (Claude 3.5 Sonnet), Terraform IaC, FastAPI, Docker
+- **주요 구현 및 성과**:
+  - Terraform IaC 기반 Multi-AZ ECS Fargate 컨테이너 클러스터 및 OpenSearch k-NN 벡터 인덱스 자동 배포 (배포 시간 80% 단축).
+  - 생성 답변 문장과 원문 청크 간 코사인 유사도 역추적 XAI 엔진 개발 (출처 투명성 최고점 획득).
+  - 로컬 장애 시 1.2초 내 AWS Bedrock으로 무중단 자동 전환되는 서킷 브레이커 고가용성(99.99%) 실증.
 
 ---
 
-### [도메인 2] ☁️ 엔터프라이즈 클라우드 AI & 설명가능한 AI (Enterprise Cloud AI & Explainable AI)
-
-#### 🏛️ 주요 기관: 제주오르미캠프 (카카오·구름·고용노동부 주관)
-- **직책/기간**: 팀 리드 & 클라우드 AI 시스템 아키텍트 | 2025.10 ~ 2025.12
-- **공식 수상**: 🏆 **캠프 종합 평가 1위 팀 프로젝트 우수상 & 개인 성적 최우수상 동시 수상 (2025.12)**
-- **핵심 기술 스택**: AWS ECS Fargate, OpenSearch, AWS Bedrock (Claude 3.5 Sonnet), Terraform IaC, FastAPI, Docker, ChromaDB, Cosine Similarity Matrix
-
----
-
-#### 📌 Project 2-1: AWS ECS Fargate & OpenSearch 기반 엔터프라이즈 멀티모달 벡터 검색 파이프라인
-- **기술 스택**: AWS ECS Fargate, OpenSearch, Terraform, Docker, Python, FastAPI
-- **연계 기술 문서**: [technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md)
-- **1) 배경 및 구현**:
-  - 온프레미스 인프라 장애 시에도 99.99% 고가용성을 보장하는 엔터프라이즈 클라우드 AI 아키텍처 수립.
-  - Terraform IaC 코드로 VPC, 다중 가용영역(Multi-AZ) 서브넷, ALB, ECS Fargate 컨테이너 클러스터 프로비저닝 자동화.
-  - OpenSearch 분산 클러스터를 연동하여 멀티모달 비정형 텍스트/이미지 벡터 데이터 대용량 인덱싱 처리.
-- **2) 정량적 성과**:
-  - 인프라 배포 시간 80% 단축 (완전 코드 기반 IaC 구축)
-  - ECS Fargate 기반 자동 오토스케일링(Auto-scaling)으로 트래픽 변동에 무중단 대응
+### [도메인 3] 🛸 5G 드론 지상관제(GCS) & 엣지 온디바이스 AI (제이디랩 / RAPA)
+- **직책/기간**: 수석연구원 (제이디랩) & 연구원 (RAPA) | 2020.07 ~ 2022.05 | 🚁 **초경량비행장치 멀티콥터 1종 조종자**
+- **기술 스택**: C++, Qt5, MAVLink v2, ROS2, WebRTC, Hailo-8 NPU (26 TOPS), YOLOv8
+- **주요 구현 및 성과**:
+  - 이기종 드론 비행제어기(PX4, ArduPilot) 메시지를 상호 변환하는 MAVLink/ROS2 미들웨어 브리지 개발 (4종 기체 동시 관제).
+  - 5G 무선망 환경 WebRTC P2P 스트리밍으로 **지연 시간 200ms 이하** 비디오/텔레메트리 관제 실증.
+  - 저전력 Hailo-8 NPU(26 TOPS @ 2.5W) 드론 온보드 통합으로 60fps 실시간 온디바이스 비전 추론 및 자동 충돌 회피 구현.
 
 ---
 
-#### 📌 Project 2-2: 코사인 유사도 역추적 기반 설명가능한 AI(XAI) 투명성 추적 엔진
-- **기술 스택**: Python, NumPy, Cosine Similarity Matrix, ChromaDB, FastAPI
-- **연계 기술 문서**: [technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md](technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md)
-- **1) 배경 및 구현**:
-  - 생성형 AI 답변의 블랙박스 문제를 해결하고, 지리/공공 데이터 질의응답 시 법적·윤리적 신뢰성을 확보하기 위한 투명한 설명가능(XAI) 프레임워크 설계.
-  - 생성된 답변의 문장별 임베딩 벡터와 검색된 지식 베이스 청크 간의 코사인 유사도 행렬을 역추적 연산.
-  - 클라이언트 UI에 각 문장의 신뢰도 점수(0.0~1.0)와 인용된 원본 지식 텍스트를 시각적으로 하이라이팅하는 XAI 추적 계층 개발.
-- **2) 정량적 성과**:
-  - 사용자 신뢰도 및 검증 속도 대폭 개선, 오르미 심사위원 평가에서 **기술 차별성 최고점** 획득.
-
----
-
-#### 📌 Project 2-3: AWS Bedrock Claude 3.5 Sonnet 연동 및 서킷 브레이커 무중단 폴백(Failover)
-- **기술 스택**: AWS Bedrock, Claude 3.5 Sonnet, Circuit Breaker Pattern, Python
-- **연계 기술 문서**: [technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md](technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md)
-- **1) 배경 및 구현**:
-  - 1차 로컬 LLM 및 자체 모델 서버의 지연 시간 급증 또는 OOM 장애 발생 시 즉시 서비스 다운이 일어나는 취약점 보완.
-  - 서킷 브레이커(Circuit Breaker) 패턴을 적용하여 장애 감지 시 1.2초 내에 AWS Bedrock 엔드포인트(Claude 3.5 Sonnet)로 자동 스위칭되는 엔터프라이즈 페일오버 파이프라인 구축.
-- **2) 정량적 성과**:
-  - 단일 장애점(SPOF) 제거 및 **무장애 99.99% 가용성 보장 실증**.
-
----
-
-### [도메인 3] 🛸 5G 비가시권(BVLOS) 드론 지상관제 & 엣지 온디바이스 AI (Drone GCS & Edge AI)
-
-#### 🏛️ 주요 기관 1: 주식회사 제이디랩 (JDLab Co., Ltd.)
-- **직책/기간**: 수석연구원 / Principal Engineer (정규직) | 2022.02 ~ 2022.05 (4개월)
-- **기술 스택**: C++, Qt5, MAVLink v2, ROS2, WebRTC, Linux, LTE/5G
-- **연계 기술 문서**:
-  - [technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md](technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md)
-  - [technical_references/drone_gcs/18-Heterogeneous-GCS-Product-and-Evidence-Briefing.md](technical_references/drone_gcs/18-Heterogeneous-GCS-Product-and-Evidence-Briefing.md)
-
-#### 📌 Project 3-1: 5G 기반 이기종 드론 지상관제시스템(GCS) 및 MAVLink/ROS2 프로토콜 어댑터 개발 (NDA)
-- **1) 당면 과제**: 서로 다른 비행 제어기(PX4, ArduPilot, 상용 드론) 간 통신 규격이 상이하여 군집 비행 및 비가시권 원격 조종을 수행하기 어려움.
-- **2) 아키텍처 및 구현**:
-  - MAVLink v2와 ROS2 메시지를 표준 JSON/Protobuf로 상호 변환하는 이기종 미들웨어 브리지 개발.
-  - Qt5/C++ 기반 미션 플래너 UI를 개발하여 3D 웨이포인트 경로 생성, 실시간 배터리/GPS 상태 모니터링, 비상 자동 회항(RTL) 제어 로직 구현.
-- **3) 성과**: 이기종 기체 4종 동시 연결 관제 성공 및 비행 미션 안정화.
-
-#### 📌 Project 3-2: 5G 무선망 환경 WebRTC 초저지연(200ms) P2P 비디오/텔레메트리 스트리밍
-- **1) 구현**: 5G 무선망 환경에서 WebRTC P2P 스트리밍을 연동하여 지상 관제 센터 화면까지 **지연 시간 200ms 이하**의 비디오/텔레메트리 전송 달성.
-- **2) 성과**: 비가시권(BVLOS) 비행 시 조종사의 시각 반응 속도 극대화.
-
----
-
-#### 🏛️ 주요 기관 2: 한국전파진흥협회(RAPA) 5G 드론 AI 집중과정
-- **역할/기간**: 전일제 집중 연구원 | 2020.07 ~ 2021.06 (136일 / 1,080시간 이수)
-- **보유 자격**: 한국교통안전공단 초경량비행장치 멀티콥터 1종 조종자(1,000+ 비행시간), 고정익 3종
-- **핵심 기술 스택**: C++, Python, ROS, Gazebo, OpenCV, Hailo-8 NPU / NVIDIA Jetson, YOLOv8
-
-#### 📌 Project 3-3: 엣지 NPU 기반 60fps 실시간 온디바이스 비전 추론 및 자율비행 제어
-- **1) 구현**: 고전력 GPU 대신 저전력 엣지 AI 칩셋(Hailo-8 M.2 모듈, 26 TOPS @ 2.5W)을 드론 온보드 컴퓨터에 통합. YOLOv8 모델을 Hailo Dataflow Compiler로 최적화 양자화.
-- **2) 성과**: 드론 기체 상에서 실시간 60fps 객체 인식 및 MAVLink 기반 자동 충돌 회피 명령 피드백 제어 검증.
-
----
-
-#### 🏛️ 주요 기관 3: 하이테크 (Hitech)
-- **직책/기간**: 개발팀장 / Lead Engineer (정규직) | 2020.02 ~ 2020.12 (11개월)
-- **기술 스택**: C, Embedded Linux, STM32, MQTT, LoRa/LTE, Python
-
-#### 📌 Project 3-4: 산업 현장용 저전력 IoT 센서 노드 펌웨어 및 이상 징후 감지 모니터링 시스템
-- **1) 구현**: 산업 현장용 저전력 IoT 환경 감지 센서 노드 펌웨어 및 게이트웨이 아키텍처 총괄. 배터리 구동 환경을 위한 딥 슬립(Deep Sleep) 전력 관리 알고리즘 적용.
-- **2) 성과**: 센서 노드 배터리 수명 기존 대비 **2.5배 연장**, MQTT 브로커 연동 실시간 이상 임계치 SMS/웹 알림 구축.
-
----
-
-### [도메인 4] 🌐 공공/엔터프라이즈 대규모 SI & 글로벌 기술 무역 (Enterprise SI & Global Tech Trade)
-
-#### 🏛️ 주요 기관 1: 중앙행정기관·지자체 (전자정부) & 주식회사 이오즈 / 유림ADS
-- **직책/기간**: 기획 실장 / 총괄 PM (정규직) | 2005.12 ~ 2014.06 (8년 7개월)
-- **사업 분야**: 전자정부 공공 SI, 대규모 웹 정보화 포털, 대기업 B2B 디지털 미디어
-- **핵심 역량**: RFP 분석, 제안 전략 수립, 대규모 시스템 아키텍처 설계, 기술 협상, 다부처 이해관계자 조율
-
-#### 📌 Project 4-1: 공공부문 대규모 전자정부 정보화 시스템 기획 및 엔터프라이즈 B2B PM
-- **1) 업무 개요 및 역할**:
-  - 행정안전부, 국토교통부, 지자체 등 중앙행정기관 및 공공기관 대상 전자정부 정보화 구축 사업 제안 총괄 (수십억 규모 다수 사업 수주 및 납품 완수).
-  - 삼성, LG애드, SK 등 대기업 대상 B2B 디지털 미디어 시스템 기획, 계약 체결, 개발 일정 및 산출물 품질 관리 총괄.
-- **2) 시사점**: 대규모 프로젝트 라이프사이클 관리, 고객 요구사항 명세화, 엔터프라이즈 규정 준수(Compliance) 역량 확립.
-
----
-
-#### 🏛️ 주요 기관 2: 온오프링크주식회사 (ONOFFLINK Co., Ltd.)
-- **직책/기간**: 개발책임 / Senior Developer (정규직) | 2019.03 ~ 2019.09 (7개월)
-- **기술 스택**: Asterisk, FreePBX, Linux, WebRTC, Node.js, SIP/RTP, Unity 3D
-
-#### 📌 Project 4-2: Asterisk/FreePBX 기반 대용량 VoIP CTI 음성 컨퍼런스 솔루션 & 현대모비스 CES 2020 VR 연동
-- **1) 구현**: Asterisk/FreePBX 오픈소스 기반의 대용량 VoIP CTI(Computer Telephony Integration) 음성 컨퍼런스 솔루션 구축. 수백 채널 동시 통화 세션 호 제어(SIP) 및 미디어 스트림(RTP) 라우팅 성능 최적화.
-- **2) 성과**: 현대모비스 CES 2020 글로벌 전시용 커넥티드카 가상 체험 VR 시스템과 CTI 음성 통신망 간 실시간 데이터 인터페이스 연동 성공.
-
----
-
-#### 🏛️ 주요 기관 3: 유콘크리에이티브주식회사 글로벌 비즈니스 본부
-- **직책/기간**: Global Business Lead (개발실장 겸임) | 2023.05 ~ 2025.08
-- **핵심 역량**: 미국 메릴랜드대학교 학사 출신 원어민급 영어 협상력(TOEFL 627), 해외 기술 IR 및 글로벌 무역 계약
-
-#### 📌 Project 4-3: 카자흐스탄 현지 대학 MOU 및 10만 달러($100,000) 중계무역 계약 성사 & 5개국 글로벌 파트너십
-- **주요 글로벌 성과**:
-  - **카자흐스탄 현지 국립/사립 대학 기술 협력 MOU 체결 및 10만 달러($100,000) 규모 중계무역 계약 직접 성사 (2024.12)**
-  - 폴란드 산업 협력 한국 상단 대표사로 참가하여 유럽 바이어 대상 기술 IR 진행 (2024.11)
-  - 독일 현지 법인 고전압 BMS 모듈 기술 이전 협력 MOU 체결 (2024.08)
-  - 태국 언어 서비스 기업과 언어 AI SaaS 솔루션 파트너십 MOU 체결 (2024.05)
-  - 인도네시아 노동부 차관 면담 및 센다나대학교 기술 교류 MOU 주도 (2024.01~02)
+### [도메인 4] 🌐 공공/엔터프라이즈 대규모 SI & 글로벌 기술 무역 (전자정부 / 유콘크리에이티브)
+- **직책/기간**: 기획 실장 / 총괄 PM (이오즈) & Global Business Lead (유콘크리에이티브)
+- **주요 구현 및 성과**:
+  - 행정안전부, 국토부 등 중앙부처 전자정부 대규모 정보화 사업 제안 총괄 및 대기업(삼성, SK 등) B2B 디지털 미디어 납품 완수.
+  - 미국 메릴랜드대학교 학사 출신 원어민급 영어 협상력(TOEFL 627)으로 **카자흐스탄 현지 대학 MOU 체결 및 10만 달러($100,000) 중계무역 계약 직접 성사 (2024.12)**.
 
 ---
 
@@ -759,21 +590,17 @@ flowchart TD
 
 | 역량 구분 | 상세 경쟁력 |
 | :--- | :--- |
-| **1. 엔드-투-엔드 시스템 구축** | 상용 프롬프트 튜닝에 머무르지 않고, **온프레미스 GPU 서버 세팅 -> 양자화 모델 서빙 -> Typesense 하이브리드 인덱싱 -> WebSocket 토큰 스트리밍 -> React UI**까지 AI 시스템의 전 주기를 1인 완결형으로 구축할 수 있습니다. |
-| **2. 하드웨어와 엣지를 아는 AI** | 드론 자율비행(1종 조종자), 5G 관제, Hailo-8 NPU 온디바이스 비전, IoT 펌웨어 등 하드웨어와 네트워크 레이어를 깊이 이해하여 엣지-클라우드 연동 최적화에 독보적입니다. |
-| **3. 회복탄력성과 압도적 학습력** | 27년 교육 커리어 은퇴 후 3,000시간 이상의 고강도 아카데미를 완주하고, 2025년 제주오르미캠프에서 최신 클라우드 AI 아키텍처로 1위를 차지할 만큼 시대의 기술을 가장 빠르게 흡수합니다. |
+| **1. 엔드-투-엔드 시스템 구축** | 상용 프롬프트 튜닝에 머무르지 않고, **Hailo NPU 온디바이스 비전 -> 로컬 LLM 서빙 -> Typesense 하이브리드 RAG -> WebSocket 스트리밍 -> React UI**까지 AI 시스템의 전 주기를 1인 완결형으로 구축합니다. |
+| **2. 하드웨어와 엣지를 아는 AI** | 드론 1종 조종자 자격, 5G 관제, Hailo-8L/8 NPU DFC 양자화 컴파일, 저전력 IoT 펌웨어 등 하드웨어·네트워크·NPU 전 레이어를 깊이 이해하여 클라우드-엣지 분산 최적화에 독보적입니다. |
+| **3. 회복탄력성과 압도적 학습력** | 27년 교육 커리어 은퇴 후 3,000시간 이상의 고강도 엔지니어링 훈련을 완주하고, 2025년 제주오르미캠프에서 최신 클라우드 AI 아키텍처로 1위를 차지할 만큼 시대의 기술을 가장 빠르게 흡수합니다. |
 | **4. 글로벌 비즈니스 & 테크 리더십** | 미국 대학교 학사 기반의 원어민급 영어 능력으로 해외 AI 논문 번역 지연 없이 습득하며, 카자흐스탄 $100K 수출 계약을 직접 성사시킨 비즈니스 협상 감각을 겸비하고 있습니다. |
   </script>
 
   <script type="text/plain" id="raw-md-portfolio">
-# 이병남 (Byungnam "Tony" Lee) — 포트폴리오 (Portfolio)
+# 이병남 (Byungnam "Tony" Lee) — 엔지니어링 포트폴리오 (Engineering Portfolio)
+### AI 시스템 & RAG 엔지니어 플래그십 프로젝트 쇼케이스
 
-<div align="center" style="margin: 24px 0 18px;">
-  <img src="images/tonyillust_atwork.svg" alt="Tony Lee Portrait Illustration" width="160" height="160" style="border-radius: 50%; border: 4px solid #22A39F; box-shadow: 0 4px 16px rgba(34,163,159,0.25);" onerror="this.src='tonyillust_atwork.svg'" />
-  <div style="font-size: 13px; color: #22A39F; font-weight: 700; margin-top: 10px; letter-spacing: 0.5px;">AI SYSTEMS & RAG ENGINEER | BYUNGNAM "TONY" LEE</div>
-</div>
-
-> **"로컬 LLM과 고성능 시맨틱 벡터 검색을 결합한 하이브리드 RAG, 5G 비가시권 자율비행 드론 관제, 엔터프라이즈 클라우드 AI 플랫폼을 아우르는 시각적 프로젝트 쇼케이스입니다."**
+> 📄 **이력서 요약**: [01_이력서_이병남.md](01_이력서_이병남.md) | **경력 기술서**: [02_경력기술서_이병남.md](02_경력기술서_이병남.md) | **기술 명세서(15건)**: [04_포트폴리오_기술문서_이병남.md](04_포트폴리오_기술문서_이병남.md) | **웹 포털**: [docs/portfolio.html](docs/portfolio.html)  
 
 ---
 
@@ -781,222 +608,109 @@ flowchart TD
 
 | 서비스명 | 설명 | 라이브 링크 |
 | :--- | :--- | :--- |
-| **요가큐(YogaQ) 사업·기술 슬라이드** | 모바일 반응형 프레젠테이션 & 온라인 슬라이드 뷰어 | [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo) |
+| **요가큐(YogaQ) 사업·기술 슬라이드** | 온디바이스 비전 AI 및 비즈니스 모델 온라인 프레젠테이션 | [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo) |
 | **요가큐(YogaQ) 원페이저 사업계획서** | A4 인쇄 최적화 싱글페이지 비즈니스 플랜 PDF | [elbee.yogaman.club/modoo/print.pdf](https://elbee.yogaman.club/modoo/print.pdf) |
-| **YogaQ Studio AI 챗봇** | Typesense 하이브리드 RAG 기반 요가·자세 전문 대화형 챗봇 | [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) |
-| **YogaQ 시맨틱 검색 엔진** | 초저지연 Dense Vector + BM25 하이브리드 검색 데모 | [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search) |
+| **YogaQ Studio AI 챗봇 데모** | Typesense 하이브리드 RAG 기반 해부학 정렬 코칭 대화형 챗봇 | [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) |
+| **YogaQ 시맨틱 검색 엔진 데모** | 초저지연 Dense Vector + BM25 동적 가중치 하이브리드 검색 | [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search) |
 | **Edge MCU 싱글페이지 웹** | 저사양 마이크로컨트롤러 환경에서의 로컬 웹 서빙 PoC | [festory.eggs.or.kr](https://festory.eggs.or.kr) |
 | **서버리스 자동 배포 포털** | GitHub Actions 기반 서버리스 인증 및 정적 파이프라인 | [aiegoo.github.io/pro-git](https://aiegoo.github.io/pro-git) |
 | **양자 내성 암호(PQC) 통신** | 차세대 양자 보안 알고리즘 연동 데이터 전송 PoC | [aiegoo.github.io/kisec-final/#/4/1](https://aiegoo.github.io/kisec-final/#/4/1) |
-| **엔지니어링 문서 포털** | 드론 및 시스템 아키텍처 실무 기술 문서 허브 | [pf7.eggs.or.kr](https://pf7.eggs.or.kr) |
+| **엔지니어링 문서 포털** | NPU 컴파일 및 시스템 아키텍처 실무 기술 문서 허브 | [pf7.eggs.or.kr](https://pf7.eggs.or.kr) |
 
 ---
 
 ## 🏆 대표 플래그십 프로젝트 쇼케이스 (Featured Flagship Projects)
 
----
+### 1. 요가큐 (YogaQ) — 온디바이스 비전 AI 엣지 인식 & 생체역학 RAG 플랫폼
+> **핵심 아키텍처**: Hailo-8L NPU 2단계 분리 가속 파이프라인, 3D 공간 리프팅 & Safe Torso Guard, Typesense 하이브리드 RAG, $140 PoE 단일 어플라이언스
 
-### 1. 요가큐 (YogaQ · your yoga curator) — 한국어 네이티브 RAG × GEO 맞춤형 요가 큐레이션 & 자가 수련 플랫폼
-> **핵심 아키텍처**: 해부학적 금기 필터링 RAG, AEO/GEO JSON-LD 직인용, 마이솔(Mysore) 자가 수련 & 고단가 교육 마켓플레이스
-
-#### 🖥️ 실증 라이브 데모 & 주요 기능 (Live Demos & Key Specs)
-
-| 구분 | 데모 URL | 핵심 시연 기능 |
-| :--- | :--- | :--- |
-| **대화형 AI 챗봇** | [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) | 해부학 정렬 코칭, TTFT 340ms 토큰 스트리밍, RAG 원문 청크 인용 |
-| **하이브리드 시맨틱 검색** | [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search) | Dense(bge-m3) + BM25 동적 가중치 조절, 42ms 실시간 패싯 필터링 |
-| **사업·기술 슬라이드** | [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo) | 15분 멘토링용 웹 프레젠테이션 슬라이드 |
-| **사업계획서 요약본** | [elbee.yogaman.club/modoo/print.pdf](https://elbee.yogaman.club/modoo/print.pdf) | A4 인쇄 최적화 원페이저 PDF |
-
-- **핵심 기술**: **Typesense Hybrid Search (Dense Vector + BM25)**, **Sentence-Transformers (bge-m3)**, **Local LLM (Ollama / Llama3 GGUF)**, **LangGraph**, **OpenCV / Tesseract OCR (165p 도서 / 28k 단어)**, **schema.org JSON-LD (AEO/GEO)**, **WebSocket 스트리밍**, **React**, **Vite**, **TailwindCSS**
-- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#1-typesense-초저지연-하이브리드-rag-아키텍처-명세](04_포트폴리오_기술문서_이병남.md)
+#### 🖥️ 실증 라이브 데모 & 주요 규격 (Live Specs)
+- **라이브 데모**: [사업·기술 슬라이드](https://elbee.yogaman.club/modoo) &nbsp;|&nbsp; [대화형 챗봇](https://aiegoo.github.io/yoga/chat) &nbsp;|&nbsp; [시맨틱 검색](https://aiegoo.github.io/yoga/search)
+- **핵심 기술**: **Hailo-8L NPU (13 TOPS, INT8 HEF)**, **YOLOv8s-Pose**, **ARM Cortex-A76 (Pure NumPy Classifier 0.018ms)**, **Safe Torso Scale Guard**, **Typesense Hybrid Search (Dense+BM25)**, **Ollama GGUF**, **FastAPI**, **WebSocket**, **schema.org JSON-LD (AEO/GEO)**, **Three.js**
+- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#1-요가큐yogaq-온디바이스-비전-ai-엣지-가속--하이브리드-rag-아키텍처-명세](04_포트폴리오_기술문서_이병남.md)
 
 #### 📐 시스템 아키텍처 다이어그램
 ```mermaid
 flowchart TD
-    subgraph Client["사용자 & 스튜디오 인터페이스 (React + Vite + Tailwind)"]
-        Onboarding["해부학적 온보딩<br>(가동 범위 · 디스크/부상 등록)"]
-        MysoreTracker["마이솔(Mysore) 자가 수련<br>시퀀스 가이드 & 데일리 트래커"]
-        ChatUI["대화형 AI 챗봇 & 시맨틱 검색"]
-        StudioPortal["스튜디오 관리 대시보드<br>(무료 등록 / 워크숍 CRM)"]
+    subgraph Physical["현장 셋업 & 영상 입력"]
+        Cam["45° 사각 카메라 (Sony IMX500 / 1080p 30fps)"]
     end
 
-    subgraph GEOLayer["AEO / GEO 구조화 데이터 레이어"]
-        JSONLD["schema.org 호환 JSON-LD 생성기<br>(ExercisePlan, FAQPage, LocalBusiness)"]
-        AICrawlers["외부 생성형 AI 검색엔진<br>(ChatGPT, Perplexity, Naver Cue)"]
-        JSONLD -->|원형 인용 노출| AICrawlers
+    subgraph EdgeSystem["Raspberry Pi 5 + Hailo-8L NPU 단일 엣지 어플라이언스 ($140)"]
+        subgraph Stage1["Stage 1: Hailo-8L NPU (13 TOPS)"]
+            NPU["YOLOv8s-Pose INT8 HEF 추론<br>20.4ms / 17개 관절 2D 섀도우 텐서"]
+        end
+        subgraph Lifting["3-Layer 생체역학 엔진 & 3D 공간 리프팅"]
+            Guard["Safe Torso Scale Guard<br>scale = max(H_torso, 0.250 * ref)<br>전굴 시 25배 좌표 폭발 방지"]
+            D3Lift["45° 지오메트리 기반 3D 깊이(Z) 복원"]
+        end
+        subgraph Stage2["Stage 2: ARM Cortex-A76 CPU (순수 NumPy)"]
+            CPUClassifier["초경량 AsanaClassifier (0.018ms)<br>72개 아사나 분류 (PCIe DMA 대비 25배 고속)"]
+            Markov["마르코프 후보 윈도우 & 5-Frame 디바운서<br>vinyasa_transition 완충 / 라벨 지터 제로화"]
+        end
     end
 
-    subgraph APILayer["API 게이트웨이 & 오케스트레이션 (FastAPI)"]
-        Gate["API Gateway / Router"]
-        LangGraph["LangGraph / LlamaIndex 에이전트"]
-        WSHandler["WebSocket / SSE 스트림 핸들러"]
-        OCRIntake["OpenCV + Tesseract OCR 파이프라인<br>(165쪽 도서 / 28,000단어 지식베이스)"]
+    subgraph RAGServing["온프레미스 GPU & 지능형 지식베이스 (Zero-PII)"]
+        Typesense["Typesense 하이브리드 RAG<br>• Dense Vector (bge-m3 1024차원)<br>• BM25 키워드 정확 매칭 (p95 42ms)"]
+        Contra["신체 금기 조건 필터링 (디스크·임신 등)"]
+        Ollama["Ollama / llama.cpp (GGUF 양자화 LLM)"]
     end
 
-    subgraph Retrieval["초저지연 하이브리드 RAG & 컨텍스트 매칭"]
-        Embedder["Sentence-Transformers (bge-m3 / 1024-dim)"]
-        Typesense["Typesense 클러스터<br>• Dense Vector (HNSW k-NN)<br>• Sparse Keyword (BM25)"]
-        ContraFilter["신체 금기 조건 필터<br>(디스크·임신 후굴/점프 페널티 마스킹)"]
-        GeoWeather["위치(Haversine) & 날씨 라우팅<br>(우천 시 실내 클래스 우선)"]
+    subgraph ClientUI["실시간 인터페이스 & 상용화"]
+        HUD["30 FPS 실시간 HUD & 3D 아바타 (WebSocket)"]
+        Chat["해부학 정렬 코칭 대화형 챗봇"]
+        B2B["요가 스튜디오 PoE 어플라이언스 (월 $720 -> $0)"]
     end
 
-    subgraph LLMServing["온프레미스 GPU 로컬 서빙 (Zero-PII)"]
-        Ollama["Ollama / llama.cpp Engine<br>(Llama-3 / Mistral-7B GGUF 양자화)"]
-        GPU["CUDA 가속 (RTX GPU VRAM)"]
-    end
-
-    subgraph B2BMarket["B2B 프리미엄 마켓플레이스"]
-        FreeDir["전국 요가 스튜디오 무료 디렉토리"]
-        TTCMarket["지도자 과정(TTC) & 웰니스 워크숍<br>원스톱 마케팅 · 수강생 관리(CRM)"]
-    end
-
-    Onboarding --> Gate
-    MysoreTracker --> Gate
-    ChatUI --> Gate
-    StudioPortal --> Gate
-
-    Gate --> Embedder --> Typesense
-    Typesense --> ContraFilter
-    ContraFilter --> GeoWeather
-    GeoWeather --> LangGraph
-    OCRIntake --> Typesense
-
-    LangGraph --> Ollama
-    Ollama <--> GPU
-    Ollama -->|생성 토큰| WSHandler
-    WSHandler -->|실시간 스트리밍 TTFT 340ms| ChatUI
-
-    LangGraph --> JSONLD
-    StudioPortal --> FreeDir
-    StudioPortal --> TTCMarket
+    Cam --> NPU
+    NPU --> Guard --> D3Lift --> CPUClassifier --> Markov
+    Markov --> HUD
+    Typesense --> Contra --> Ollama --> Chat
+    Markov -.-> B2B
 ```
 
 #### 🛠️ 핵심 구현 및 엔지니어링 항목 (Key Implementations)
-1. **해부학적 온보딩 & 금기 동작 자동 필터링 (Anatomical Safety Filter)**:
-   - 회원가입 시 신체 제약(허리 디스크, 임신, 관절 부상 등) 등록. 165쪽 전문 도서 OCR 지식베이스를 바탕으로 위험 동작을 자동 제외하고 안전한 대체 자세 및 원문 출처(p.142 등) 안내.
-2. **마이솔(Mysore) 자가 수련 시퀀스 트래커**:
-   - 개인 맞춤 자가 수련 시퀀스 가이드 및 데일리 수련 달성률 트래킹 제공.
-3. **AEO / GEO 구조화 데이터 레이어**:
-   - schema.org 호환 JSON-LD 자동 발행으로 외부 AI 검색엔진(ChatGPT, Perplexity, Naver Cue 등)의 직접 인용 최적화.
-4. **온프레미스 Zero-PII 로컬 RAG & 저지연 스트리밍**:
-   - 민감 개인 건강 데이터를 외부로 전송하지 않고 온프레미스 Ollama(GGUF) 환경에서 처리. WebSocket 기반 TTFT 340ms 실시간 토큰 전송.
-5. **스튜디오 무료 디렉토리 & 워크숍 마켓플레이스**:
-   - 스튜디오 기본 정보 무료 개방으로 초기 데이터 확보 및 지도자 과정(TTC)/워크숍 연계 수강 관리 지원.
+1. **2단계 분리 가속 파이프라인 (Two-Stage Decoupled Perception)**:
+   - Stage 1 비전 백본은 13 TOPS Hailo-8L NPU에서 YOLOv8s-Pose HEF로 20.4ms 만에 17개 관절을 검출하고, Stage 2 분류기는 Cortex-A76 CPU에서 순수 NumPy 연산으로 0.018ms 만에 판별. 소형 텐서의 PCIe DMA 전송 오버헤드(0.5ms) 대비 CPU 직접 연산이 25배 빠름을 실증.
+2. **Safe Torso Scale Guard & 3D 공간 리프팅**:
+   - 2D 카메라에서 깊은 전굴(Uttanasana) 시 몸통 길이가 12배 수축하여 좌표가 25배 폭발하는 현상을 $\text{scale} = \max(H_{\text{torso}}, 0.250 \cdot \text{ref})$ 클램핑 수식으로 원천 방어 ($max\_abs < 4.81$).
+3. **마르코프 후보 윈도우 & 5-프레임 히스테리시스 디바운서**:
+   - 72개 클래스 중 역투영 다의성으로 인한 라벨 튐(지터)을 억제하기 위해 `vinyasa_transition` 과도기 상태를 거치도록 설계하여 수리야 나마스카라 전이 구간 99.9% 확정 잠금 실현.
+4. **Typesense 초저지연 하이브리드 RAG & 해부학 금기 필터링**:
+   - 165쪽 도서 OCR(28k 단어) 지식베이스를 기반으로 Dense(bge-m3) + BM25 동적 결합. 신체 제약(디스크, 임신 등) 입력 시 위험 자세를 스코어 0으로 자동 차단하여 할루시네이션 85% 제거 (p95 42ms).
+5. **스튜디오 B2B 어플라이언스 Unit Economics**:
+   - $140 단일 PoE 박스(RPi5 + NPU + Cam)로 스튜디오당 월 $720의 클라우드 GPU 인프라 비용을 $0으로 절감하고 영상 외부 전송 없는 완전한 프라이버시(Zero Cloud Ingress) 달성.
 
 ---
 
 ### 2. 5G BVLOS 초저지연 클라우드 드론 지상관제시스템 (Cloud Drone GCS)
 > **시스템 엔지니어링 백본**: 5G 무선망 저지연 스트리밍 & Hailo-8 NPU 온디바이스 엣지 AI
 
-- **사업 형태**: 엔터프라이즈 B2B / 방위·산업 관제 시스템 (NDA 준수 핵심 아키텍처 공개)
-- **개발 기간**: 2022 ~ 2024
-- **핵심 기술**: **MAVLink v2**, **ROS2 / micro-XRCE-DDS**, **WebRTC P2P 저지연 스트리밍**, **Raspberry Pi 5 + Hailo-8 NPU (26 TOPS)**, **Qt5 / C++**, **Gazebo Sim**
-- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#2-5g-bvlos-드론-지상관제-아키텍처](04_포트폴리오_기술문서_이병남.md)
-
-#### 📐 시스템 아키텍처 다이어그램
-```mermaid
-flowchart LR
-    subgraph AirUnit["드론 기체 (Onboard Computing)"]
-        FCU["Flight Controller (PX4 / ArduPilot)"]
-        Companion["Raspberry Pi 5 (Companion Computer)"]
-        NPU["Hailo-8 M.2 NPU (26 TOPS)<br>YOLOv8s 실시간 객체 탐지 (60fps)"]
-        Cam["4K 광학/열화상 카메라"]
-        Modem["5G/LTE 무선 통신 모뎀"]
-        
-        FCU <-->|UART / MAVLink v2| Companion
-        Cam --> NPU --> Companion
-        Companion <--> Modem
-    end
-
-    subgraph CloudServer["클라우드 중계 및 브로커 인프라"]
-        TurnServer["coturn STUN/TURN 서버"]
-        Signaling["WebRTC 시그널링 서버"]
-        MAVRouter["MAVLink 라우터 / MQTT 브로커"]
-    end
-
-    subgraph GroundGCS["지상 관제 센터 (GCS Station)"]
-        Cockpit["Qt5/C++ 멀티 콕핏 대시보드<br>• 실시간 3D 웨이포인트 경로 제어<br>• 200ms 미만 WebRTC 저지연 영상<br>• 배터리/GPS/기체 텔레메트리"]
-    end
-
-    Modem <==>|5G Network| CloudServer
-    CloudServer <==> GroundGCS
-```
-
-#### 🌟 핵심 기능 및 엔지니어링 차별점
-1. **비가시권(BVLOS) 5G 원격 조종 실현**:
-   - 통신 가시거리에 구애받지 않고 5G 통신망을 통해 전국 단위 비가시권 원격 관제 및 자동 비행 미션 수행.
-2. **200ms 이하 초저지연 영상 스트리밍**:
-   - RTSP/RTMP의 고질적인 수 초 지연을 극복하기 위해 WebRTC P2P 미디어 파이프라인을 구축하여 현장 상황을 실시간 전송.
-3. **Hailo-8 NPU 온디바이스 엣지 AI 탑재**:
-   - 26 TOPS 연산 성능의 Hailo-8 NPU를 연동하여 기체 자체에서 60 FPS로 실시간 사람, 차량, 이상 징후를 자동 식별 및 추적.
+- **핵심 기술**: **MAVLink v2**, **ROS2 / micro-XRCE-DDS**, **WebRTC P2P (200ms 이하)**, **Raspberry Pi 5 + Hailo-8 NPU (26 TOPS, 60fps)**, **Qt5 / C++**
+- **주요 구현 및 성과**:
+  - MAVLink v2와 ROS2 메시지를 표준 JSON/Protobuf로 변환하는 이기종 미들웨어 브리지 개발 (4종 기체 동시 관제).
+  - 5G 망 기반 WebRTC P2P 연동으로 200ms 초저지연 비디오/텔레메트리 관제 실증.
+  - Hailo-8 NPU 기반 온디바이스 60fps 객체 인식 및 자율비행 회피 제어 구현.
 
 ---
 
-### 3. 멀티모달 벡터 검색 & 설명가능한 AI(XAI) 엔터프라이즈 클라우드 플랫폼
-> **🏆 제주오르미캠프 팀 프로젝트 1위 우수상 & 개인 최우수상 수상작 (2025.12)**  
-> **클라우드 AI 파이프라인**: AWS ECS Fargate + OpenSearch 고가용성 RAG 및 XAI 신뢰도 검증
+### 3. AWS 엔터프라이즈 GenAI & 설명가능한 AI (Enterprise Cloud AI / 오르미 1위)
+> **클라우드 아키텍처 백본**: AWS ECS Fargate, OpenSearch Serverless, AWS Bedrock 무중단 Failover
 
-- **플랫폼 형태**: AWS 엔터프라이즈 서버리스 & 클라우드 네이티브 아키텍처
-- **핵심 기술**: **AWS ECS Fargate**, **OpenSearch Serverless**, **AWS Bedrock (Claude 3.5 Sonnet)**, **Terraform IaC**, **FastAPI**, **Docker**, **ChromaDB**
-- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#3-aws-엔터프라이즈-genai--xai-아키텍처](04_포트폴리오_기술문서_이병남.md)
-
-#### 📐 클라우드 인프라 & XAI 파이프라인 다이어그램
-```mermaid
-flowchart TD
-    subgraph Ingestion["데이터 수집 및 임베딩 파이프라인"]
-        Raw["스토리 & 지리/멀티모달 원천 데이터"] --> Preprocess["전처리 & 청킹 파이프라인"]
-        Preprocess --> Vectorizer["Titan Multimodal Embeddings"]
-        Vectorizer --> OpenSearch["AWS OpenSearch Serverless<br>(k-NN Vector Index)"]
-    end
-
-    subgraph ServiceMesh["AWS ECS Fargate 컨테이너 클러스터"]
-        ALB["Application Load Balancer"]
-        AppTask["FastAPI 백엔드 서비스 (Docker on Fargate)"]
-        XAI["Model Explainability (XAI) 엔진<br>• 문장별 역코사인 유사도 매트릭스 계산<br>• 원문 인용 하이라이트 & 근거 스코어링"]
-        CircuitBreaker["Failover Circuit Breaker<br>(로컬/자체 LLM -> Bedrock 자동 전환)"]
-        
-        ALB --> AppTask
-        AppTask --> XAI
-        AppTask --> CircuitBreaker
-    end
-
-    subgraph LLMCluster["고가용성 LLM 레이어"]
-        LocalModel["자체 호스팅 모델 (Primary)"]
-        Bedrock["AWS Bedrock Claude 3.5 Sonnet (Fallback)"]
-    end
-
-    OpenSearch <--> AppTask
-    CircuitBreaker -->|정상 시| LocalModel
-    CircuitBreaker -->|장애 시 자동 Failover| Bedrock
-```
-
-#### 🌟 핵심 기능 및 엔지니어링 차별점
-1. **설명가능한 AI (Model Explainability, XAI)**:
-   - AI 답변의 각 문장이 원천 문서의 어느 단락에서 유래했는지를 수학적 코사인 유사도 행렬로 역추적하여 근거 출처를 색상별로 하이라이팅하는 신뢰도 검증 엔진 구현.
-2. **무중단 고가용성 서킷 브레이커 (Failover)**:
-   - 자체 호스팅 모델 장애나 타임아웃 발생 시 1.2초 내에 AWS Bedrock 클라우드 엔드포인트로 무중단 자동 전환.
-3. **완전 자동화된 Terraform IaC 인프라**:
-   - VPC, 보안 그룹, ECS 태스크 정의, OpenSearch 인덱스까지 단일 명령어로 프로비저닝되는 코드형 인프라 완성.
+- **공식 수상**: 🏆 **제주오르미캠프 종합 평가 1위 팀 프로젝트 우수상 & 개인 최우수상**
+- **핵심 기술**: **Terraform IaC**, **AWS ECS Fargate**, **OpenSearch k-NN**, **AWS Bedrock (Claude 3.5 Sonnet)**, **XAI 역코사인 유사도**
+- **주요 구현 및 성과**:
+  - Terraform IaC 기반 Multi-AZ 서버리스 컨테이너 클러스터 자동 프로비저닝 (배포 시간 80% 단축).
+  - 생성 문장과 원문 청크 간 역코사인 유사도를 계산하여 답변 출처와 신뢰도 점수를 클라이언트에 시각화하는 XAI 엔진 설계.
+  - 서킷 브레이커 패턴을 적용하여 로컬 장애 시 1.2초 내 AWS Bedrock으로 무중단 자동 전환 (99.99% 고가용성).
 
 ---
 
-### 4. KOR2UNITY — 한국어 음성/자연어 기반 3D 물리 제어 파이프라인
-> **대화형 인터랙션 시스템**: 한국어 자연어 지시어 기반 실시간 물리 제어 파이프라인
+### 4. Korean NLP to Unity 3D 물리 제어 파이프라인 (KOR2UNITY)
+> **인터랙션 백본**: 한국어 자연어 지시어 파싱 및 Unity 3D 실시간 물리 엔진 소켓 제어
 
-- **프로젝트 형태**: 인터랙티브 3D 공간 시뮬레이션 및 모빌리티 제어
-- **핵심 기술**: **Python 한국어 형태소/NLP 파이프라인**, **WebSocket 서버**, **Unity 3D Physics Engine**, **C# 스크립트**
-- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#4-korean-nlp-to-unity-3d-물리-파이프라인](04_포트폴리오_기술문서_이병남.md)
-
-#### 📐 NLP to 3D Action 흐름도
-```mermaid
-flowchart LR
-    Voice["한국어 자연어 지시어<br>('전방 10미터 전진 후 좌회전')"] --> Parser["형태소 분석 & 의도 추출 (Intent Extraction)"]
-    Parser --> ActionTree["행동 트리 생성 (JSON 파라미터화)"]
-    ActionTree --> WSServer["WebSocket 브리지"]
-    WSServer --> UnityBridge["Unity C# 네트워크 수신기"]
-    UnityBridge --> Physics["Rigidbody 물리 연산 & 3D 렌더링"]
-```
+- **핵심 기술**: **Python KoNLPy / SpaCy**, **Unity 3D / C#**, **ZeroMQ / WebSocket IPC**
+- **주요 구현 및 성과**: 한국어 비정형 명령(예: "빨간 공을 앞으로 천천히 밀어줘")을 의미 구조로 파싱하여 Unity 3D 물리 강체(Rigidbody)의 힘 벡터로 실시간 변환.
 
 ---
 
@@ -1004,310 +718,101 @@ flowchart LR
 
 | 프로젝트명 | 핵심 도메인 | 주요 성과 & 혁신점 | 기술 검증 문서 |
 | :--- | :--- | :--- | :--- |
-| **요가큐 (YogaQ)** | 생성형 AI, RAG & GEO 큐레이션 | 검색 42ms, 할루시네이션 85% 감소, AEO/GEO 직인용 | [Typesense RAG & GEO 문서](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) |
+| **요가큐 (YogaQ)** | 온디바이스 NPU & 하이브리드 RAG | **NPU 20.4ms (30fps) + CPU 0.018ms**, Safe Torso 가드, RAG 42ms | [04_포트폴리오_기술문서_이병남.md](04_포트폴리오_기술문서_이병남.md#1-요가큐yogaq-온디바이스-비전-ai-엣지-가속--하이브리드-rag-아키텍처-명세) |
 | **Cloud Drone GCS** | 5G 비가시권 통신 & 엣지 AI | 200ms 초저지연 WebRTC, Hailo-8 60fps 추론 | [GCS 클라우드 문서](technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md) |
 | **Enterprise AWS GenAI** | 클라우드 AI & 모델 설명가능성 | **제주오르미 1위 수상**, 99.99% 고가용성 폴백 | [클라우드 아키텍처 문서](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md) |
-| **KOR2UNITY** | NLP & 실시간 3D 인터랙션 | 한국어 자연어 지시어 실시간 물리 액션 맵핑 | [KOR2UNITY 기술 문서](technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md) |
+| **KOR2UNITY** | NLP & 실시간 3D 인터랙션 | 한국어 의미 파싱 -> 3D 물리 벡터 제어 | [KOR2UNITY 아키텍처](technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md) |
   </script>
 
   <script type="text/plain" id="raw-md-tech">
-# 이병남 (Byungnam "Tony" Lee) — 포트폴리오 기술 문서 (Technical Architecture Dossier)
+# 이병남 (Byungnam "Tony" Lee) — 포트폴리오 기술 문서 (Technical Dossier)
+### CTO · 테크 리드 · 아키텍트 전용 딥다이브 엔지니어링 명세서
 
-<div align="center" style="margin: 24px 0 18px;">
-  <img src="images/tonyillust.svg" alt="Tony Lee Portrait Illustration" width="140" height="140" style="border-radius: 50%; border: 4px solid #22A39F; box-shadow: 0 4px 16px rgba(34,163,159,0.25);" onerror="this.src='tonyillust.svg'" />
-  <div style="font-size: 13px; color: #22A39F; font-weight: 700; margin-top: 10px; letter-spacing: 0.5px;">TECHNICAL ARCHITECTURE DOSSIER | 15 ENGINEERING SPECS</div>
-</div>
-
-> **지원 분야**: **AI 시스템 & RAG 엔지니어 (AI Systems & RAG Engineer)**  
-> **문서 대상**: CTO, 테크 리드(Tech Lead), AI/시스템 아키텍트, 시니어 엔지니어  
-> **문서 목적**: 온프레미스 GPU 환경 로컬 LLM 서빙, Typesense 하이브리드 벡터 검색, 엣지 AI, 클라우드 네이티브 아키텍처 및 실제 코드 레벨의 기술적 의사결정과 벤치마크 데이터를 심층 검증하기 위한 엔지니어링 기술 명세서입니다.
+> 📄 **이력서 요약**: [01_이력서_이병남.md](01_이력서_이병남.md) | **경력 기술서**: [02_경력기술서_이병남.md](02_경력기술서_이병남.md) | **포트폴리오**: [03_포트폴리오_이병남.md](03_포트폴리오_이병남.md) | **웹 포털**: [docs/portfolio.html](docs/portfolio.html)  
 
 ---
 
 ## 📑 목차 (Table of Contents)
-
-1. [요가큐(YogaQ) 초저지연 하이브리드 RAG & GEO(생성 엔진 최적화) 아키텍처 명세](#1-요가큐yogaq-초저지연-하이브리드-rag--geo생성-엔진-최적화-아키텍처-명세)
+1. [요가큐(YogaQ) 온디바이스 비전 AI 엣지 가속 & 하이브리드 RAG 아키텍처 명세](#1-요가큐yogaq-온디바이스-비전-ai-엣지-가속--하이브리드-rag-아키텍처-명세)
 2. [5G BVLOS 드론 지상관제(GCS) 및 엣지 AI 아키텍처](#2-5g-bvlos-드론-지상관제gcs-및-엣지-ai-아키텍처)
 3. [AWS 엔터프라이즈 GenAI & 설명가능한 AI(XAI) 아키텍처](#3-aws-엔터프라이즈-genai--설명가능한-aixai-아키텍처)
 4. [Korean NLP to Unity 3D 물리 제어 파이프라인](#4-korean-nlp-to-unity-3d-물리-제어-파이프라인)
 5. [트러블슈팅 및 장애 대응 엔지니어링 케이스 스터디](#5-트러블슈팅-및-장애-대응-엔지니어링-케이스-스터디)
-6. [WSL 15대 실무 아키텍처 레퍼런스 전체 색인](#6-wsl-15대-실무-아키텍처-레퍼런스-전체-색인)
 
 ---
 
-## 1. 요가큐(YogaQ) 초저지연 하이브리드 RAG & GEO(생성 엔진 최적화) 아키텍처 명세
+## 1. 요가큐(YogaQ) 온디바이스 비전 AI 엣지 가속 & 하이브리드 RAG 아키텍처 명세
+> **공식 서비스 및 라이브 데모**: [사업·기술 슬라이드](https://elbee.yogaman.club/modoo) &nbsp;|&nbsp; [원페이저 PDF](https://elbee.yogaman.club/modoo/print.pdf) &nbsp;|&nbsp; [대화형 챗봇](https://aiegoo.github.io/yoga/chat) &nbsp;|&nbsp; [시맨틱 검색](https://aiegoo.github.io/yoga/search)
 
-> **공식 서비스 및 라이브 데모**:
-> - **인터랙티브 사업·기술 슬라이드**: [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo)
-> - **사업계획서 원페이저 PDF**: [elbee.yogaman.club/modoo/print.pdf](https://elbee.yogaman.club/modoo/print.pdf)
-> - **대화형 AI 챗봇 라이브 데모**: [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat)
-> - **시맨틱 검색 엔진 데모**: [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search)
-> **연계 원천 문서**:
-> - [technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md)
-> - [technical_references/typesense_rag/TYPESENSE_SETUP.md](technical_references/typesense_rag/TYPESENSE_SETUP.md)
-> - [technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md)
+### 1.1 Hailo-8L NPU & ARM CPU 2단계 분리 가속 파이프라인 명세 (Two-Stage Decoupled Perception)
+클라우드 GPU 비용과 대기 시간을 제거하기 위해, 영상 특징 추출과 생체역학 분류를 하드웨어 특성에 맞게 분리 배치하였습니다:
+- **Stage 1 (비전 백본)**: 13 TOPS Hailo-8L NPU에서 INT8 양자화된 **YOLOv8s-Pose HEF**로 **20.4ms (30.0 FPS 고정)** 내에 17개 관절(COCO-17) 추출.
+- **Stage 2 (생체역학 분류)**: 42차원 관절각 벡터를 ARM Cortex-A76 CPU에서 **순수 NumPy 연산으로 0.018ms** 만에 72개 아사나 분류.
+- **트레이드오프 분석**: 소형 텐서의 PCIe DMA 전송 오버헤드(~0.5ms) 대비 CPU 직접 연산이 **25배 빠름**을 실증하여 리소스 경합 없는 최적 분산 파이프라인 확립.
 
-### 1.1 컬렉션 스키마 (Typesense Collection Schema)
-단순 텍스트 검색이나 단일 벡터 검색의 한계를 극복하기 위해, 키워드 검색(BM25)과 1024차원 고밀도 시맨틱 임베딩(HNSW k-NN), 그리고 **해부학적 금기 조건(contraindications)** 및 **환경 적합성(weather_suitability)** 필터링을 결합한 하이브리드 컬렉션을 구축했습니다.
+### 1.2 2D 섀도우 텐서 3D 생체역학 복원 & Safe Torso Scale Guard 수식
+2D 카메라에서 깊은 전굴(Uttanasana) 시 시상면 원근 단축으로 몸통 길이 $H_{\text{torso}}$가 12배 수축($0.52 \to 0.0439$)하여 정규화 좌표가 25배 폭발($max\_abs = 61.70$)하는 현상을 클램핑 가드로 해결:
+
+$$p_{\text{norm}} = \frac{p_i - p_{\text{hip}}}{\text{scale}}, \quad \text{where} \quad \text{scale} = \max\left(H_{\text{torso}},\, 0.250 \cdot \text{ref\_unit}\right)$$
+
+- **결과**: 깊은 전굴 시에도 정규화 좌표 폭발을 $max\_abs < 4.81$로 통제하고 45° 사각 매트 지오메트리 기반 3D 깊이(Z)를 안정적으로 복원.
+- **마르코프 후보 윈도우 & 5-프레임 디바운서**: 72개 클래스를 전이 가능 상태($C_t$)로 좁히고 과도기 상태(`vinyasa_transition`) 완충을 두어 라벨 지터 제로화 (Surya Namaskara 99.9% 확정 잠금).
+
+### 1.3 Typesense 하이브리드 RAG 스키마 & 신체 금기 조건 필터링 공식
+사용자의 자연어 질의와 등록된 신체 제약 조건($C_{\text{user}}$: 허리 디스크, 고혈압, 임신 등)을 반영하여 안전한 대체 자세만 컨텍스트로 전달합니다:
+
+$$Score = \left[ (1 - \alpha) \cdot S_{BM25} + \alpha \cdot S_{Vector} \right] \cdot \prod_{c \in C_{\text{user}}} \left( 1 - \mathbb{I}(c \in \text{Contraindications}_{\text{pose}}) \right)$$
 
 ```json
 {
   "name": "yoga_rag_knowledge",
   "fields": [
-    {"name": "id", "type": "string"},
     {"name": "pose_name_ko", "type": "string", "facet": true, "index": true},
-    {"name": "pose_name_en", "type": "string", "facet": true, "index": true},
-    {"name": "sanskrit_name", "type": "string", "facet": true, "index": true},
-    {"name": "target_anatomy", "type": "string[]", "facet": true, "index": true},
     {"name": "contraindications", "type": "string[]", "facet": true, "index": true},
-    {"name": "weather_suitability", "type": "string[]", "facet": true},
-    {"name": "difficulty_level", "type": "string", "facet": true},
-    {"name": "source_book_page", "type": "int32", "facet": true},
+    {"name": "target_anatomy", "type": "string[]", "facet": true, "index": true},
     {"name": "content", "type": "string", "index": true},
-    {
-      "name": "embedding",
-      "type": "float[]",
-      "num_dim": 1024,
-      "index": true,
-      "distance_threshold": 0.35,
-      "vec_dist": "cosine"
-    }
-  ],
-  "default_sorting_field": "difficulty_level"
-}
-```
-
-### 1.2 하이브리드 검색 및 신체 금기 조건 필터링 공식 (Scoring Formula)
-사용자의 자연어 질의와 함께 온보딩에서 등록된 신체 제약 조건($C_{\text{user}}$: 허리 디스크, 고혈압, 임신 등)을 감안하여 점수를 산출합니다. 위험 동작이 감지될 경우 해당 포즈의 가중치를 0으로 마스킹(Hard Filtering)하거나 강력한 페널티를 부과합니다:
-
-$$Score = \left[ (1 - \alpha) \cdot S_{BM25} + \alpha \cdot S_{Vector} \right] \cdot \prod_{c \in C_{\text{user}}} \left( 1 - \mathbb{I}(c \in \text{Contraindications}_{\text{pose}}) \right)$$
-
-- 일반 개념/증상 질의 (예: "허리 통증 완화 스트레칭"): $\alpha = 0.75$ (시맨틱 유사도 중심)
-- 특정 고유명사 질의 (예: "비라바드라아사나 II 주의사항"): $\alpha = 0.30$ (BM25 키워드 정확 매칭 중심)
-- 금기 충돌 시 ($\mathbb{I} = 1$): 스코어가 즉시 0으로 차단되어 사용자에게 안전한 대체 자세(Alternative Poses)만 컨텍스트로 전달.
-
-### 1.3 165쪽 도서 OCR 인테이크 & 전처리 파이프라인 (OCR Pipeline)
-- **전처리 (Pre-processing)**: OpenCV 기반 Grayscale 변환, Adaptive Thresholding 노이즈 제거, 텍스트 기울기 보정(Deskewing).
-- **OCR 추출 & 청킹**: Tesseract 5.x 엔진 연동 후 표제어, 산스크리트어 발음, 해부학적 주의사항 분할. Sliding Window(500 토큰, 50 토큰 오버랩) 적용으로 문맥 단절 방지.
-- **도메인 색인**: 총 165페이지 분량의 요가 전문 도서로부터 약 28,000 단어를 추출하여 `ocr_database.json` 및 Typesense 하이브리드 인덱스 생성 자동화.
-
-### 1.4 AEO / GEO (Generative Engine Optimization) JSON-LD 스펙
-ChatGPT, Perplexity, Naver Cue 등 AI 검색엔진이 요가큐의 지식과 스튜디오 데이터를 신뢰성 있게 인용할 수 있도록 schema.org 호환 구조화 데이터를 동시 발행합니다:
-
-```json
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "ExercisePlan",
-      "@id": "https://elbee.yogaman.club/poses/tadasana#plan",
-      "name": "타다사나 (산 자세) 안전 수련 가이드",
-      "exerciseType": "Yoga",
-      "contraindications": ["급성 저혈압", "심한 편두통"],
-      "associatedAnatomy": ["척추기립근", "대퇴사두근", "복직근"],
-      "citation": "Light on Yoga, p. 142"
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [{
-        "@type": "Question",
-        "name": "허리 디스크가 있을 때 타다사나를 해도 되나요?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "네, 가능합니다. 척추의 중립 정렬을 유지하며 후굴(Backbend)이나 과도한 굴곡 없이 벽을 지지대로 활용하여 안전하게 수련할 수 있습니다 (출처: 요가큐 해부학 DB p.142)."
-        }
-      }]
-    }
+    {"name": "embedding", "type": "float[]", "num_dim": 1024, "index": true, "vec_dist": "cosine"}
   ]
 }
 ```
+- **성능 검증**: 165쪽 도서 OCR(28k 단어) 색인, **p95 검색 42ms**, 신체 금기 충돌 시 스코어 0 차단으로 **할루시네이션 85% 제거**.
 
-### 1.5 Zero-PII 온프레미스 GPU 서빙 & WebSocket/SSE 스트리밍
-- **데이터 주권 및 프라이버시**: 민감한 신체 질환 및 부상 데이터를 외부 클라우드 API로 전송하지 않고 온프레미스 Ollama(Llama-3 8B / Solar 10.7B GGUF 양자화) 환경에서 로컬 연산.
-- **초저지연 스트리밍**: WebSocket 풀듀플렉스 및 SSE 채널을 통해 첫 토큰 생성(TTFT) **340ms** 반응형 UX 제공.
-
-### 1.6 검색 엔진 성능 벤치마크 (10만 건 문서 기준)
-
-| 지표 | Typesense (본 시스템) | Elasticsearch 8.x | PostgreSQL (pgvector) |
-| :--- | :--- | :--- | :--- |
-| **p95 검색 레이턴시** | **42 ms** | 320 ms | 185 ms |
-| **메모리(RAM) 점유율** | **1.2 GB** | 4.8 GB | 2.1 GB |
-| **하이브리드 가중치 제어** | 실시간 쿼리 파라미터 조절 가능 | RRF 파이프라인 구성 필요 | 수동 SQL 유니온 연산 |
-| **초당 질의 처리량(QPS)** | **850+ QPS** | 220 QPS | 310 QPS |
+### 1.4 AEO / GEO JSON-LD 스펙 & $140 B2B 어플라이언스 Unit Economics
+- **AEO/GEO 구조화 데이터**: schema.org 호환 `ExercisePlan` 및 `FAQPage` JSON-LD를 동시 발행하여 ChatGPT, Perplexity 등 외부 생성형 검색엔진의 직접 인용 노출을 극대화.
+- **스튜디오 Unit Economics**:
+  - 기존 클라우드 GPU 스트리밍: 매트당 $0.12/시간 ($720/월/스튜디오)
+  - **YogaQ 온디바이스 엣지**: **월 인프라 비용 $0.00** (하드웨어 단가 $140: RPi5 $60 + NPU $70 + Cam $10), **B2B SaaS 마진율 92%+** 실현 및 완벽한 수련 영상 프라이버시(Zero Cloud Ingress) 보장.
 
 ---
 
 ## 2. 5G BVLOS 드론 지상관제(GCS) 및 엣지 AI 아키텍처
-
-> **연계 원천 문서**:
-> - [technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md](technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md)
-> - [technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md](drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md)
-> - [technical_references/drone_gcs/hardware_specs_rpi5_hailo8.md](drone_gcs/hardware_specs_rpi5_hailo8.md)
-> - [technical_references/drone_gcs/13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md](drone_gcs/13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md)
-
-### 2.1 이기종 드론 통합 프로토콜 브리지 (Protocol Adapter)
-서로 다른 비행 제어기(PX4, ArduPilot)와 지상관제 센터 간의 통신 패킷을 중계하기 위해 C++ 기반의 고성능 멀티스레드 어댑터를 설계했습니다:
-
-```
-[PX4 / ArduPilot FCU] 
-       ↕ (UART / MAVLink v2 binary protocol)
-[Raspberry Pi 5 Companion: mavlink-router]
-       ↕ (UDP / TCP Local IPC)
-[Heterogeneous ROS2 Node: micro-XRCE-DDS Client]
-       ↕ (5G LTE / MQTT & Protobuf Payload)
-[Cloud GCS Relay Broker]
-       ↕ (WebSocket / WebRTC DataChannel)
-[Qt5 / Web GCS Operator Cockpit]
-```
-
-### 2.2 초저지연 WebRTC P2P 영상 스트리밍 파이프라인
-기존 RTSP 파이프라인의 2~3초 지연 시간을 극복하고 조종사가 즉각적인 회피 기동을 수행할 수 있도록 WebRTC 미디어 파이프라인을 구축했습니다:
-
-- **카메라 캡처**: MIPI-CSI 4K 카메라 -> Raspberry Pi 5 하드웨어 H.264 인코더
-- **GStreamer 파이프라인**:
-  ```bash
-  gst-launch-1.0 libcamerasrc ! video/x-raw,width=1920,height=1080,framerate=30/1 ! \
-    v4l2convert ! v4l2h264enc extra-controls="controls,h264_profile=4,video_bitrate=4000000" ! \
-    rtph264pay config-interval=1 pt=96 ! webrtcbin name=sendrecv
-  ```
-- **지연 시간 검증**: 5G 무선망 기준 기체 렌즈 캡처부터 지상 모니터 렌더링까지 **E2E 레이턴시 180~210ms** 달성.
-
-### 2.3 온디바이스 Hailo-8 NPU 컴퓨터 비전 사양
-지상 통신망 두절(BVLOS 음영 지역) 시에도 기체 자체에서 비상 착륙 지점과 지상 장애물을 식별할 수 있도록 M.2 Hailo-8 NPU 가속기를 통합했습니다:
-
-| 항목 | 사양 및 성능 |
-| :--- | :--- |
-| **연산 성능 (Compute Power)** | **26 TOPS (Tera-Operations Per Second)** |
-| **소비 전력 (TDP)** | 전력 소모 **2.5W ~ 5.0W 미만** (배터리 효율 최적화) |
-| **적용 모델** | **YOLOv8s-pose / YOLOv8s-seg** (Hailo Dataflow Compiler 컴파일) |
-| **추론 프레임 레이트 (FPS)** | 1080p 해상도 기준 **62.5 FPS** 실시간 연산 |
-| **CPU 부하 절감** | Host Raspberry Pi 5 CPU 점유율: 85% -> **12%로 대폭 감소** |
+- **이기종 프로토콜 변환 어댑터**: MAVLink v2와 ROS2 메시지를 표준 JSON/Protobuf로 변환하는 C++/Qt5 미들웨어 브리지 설계 (PX4, ArduPilot 등 4종 기체 동시 관제).
+- **5G WebRTC 저지연 스트리밍**: 5G 무선망 환경에서 P2P WebRTC 채널을 구축하여 지상 관제 센터 화면까지 **지연 시간 200ms 이하**의 비디오/텔레메트리 전송 달성.
+- **Hailo-8 NPU 엣지 비전 추론**: 26 TOPS Hailo-8 M.2 모듈을 드론 온보드 컴퓨터에 통합하여 60fps 실시간 객체 인식 및 MAVLink 자동 충돌 회피 명령 피드백 제어 검증.
 
 ---
 
-## 3. AWS 엔터프라이즈 GenAI & 설명가능한 AI(XAI) 아키텍처
-
-> **연계 원천 문서**:
-> - [technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md)
-> - [technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md](technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md)
-> - [technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md](cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md)
-
-### 3.1 설명가능한 AI (Model Explainability, XAI) 알고리즘
-RAG 파이프라인에서 생성된 텍스트의 각 문장($S_i$)과 컨텍스트로 제공된 검색 청크($C_j$) 간의 역상관 유사도를 추적하여 사용자에게 근거 출처를 투명하게 제공합니다:
-
-```python
-def compute_sentence_attribution(generated_sentences, source_chunks, embed_fn):
-    """
-    각 생성 문장(S_i)과 검색 청크(C_j) 간의 코사인 유사도를 계산하여
-    신뢰도 스코어와 원문 하이라이트 인덱스를 반환하는 XAI 엔진
-    """
-    chunk_embeddings = embed_fn([c["text"] for c in source_chunks])
-    sentence_embeddings = embed_fn(generated_sentences)
-    
-    attribution_results = []
-    for s_idx, s_vec in enumerate(sentence_embeddings):
-        similarities = cosine_similarity([s_vec], chunk_embeddings)[0]
-        best_chunk_idx = int(np.argmax(similarities))
-        best_score = float(similarities[best_chunk_idx])
-        
-        attribution_results.append({
-            "sentence": generated_sentences[s_idx],
-            "source_chunk_id": source_chunks[best_chunk_idx]["id"],
-            "confidence_score": round(best_score, 4),
-            "is_grounded": best_score >= 0.72  # 0.72 미만은 근거 부족 경고
-        })
-    return attribution_results
-```
-
-### 3.2 AWS Bedrock 자동 폴백 (Failover Circuit Breaker)
-사내 온프레미스 GPU 서버 또는 특정 LLM 인스턴스가 다운되거나 응답 타임아웃(3.0초) 발생 시, 서비스 단절 없이 AWS Bedrock Claude 3.5 Sonnet 엔드포인트로 자동 절체(Failover)되는 서킷 브레이커 패턴을 적용했습니다:
-
-- **정상 상태 (Closed)**: 로컬 온프레미스 GPU vLLM 추론 수행 (비용 0원)
-- **장애 감지 (Open)**: 연속 3회 타임아웃 발생 시 서킷 오픈 -> AWS Bedrock API로 라우팅 (전환 시간 < 1.2초)
-- **복구 검증 (Half-Open)**: 60초 후 상태 프로브 요청을 전송하여 정상 응답 확인 시 로컬 GPU로 자동 복귀
+## 3. AWS 엔터프라이즈 GenAI & 설명가능한 AI(XAI) 아키텍처 (제주오르미 1위)
+- **Terraform IaC 기반 ECS Fargate 클라우드 자동화**: VPC, Multi-AZ 서브넷, ALB, ECS Fargate 컨테이너 클러스터 및 OpenSearch 분산 k-NN 인덱스를 단일 IaC 코드로 배포 (배포 시간 80% 단축).
+- **코사인 유사도 역추적 XAI 엔진**: 생성된 답변 문장의 임베딩 벡터와 검색된 지식 베이스 청크 간의 코사인 유사도 행렬을 역추적 연산하여 문장별 신뢰도 점수(0.0~1.0)와 원문 인용 하이라이트를 시각화.
+- **AWS Bedrock 무중단 Failover 서킷 브레이커**: 로컬 LLM 서버 장애 발생 시 1.2초 내에 AWS Bedrock(Claude 3.5 Sonnet)으로 자동 스위칭되는 무중단 가용성(99.99%) 실증.
 
 ---
 
-## 4. Korean NLP to Unity 3D 물리 제어 파이프라인
-
-> **연계 원천 문서**:
-> - [technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md](technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md)
-> - [technical_references/korean_nlp_unity/KOR2UNITY_QUICK_START.md](technical_references/korean_nlp_unity/KOR2UNITY_QUICK_START.md)
-
-### 4.1 실시간 음성/자연어 의도 파싱 및 JSON 스키마
-사용자의 비정형 한국어 발화("전방 5미터 전진 후 우측으로 90도 회전해줘")를 구문 분석하여 Unity 물리 엔진이 해석 가능한 정형 행동 트리(Action Tree)로 변환합니다:
-
-```json
-{
-  "command_id": "cmd_20261122_0942",
-  "intent": "NAVIGATE_WAYPOINT_SEQUENCE",
-  "actions": [
-    {
-      "step": 1,
-      "type": "MOVE_FORWARD",
-      "distance_meters": 5.0,
-      "speed_mps": 1.5
-    },
-    {
-      "step": 2,
-      "type": "ROTATE_YAW",
-      "angle_degrees": 90.0,
-      "direction": "CLOCKWISE"
-    }
-  ],
-  "timestamp": 1732263720
-}
-```
-
-### 4.2 Unity C# 수신부 및 물리 Rigidbody 동기화
-WebSocket 클라이언트 C# 컴포넌트가 명령 큐(Command Queue)를 수신하여 Unity의 `FixedUpdate()` 물리 연산 루프에서 부드러운 가감속(S-Curve 가속도 제어)을 적용하여 기체 또는 로봇 메쉬의 물리적 충돌 및 자세를 시뮬레이션합니다.
+## 4. Korean NLP to Unity 3D 물리 제어 파이프라인 (KOR2UNITY)
+- **자연어 파싱**: 한국어 비정형 명령(형용사+명사+방향 부사+동사)을 형태소 분석기로 토큰화하고 의미 단위로 분해.
+- **물리 파라미터 매핑**: "천천히" $\to$ 감쇠비(Damping Ratio), "밀어줘" $\to$ 힘 벡터($\vec{F} = m \cdot \vec{a}$) 변환 후 ZeroMQ/WebSocket 소켓을 통해 Unity 3D RigidBody에 즉각 반영.
 
 ---
 
 ## 5. 트러블슈팅 및 장애 대응 엔지니어링 케이스 스터디
 
-### [사례 1] 로컬 LLM 동시 요청 시 GPU VRAM OOM(Out of Memory) 크래시
-- **증상**: 다수의 사용자가 동시에 대화형 챗봇에 질의할 때 GPU VRAM이 한계(24GB)를 초과하여 LLM 서빙 프로세스가 비정상 종료되는 현상 발생.
-- **원인 분석**: 단일 HTTP 요청마다 즉시 모델 인스턴스에 컨텍스트를 할당하여 동시 KV 캐시 메모리가 폭증함.
-- **해결 방안**:
-  1. API 서버와 LLM 서빙 엔진 사이에 **Redis Pub/Sub 기반 FIFO 작업 큐** 도입.
-  2. 최대 동시 슬롯 수(Batch Slots)를 4개로 제한하고, 초과 요청은 클라이언트에 `대기 순번(Queue Position)`을 실시간 푸시.
-  3. GGUF 4-bit 양자화(Q4_K_M) 적용으로 가중치 메모리를 14GB -> 4.8GB로 절감하여 KV 캐시 가용 메모리 대폭 확보.
-- **결과**: 동시 접속 50명 부하 테스트에서도 VRAM 점유율 78% 이하로 안정 유지 및 OOM 재발률 0%.
-
-### [사례 2] 5G 무선망 핸드오버 시 WebRTC 영상 패킷 드롭 및 프리징
-- **증상**: 드론이 이동 중 기지국 셀 변경(핸드오버) 구간을 통과할 때 WebRTC 비디오 스트림이 멈추거나 화면이 깨지는 현상 발생.
-- **원인 분석**: TCP 기반 시그널링과 UDP 기반 RTP 패킷의 순간적인 지터(Jitter)로 인해 키프레임(IDR Frame)이 유실됨.
-- **해결 방안**:
-  1. 지상 GCS 클라이언트에서 프레임 디코딩 실패 감지 시 즉시 RTCP PLI(Picture Loss Indication) 패킷을 기체로 역전송하도록 설정.
-  2. Raspberry Pi 인코더에서 PLI 수신 즉시 차기 프레임을 강제 IDR 키프레임으로 즉시 재발행.
-- **결과**: 무선망 핸드오버 발생 시에도 **0.3초 이내에 정상 화면으로 자동 복구** 완료.
-
----
-
-## 6. WSL 15대 실무 아키텍처 레퍼런스 전체 색인
-
-이 기술 문서에 요약된 모든 아키텍처의 원본 설계도 및 소스 코드는 프로젝트 내 `technical_references/` 디렉토리에 실시간 링크되어 있습니다:
-
-| 카테고리 | 문서 파일명 | 상세 기술 내용 및 증빙 |
-| :--- | :--- | :--- |
-| **드론 GCS** | [10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md](technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md) | BVLOS 5G 클라우드 드론 관제 통합 아키텍처 |
-| **드론 GCS** | [09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md](technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md) | 이기종 드론(PX4/ArduPilot) SDK 통합 어댑터 설계 |
-| **드론 GCS** | [18-Heterogeneous-GCS-Product-and-Evidence-Briefing.md](technical_references/drone_gcs/18-Heterogeneous-GCS-Product-and-Evidence-Briefing.md) | 상용 GCS 제품 기술 실증 및 PoC 브리핑 문서 |
-| **드론 GCS** | [13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md](technical_references/drone_gcs/13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md) | Gazebo 3D 시뮬레이션 및 콕핏 제어 연동 |
-| **드론 GCS** | [hardware_specs_rpi5_hailo8.md](technical_references/drone_gcs/hardware_specs_rpi5_hailo8.md) | Raspberry Pi 5 + Hailo-8 M.2 NPU 엣지 비전 사양 |
-| **RAG & LLM** | [YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) | 요가큐 하이브리드 RAG 검색 및 챗봇 엔드-투-엔드 구조 |
-| **RAG & LLM** | [TYPESENSE_SETUP.md](technical_references/typesense_rag/TYPESENSE_SETUP.md) | Typesense 클러스터 구축 및 하이브리드 인덱싱 가이드 |
-| **RAG & LLM** | [ARCHITECTURE_VISUAL_DIAGRAM.md](technical_references/typesense_rag/ARCHITECTURE_VISUAL_DIAGRAM.md) | 계층별(UI, API, Embedding, Storage, GEO) 아키텍처 다이어그램 |
-| **RAG & LLM** | [INFRASTRUCTURE_SETUP.md](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md) | 온프레미스 GPU 가속 및 로컬 LLM 서빙 환경 명세 |
-| **RAG & GEO** | [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo) | 요가큐(YogaQ) 사업·기술 온라인 프레젠테이션 슬라이드 |
-| **RAG & GEO** | [elbee.yogaman.club/modoo/print.pdf](https://elbee.yogaman.club/modoo/print.pdf) | 요가큐(YogaQ) A4 인쇄 최적화 사업계획서 원페이저 PDF |
-| **클라우드 AI** | [ARCHITECTURE_FLOW.md](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md) | **제주오르미 1위 팀프로젝트** AWS ECS Fargate 클라우드 플로우 |
-| **클라우드 AI** | [MODEL_EXPLAINABILITY.md](technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md) | 설명가능한 AI (XAI) 및 인용구 신뢰도 스코어링 알고리즘 |
-| **클라우드 AI** | [AWS_ENDPOINTS_AND_CHROMADB_MIGRATION.md](technical_references/cloud_ai_aws/AWS_ENDPOINTS_AND_CHROMADB_MIGRATION.md) | ChromaDB에서 AWS OpenSearch로의 벡터 마이그레이션 |
-| **클라우드 AI** | [AWS_BEDROCK_FALLBACK_GUIDE.md](technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md) | 로컬 장애 시 AWS Bedrock 자동 Failover 서킷 브레이커 |
-| **NLP & XR** | [KOR2UNITY_TECHNICAL_ARCHITECTURE.md](technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md) | 한국어 자연어 지시어 기반 Unity 3D 물리 제어 파이프라인 |
-| **NLP & XR** | [KOR2UNITY_QUICK_START.md](technical_references/korean_nlp_unity/KOR2UNITY_QUICK_START.md) | KOR2UNITY 셋업 가이드 및 WebSocket 연동 명세 |
+| 시스템 | 당면 문제 및 장애 증상 | 근본 원인 분석 | 해결책 및 최종 결과 |
+| :--- | :--- | :--- | :--- |
+| **YogaQ 엣지** | 전굴 시 엉덩이/발목 좌표가 화면 밖으로 25배 폭발 | 전굴 시 2D 투영 몸통 길이 수축으로 인한 정규화 분모 0 수렴 | Safe Torso Scale Guard($scale = \max(H, 0.25 \cdot ref)$) 적용, 좌표를 4.81 이하로 완벽 통제 |
+| **YogaQ HUD** | 연속 동작 전환 시 아사나 라벨이 초당 수 회씩 심하게 떨림 | 2D 그림자의 역투영 다의성 및 순간적 관절 가림 | 마르코프 후보 윈도우 및 5-프레임 히스테리시스 디바운서 도입으로 라벨 지터 제로화 |
+| **온프레미스 LLM** | 다중 동시 요청 시 GPU VRAM OOM(메모리 초과) 크래시 | 요청이 큐 없이 GPU 메모리로 직접 동시 인입 | Redis Pub/Sub 기반 비동기 대기열 큐 구축으로 동시 50건 무중단 안정 처리 |
+| **드론 GCS** | 5G 무선망 패킷 손실 시 영상 화면 멈춤 및 제어 지연 | TCP 재전송 지연 및 비디오 디코딩 버퍼 누적 | WebRTC P2P (UDP RTP/SRTP) 전환 및 지터 버퍼 최적화로 지연 시간 200ms 이하 유지 |
   </script>
 
   <script>

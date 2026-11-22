@@ -5,7 +5,7 @@
   <div style="font-size: 13px; color: #22A39F; font-weight: 700; margin-top: 10px; letter-spacing: 0.5px;">AI SYSTEMS & RAG ENGINEER | BYUNGNAM "TONY" LEE</div>
 </div>
 
-> **"로컬 LLM과 고성능 시맨틱 벡터 검색을 결합한 하이브리드 RAG, 5G 비가시권(BVLOS) 자율비행 드론 관제, 엔터프라이즈 클라우드 AI 플랫폼을 아우르는 2026년 채용 전형 종합 포트폴리오입니다."**
+> **"Hailo-8L NPU 온디바이스 비전 AI 엣지 인식과 Typesense 초저지연 하이브리드 RAG, 5G 비가시권(BVLOS) 자율비행 드론 관제, 엔터프라이즈 클라우드 AI 플랫폼을 아우르는 2026년 채용 전형 종합 포트폴리오입니다."**
 
 ---
 
@@ -17,8 +17,8 @@
 | :--- | :--- | :--- | :--- |
 | **1. 이력서 (Resume)** | [01_이력서_이병남.md](01_이력서_이병남.md) | [웹 뷰어](docs/portfolio.html?tab=tab-resume) / [인쇄용](docs/resume_latest.html) | • 30초 스크리닝 요약본<br>• 기본 인적사항, 핵심 스택, 학력(미 메릴랜드대), 자격증, 경력 요약 |
 | **2. 경력 기술서 (CV)** | [02_경력기술서_이병남.md](02_경력기술서_이병남.md) | [경력 기술서 뷰어](docs/portfolio.html?tab=tab-career) | • 실무 역량 및 문제 해결 능력 심층 검증<br>• 인생 피봇 스토리(27년 교육 -> 4년 은퇴/귀농 -> 3,000h 아카데미 -> 2막 AI)<br>• 전 직무 STAR 상세 기술 & 정량적 성과($100K 수출, 레이턴시 42ms) |
-| **3. 포트폴리오 (Portfolio)** | [03_포트폴리오_이병남.md](03_포트폴리오_이병남.md) | [포트폴리오 쇼케이스](docs/portfolio.html?tab=tab-portfolio) | • 시각적 결과물 및 아키텍처 다이어그램<br>• 4대 플래그십 시스템(YogaQ RAG, 5G 드론 GCS, 오르미 1위 AWS GenAI, KOR2UNITY)<br>• 시스템 구조도 및 UI/UX 시연 |
-| **4. 포트폴리오 기술 문서 (Dossier)** | [04_포트폴리오_기술문서_이병남.md](04_포트폴리오_기술문서_이병남.md) | [기술 문서 뷰어](docs/portfolio.html?tab=tab-tech) | • CTO, 테크 리드, 아키텍트 전용 딥다이브 명세<br>• Typesense 스키마/가중치 수식, MAVLink 어댑터, XAI 알고리즘, 벤치마크 표, 트러블슈팅 |
+| **3. 포트폴리오 (Portfolio)** | [03_포트폴리오_이병남.md](03_포트폴리오_이병남.md) | [포트폴리오 쇼케이스](docs/portfolio.html?tab=tab-portfolio) | • 시각적 결과물 및 아키텍처 다이어그램<br>• 4대 플래그십 시스템(YogaQ 온디바이스 NPU & RAG, 5G 드론 GCS, 오르미 1위 AWS GenAI, KOR2UNITY)<br>• 시스템 구조도 및 UI/UX 시연 |
+| **4. 포트폴리오 기술 문서 (Dossier)** | [04_포트폴리오_기술문서_이병남.md](04_포트폴리오_기술문서_이병남.md) | [기술 문서 뷰어](docs/portfolio.html?tab=tab-tech) | • CTO, 테크 리드, 아키텍트 전용 딥다이브 명세<br>• Hailo-8L 2단계 가속, Safe Torso Scale 가드, Typesense 스키마/가중치 수식, MAVLink 어댑터, XAI |
 
 ---
 
