@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이병남 (Tony Lee) - AI Systems Engineer & Full-Stack Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --primary-light: #3b82f6;
+      --primary-soft: #eff6ff;
+      --accent: #0d9488;
+      --accent-soft: #f0fdfa;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-sub: #64748b;
+      --bg-body: #f8fafc;
+      --bg-card: #ffffff;
+      --border: #e2e8f0;
+      --border-dark: #cbd5e1;
+      --tag-bg: #f1f5f9;
+      --tag-text: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .lang-btn, .action-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-dark);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--text-muted);
+      transition: all 0.2s;
+    }
+
+    .lang-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .action-btn:hover, .lang-btn:hover:not(.active) {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-color: var(--primary-light);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 24px auto 60px;
+      padding: 0 20px;
+    }
+
+    .resume-paper {
+      background: var(--bg-card);
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+      padding: 48px;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 2px solid var(--primary-soft);
+      padding-bottom: 30px;
+      margin-bottom: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .header-left h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .header-left h1 .name-sub {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text-sub);
+    }
+
+    .headline {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: 6px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      gap: 8px 18px;
+      margin-top: 16px;
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .contact-item a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      color: var(--primary-light);
+      text-decoration: underline;
+    }
+
+    /* Links banner */
+    .links-bar {
+      background: var(--primary-soft);
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+      font-size: 13px;
+    }
+
+    .links-bar strong {
+      color: var(--primary);
+    }
+
+    .links-bar a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .links-bar a:hover {
+      text-decoration: underline;
+    }
+
+    /* Sections */
+    .section {
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--primary);
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 14.5px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Competencies Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .skill-card h4 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .skill-card ul {
+      list-style: none;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .skill-card ul li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 5px;
+      line-height: 1.5;
+    }
+
+    .skill-card ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary-light);
+      font-weight: bold;
+    }
+
+    /* Tags */
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .tag {
+      font-size: 11.5px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 3px 8px;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* Experience Card */
+    .exp-item {
+      position: relative;
+      padding-left: 24px;
+      border-left: 2px solid var(--border);
+      margin-bottom: 30px;
+    }
+
+    .exp-item::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      border: 2px solid #fff;
+    }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .exp-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .exp-company {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .exp-date {
+      font-size: 13.5px;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .exp-role-badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid #99f6e4;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .project-subcard {
+      background: var(--bg-body);
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-top: 12px;
+      border-left: 3px solid var(--primary-light);
+    }
+
+    .project-subcard h5 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .project-subcard h5 span {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-sub);
+    }
+
+    .project-subcard ul {
+      padding-left: 18px;
+      margin: 8px 0;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .project-subcard ul li {
+      margin-bottom: 4px;
+    }
+
+    /* Table styling */
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+      margin-top: 12px;
+    }
+
+    .styled-table th {
+      background: var(--primary-soft);
+      color: var(--primary);
+      text-align: left;
+      padding: 10px 14px;
+      font-weight: 700;
+      border-bottom: 2px solid #bfdbfe;
+    }
+
+    .styled-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    .styled-table tr:nth-child(even) td {
+      background: #fafafa;
+    }
+
+    /* Print styling */
+    @media print {
+      body {
+        background: #fff;
+        color: #000;
+      }
+
+      .top-bar {
+        display: none !important;
+      }
+
+      .container {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .resume-paper {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      .links-bar {
+        background: #f1f5f9;
+        border-color: #cbd5e1;
+      }
+
+      .exp-item {
+        page-break-inside: avoid;
+      }
+
+      .project-subcard {
+        page-break-inside: avoid;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .resume-paper {
+        padding: 24px;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .header-left h1 {
+        font-size: 26px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation & Controls -->
+  <aside class="top-bar" aria-label="Resume toolbar">
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <span style="font-size: 13px; font-weight: 600; color: var(--text-sub); margin-right: 4px;">Language:</span>
+      <button class="lang-btn active" id="btn-ko" onclick="setLang('ko')">한국어 (KO)</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">English (EN)</button>
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button class="action-btn" onclick="window.print()">🖨️ PDF 인쇄 / 저장</button>
+      <a class="action-btn" href="index.html" style="text-decoration: none;">🌐 인터랙티브 웹 이력서</a>
+    </div>
+  </aside>
+
+  <div class="container">
+    <div class="resume-paper">
+
+      <!-- Visual Hero Banner (Created with PhotoCraft MCP) -->
+      <div style="margin-bottom: 28px; border-radius: 10px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.08); border: 1px solid var(--border);">
+        <img src="resume_banner.png" alt="Tony Lee Profile & Architecture Banner" style="width: 100%; height: auto; display: block;">
+      </div>
+
+      <!-- ==================== HEADER ==================== -->
+      <header class="header">
+        <div class="header-left">
+          <h1>
+            <span class="t-ko">이병남</span>
+            <span class="t-en" style="display:none;">Byungnam (Tony) Lee</span>
+            <span class="name-sub">Tony Lee / 李丙南</span>
+          </h1>
+          <div class="headline">
+            <span class="t-ko">AI 시스템 엔지니어 & 풀스택 소프트웨어 아키텍트</span>
+            <span class="t-en" style="display:none;">AI Systems Engineer & Full-Stack Software Architect</span>
+          </div>
+          <div class="contact-grid">
+            <div class="contact-item">📧 <a href="mailto:xraiegoo@gmail.com">xraiegoo@gmail.com</a></div>
+            <div class="contact-item">📱 <span>+82 10-2544-1197</span></div>
+            <div class="contact-item">🐙 <a href="https://github.com/aiegoo" target="_blank">github.com/aiegoo</a></div>
+            <div class="contact-item">📍 <span class="t-ko">경기도 고양시 일산동구</span><span class="t-en" style="display:none;">Goyang-si, Gyeonggi-do, Korea</span></div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Key Interactive Links Bar -->
+      <div class="links-bar">
+        <strong>🚀 Live Services & Portfolios:</strong>
+        <a href="https://aiegoo.github.io/yoga/chat" target="_blank">Typesense Semantic Chat ↗</a>
+        <a href="https://festory.eggs.or.kr" target="_blank">MCU Local Serving ↗</a>
+        <a href="https://aiegoo.github.io/kisec-final/#/4/1" target="_blank">Quantum Security POC ↗</a>
+        <a href="https://aiegoo.github.io/pro-git" target="_blank">GitHub Actions Auth ↗</a>
+        <a href="https://aiegoo.github.io/_mydrone" target="_blank">Drone System Portal ↗</a>
+        <a href="https://pf7.eggs.or.kr" target="_blank">Docs Portal ↗</a>
+      </div>
+
+      <!-- ==================== EXECUTIVE SUMMARY ==================== -->
+      <section class="section">
+        <h2 class="section-title">
+          <span class="t-ko">소개 (Executive Summary)</span>
+          <span class="t-en" style="display:none;">Executive Summary</span>
+        </h2>
+        <p class="section-desc">
+          <span class="t-ko">
+            AI가 산업의 구조를 근본적으로 재편하고 있는 지금, 저는 단순히 API를 호출하는 수준을 넘어 <strong>LLM과 첨단 기술을 실제 서비스와 운영 가능한 시스템에 통합해 온 엔지니어이자 아키텍트</strong>입니다. 자체 호스팅 환경에서 로컬 LLM(Ollama, llama.cpp)과 Typesense 시맨틱 벡터 검색을 결합한 실시간 RAG 파이프라인을 구축하였으며, 3D 스캐닝 드론 데이터 파이프라인 및 모빌리티 관제 시스템을 설계·구현했습니다. 나아가 인도네시아, 태국, 독일, 카자흐스탄 등 글로벌 정부 및 학계와의 전략적 파트너십(MOU 체결 및 10만 달러 규모 무역 계약)을 직접 이끌어낸 비즈니스 실행력을 겸비하고 있습니다.
+          </span>
+          <span class="t-en" style="display:none;">
+            As AI reshapes global industries, I bridge cutting-edge AI experimentation with production-grade engineering and real-world business value. Rather than merely calling commercial APIs, I specialize in self-hosted local LLMs (Ollama, llama.cpp), ultra-low-latency RAG architectures with Typesense hybrid vector search, and real-time WebSocket backends. My background spans large-scale 3D drone spatial pipelines, IoT fleet telemetry, and international tech diplomacy—having orchestrated university MOUs across Indonesia/Germany/Thailand and closed a $100,000 multilateral trade contract in Kazakhstan.
+          </span>
+        </p>
+      </section>
+
+      <!-- ==================== CORE COMPETENCIES ==================== -->
+      <section class="section">
+        <h2 class="section-title">
+          <span class="t-ko">핵심 기술 역량 (Core Competencies)</span>
+          <span class="t-en" style="display:none;">Core Competencies</span>
+        </h2>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h4>🤖 LLM & Generative AI</h4>
+            <ul>
+              <li class="t-ko">RAG 파이프라인 설계, 하이브리드 시맨틱 벡터 검색 구현</li>
+              <li class="t-en" style="display:none;">RAG architecture design, hybrid semantic vector search</li>
+              <li class="t-ko">로컬 LLM 자체 호스팅 & 최적화 (Ollama, llama.cpp, CUDA GPU)</li>
+              <li class="t-en" style="display:none;">Local LLM self-hosting & acceleration (Ollama, llama.cpp, CUDA)</li>
+              <li class="t-ko">Typesense 벡터 임베딩 인덱싱 및 대화형 챗봇 파이프라인</li>
+              <li class="t-en" style="display:none;">Typesense vector indexing & interactive conversational pipelines</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">RAG</span>
+              <span class="tag">Typesense</span>
+              <span class="tag">Ollama</span>
+              <span class="tag">llama.cpp</span>
+              <span class="tag">CUDA</span>
+              <span class="tag">Prompt Eng</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h4>⚙️ Backend & Architecture</h4>
+            <ul>
+              <li class="t-ko">Node.js, GraphQL Yoga, Apollo Server, Prisma ORM, PostgreSQL</li>
+              <li class="t-en" style="display:none;">Node.js, GraphQL Yoga, Apollo Server, Prisma ORM, PostgreSQL</li>
+              <li class="t-ko">Python (FastAPI, Django), C++, Redis Pub/Sub, WebSocket</li>
+              <li class="t-en" style="display:none;">Python (FastAPI, Django), C++, Redis Pub/Sub, WebSocket</li>
+              <li class="t-ko">초저지연 실시간 텔레메트리 스트리밍 및 이벤트 이상 탐지</li>
+              <li class="t-en" style="display:none;">Low-latency real-time telemetry streaming & anomaly alerting</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">Node.js</span>
+              <span class="tag">GraphQL</span>
+              <span class="tag">Prisma</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Redis</span>
+              <span class="tag">WebSocket</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h4>☁️ Cloud, DevOps & Linux</h4>
+            <ul>
+              <li class="t-ko">AWS Certified Cloud Practitioner (CLF-C02) 인증 보유</li>
+              <li class="t-en" style="display:none;">AWS Certified Cloud Practitioner (CLF-C02) certified</li>
+              <li class="t-ko">Ubuntu Linux 서버 운영, Docker 컨테이너화, WSL2 GPU 환경</li>
+              <li class="t-en" style="display:none;">Ubuntu Linux server ops, Docker containerization, WSL2 GPU setup</li>
+              <li class="t-ko">GitHub Actions CI/CD 파이프라인 및 GitOps 자동 배포</li>
+              <li class="t-en" style="display:none;">GitHub Actions CI/CD pipelines & GitOps automated deployments</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">AWS (CLF-C02)</span>
+              <span class="tag">Docker</span>
+              <span class="tag">Linux</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">Nginx</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <h4>🚁 Embedded & Drone Systems</h4>
+            <ul>
+              <li class="t-ko">초경량비행장치 멀티콥터 1종 조종자 (비행시간 1,000+ 시간)</li>
+              <li class="t-en" style="display:none;">Licensed UAV Pilot (Multicopter Class 1, 1,000+ flight hrs)</li>
+              <li class="t-ko">드론 GCS (지상관제소) 시스템 개발 (C++, Qt5, MAVLink)</li>
+              <li class="t-en" style="display:none;">Drone GCS software development (C++, Qt5, MAVLink)</li>
+              <li class="t-ko">3D LiDAR & IR 공간 스캐닝 파이프라인, 엣지 통신 프로토콜</li>
+              <li class="t-en" style="display:none;">3D LiDAR & IR spatial scanning pipelines, edge protocols</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">GCS</span>
+              <span class="tag">MAVLink</span>
+              <span class="tag">PX4</span>
+              <span class="tag">Qt5</span>
+              <span class="tag">C++</span>
+              <span class="tag">Point Cloud</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== WORK EXPERIENCE ==================== -->
+      <section class="section">
+        <h2 class="section-title">
+          <span class="t-ko">경력 사항 (Work Experience)</span>
+          <span class="t-en" style="display:none;">Work Experience</span>
+        </h2>
+
+        <!-- Ucon Creative -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title t-ko">유콘크리에이티브주식회사</span>
+              <span class="exp-title t-en" style="display:none;">Ucon Creative Co., Ltd.</span>
+              <span class="exp-role-badge">개발 실장 (Head of Engineering / Director)</span>
+            </div>
+            <div class="exp-date">2023.05 ~ 2025.08 (2년 4개월)</div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 8px;">
+            <span class="t-ko">AI 소프트웨어 개발, 메타버스용 3D 스캐닝 데이터 파이프라인, 모빌리티 통합 관제 소프트웨어 및 글로벌 기술 협력 총괄</span>
+            <span class="t-en" style="display:none;">Directed AI software engineering, 3D scanning data pipelines for metaverse digital twins, autonomous fleet GCS, and international technical partnerships.</span>
+          </p>
+
+          <div class="project-subcard">
+            <h5>
+              <span class="t-ko">1. 메타버스용 3D 스캐닝 드론 및 대용량 데이터 파이프라인</span>
+              <span class="t-en" style="display:none;">1. Metaverse 3D Scanning Drone & Big Data Pipeline</span>
+              <span>2023.06 - 2023.12</span>
+            </h5>
+            <ul>
+              <li class="t-ko">공간 메타버스 구축을 위한 3D 포인트 클라우드 스캐닝 데이터 수집 및 처리 파이프라인 아키텍처 설계</li>
+              <li class="t-en" style="display:none;">Architected 3D point-cloud spatial data ingestion and streaming pipelines for metaverse digital twin creation.</li>
+              <li class="t-ko">대용량 공간 데이터 분산 저장 및 스토리지 최적화 구조 구현, 정합(Registration) 및 노이즈 필터링 후처리 자동화</li>
+              <li class="t-en" style="display:none;">Implemented large-scale distributed point-cloud storage optimization, automated point-cloud registration and noise filtering.</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">3D Data Processing</span>
+              <span class="tag">Spatial Pipeline</span>
+              <span class="tag">Storage Optimization</span>
+              <span class="tag">Python</span>
+            </div>
+          </div>
+
+          <div class="project-subcard">
+            <h5>
+              <span class="t-ko">2. 생성형 AI & 로컬 LLM 시스템 개발</span>
+              <span class="t-en" style="display:none;">2. Generative AI & Local LLM Systems Integration</span>
+              <span>2023.05 - 2023.12</span>
+            </h5>
+            <ul>
+              <li class="t-ko">자가 호스팅 로컬 LLM 서버(Ollama, llama.cpp, CUDA GPU 가속) 구축 및 산업 도메인 데이터 통합</li>
+              <li class="t-en" style="display:none;">Deployed self-hosted local LLMs (Ollama, llama.cpp, CUDA acceleration) integrated with domain-specific datasets.</li>
+              <li class="t-ko">Typesense 시맨틱 벡터 인덱싱과 결합한 고성능 RAG 검색 파이프라인 구현으로 할루시네이션 억제 및 응답 속도 최적화</li>
+              <li class="t-en" style="display:none;">Engineered high-throughput RAG search using Typesense semantic vector indexing, eliminating hallucination and minimizing latency.</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">Local LLM</span>
+              <span class="tag">RAG</span>
+              <span class="tag">Typesense</span>
+              <span class="tag">Ollama</span>
+              <span class="tag">GraphQL</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+
+          <div class="project-subcard">
+            <h5>
+              <span class="t-ko">3. 3D-IR 스캔 드론 & 엣지 통신 파이프라인 (DevOps PM)</span>
+              <span class="t-en" style="display:none;">3. 3D-IR Aerial Scanning Drone & Secure Pipeline (DevOps PM)</span>
+              <span>2023.10 - 2023.12</span>
+            </h5>
+            <ul>
+              <li class="t-ko">3D LiDAR 및 열화상(IR) 센서 융합 공간 스캐닝 드론 임베디드 시스템 설계</li>
+              <li class="t-en" style="display:none;">Engineered integrated 3D LiDAR and thermal infrared (IR) aerial scanning drone systems.</li>
+              <li class="t-ko">보안 규격을 준수하는 엣지-지상(Edge-to-Ground) 통신 프로토콜 및 데이터 암호화 파이프라인 설계</li>
+              <li class="t-en" style="display:none;">Designed secure edge-to-ground telemetry transmission protocols adhering to high defense/industrial security standards.</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">Embedded Systems</span>
+              <span class="tag">Sensor Fusion</span>
+              <span class="tag">Edge-to-Ground</span>
+              <span class="tag">Secure Pipeline</span>
+            </div>
+          </div>
+
+          <div class="project-subcard">
+            <h5>
+              <span class="t-ko">4. 드론 및 모빌리티 통합 관제 소프트웨어 개발 (DevOps PM)</span>
+              <span class="t-en" style="display:none;">4. Drone & EV Fleet Control Platform (DevOps PM)</span>
+              <span>2023.10 - 2023.12</span>
+            </h5>
+            <ul>
+              <li class="t-ko">드론 및 전기차 시스템의 실시간 상태 모니터링 UI 및 백엔드 관제 플랫폼 아키텍처 설계</li>
+              <li class="t-en" style="display:none;">Architected real-time monitoring UI and backend control platform for autonomous drone and EV fleets.</li>
+              <li class="t-ko">WebSocket 및 Redis Pub/Sub 기반 초저지연 데이터 시각화 및 이상 탐지(Anomaly Detection) 알림 엔진 구현</li>
+              <li class="t-en" style="display:none;">Implemented low-latency WebSocket/Redis Pub/Sub telemetry streaming, visualization, and real-time alert engine.</li>
+            </ul>
+            <div class="tag-cloud">
+              <span class="tag">Real-time Monitoring</span>
+              <span class="tag">WebSocket</span>
+              <span class="tag">Redis Pub/Sub</span>
+              <span class="tag">Telemetry UI</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- JDLab -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title t-ko">주식회사 제이디랩</span>
+              <span class="exp-title t-en" style="display:none;">JDLab Co., Ltd.</span>
+              <span class="exp-role-badge">개발 수석연구원 (Principal Researcher)</span>
+            </div>
+            <div class="exp-date">2022.02 ~ 2022.05</div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            <span class="t-ko">드론 GCS (Ground Control Station) 소프트웨어 아키텍처 설계 및 C++, Qt5 기반 텔레메트리 관제 시스템 개발 (NDA)</span>
+            <span class="t-en" style="display:none;">Developed drone GCS software modules and C++/Qt5 telemetry communication systems (NDA).</span>
+          </p>
+        </div>
+
+        <!-- Hitech -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title t-ko">하이테크</span>
+              <span class="exp-title t-en" style="display:none;">Hitech</span>
+              <span class="exp-role-badge">개발 팀장 (Software Team Lead)</span>
+            </div>
+            <div class="exp-date">2020.02 ~ 2020.12</div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            <span class="t-ko">IoT 임베디드 센서 펌웨어 개발, 원격 데이터 수집 및 실시간 전송 프로토콜 구현 (NDA)</span>
+            <span class="t-en" style="display:none;">Led sensor firmware development, low-power telemetry transmission, and embedded data acquisition (NDA).</span>
+          </p>
+        </div>
+
+        <!-- Onofflink -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title t-ko">온오프링크 주식회사</span>
+              <span class="exp-title t-en" style="display:none;">ONOFFLINK Co., Ltd.</span>
+              <span class="exp-role-badge">개발 책임 / PM (Technical PM)</span>
+            </div>
+            <div class="exp-date">2019.03 ~ 2019.09</div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            <span class="t-ko">Asterisk 및 FreePBX 기반의 엔터프라이즈 IP PBX/CTI 컨퍼런스 솔루션 구축. 현대모비스 CES 2020 전시용 Unity VR 주행 체험 시스템 연동 지원</span>
+            <span class="t-en" style="display:none;">Engineered enterprise IP PBX and CTI conferencing solutions using Asterisk/FreePBX. Supported Hyundai Mobis CES 2020 VR driving experience deployment.</span>
+          </p>
+        </div>
+
+        <!-- Eozz -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title t-ko">주식회사 이오즈 / 유림ADS</span>
+              <span class="exp-title t-en" style="display:none;">Eozz Inc. / Yulim ADS</span>
+              <span class="exp-role-badge">기획 실장 / 총괄 PM (Planning Director)</span>
+            </div>
+            <div class="exp-date">2005.12 ~ 2014.06 (8년 7개월)</div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            <span class="t-ko">정부 전자정부 발주 프로젝트 제안 및 총괄 PM. 삼성, LG애드, SK 등 대기업 대상 디자인 및 IT 프로젝트 계약 및 납품 총괄</span>
+            <span class="t-en" style="display:none;">Spearheaded e-Government project delivery and managed major IT/design contracts for Tier-1 clients including Samsung, LG, and SK.</span>
+          </p>
+        </div>
+
+        <!-- Teaching / Translation -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title t-ko">시사영어학원 / 대기업 어학 교육 및 통번역 PM</span>
+              <span class="exp-title t-en" style="display:none;">Corporate English Training & Translation Director</span>
+              <span class="exp-role-badge">대표 강사 / 통번역 총괄</span>
+            </div>
+            <div class="exp-date">1985 ~ 2014</div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            <span class="t-ko">시사영어학원 대표 강사(TOEFL, TOEIC). 삼성HP, SK, 현대 사내 연수 및 정부 프로젝트 통번역 PM 총괄</span>
+            <span class="t-en" style="display:none;">Master Instructor for advanced TOEFL/TOEIC at premier institutes. Led executive corporate training for Samsung HP, SK, and Hyundai.</span>
+          </p>
+        </div>
+      </section>
+
+      <!-- ==================== INTERNATIONAL PARTNERSHIPS ==================== -->
+      <section class="section">
+        <h2 class="section-title">
+          <span class="t-ko">글로벌 사업 및 국제 기술 협력 (International Partnerships)</span>
+          <span class="t-en" style="display:none;">International Engagement & Strategic Partnerships</span>
+        </h2>
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th style="width: 15%;">기간 (Date)</th>
+              <th style="width: 25%;">국가 / 대상 기관</th>
+              <th>주요 성과 및 협력 내용 (Key Highlights)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>2024.12</strong></td>
+              <td><strong>카자흐스탄 (Kazakhstan)</strong></td>
+              <td>
+                • <strong>중계무역 계약 10만 달러 체결</strong><br>
+                • 현지 대학과 첨단 기술 협력 MOU 체결 및 유라시아 기술 사업 확장
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2024.11</strong></td>
+              <td><strong>폴란드 (Poland)</strong></td>
+              <td>
+                • 한국 상단 대표사로 공식 참가 (메타버스 & 드론 관제 분야)<br>
+                • 유럽 시장 네트워킹 및 독자 기술/사업 모델 IR 발표
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2024.10</strong></td>
+              <td><strong>카자흐스탄 방산 방문단</strong></td>
+              <td>
+                • 방산 방문단 방한 초청 실무 총괄 및 드론/보안 기술 협력 논의 조율
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2024.08</strong></td>
+              <td><strong>독일 (Germany) BMS 법인</strong></td>
+              <td>
+                • 배터리 관리 시스템(BMS) 고전압 모듈 기술 협력 및 사업 협약(MOU) 체결
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2024.07</strong></td>
+              <td><strong>인도네시아 (Indonesia)</strong></td>
+              <td>
+                • 실시간 온라인 방송 및 기술 웨비나 진행, 해외 기술 브랜딩
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2024.05</strong></td>
+              <td><strong>태국 (Thailand)</strong></td>
+              <td>
+                • 언어 서비스 전문 기업과 언어 기반 AI 서비스 및 글로벌 SaaS 확장 MOU 체결
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2024.02</strong></td>
+              <td><strong>인도네시아 센다나 대학교</strong></td>
+              <td>
+                • 대학 간 기술 교류 및 AI/소프트웨어 교육 프로그램 협약(MOU) 체결
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2024.01</strong></td>
+              <td><strong>인도네시아 노동부</strong></td>
+              <td>
+                • 노동부 차관 현지 직접 면담, AI/기술 기반 인력 양성 정책 협의
+              </td>
+            </tr>
+            <tr>
+              <td><strong>2023.11</strong></td>
+              <td><strong>인도네시아 주요 대학 총장단</strong></td>
+              <td>
+                • 총장단 방한 서울 일정 실무 총괄 및 산학 기술 연계 프로그램 기획
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ==================== EDUCATION & CERTIFICATIONS ==================== -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+        <!-- Education -->
+        <section class="section">
+          <h2 class="section-title">
+            <span class="t-ko">학력 사항 (Education)</span>
+            <span class="t-en" style="display:none;">Education</span>
+          </h2>
+          <div style="margin-bottom: 14px;">
+            <strong style="font-size: 15px; color: var(--text-main);">University of Maryland (미국 메릴랜드 대학교)</strong><br>
+            <span style="font-size: 13.5px; color: var(--text-muted);">Bachelor of Science in Management (경영학 학사)</span><br>
+            <span style="font-size: 12.5px; font-family: 'JetBrains Mono', monospace; color: var(--text-sub);">1985.08 ~ 1994.06 (졸업)</span>
+          </div>
+          <div>
+            <strong style="font-size: 15px; color: var(--text-main);">건국대학교 (Konkuk University)</strong><br>
+            <span style="font-size: 13.5px; color: var(--text-muted);">생물학과 (편입, 1985)</span>
+          </div>
+        </section>
+
+        <!-- Certifications & Awards -->
+        <section class="section">
+          <h2 class="section-title">
+            <span class="t-ko">자격증 및 수상 (Credentials)</span>
+            <span class="t-en" style="display:none;">Certifications & Awards</span>
+          </h2>
+          <ul style="list-style: none; font-size: 13.5px; color: var(--text-muted); line-height: 1.8;">
+            <li>🏆 <strong>제주오르미캠프 우수상</strong> (2025.12) - 팀 프로젝트 1위 & 개인 성적 우수</li>
+            <li>☁️ <strong>AWS Certified Cloud Practitioner (CLF-C02)</strong> (2025.11)</li>
+            <li>🚁 <strong>초경량비행장치 멀티콥터 1종 조종자</strong> (2021.03, 1,000+ 비행시간)</li>
+            <li>✈️ <strong>초경량비행장치 고정익 3종 조종자</strong> (2022.08)</li>
+            <li>🖨️ <strong>3D 프린터 운용기능사</strong> (2021.07, 한국산업인력공단)</li>
+            <li>🎨 <strong>GTQ 포토샵 1급</strong> (2018.10, 한국생산성본부)</li>
+            <li>🗣️ <strong>TOEFL (627점)</strong> (1985.05, ETS) - 원어민급 비즈니스 영어</li>
+            <li>🎖️ <strong>체육부 장관 기장</strong> (1988, 대한민국 체육부)</li>
+          </ul>
+        </section>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      const koElements = document.querySelectorAll('.t-ko');
+      const enElements = document.querySelectorAll('.t-en');
+      const btnKo = document.getElementById('btn-ko');
+      const btnEn = document.getElementById('btn-en');
+
+      if (lang === 'ko') {
+        koElements.forEach(el => el.style.display = '');
+        enElements.forEach(el => el.style.display = 'none');
+        btnKo.classList.add('active');
+        btnEn.classList.remove('active');
+        document.documentElement.lang = 'ko';
+      } else {
+        koElements.forEach(el => el.style.display = 'none');
+        enElements.forEach(el => el.style.display = '');
+        btnKo.classList.remove('active');
+        btnEn.classList.add('active');
+        document.documentElement.lang = 'en';
+      }
+    }
+  </script>
+</body>
+</html>

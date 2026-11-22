@@ -1,438 +1,290 @@
 {
     "profile": {
-        "first_name": "Nam Korea",
-        "middle_names": "Byung",
+        "first_name": "Byungnam",
+        "middle_names": "Tony",
         "last_name": "Lee",
+        "korean_name": "이병남 (李丙南)",
+        "headline": "AI Systems Engineer & Full-Stack Software Architect",
         "date_of_birth": "1967-05-04",
-        "place_of_birth": "'Rural Youngdong",
-        "biography": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio alias mollitia similique voluptas harum quaerat deserunt cum molestiae.",
+        "place_of_birth": "Youngdong",
+        "biography": "AI engineer and full-stack software architect specializing in production-grade LLM/RAG systems, 3D scanning spatial pipelines, autonomous drone GCS, and international strategic partnerships.",
         "current_location": {
             "street": "Hosuro 688",
             "housenumber": "A523",
             "zipcode": "10364",
-            "city": "'Goyang",
+            "city": "Goyang-si, Gyeonggi-do",
             "country": "S. Korea",
             "planet": "Earth"
         }
     },
     "contact_details": {
-        "email": "aiegoo@naver.com",
-        "phone": "+82(0)10 5044 6037",
-        "skype": "",
-        "website": "http://pf7.36io.co/",
-        "twitter": "",
-        "linkedin": ""
+        "email": "xraiegoo@gmail.com",
+        "secondary_email": "aiegoo@naver.com",
+        "phone": "+82 10 2544 1197",
+        "emergency_phone": "+82 31 819 1196",
+        "github": "https://github.com/aiegoo",
+        "website": "https://pf7.eggs.or.kr",
+        "resume_web": "https://pf1.eggs.or.kr",
+        "twitter": "https://x.com/elbeetony",
+        "linkedin": "http://linkedin.com/in/tonyleekorea"
     },
+    "summary_statement": "AI가 산업의 구조를 근본적으로 재편하고 있는 지금, 저는 기술적 실험에 머무르지 않고 LLM과 첨단 기술을 실제 서비스와 시스템에 통합하여 운영 가능한 비즈니스 가치로 만들어 온 엔지니어이자 아키텍트입니다.",
     "educations": [
         {
             "title": "University of Maryland",
-            "specification": "SMBA",
-            "location": "Yongsan Campus",
-            "level": "Continuring",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum culpa cupiditate omnis at debitis.",
+            "specification": "Management (BS)",
+            "location": "College Park / Yongsan",
+            "level": "Bachelor of Science",
+            "description": "Comprehensive curriculum in project management, analytical decision making, and team collaboration. Completed coursework with high distinction while working concurrently as an instructor.",
             "start_date": "1985-08-01",
-            "end_date": "1990-06-01",
+            "end_date": "1994-06-01",
             "completed": true
+        },
+        {
+            "title": "Konkuk University",
+            "specification": "Department of Biology",
+            "location": "Seoul",
+            "level": "Transfer",
+            "description": "Studies in biological science prior to transfer to University of Maryland.",
+            "start_date": "1985-03-01",
+            "end_date": "1985-08-01",
+            "completed": false
         }
     ],
     "experiences": [
         {
-            "title": "Yulim ADS",
-            "specification": "PM",
+            "title": "Ucon Creative Co., Ltd. (유콘크리에이티브주식회사)",
+            "specification": "Development Director (개발 실장)",
+            "location": "Ulsan / Seoul",
+            "level": "Fulltime",
+            "description": "Spearheaded AI software architecture, 3D scanning drone pipelines for metaverse digital twin creation, real-time drone/EV fleet monitoring systems, and international technical partnerships.",
+            "start_date": "2023-05-01",
+            "end_date": "2025-08-31",
+            "projects": [
+                {
+                    "name": "Metaverse 3D Scanning Drone & Data Pipeline",
+                    "period": "2023.06 - 2023.12",
+                    "role": "Big Data & Pipeline Architect",
+                    "highlights": [
+                        "Architected 3D spatial scanning data pipeline for metaverse reconstruction",
+                        "Implemented large-scale distributed point-cloud processing and storage optimization",
+                        "Automated point cloud registration and post-processing algorithms"
+                    ],
+                    "stack": ["3D Data Processing", "Large-scale Data Pipeline", "Storage Optimization", "Backend Architecture"]
+                },
+                {
+                    "name": "Generative AI & LLM Systems Integration",
+                    "period": "2023.05 - 2023.12",
+                    "role": "Lead AI Engineer",
+                    "highlights": [
+                        "Self-hosted local LLM servers (Ollama, llama.cpp) and integrated GPU acceleration (CUDA)",
+                        "Built high-throughput RAG search using Typesense semantic vector indexing",
+                        "Model performance optimization, quantization, and production SaaS integration"
+                    ],
+                    "stack": ["LLM", "RAG", "Ollama", "Typesense", "CUDA", "Node.js", "Python"]
+                },
+                {
+                    "name": "3D-IR Aerial Scanning Drone & Secure Pipeline",
+                    "period": "2023.10 - 2023.12",
+                    "role": "DevOps PM",
+                    "highlights": [
+                        "Engineered 3D LiDAR and thermal IR spatial scanning embedded drone systems",
+                        "Designed secure edge-to-ground telemetry protocol compliant with defense/security standards"
+                    ],
+                    "stack": ["Embedded Systems", "Sensor Processing", "Secure Data Pipeline", "Edge-to-Ground"]
+                },
+                {
+                    "name": "Integrated Drone & EV Fleet Control Platform",
+                    "period": "2023.10 - 2023.12",
+                    "role": "DevOps PM",
+                    "highlights": [
+                        "Designed real-time monitoring and control backend for autonomous drone/EV fleets",
+                        "Implemented WebSocket & Redis Pub/Sub low-latency streaming and telemetry visualization",
+                        "Engineered real-time anomaly detection and event-based alerting engine"
+                    ],
+                    "stack": ["Real-time Monitoring", "WebSocket", "Redis Pub/Sub", "Data Visualization", "Alert System"]
+                }
+            ]
+        },
+        {
+            "title": "JDLab Co., Ltd. (주식회사 제이디랩)",
+            "specification": "Principal Software Researcher (수석연구원)",
             "location": "Seoul",
             "level": "Fulltime",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum culpa cupiditate omnis at debitis.",
-            "start_date": "1997-04-01",
-            "end_date": null
+            "description": "Architected drone Ground Control Station (GCS) software and MAVLink telemetry protocol parsers in C++ and Qt5 (NDA).",
+            "start_date": "2022-02-01",
+            "end_date": "2022-05-31"
         },
         {
-            "title": "English Instructor",
-            "specification": "TOEFL TOEIC",
+            "title": "Hitech (하이테크)",
+            "specification": "Software Team Lead (개발 팀장)",
             "location": "Seoul",
             "level": "Fulltime",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum culpa cupiditate omnis at debitis.",
-            "start_date": "1985-12-01",
-            "end_date": null,
-			"link": "http://www.soaphair.nl/"
+            "description": "Led sensor firmware development, IoT embedded telemetry protocols, and data acquisition systems (NDA).",
+            "start_date": "2020-02-01",
+            "end_date": "2020-12-31"
         },
         {
-            "title": "Eozz Inc.",
-            "specification": "PM",
-            "location": "Seoul / 'Ilsan",
+            "title": "ONOFFLINK Co., Ltd. (온오프링크 주식회사)",
+            "specification": "Technical PM / Lead Engineer (개발 책임)",
+            "location": "Seoul",
             "level": "Fulltime",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum culpa cupiditate omnis at debitis.",
-            "start_date": "2008-09-01",
-            "end_date": "2016-03-01"
+            "description": "Built IP PBX and CTI conference call platforms with Asterisk/FreePBX. Supported Hyundai Mobis CES 2020 Las Vegas VR driving experience integration.",
+            "start_date": "2019-03-01",
+            "end_date": "2019-09-30"
         },
         {
-            "title": "Chu Arts",
-            "specification": "CAD Designer",
-            "location": "LA",
-            "level": "Graduate Internship",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum culpa cupiditate omnis at debitis.",
-            "start_date": "1996-02-01",
-            "end_date": "1997-07-01"
-        },
-        {
-            "title": "Eozz Inc",
-            "specification": "Webdeveloper",
-            "location": "Ilsan",
+            "title": "Eozz Inc. / Yulim ADS (주식회사 이오즈)",
+            "specification": "Planning Director / Lead PM (기획 실장)",
+            "location": "Seoul / Ilsan",
             "level": "Fulltime",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita laborum culpa cupiditate omnis at debitis.",
-            "start_date": "2019-02-01",
-            "end_date": null
+            "description": "Spearheaded national e-Government projects, public sector proposals, and design/technology contract delivery for Tier-1 corporate clients (Samsung, LG, SK).",
+            "start_date": "2005-12-01",
+            "end_date": "2014-06-30"
+        },
+        {
+            "title": "Senior Corporate Instructor & Translation PM",
+            "specification": "Master Instructor / Translation Director",
+            "location": "Seoul",
+            "level": "Fulltime / Contract",
+            "description": "Taught advanced TOEFL/TOEIC at premier language institutes (Sisa, Chongro) and delivered executive English education for Samsung HP, SK, and Hyundai.",
+            "start_date": "1985-08-01",
+            "end_date": "2014-06-01"
+        }
+    ],
+    "international_partnerships": [
+        {
+            "date": "2024-12",
+            "country": "Kazakhstan",
+            "title": "$100,000 Multilateral Trade Contract & Academic Tech MOU",
+            "details": "Executed $100k international trade agreement and signed technical collaboration MOU with local university."
+        },
+        {
+            "date": "2024-11",
+            "country": "Poland",
+            "title": "Korean Business Mission Delegation (Metaverse & Drone Control)",
+            "details": "Represented drone GCS and metaverse technologies at European industrial cooperation convention."
+        },
+        {
+            "date": "2024-10",
+            "country": "Kazakhstan",
+            "title": "Defense Delegation Hosting & Tech Coordination",
+            "details": "Managed high-level defense delegation visit to South Korea and coordinated military/industrial technology discussions."
+        },
+        {
+            "date": "2024-08",
+            "country": "Germany",
+            "title": "High-Voltage BMS Module Technology Partnership MOU",
+            "details": "Negotiated battery management system technology transfer and strategic business partnership with German entity."
+        },
+        {
+            "date": "2024-07",
+            "country": "Indonesia",
+            "title": "Live Technical Webinars & Online Broadcasting",
+            "details": "Directed and hosted live technical broadcasts and developer outreach webinars in Indonesia."
+        },
+        {
+            "date": "2024-05",
+            "country": "Thailand",
+            "title": "Language AI Service & Global SaaS MOU",
+            "details": "Established AI service cooperation framework with Thai enterprise for international SaaS expansion."
+        },
+        {
+            "date": "2024-02",
+            "country": "Indonesia",
+            "title": "Nusa Cendana University Academic Tech MOU",
+            "details": "Signed university-wide partnership agreement for AI and software curriculum cooperation."
+        },
+        {
+            "date": "2024-01",
+            "country": "Indonesia",
+            "title": "Vice Minister of Manpower Bilateral Meeting",
+            "details": "Direct bilateral meeting on AI/tech talent development and bilateral industrial cooperation."
+        },
+        {
+            "date": "2023-11",
+            "country": "Indonesia",
+            "title": "Council of Indonesian University Presidents Delegation Director",
+            "details": "Directed official Seoul itinerary and academic-industry technology exchange summits for university presidents."
         }
     ],
     "skills": [
+        {"title": "Generative AI & LLM Systems", "level": 10, "endorsement": "RAG, Ollama, llama.cpp, Prompting"},
+        {"title": "Semantic Vector Search", "level": 10, "endorsement": "Typesense, ChromaDB, Embeddings"},
+        {"title": "Node.js & GraphQL", "level": 9, "endorsement": "GraphQL Yoga, Apollo Server, Express"},
+        {"title": "Prisma & PostgreSQL", "level": 9, "endorsement": "Database Architecture, Migrations"},
+        {"title": "Python & C++", "level": 9, "endorsement": "FastAPI, Django, Qt5, OpenCV, MAVLink"},
+        {"title": "Frontend (React & Vite)", "level": 9, "endorsement": "TailwindCSS, Apollo Client, SPA"},
+        {"title": "DevOps & Cloud (AWS)", "level": 9, "endorsement": "CLF-C02, Docker, Linux, CI/CD"},
+        {"title": "Real-time Telemetry & WebSockets", "level": 9, "endorsement": "Redis Pub/Sub, Drone GCS"},
+        {"title": "Drone & Embedded Systems", "level": 9, "endorsement": "Licensed UAV Pilot 1,000+ hrs, Sensors"},
+        {"title": "International Business & Negotiation", "level": 10, "endorsement": "Bilingual, Trade, MOUs"}
+    ],
+    "certifications": [
         {
-            "title": "PHP",
-            "level": 9,
-            "endorsement": ""
+            "title": "AWS Certified Cloud Practitioner (CLF-C02)",
+            "issuer": "Amazon Web Services",
+            "date": "2025-11",
+            "status": "Active"
         },
         {
-            "title": "MySQL",
-            "level": 9,
-            "endorsement": ""
+            "title": "Ultra-Light Vehicle Flight License (Class 1 Multicopter)",
+            "issuer": "Korea Transportation Safety Authority",
+            "date": "2021-03",
+            "status": "1,000+ Flight Hours"
         },
         {
-            "title": "HTML",
-            "level": 10,
-            "endorsement": ""
+            "title": "Ultra-Light Vehicle Flight License (Class 3 Fixed-Wing)",
+            "issuer": "Korea Transportation Safety Authority",
+            "date": "2022-08",
+            "status": "Active"
         },
         {
-            "title": "CSS",
-            "level": 9,
-            "endorsement": ""
+            "title": "3D Printer Operation Craftsman",
+            "issuer": "Human Resources Development Service of Korea",
+            "date": "2021-07",
+            "status": "National Technical Qualification"
         },
         {
-            "title": "Javascript",
-            "level": 9,
-            "endorsement": ""
+            "title": "GTQ Graphic Technology Qualification (Photoshop Grade 1)",
+            "issuer": "Korea Productivity Center (KPC)",
+            "date": "2018-10",
+            "status": "National Professional Qualification"
         },
         {
-            "title": "JQuery",
-            "level": 10,
-            "endorsement": ""
+            "title": "TOEFL (Score: 627)",
+            "issuer": "ETS",
+            "date": "1985-05",
+            "status": "Bilingual / Advanced Business Level"
+        }
+    ],
+    "awards": [
+        {
+            "title": "Jeju Oromi Camp Outstanding Achievement Award",
+            "issuer": "Jeju Oromi Camp",
+            "date": "2025-12",
+            "description": "Awarded for 1st Place Team Project & Individual Top Academic Score."
         },
         {
-            "title": "Less",
-            "level": 8,
-            "endorsement": ""
-        },
-        {
-            "title": "JSON",
-            "level": 10,
-            "endorsement": ""
-        },
-        {
-            "title": "XML",
-            "level": 10,
-            "endorsement": ""
-        },
-        {
-            "title": "Bootstrap 2.x",
-            "level": 9,
-            "endorsement": ""
-        },
-        {
-            "title": "Bootstrap 3.x",
-            "level": 8,
-            "endorsement": ""
-        },
-        {
-            "title": "Wordpress",
-            "level": 8,
-            "endorsement": ""
-        },
-        {
-            "title": "Object Orientated Programming",
-            "level": 8,
-            "endorsement": ""
-        },
-        {
-            "title": "MVC Pattern",
-            "level": 8,
-            "endorsement": ""
-        },
-        {
-            "title": "Singleton Pattern",
-            "level": 9,
-            "endorsement": ""
-        },
-        {
-            "title": "Method factory Pattern",
-            "level": 7,
-            "endorsement": ""
-        },
-        {
-            "title": "Command line",
-            "level": 5,
-            "endorsement": "Basics only"
-        },
-        {
-            "title": "UML",
-            "level": 8,
-            "endorsement": ""
+            "title": "Minister of Sports Citation",
+            "issuer": "Ministry of Sports, Republic of Korea",
+            "date": "1988",
+            "description": "National commendation awarded for distinguished service."
         }
     ],
     "languages": [
-        {
-            "title": "Dutch",
-            "level": 9,
-            "endorsement": "Mother tongue"
-        },
-        {
-            "title": "English",
-            "level": 9,
-            "endorsement": "Daily use"
-        },
-        {
-            "title": "German",
-            "level": 3,
-            "endorsement": "Survivable"
-        },
-        {
-            "title": "French",
-            "level": 2,
-            "endorsement": "Un petit pue"
-        }
+        {"title": "Korean", "level": 10, "endorsement": "Mother tongue (Native)"},
+        {"title": "English", "level": 10, "endorsement": "Bilingual / Fluent (TOEFL 627, BS at UMD)"},
+        {"title": "Japanese", "level": 4, "endorsement": "Conversational basics"},
+        {"title": "German", "level": 3, "endorsement": "Elementary"}
     ],
-    "tools": [
-        {
-            "title": "Notepad++",
-            "level": 9,
-            "endorsement": "8 years"
-        },
-        {
-            "title": "Filezilla",
-            "level": 9,
-            "endorsement": "8 years"
-        },
-        {
-            "title": "MS Office",
-            "level": 9,
-            "endorsement": "10+ years"
-        },
-        {
-            "title": "Sublime Text",
-            "level": 7,
-            "endorsement": "2 years"
-        },
-        {
-            "title": "Coda",
-            "level": 6,
-            "endorsement": "1 year"
-        },
-        {
-            "title": "Windows",
-            "level": 9,
-            "endorsement": "10+ years"
-        },
-        {
-            "title": "Mac",
-            "level": 8,
-            "endorsement": "2 years"
-        },
-        {
-            "title": "Firefox",
-            "level": 9,
-            "endorsement": "8 years"
-        },
-        {
-            "title": "Webkit browsers",
-            "level": 8,
-            "endorsement": "6 years"
-        },
-        {
-            "title": "Internet Explore 6+",
-            "level": 8,
-            "endorsement": "8 years"
-        },
-        {
-            "title": "Adobe Fireworks",
-            "level": 8,
-            "endorsement": "8 years"
-        },
-        {
-            "title": "Adobe Photoshop",
-            "level": 6,
-            "endorsement": "6 years"
-        }
-    ],
-    "books": [
-        {
-            "title": "PHP mySQL Javascript",
-            "level": 9,
-            "endorsement": "40%"
-        },
-        {
-            "title": "jQuery",
-            "level": 9,
-            "endorsement": "100%"
-        },
-        {
-            "title": "nodeJS",
-            "level": 9,
-            "endorsement": "0%"
-        },
-        {
-            "title": "git",
-            "level": 7,
-            "endorsement": "80%"
-        },
-        {
-            "title": "SVG",
-            "level": 6,
-            "endorsement": "40%"
-        },
-        {
-            "title": "Javascript Cookbook",
-            "level": 9,
-            "endorsement": "10%"
-        },
-        {
-            "title": "WordPress",
-            "level": 8,
-            "endorsement": "2 years"
-        },
-        {
-            "title": "HTML&CSS",
-            "level": 9,
-            "endorsement": "8 years"
-        },
-        {
-            "title": "Webkit browsers",
-            "level": 8,
-            "endorsement": "6 years"
-        },
-        {
-            "title": "Internet Explore 6+",
-            "level": 8,
-            "endorsement": "8 years"
-        },
-        {
-            "title": "Adobe Fireworks",
-            "level": 8,
-            "endorsement": "8 years"
-        },
-        {
-            "title": "Adobe Photoshop",
-            "level": 6,
-            "endorsement": "6 years"
-        }
-    ],
-    "Tutorials": [
-        {
-            "title": "PHP Beginner",
-            "level": 9,
-            "endorsement": "13%"
-        },
-        {
-            "title": "Web Bootcamp",
-            "level": 9,
-            "endorsement": "28%"
-        },
-        {
-            "title": "Node.js",
-            "level": 9,
-            "endorsement": "8%"
-        },
-        {
-            "title": "WordPress Developer",
-            "level": 7,
-            "endorsement": "21%"
-        },
-        {
-            "title": "SASS Course",
-            "level": 6,
-            "endorsement": "40%"
-        },
-        {
-            "title": "Advanced CSS/SASS",
-            "level": 9,
-            "endorsement": "36%"
-        },
-        {
-            "title": "ECMAscript 6",
-            "level": 8,
-            "endorsement": "3%"
-        },
-        {
-            "title": "AWS Certified",
-            "level": 9,
-            "endorsement": "15%"
-        },
-        {
-            "title": "PHP & mySQL",
-            "level": 8,
-            "endorsement": "0%"
-        },
-        {
-            "title": "HTML, CSS, Javascript",
-            "level": 8,
-            "endorsement": "17%"
-        },
-        {
-            "title": "Git a developer",
-            "level": 8,
-            "endorsement": "89%"
-        },
-        {
-            "title": "Git started",
-            "level": 8,
-            "endorsement": "85%"
-        },
-        {
-            "title": "Angular 7",
-            "level": 8,
-            "endorsement": "0%"
-        },
-        {
-            "title": "Adobe Muse CC",
-            "level": 8,
-            "endorsement": "100%"
-        },
-        {
-            "title": "First Website",
-            "level": 8,
-            "endorsement": "60%"
-        },
-        {
-            "title": "GSAP",
-            "level": 8,
-            "endorsement": "100%"
-        },
-        {
-            "title": "Git Bash",
-            "level": 6,
-            "endorsement": "74%"
-        }
-    ],
-    "interests": [
-        {
-            "title": "Sports",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut pariatur recusandae et.",
-			"image": "sports.jpg"
-        },
-        {
-            "title": "Movies",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut pariatur recusandae et.",
-			"image": "music.jpg"
-        },
-        {
-            "title": "My flocks",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut pariatur recusandae et.",
-			"image": "cats.jpg"
-        },
-        {
-            "title": "Yoga",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut pariatur recusandae et.",
-			"image": "algorithms.jpg"
-        },
-        {
-            "title": "Travel",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut pariatur recusandae et.",
-			"image": "travel.jpg"
-        }
+    "key_links": [
+        {"title": "Typesense Semantic Search & Chat", "url": "https://aiegoo.github.io/yoga/chat"},
+        {"title": "MCU Local Serving (SPA)", "url": "https://festory.eggs.or.kr"},
+        {"title": "Quantum Security POC", "url": "https://aiegoo.github.io/kisec-final/#/4/1"},
+        {"title": "GitHub Actions Auth Architecture", "url": "https://aiegoo.github.io/pro-git"},
+        {"title": "Developer Documentation Portal", "url": "https://pf7.eggs.or.kr"},
+        {"title": "Interactive Resume", "url": "https://pf1.eggs.or.kr"},
+        {"title": "Drone System Portal", "url": "https://aiegoo.github.io/_mydrone"}
     ]
 }
