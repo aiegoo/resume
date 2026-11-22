@@ -28,6 +28,8 @@
 - **이력서 최신 웹 버전 (KO/EN 언어 토글 지원)**: [docs/resume_latest.html](docs/resume_latest.html)
 - **메인 포트폴리오 웹사이트**: [docs/index.html](docs/index.html)
 - **라이브 서비스 데모**:
+  - **요가큐(YogaQ) 사업·기술 슬라이드**: [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo)
+  - **요가큐(YogaQ) 원페이저 사업계획서 PDF**: [elbee.yogaman.club/modoo/print.pdf](https://elbee.yogaman.club/modoo/print.pdf)
   - **YogaQ Studio 대화형 AI 챗봇**: [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat)
   - **YogaQ Studio 시맨틱 검색 데모**: [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search)
   - **Edge MCU 싱글페이지 웹 서빙 (SPA on Edge)**: [festory.eggs.or.kr](https://festory.eggs.or.kr)
