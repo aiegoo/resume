@@ -6,23 +6,25 @@
   <title>이병남 (Tony Lee) - AI Systems Engineer & Full-Stack Architect</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #1e3a8a;
-      --primary-light: #3b82f6;
-      --primary-soft: #eff6ff;
-      --accent: #0d9488;
-      --accent-soft: #f0fdfa;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --text-sub: #64748b;
-      --bg-body: #f8fafc;
+      --primary: #22A39F;
+      --primary-dark: #1c8784;
+      --primary-light: #2bc4c0;
+      --primary-soft: #f0fdfa;
+      --accent: #22A39F;
+      --accent-soft: #e6f7f6;
+      --text-main: #222222;
+      --text-muted: #434242;
+      --text-sub: #727878;
+      --bg-body: #F3EFE0;
       --bg-card: #ffffff;
       --border: #e2e8f0;
       --border-dark: #cbd5e1;
-      --tag-bg: #f1f5f9;
-      --tag-text: #334155;
+      --tag-bg: #e6f7f6;
+      --tag-text: #1c8784;
     }
 
     * {
@@ -32,7 +34,7 @@
     }
 
     body {
-      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: 'Open Sans', 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       background-color: var(--bg-body);
       color: var(--text-main);
       line-height: 1.6;
@@ -466,28 +468,36 @@
   <div class="container">
     <div class="resume-paper">
 
-      <!-- Visual Hero Banner (Created with PhotoCraft MCP) -->
-      <div style="margin-bottom: 28px; border-radius: 10px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.08); border: 1px solid var(--border);">
-        <img src="resume_banner.png" alt="Tony Lee Profile & Architecture Banner" style="width: 100%; height: auto; display: block;">
-      </div>
+      
 
       <!-- ==================== HEADER ==================== -->
-      <header class="header">
-        <div class="header-left">
+      <header class="header" style="display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+        <div class="header-left" style="flex: 1;">
           <h1>
             <span class="t-ko">이병남</span>
             <span class="t-en" style="display:none;">Byungnam (Tony) Lee</span>
             <span class="name-sub">Tony Lee / 李丙南</span>
           </h1>
           <div class="headline">
-            <span class="t-ko">AI 시스템 엔지니어 & 풀스택 소프트웨어 아키텍트</span>
-            <span class="t-en" style="display:none;">AI Systems Engineer & Full-Stack Software Architect</span>
+            <span class="t-ko">AI 시스템 & RAG 엔지니어 (AI Systems & RAG Engineer)</span>
+            <span class="t-en" style="display:none;">AI Systems & RAG Engineer</span>
           </div>
           <div class="contact-grid">
+            <div class="contact-item">💰 <span class="t-ko">희망연봉: <strong>회사 내규에 따름 / 면접 후 협의 (협의 가능)</strong></span><span class="t-en" style="display:none;">Salary: <strong>Negotiable</strong></span></div>
             <div class="contact-item">📧 <a href="mailto:xraiegoo@gmail.com">xraiegoo@gmail.com</a></div>
-            <div class="contact-item">📱 <span>+82 10-2544-1197</span></div>
+            <div class="contact-item">📱 <span>010-2544-1197</span></div>
             <div class="contact-item">🐙 <a href="https://github.com/aiegoo" target="_blank">github.com/aiegoo</a></div>
-            <div class="contact-item">📍 <span class="t-ko">경기도 고양시 일산동구</span><span class="t-en" style="display:none;">Goyang-si, Gyeonggi-do, Korea</span></div>
+            <div class="contact-item">📍 <span class="t-ko">서울 마포구 공덕동</span><span class="t-en" style="display:none;">Mapo-gu, Seoul, Korea</span></div>
+          </div>
+        </div>
+        <div class="header-photo" style="flex-shrink: 0; display: flex; gap: 16px; align-items: center;">
+          <div style="text-align: center;">
+            <img src="images/tonyillust_atwork.svg" alt="Tony Lee Round Illustration" style="width: 105px; height: 105px; border-radius: 50%; border: 3px solid #22A39F; box-shadow: 0 4px 14px rgba(34,163,159,0.25); background: #ffffff; padding: 2px;" onerror="this.src='tonyillust_atwork.svg'">
+            <div style="font-size: 11px; color: #22A39F; font-weight: 700; margin-top: 5px;">Creative Profile</div>
+          </div>
+          <div style="text-align: center;">
+            <img src="images/profile_formal_suit.png" alt="이병남 정장 사진" style="width: 105px; height: 135px; object-fit: cover; border-radius: 8px; border: 2px solid #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.12);" onerror="this.src='profile_formal_suit.png'">
+            <div style="font-size: 11px; color: #64748b; font-weight: 600; margin-top: 5px;">정장 프로필</div>
           </div>
         </div>
       </header>
@@ -506,15 +516,15 @@
       <!-- ==================== EXECUTIVE SUMMARY ==================== -->
       <section class="section">
         <h2 class="section-title">
-          <span class="t-ko">소개 (Executive Summary)</span>
-          <span class="t-en" style="display:none;">Executive Summary</span>
+          <span class="t-ko">직무 요약 (Professional Summary)</span>
+          <span class="t-en" style="display:none;">Professional Summary</span>
         </h2>
         <p class="section-desc">
           <span class="t-ko">
-            AI가 산업의 구조를 근본적으로 재편하고 있는 지금, 저는 단순히 API를 호출하는 수준을 넘어 <strong>LLM과 첨단 기술을 실제 서비스와 운영 가능한 시스템에 통합해 온 엔지니어이자 아키텍트</strong>입니다. 자체 호스팅 환경에서 로컬 LLM(Ollama, llama.cpp)과 Typesense 시맨틱 벡터 검색을 결합한 실시간 RAG 파이프라인을 구축하였으며, 3D 스캐닝 드론 데이터 파이프라인 및 모빌리티 관제 시스템을 설계·구현했습니다. 나아가 인도네시아, 태국, 독일, 카자흐스탄 등 글로벌 정부 및 학계와의 전략적 파트너십(MOU 체결 및 10만 달러 규모 무역 계약)을 직접 이끌어낸 비즈니스 실행력을 겸비하고 있습니다.
+            상용 API 단순 호출을 넘어, <strong>자체 호스팅 로컬 LLM(Ollama, llama.cpp, CUDA)과 고성능 시맨틱 벡터 검색(Typesense)을 결합하여 실시간으로 동작하고 운영 가능한 RAG 시스템을 구축하는 AI 시스템 엔지니어</strong>입니다. WebSocket/Redis Pub/Sub 기반의 초저지연 토큰 스트리밍과 Node.js / FastAPI / GraphQL Yoga 백엔드를 설계하였으며, 대용량 3D 공간 데이터 파이프라인 및 글로벌 기술 협약($100K 무역 계약 및 해외 대학 MOU)을 완수한 검증된 엔지니어링 리더십을 갖추고 있습니다.
           </span>
           <span class="t-en" style="display:none;">
-            As AI reshapes global industries, I bridge cutting-edge AI experimentation with production-grade engineering and real-world business value. Rather than merely calling commercial APIs, I specialize in self-hosted local LLMs (Ollama, llama.cpp), ultra-low-latency RAG architectures with Typesense hybrid vector search, and real-time WebSocket backends. My background spans large-scale 3D drone spatial pipelines, IoT fleet telemetry, and international tech diplomacy—having orchestrated university MOUs across Indonesia/Germany/Thailand and closed a $100,000 multilateral trade contract in Kazakhstan.
+            An AI Systems Engineer and Architect specializing in <strong>self-hosted local LLMs (Ollama, llama.cpp, CUDA) and ultra-low-latency, production-ready RAG architectures powered by Typesense hybrid vector search</strong>. Proven track record building real-time WebSocket token streaming, high-throughput Node.js/FastAPI/GraphQL backends, large-scale 3D spatial pipelines, and closing international tech agreements including a $100K trade contract.
           </span>
         </p>
       </section>
@@ -776,19 +786,59 @@
           </p>
         </div>
 
-        <!-- Teaching / Translation -->
+        <!-- Academies & Bootcamps -->
         <div class="exp-item">
           <div class="exp-header">
             <div>
-              <span class="exp-title t-ko">시사영어학원 / 대기업 어학 교육 및 통번역 PM</span>
-              <span class="exp-title t-en" style="display:none;">Corporate English Training & Translation Director</span>
-              <span class="exp-role-badge">대표 강사 / 통번역 총괄</span>
+              <span class="exp-title t-ko">3,000시간 이상의 고강도 아카데미 & 부트캠프 몰입 (The Intensive Academies)</span>
+              <span class="exp-title t-en" style="display:none;">3,000+ Hours Intensive Bootcamp & Academy Training</span>
+              <span class="exp-role-badge">하이미디어(1,120h) • RAPA 5G자율비행(1,080h) • 오르미 1위 수상</span>
             </div>
-            <div class="exp-date">1985 ~ 2014</div>
+            <div class="exp-date">2018.07 ~ 2025.12</div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted); line-height: 1.6;">
+            <span class="t-ko">
+              • <strong>제주오르미캠프 (2025)</strong>: AWS ECS Fargate + OpenSearch + Bedrock 아키텍처 총괄, <strong>팀 프로젝트 1위 및 개인 최우수 수상</strong><br>
+              • <strong>한국전파진흥협회 RAPA (2020~2021, 1,080시간)</strong>: C++, Python, OpenCV, 딥러닝, ROS, GAZEBO 시뮬레이션 및 초경량비행장치 1종 조종자 취득<br>
+              • <strong>하이미디어 컴퓨터학원 (2018~2019, 140일 1,120시간)</strong>: 50대 나이에 매일 8시간 몰입 코딩으로 웹 표준/풀스택 기초 완주, GTQ 1급 취득
+            </span>
+            <span class="t-en" style="display:none;">
+              • <strong>Jeju Oreumi Camp (2025)</strong>: Lead architect for AWS ECS Fargate + OpenSearch + Bedrock, <strong>1st Place Team Project & Top Individual Score</strong><br>
+              • <strong>RAPA 5G Autonomous Flight (2020–2021, 1,080 hrs)</strong>: C++, Python, OpenCV, deep learning, ROS, GAZEBO, and 1,000+ hr UAV pilot license<br>
+              • <strong>Himedia Computer Academy (2018–2019, 1,120 hrs)</strong>: Full-time 8 hrs/day immersion in full-stack web engineering and GTQ Grade 1 certification
+            </span>
+          </p>
+        </div>
+
+        <!-- Retirement & Farming -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title t-ko">인생의 전환점: 은퇴, 귀농(소규모 농장), 그리고 "36 Years Left Coding"</span>
+              <span class="exp-title t-en" style="display:none;">The Pivot: Retirement, Farming & "36 Years Left Coding"</span>
+              <span class="exp-role-badge">전환점 (Life Transformation)</span>
+            </div>
+            <div class="exp-date">2014.07 ~ 2018.06</div>
           </div>
           <p style="font-size: 14px; color: var(--text-muted);">
-            <span class="t-ko">시사영어학원 대표 강사(TOEFL, TOEIC). 삼성HP, SK, 현대 사내 연수 및 정부 프로젝트 통번역 PM 총괄</span>
-            <span class="t-en" style="display:none;">Master Instructor for advanced TOEFL/TOEIC at premier institutes. Led executive corporate training for Samsung HP, SK, and Hyundai.</span>
+            <span class="t-ko">27년간 쉼 없이 달려온 강의와 번역의 길에서 은퇴한 후 일산에서 4년간 소규모 농장을 직접 일구며 자연 속에서 재충전. 흙과 땀 속에서 <em>"남은 삶을 흘려보낼 것인가(36 years left dying) 아니면 남은 삶을 새로운 기술 창작으로 불태울 것인가(36 years left coding)"</em>라는 성찰을 얻고 컴퓨터 사이언스 및 소프트웨어 개발자로 100% 전업(Full Pivot)을 결심.</span>
+            <span class="t-en" style="display:none;">Stepped away from a 27-year teaching and translation career to retire and run a small family farm in Ilsan. Amid hours under the sun, gained the life-changing epiphany: <em>"Instead of spending the next 36 years dying, I will dedicate the next 36 years to coding."</em> Made a 100% full-time commitment to pivot into software and AI systems engineering.</span>
+          </p>
+        </div>
+
+        <!-- Teaching / Translation Chapter 1 -->
+        <div class="exp-item">
+          <div class="exp-header">
+            <div>
+              <span class="exp-title t-ko">제1막: 27년간의 탑티어 어학원 강사 & 대기업 기업 연수 (The Master Educator)</span>
+              <span class="exp-title t-en" style="display:none;">Chapter 1: 27 Years as Premier Educator & Corporate Trainer</span>
+              <span class="exp-role-badge">미국 메릴랜드대 학사 • TOEFL 627 • 이중언어</span>
+            </div>
+            <div class="exp-date">1985.08 ~ 2014.06</div>
+          </div>
+          <p style="font-size: 14px; color: var(--text-muted);">
+            <span class="t-ko">시사영어학원, 종로, 청문외국어학원 대표 강사(TOEFL 627점 기반 토플/토익/AFKN 전담). 삼성HP, SK, 현대 사내 핵심 인력 어학 연수 및 공공/민간 프로젝트 통번역 총괄 PM. 영어권 최신 AI 논문과 오픈소스를 실시간으로 흡수하고 글로벌 기술 협상 및 해외 파트너십을 주도할 수 있는 탄탄한 이중언어 커뮤니케이션 역량의 밑바탕.</span>
+            <span class="t-en" style="display:none;">Master Instructor for TOEFL/TOEIC at premier language institutes (Sisa, Chongro, Chungmun) and corporate trainer for executive engineering teams at Samsung-HP, SK, and Hyundai. The foundation for rapidly absorbing bleeding-edge English AI literature and leading international technical negotiations without language barriers.</span>
           </p>
         </div>
       </section>
@@ -875,6 +925,59 @@
             </tr>
           </tbody>
         </table>
+      </section>
+
+      <!-- ==================== TECHNICAL REFERENCES ==================== -->
+      <section class="section">
+        <h2 class="section-title">
+          <span class="t-ko">실무 아키텍처 및 기술 레퍼런스 (Technical References)</span>
+          <span class="t-en" style="display:none;">Technical References & Architecture Dossier</span>
+        </h2>
+        <p class="section-desc">
+          <span class="t-ko">실제 프로덕션 및 실증(PoC)으로 구축된 시스템 아키텍처 다이어그램, 배포 구성도 및 세부 엔지니어링 명세서입니다.</span>
+          <span class="t-en" style="display:none;">Production blueprints, system flowcharts, deployment specifications, and technical verification reports.</span>
+        </p>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h4>🛸 Drone & Autonomous Fleet GCS</h4>
+            <ul>
+              <li><a href="../technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md" target="_blank">BVLOS Cloud GCS Architecture ↗</a></li>
+              <li><a href="../technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md" target="_blank">Heterogeneous Drone SDK Adapters ↗</a></li>
+              <li><a href="../technical_references/drone_gcs/13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md" target="_blank">Gazebo Sim & Cockpit Telemetry ↗</a></li>
+              <li><a href="../technical_references/drone_gcs/hardware_specs_rpi5_hailo8.md" target="_blank">RPi5 + Hailo-8 NPU Hardware Spec ↗</a></li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h4>⚡ Typesense & Local LLM / RAG</h4>
+            <ul>
+              <li><a href="../technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md" target="_blank">End-to-End RAG Workflow ↗</a></li>
+              <li><a href="../technical_references/typesense_rag/TYPESENSE_SETUP.md" target="_blank">Typesense Hybrid Vector Setup ↗</a></li>
+              <li><a href="../technical_references/typesense_rag/ARCHITECTURE_VISUAL_DIAGRAM.md" target="_blank">System Visual Diagram ↗</a></li>
+              <li><a href="../technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md" target="_blank">GPU & Local Serving Infrastructure ↗</a></li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h4>☁️ AWS Cloud & Explainable AI</h4>
+            <ul>
+              <li><a href="../technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md" target="_blank">ECS Fargate & OpenSearch Flow ↗</a></li>
+              <li><a href="../technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md" target="_blank">Model Explainability Architecture ↗</a></li>
+              <li><a href="../technical_references/cloud_ai_aws/AWS_ENDPOINTS_AND_CHROMADB_MIGRATION.md" target="_blank">Vector DB Migration Benchmark ↗</a></li>
+              <li><a href="../technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md" target="_blank">AWS Bedrock Fallback Guide ↗</a></li>
+            </ul>
+          </div>
+
+          <div class="skill-card">
+            <h4>🎮 Korean NLP & Unity 3D Engine</h4>
+            <ul>
+              <li><a href="../technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md" target="_blank">NLP Direct-to-Physics Pipeline ↗</a></li>
+              <li><a href="../technical_references/korean_nlp_unity/KOR2UNITY_QUICK_START.md" target="_blank">KOR2UNITY Quick Start Guide ↗</a></li>
+              <li><a href="../technical_references/README.md" target="_blank">Full Technical Dossier Index ↗</a></li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <!-- ==================== EDUCATION & CERTIFICATIONS ==================== -->

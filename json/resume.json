@@ -4,10 +4,21 @@
         "middle_names": "Tony",
         "last_name": "Lee",
         "korean_name": "이병남 (李丙南)",
-        "headline": "AI Systems Engineer & Full-Stack Software Architect",
+        "headline": "AI Systems & LLM/RAG Engineer (AI 시스템 & RAG 엔지니어)",
+        "desired_salary": "회사 내규에 따름 / 면접 후 협의 (협의 가능)",
+        "photo": "docs/images/profile_formal_suit.png",
+        "target_role": {
+            "title_ko": "AI 시스템 & RAG 엔지니어",
+            "title_en": "AI Systems & RAG Engineer",
+            "core_competencies": [
+                "온프레미스 GPU 환경 로컬 LLM 서빙 (Ollama, llama.cpp, CUDA, GGUF 양자화 VRAM 65% 절감)",
+                "Typesense 기반 밀집+희소 하이브리드 RAG 인덱싱 (42ms 지연, 할루시네이션 -85%)",
+                "WebSocket 기반 실시간 토큰 스트리밍 백엔드 & 풀스택 연동 (TTFT 350ms)"
+            ]
+        },
         "date_of_birth": "1967-05-04",
         "place_of_birth": "Youngdong",
-        "biography": "AI engineer and full-stack software architect specializing in production-grade LLM/RAG systems, 3D scanning spatial pipelines, autonomous drone GCS, and international strategic partnerships.",
+        "biography": "AI systems engineer specializing in self-hosted local LLMs (Ollama, llama.cpp, CUDA) and production-ready, ultra-low-latency RAG architectures powered by Typesense hybrid vector search.",
         "current_location": {
             "street": "Hosuro 688",
             "housenumber": "A523",
@@ -28,27 +39,14 @@
         "twitter": "https://x.com/elbeetony",
         "linkedin": "http://linkedin.com/in/tonyleekorea"
     },
-    "summary_statement": "AI가 산업의 구조를 근본적으로 재편하고 있는 지금, 저는 기술적 실험에 머무르지 않고 LLM과 첨단 기술을 실제 서비스와 시스템에 통합하여 운영 가능한 비즈니스 가치로 만들어 온 엔지니어이자 아키텍트입니다.",
+    "summary_statement": "상용 API 단순 호출을 넘어, 자체 호스팅 로컬 LLM(Ollama, llama.cpp, CUDA)과 고성능 시맨틱 벡터 검색(Typesense)을 결합하여 실시간으로 동작하고 운영 가능한 RAG 시스템을 구축하는 AI 시스템 엔지니어입니다.",
     "educations": [
         {
             "title": "University of Maryland",
-            "specification": "Management (BS)",
-            "location": "College Park / Yongsan",
-            "level": "Bachelor of Science",
-            "description": "Comprehensive curriculum in project management, analytical decision making, and team collaboration. Completed coursework with high distinction while working concurrently as an instructor.",
+            "specification": "Management / Computer & Information Science (BS)",
             "start_date": "1985-08-01",
             "end_date": "1994-06-01",
             "completed": true
-        },
-        {
-            "title": "Konkuk University",
-            "specification": "Department of Biology",
-            "location": "Seoul",
-            "level": "Transfer",
-            "description": "Studies in biological science prior to transfer to University of Maryland.",
-            "start_date": "1985-03-01",
-            "end_date": "1985-08-01",
-            "completed": false
         }
     ],
     "experiences": [
@@ -228,34 +226,10 @@
             "status": "Active"
         },
         {
-            "title": "Ultra-Light Vehicle Flight License (Class 1 Multicopter)",
-            "issuer": "Korea Transportation Safety Authority",
-            "date": "2021-03",
-            "status": "1,000+ Flight Hours"
-        },
-        {
-            "title": "Ultra-Light Vehicle Flight License (Class 3 Fixed-Wing)",
-            "issuer": "Korea Transportation Safety Authority",
-            "date": "2022-08",
-            "status": "Active"
-        },
-        {
-            "title": "3D Printer Operation Craftsman",
-            "issuer": "Human Resources Development Service of Korea",
-            "date": "2021-07",
-            "status": "National Technical Qualification"
-        },
-        {
-            "title": "GTQ Graphic Technology Qualification (Photoshop Grade 1)",
-            "issuer": "Korea Productivity Center (KPC)",
-            "date": "2018-10",
-            "status": "National Professional Qualification"
-        },
-        {
             "title": "TOEFL (Score: 627)",
             "issuer": "ETS",
             "date": "1985-05",
-            "status": "Bilingual / Advanced Business Level"
+            "status": "Bilingual / Native-Level Business English"
         }
     ],
     "awards": [
@@ -264,12 +238,6 @@
             "issuer": "Jeju Oromi Camp",
             "date": "2025-12",
             "description": "Awarded for 1st Place Team Project & Individual Top Academic Score."
-        },
-        {
-            "title": "Minister of Sports Citation",
-            "issuer": "Ministry of Sports, Republic of Korea",
-            "date": "1988",
-            "description": "National commendation awarded for distinguished service."
         }
     ],
     "languages": [
@@ -286,5 +254,50 @@
         {"title": "Developer Documentation Portal", "url": "https://pf7.eggs.or.kr"},
         {"title": "Interactive Resume", "url": "https://pf1.eggs.or.kr"},
         {"title": "Drone System Portal", "url": "https://aiegoo.github.io/_mydrone"}
+    ],
+    "application_package": {
+        "resume": "01_이력서_이병남.md",
+        "career_description": "02_경력기술서_이병남.md",
+        "portfolio": "03_포트폴리오_이병남.md",
+        "technical_dossier": "04_포트폴리오_기술문서_이병남.md",
+        "interactive_web_portal": "docs/portfolio.html",
+        "modern_resume_web": "docs/resume_latest.html"
+    },
+    "technical_references": [
+        {
+            "category": "Drone GCS & Fleet",
+            "items": [
+                {"title": "BVLOS Cloud GCS Architecture", "path": "technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md"},
+                {"title": "Heterogeneous Drone SDK Adapters", "path": "technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md"},
+                {"title": "Gazebo Sim & Cockpit Telemetry", "path": "technical_references/drone_gcs/13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md"},
+                {"title": "RPi5 + Hailo-8 NPU Hardware Spec", "path": "technical_references/drone_gcs/hardware_specs_rpi5_hailo8.md"}
+            ]
+        },
+        {
+            "category": "Typesense & Local RAG",
+            "items": [
+                {"title": "End-to-End RAG Workflow", "path": "technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md"},
+                {"title": "Typesense Hybrid Vector Setup", "path": "technical_references/typesense_rag/TYPESENSE_SETUP.md"},
+                {"title": "System Visual Diagram", "path": "technical_references/typesense_rag/ARCHITECTURE_VISUAL_DIAGRAM.md"},
+                {"title": "GPU & Local Serving Infrastructure", "path": "technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md"}
+            ]
+        },
+        {
+            "category": "AWS Cloud & Explainable AI",
+            "items": [
+                {"title": "ECS Fargate & OpenSearch Flow", "path": "technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md"},
+                {"title": "Model Explainability Architecture", "path": "technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md"},
+                {"title": "Vector DB Migration Benchmark", "path": "technical_references/cloud_ai_aws/AWS_ENDPOINTS_AND_CHROMADB_MIGRATION.md"},
+                {"title": "AWS Bedrock Fallback Guide", "path": "technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md"}
+            ]
+        },
+        {
+            "category": "Korean NLP & Unity 3D Engine",
+            "items": [
+                {"title": "NLP Direct-to-Physics Pipeline", "path": "technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md"},
+                {"title": "KOR2UNITY Quick Start Guide", "path": "technical_references/korean_nlp_unity/KOR2UNITY_QUICK_START.md"},
+                {"title": "Technical References Master Index", "path": "technical_references/README.md"}
+            ]
+        }
     ]
 }

@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이병남 (Tony Lee) — AI 시스템 & RAG 엔지니어 채용 패키지 (4대 핵심 서류)</title>
+  
+  <!-- Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Marked.js (Markdown Parser) -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  
+  <!-- Mermaid.js (Diagrams) -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              500: '#22A39F',
+              600: '#1c8784',
+              700: '#22A39F',
+              800: '#115e59',
+              900: '#134e4a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Pretendard', sans-serif;
+      background-color: #0f172a;
+      color: #334155;
+    }
+    
+    .markdown-body {
+      line-height: 1.75;
+      font-size: 15px;
+      color: #1e293b;
+    }
+    .markdown-body h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.6rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .markdown-body h2 {
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #0f766e;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 0.4rem;
+      margin-top: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    .markdown-body h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.6rem;
+    }
+    .markdown-body h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #334155;
+      margin-top: 1.2rem;
+      margin-bottom: 0.4rem;
+    }
+    .markdown-body p {
+      margin-bottom: 1rem;
+    }
+    .markdown-body ul, .markdown-body ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .markdown-body ul {
+      list-style-type: disc;
+    }
+    .markdown-body ol {
+      list-style-type: decimal;
+    }
+    .markdown-body li {
+      margin-bottom: 0.35rem;
+    }
+    .markdown-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.2rem 0;
+      font-size: 14px;
+    }
+    .markdown-body th, .markdown-body td {
+      border: 1px solid #cbd5e1;
+      padding: 9px 13px;
+      text-align: left;
+    }
+    .markdown-body th {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .markdown-body tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .markdown-body blockquote {
+      border-left: 4px solid #0d9488;
+      background-color: #f0fdfa;
+      padding: 12px 18px;
+      margin: 1.2rem 0;
+      color: #115e59;
+      font-weight: 500;
+      border-radius: 0 6px 6px 0;
+    }
+    .markdown-body code {
+      background-color: #f1f5f9;
+      color: #0f766e;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 13.5px;
+    }
+    .markdown-body pre {
+      background-color: #1e293b;
+      color: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 1.2rem 0;
+    }
+    .markdown-body pre code {
+      background-color: transparent;
+      color: inherit;
+      padding: 0;
+      font-size: 13px;
+    }
+    .markdown-body a {
+      color: #0d9488;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+    .markdown-body a:hover {
+      color: #0f766e;
+    }
+    .markdown-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+    }
+
+    .tab-btn.active {
+      background-color: #22A39F;
+      color: #ffffff;
+      border-color: #1c8784;
+      box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .tab-pane {
+        display: block !important;
+        page-break-after: always;
+      }
+      .markdown-body {
+        color: #000000 !important;
+      }
+      .print-shadow {
+        box-shadow: none !important;
+        border: none !important;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-900 text-slate-100 flex flex-col">
+
+  <!-- TOP HEADER / NAV -->
+  <header class="no-print bg-slate-950/90 backdrop-blur sticky top-0 z-50 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <div class="flex items-center space-x-3">
+        <a href="index.html" class="flex items-center space-x-2 text-white hover:text-teal-400 transition">
+          <img src="images/tonyillust_atwork.svg" alt="Tony Lee" class="w-9 h-9 rounded-full border-2 border-teal-400 bg-white shadow-sm" onerror="this.src='tonyillust_atwork.svg'">
+          <div>
+            <span class="text-base font-bold tracking-tight">이병남 (Tony Lee)</span>
+            <span class="hidden sm:inline-block ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">AI Systems & RAG Engineer</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div class="flex items-center space-x-2 text-xs sm:text-sm">
+        <a href="https://aiegoo.github.io/yoga/chat" target="_blank" class="px-3 py-1.5 rounded-md bg-teal-600/30 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white transition flex items-center gap-1.5 font-medium">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          YogaQ AI 데모
+        </a>
+        <a href="https://github.com/aiegoo" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white transition flex items-center gap-1.5 font-medium">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+          GitHub
+        </a>
+        <button onclick="window.print()" class="px-3 py-1.5 rounded-md bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 transition flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+          PDF 인쇄 / 저장
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- HERO BANNER & APPLICANT PROFILE -->
+  <section class="no-print bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 py-6 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Profile Header Hero -->
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-6 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
+        <div class="flex items-center gap-5">
+          <div class="relative shrink-0">
+            <img src="images/tonyillust_atwork.svg" alt="Tony Lee Portrait" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-[#22A39F] shadow-lg bg-white p-1" onerror="this.src='tonyillust_atwork.svg'">
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-3">
+              <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">이병남 <span class="text-lg sm:text-xl font-normal text-slate-400">Byungnam "Tony" Lee</span></h1>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#22A39F]/20 text-[#22A39F] border border-[#22A39F]/40">AI Systems & RAG Engineer</span>
+            </div>
+            <p class="text-sm text-slate-300 mt-1.5 max-w-2xl leading-relaxed">
+              27년 글로벌 교육·비즈니스, 은퇴 후 귀농의 소명(36 Years Left Coding), 3,000시간 이상의 극한 몰입을 거쳐 실무 로컬 LLM 서빙 & Typesense 초저지연 RAG 아키텍트로 거듭난 기술 엔지니어링 포털입니다.
+            </p>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400 mt-2.5">
+              <span>📧 xraiegoo@gmail.com</span>
+              <span>📱 010-2544-1197</span>
+              <span>📍 서울 마포구 공덕동</span>
+              <span>💰 희망연봉: 회사 내규에 따름 / 협의 가능</span>
+            </div>
+          </div>
+        </div>
+        <div class="hidden lg:flex items-center gap-3 shrink-0">
+          <div class="text-center">
+            <img src="images/profile_formal_suit.png" alt="정장 프로필" class="w-20 h-28 object-cover rounded-lg border border-slate-700 shadow-md" onerror="this.src='profile_formal_suit.png'">
+            <div class="text-[10px] text-slate-400 mt-1">정장 프로필</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Highlights Bar -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
+        <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/70">
+          <div class="text-xs text-teal-400 font-medium">최신 핵심 역량</div>
+          <div class="text-sm font-bold text-white mt-0.5">로컬 LLM & Typesense RAG</div>
+          <div class="text-xs text-slate-400 mt-1">42ms 레이턴시 / -85% 환각</div>
+        </div>
+        <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/70">
+          <div class="text-xs text-teal-400 font-medium">대외 수상 & 클라우드</div>
+          <div class="text-sm font-bold text-white mt-0.5">제주오르미 1위 & AWS 자격</div>
+          <div class="text-xs text-slate-400 mt-1">AWS ECS / OpenSearch / XAI</div>
+        </div>
+        <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/70">
+          <div class="text-xs text-teal-400 font-medium">엣지 & 하드웨어</div>
+          <div class="text-sm font-bold text-white mt-0.5">5G BVLOS 드론 GCS</div>
+          <div class="text-xs text-slate-400 mt-1">초경량 1종 조종자 / Hailo-8 NPU</div>
+        </div>
+        <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/70">
+          <div class="text-xs text-teal-400 font-medium">글로벌 비즈니스</div>
+          <div class="text-sm font-bold text-white mt-0.5">미 메릴랜드 학사 / $100K 수출</div>
+          <div class="text-xs text-slate-400 mt-1">원어민급 영어 (TOEFL 627)</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4 CORE DOCUMENTS TAB NAVIGATION -->
+  <nav class="no-print sticky top-[57px] z-40 bg-slate-900/95 backdrop-blur border-b border-slate-700 py-3 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-start sm:justify-center space-x-2 overflow-x-auto pb-1 sm:pb-0">
+        
+        <button onclick="switchTab('tab-resume')" id="btn-tab-resume" class="tab-btn active px-4 py-2 rounded-lg font-bold text-sm border border-slate-700 bg-slate-800 text-slate-200 transition-all flex items-center gap-2 whitespace-nowrap">
+          <span class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs">1</span>
+          <span>📄 이력서 (Resume)</span>
+        </button>
+
+        <button onclick="switchTab('tab-career')" id="btn-tab-career" class="tab-btn px-4 py-2 rounded-lg font-bold text-sm border border-slate-700 bg-slate-800 text-slate-200 transition-all flex items-center gap-2 whitespace-nowrap">
+          <span class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs">2</span>
+          <span>💼 경력 기술서 (Career CV)</span>
+        </button>
+
+        <button onclick="switchTab('tab-portfolio')" id="btn-tab-portfolio" class="tab-btn px-4 py-2 rounded-lg font-bold text-sm border border-slate-700 bg-slate-800 text-slate-200 transition-all flex items-center gap-2 whitespace-nowrap">
+          <span class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs">3</span>
+          <span>🎨 포트폴리오 (Showcase)</span>
+        </button>
+
+        <button onclick="switchTab('tab-tech')" id="btn-tab-tech" class="tab-btn px-4 py-2 rounded-lg font-bold text-sm border border-slate-700 bg-slate-800 text-slate-200 transition-all flex items-center gap-2 whitespace-nowrap">
+          <span class="w-5 h-5 rounded-full bg-teal-500/20 text-teal-400 flex items-center justify-center text-xs">4</span>
+          <span>🛠️ 기술 문서 (Dossier)</span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN DOCUMENT CONTAINER (WHITE PAPER CARD) -->
+  <main class="flex-grow py-8 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-14 border border-slate-200 print-shadow text-slate-900">
+      
+      <!-- TAB 1: 이력서 -->
+      <section id="tab-resume" class="tab-pane">
+        <div class="markdown-body" id="content-resume"></div>
+      </section>
+
+      <!-- TAB 2: 경력 기술서 -->
+      <section id="tab-career" class="tab-pane hidden">
+        <div class="markdown-body" id="content-career"></div>
+      </section>
+
+      <!-- TAB 3: 포트폴리오 -->
+      <section id="tab-portfolio" class="tab-pane hidden">
+        <div class="markdown-body" id="content-portfolio"></div>
+      </section>
+
+      <!-- TAB 4: 포트폴리오 기술 문서 -->
+      <section id="tab-tech" class="tab-pane hidden">
+        <div class="markdown-body" id="content-tech"></div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="no-print bg-slate-950 py-8 border-t border-slate-800 text-center text-slate-500 text-xs sm:text-sm">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="font-medium text-slate-400">이병남 (Byungnam "Tony" Lee) — AI Systems & RAG Engineer</p>
+      <p class="mt-1">Email: <a href="mailto:xraiegoo@gmail.com" class="text-teal-400 hover:underline">xraiegoo@gmail.com</a> &nbsp;|&nbsp; Phone: 010-2544-1197 &nbsp;|&nbsp; GitHub: <a href="https://github.com/aiegoo" class="text-teal-400 hover:underline">github.com/aiegoo</a></p>
+      <p class="mt-2 text-slate-600">Built with Semantic Hybrid RAG, 5G BVLOS GCS & Clean Engineering Architecture. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- EMBEDDED RAW MARKDOWN DATA -->
+  <script type="text/plain" id="raw-md-resume">
+# 이병남 (Byungnam "Tony" Lee) — 이력서 (Resume)
+
+---
+
+## 📌 1. 인적사항 · 지원목표 · 학력 · 핵심스킬 (Profile / Objective / Education / Skillset)
+> *※ 이력서 도입부 핵심 요약 (0.5 페이지)*
+
+<table style="width: 100%; border: none; margin-bottom: 12px;">
+  <tr>
+    <td style="width: 140px; vertical-align: top; border: none; padding-right: 15px;">
+      <img src="profile_formal_suit.png" alt="이병남 정장 프로필" width="130" style="border-radius: 6px; border: 1px solid #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+    </td>
+    <td style="vertical-align: top; border: none;">
+      <table style="width: 100%; font-size: 13.5px; border-collapse: collapse;">
+        <tr>
+          <td style="width: 100px; font-weight: 700; background: #f1f5f9; padding: 5px 8px;">성명 / 영문</td>
+          <td style="padding: 5px 8px;"><strong>이병남</strong> (Byungnam "Tony" Lee)</td>
+          <td style="width: 100px; font-weight: 700; background: #f1f5f9; padding: 5px 8px;">지원 직무</td>
+          <td style="padding: 5px 8px;"><strong style="color: #0f766e;">AI 시스템 & RAG 엔지니어</strong></td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">희망 연봉</td>
+          <td style="padding: 5px 8px;"><strong>회사 내규에 따름 / 면접 후 협의 (협의 가능)</strong></td>
+          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">연락처</td>
+          <td style="padding: 5px 8px;">010-2544-1197</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">이메일</td>
+          <td style="padding: 5px 8px;"><a href="mailto:xraiegoo@gmail.com">xraiegoo@gmail.com</a></td>
+          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">거주지</td>
+          <td style="padding: 5px 8px;">서울특별시 마포구 공덕동</td>
+        </tr>
+        <tr>
+          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">GitHub / 웹</td>
+          <td colspan="3" style="padding: 5px 8px;">
+            <a href="https://github.com/aiegoo" target="_blank">github.com/aiegoo</a> &nbsp;|&nbsp; 
+            <a href="https://aiegoo.github.io/yoga/chat" target="_blank">YogaQ AI 라이브 데모</a> &nbsp;|&nbsp; 
+            <a href="https://pf7.eggs.or.kr" target="_blank">기술문서 포털</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+### 🎯 지원 목표 (Objective)
+**"상용 클라우드 API 호출에 의존하지 않고, 자체 온프레미스 GPU 환경에서 오픈소스 LLM을 서빙하며 Typesense 초저지연 하이브리드 RAG 시스템을 구축하여 기업의 데이터 주권 확보와 즉시 가치 창출에 기여하겠습니다."**
+
+### 🎓 학력 사항 (Education)
+- **University of Maryland (미국 메릴랜드 대학교)** | **1985.08 ~ 1994.06 (졸업)**
+  - 전공: **경영학 학사 (Management / Computer & Information Science)**
+
+### 🛠️ 직무 핵심 코딩 스킬셋 (Coding Skillset)
+- **Languages**: **Python** (FastAPI, PyTorch, HuggingFace), **C/C++** (llama.cpp, 소켓 프로토콜), **TypeScript/JS** (Node.js, React, WebSocket), **SQL** (PostgreSQL, Prisma)
+- **AI / LLM & RAG**: **Typesense Hybrid Search** (Dense bge-m3 + BM25 동적 가중치), **Ollama / llama.cpp**, **CUDA GPU 가속**, **GGUF 4/8-bit 양자화** (VRAM 65% 절감), 슬라이딩 청킹
+- **Backend & Streaming**: **WebSocket 풀듀플렉스 실시간 토큰 스트리밍** (TTFT 350ms), **Redis Pub/Sub 비동기 큐** (동시 50건 무중단), RESTful API
+- **Cloud & DevOps**: **AWS (CLF-C02 자격 취득)**, **ECS Fargate**, **OpenSearch Serverless**, **AWS Bedrock 무중단 Failover**, Docker, Linux/WSL2
+
+---
+
+## 🚀 2. 핵심 수행 역량 및 실증 지표 (Core Competencies & Metrics)
+
+| 핵심 수행 역량 | 내가 분명히 수행할 수 있는 구체적 실무 역량 | 검증 지표 및 산출물 |
+| :--- | :--- | :--- |
+| **1. 로컬 LLM 서빙 & 가속** | • 사내 온프레미스 CUDA GPU 환경에 Ollama, llama.cpp, vLLM 직접 셋업<br>• GGUF 4/8-bit 양자화로 모델 메모리 65% 절감 및 상용 API 비용 100% 절감<br>• Redis 비동기 큐 기반 동시 요청 제어로 VRAM OOM 원천 방지 | • 초당 토큰 생성 32 TPS, 동시 50건 안정 처리<br>• [GPU 인프라 설정 명세서](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md) |
+| **2. 초저지연 하이브리드 RAG** | • Typesense 기반 Dense Vector(1024차원) + BM25 키워드 결합 인덱싱 스키마 설계<br>• 동적 가중치 조절: $Score = (1-\alpha)S_{BM25} + \alpha S_{Vector}$<br>• 도메인 특화 슬라이딩 청킹(500 토큰, 10% 오버랩) 최적화 | • **p95 검색 레이턴시 42ms** (ES 320ms 대비 87% 단축)<br>• **할루시네이션 발생률 85% 감소** 실측<br>• [YogaQ 검색 데모](https://aiegoo.github.io/yoga/search) |
+| **3. 실시간 토큰 스트리밍** | • WebSocket 풀듀플렉스 통신을 통해 생성 토큰을 청크 단위로 브라우저에 푸시<br>• 첫 토큰 생성(TTFT) 350ms 미만 초저지연 반응형 UX 구현<br>• FastAPI / Node.js 백엔드와 React (Vite, TailwindCSS) 대화형 프론트엔드 연동 | • [YogaQ AI 챗봇 라이브 데모](https://aiegoo.github.io/yoga/chat)<br>• [RAG 워크플로우 문서](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) |
+
+---
+
+## 💼 3. 최근 엔지니어링 경력 사항 (Work Experience - Focus on Recent Tech Roles)
+
+### 1. 유콘크리에이티브주식회사 (Ucon Creative Co., Ltd.)
+- **직책**: **개발 실장 / Head of Engineering** (정규직) | **2023.05 ~ 2025.08 (2년 4개월)**
+- **핵심 역할 및 성과**:
+  - **온프레미스 로컬 LLM 서빙**: Ollama/llama.cpp/CUDA 기반 자체 서빙 인프라 구축, GGUF 양자화로 VRAM 메모리 65% 절감 및 외부 API 비용 100% 절감.
+  - **Typesense 하이브리드 RAG (YogaQ Studio)**: Dense + BM25 하이브리드 인덱싱 스키마 설계로 **p95 검색 42ms 달성 및 할루시네이션 85% 감소**.
+  - **실시간 스트리밍 백엔드**: WebSocket 풀듀플렉스 통신 및 Redis 비동기 큐를 구축하여 TTFT 350ms 실시간 토큰 스트리밍과 동시 50건 이상 무중단 안정 처리 구현.
+  - **글로벌 비즈니스 총괄**: 미국 메릴랜드대 학사 기반 원어민급 영어로 카자흐스탄 현지 대학 MOU 및 **10만 달러($100,000) 규모 중계무역 계약 직접 체결**.
+
+---
+
+### 2. 제주오르미캠프 (AI / Cloud Intensive)
+- **역할**: **팀 리드 & 클라우드 AI 아키텍트** | **2025.10 ~ 2025.12 (2개월 풀타임)**
+- **핵심 역할 및 성과**:
+  - **AWS ECS Fargate & OpenSearch RAG**: Terraform IaC 기반 서버리스 컨테이너 클러스터 및 k-NN 벡터 인덱스 자동 배포.
+  - **설명가능한 AI (XAI) 엔진**: 생성 문장과 원문 청크 간 역코사인 유사도를 계산하여 인용 출처 및 신뢰도 점수를 클라이언트에 시각화.
+  - **고가용성 Failover 서킷 브레이커**: 로컬 서버 장애 시 1.2초 내 AWS Bedrock(Claude 3.5 Sonnet)으로 무중단 자동 전환되는 복원력 설계.
+  - **성과**: 40여 개 참가 팀 중 **종합 1위 팀 프로젝트 우수상 & 개인 성적 최우수상** 동시 수상.
+
+---
+
+### 3. 주식회사 제이디랩 (JDLab Co., Ltd.)
+- **직책**: **수석연구원 / Principal Engineer** (정규직) | **2022.02 ~ 2022.05 (4개월)**
+- **핵심 역할**: C++ 기반 지상관제 통신 프로토콜 변환 어댑터 설계 및 200ms 이하 저지연 네트워크 스트리밍 파이프라인 개발 (NDA 준수).
+
+---
+
+### 4. 하이테크 (Hitech)
+- **직책**: **개발팀장 / Lead Engineer** (정규직) | **2020.02 ~ 2020.12 (11개월)**
+- **핵심 역할**: 임베디드 리눅스 기반 저전력 환경 감지 센서 펌웨어 및 MQTT/LTE 원격 데이터 전송 시스템 개발.
+
+---
+
+### 5. 온오프링크주식회사 (ONOFFLINK Co., Ltd.)
+- **직책**: **개발책임 / Senior Developer** (정규직) | **2019.03 ~ 2019.09 (7개월)**
+- **핵심 역할**: Asterisk/FreePBX 기반 대용량 VoIP CTI 음성 솔루션 구축 및 현대모비스 CES 2020 전시용 VR 시스템 통신 인터페이스 연동.
+
+---
+
+### 📌 이전 경력 요약 (Foundational Experience Overview)
+- **2005.12 ~ 2014.06**: 주식회사 이오즈 / 유림ADS — 기획 실장 / 총괄 PM (전자정부 대규모 정보화 사업 제안 및 대기업 B2B 계약 총괄)
+- **1985.03 ~ 2014.02**: 어학 교육 및 기업 출강 — 대표강사 / 비즈니스 영어 컨설턴트 (삼성HP, SK, 현대 사내 연수 및 10,000+ 글로벌 인재 배출)
+
+---
+
+## 📚 4. 직무 교육 이수 사항 (Professional Training - By Period)
+
+| 기간 | 교육 기관 및 과정명 | 교육 시간 | 핵심 학습 내용 및 성과 |
+| :--- | :--- | :--- | :--- |
+| **2025.10 ~ 2025.12** | **제주오르미캠프 (AI/Cloud)** | 2개월 풀타임 | • AWS ECS Fargate, OpenSearch, Bedrock 기반 RAG/XAI 아키텍처<br>• **캠프 전체 1위 팀프로젝트 우수상 & 개인 성적 최우수상 수상** |
+| **2020.07 ~ 2021.06** | **한국전파진흥협회(RAPA)** | 136일 / **1,080시간** | • 5G AI 제어 시스템 (C++, ROS, Linux, OpenCV 컴퓨터 비전, 딥러닝)<br>• 저지연 데이터 통신 및 임베디드 관제 소프트웨어 통합 |
+| **2018.07 ~ 2019.01** | **하이미디어 아카데미 (NCS 풀스택)** | 140일 / **1,120시간** | • 웹 표준, JavaScript, PHP, MySQL, 비동기 통신 등 풀스택 기초 이수<br>• 1,120시간 집중 수업 및 원서 320시간 독파로 소프트웨어 전업 기초 확립 |
+
+---
+
+## 📜 5. 자격증 및 대외 수상 (Certifications & Awards)
+
+- 🏆 **제주오르미캠프 우수상 (AI/클라우드 팀 프로젝트 1위 & 개인 성적 최우수)** | (2025.12)
+- ☁️ **AWS Certified Cloud Practitioner (CLF-C02)** | Amazon Web Services (2025.11)
+- 🗣️ **TOEFL (627점)** | ETS (원어민급 비즈니스 영어)
+
+---
+
+> 🔗 **상세 기술 검증 자료 안내**:
+> 각 프로젝트별 아키텍처 다이어그램, STAR 상세 구현 내용, 실제 화면 캡처 및 15대 엔지니어링 명세서는 **[02_경력기술서_이병남.md](02_경력기술서_이병남.md)** 및 **[03_포트폴리오_이병남.md](03_포트폴리오_이병남.md)**에 별도 기술되어 있습니다.
+
+  </script>
+
+  <script type="text/plain" id="raw-md-career">
+# 이병남 (Byungnam "Tony" Lee) — 기술 경력서 (Technical Career Description)
+### AI 시스템 & RAG 엔지니어 실무 기술 경력서
+
+> 📄 **이력서 요약본(2.5장)**: [01_이력서_이병남.md](01_이력서_이병남.md) | **포트폴리오 요약**: [03_포트폴리오_이병남.md](03_포트폴리오_이병남.md) | **기술 명세서(15건)**: [04_포트폴리오_기술문서_이병남.md](04_포트폴리오_기술문서_이병남.md) | **인터랙티브 웹 포털**: [docs/portfolio.html](docs/portfolio.html)  
+> **"27년간의 글로벌 교육과 비즈니스 경험, 은퇴 후 귀농에서 발견한 삶의 소명, 그리고 3,000시간 이상의 극한 아카데미 몰입 훈련을 거쳐 현업 AI 시스템 아키텍트로 거듭난 기술 엔지니어링 여정입니다."**
+
+---
+
+## 🎯 지원 직무 및 입증된 핵심 역량 (Target Role & Verified Competencies)
+
+### **지원 분야: AI 시스템 & RAG 엔지니어 (AI Systems & RAG Engineer)**
+> **"회사에 합류한 첫날부터 자체 온프레미스 GPU 환경에 로컬 LLM을 서빙하고, Typesense 기반 초저지연 하이브리드 RAG 파이프라인을 독립적으로 구축·운영할 수 있는 역량을 입증합니다."**
+
+| 핵심 수행 역량 (What I Can Definitively Do) | 대표 프로젝트 및 실증 성과 |
+| :--- | :--- |
+| **1. 온프레미스 GPU 로컬 LLM 서빙 & 가속**<br>• Ollama/llama.cpp/vLLM을 사내 CUDA GPU 환경에 구축<br>• GGUF 4/8-bit 양자화로 VRAM 메모리 65% 절감 및 무중단 서빙<br>• Redis Pub/Sub 비동기 큐 기반 동시 요청 제어로 VRAM OOM 원천 방지 | • 온프레미스 GPU 서빙 인프라 구축<br>• 초당 토큰 생성 32 TPS, 동시 50건 안정 처리<br>• [GPU 인프라 설정 명세서](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md) |
+| **2. 초저지연 하이브리드 RAG 아키텍처 구축**<br>• Typesense 기반 Dense Vector(bge-m3 1024차원) + BM25 키워드 결합 인덱싱 스키마 설계<br>• 동적 가중치 조절: $Score = (1-\alpha)S_{BM25} + \alpha S_{Vector}$<br>• 도메인 특화 텍스트 슬라이딩 청킹(500 토큰, 10% 오버랩) 최적화 | • [YogaQ Studio 시맨틱 검색 데모](https://aiegoo.github.io/yoga/search)<br>• **p95 검색 레이턴시 42ms** (Elasticsearch 320ms 대비 87% 단축)<br>• **할루시네이션 발생률 85% 감소** 실측 |
+| **3. 실시간 토큰 스트리밍 백엔드 & 풀스택 연동**<br>• WebSocket 풀듀플렉스 통신으로 생성 토큰을 청크 단위로 즉시 브라우저에 푸시<br>• 첫 토큰 생성(TTFT) 350ms 미만 반응형 UX 구현<br>• FastAPI / Node.js 백엔드와 React (Vite, TailwindCSS) 대화형 프론트엔드 연동 | • [YogaQ Studio AI 챗봇 라이브 데모](https://aiegoo.github.io/yoga/chat)<br>• [RAG 엔드-투-엔드 워크플로우 문서](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) |
+
+---
+
+## 🧭 1. 커리어 피봇 & 배경 스토리 (Career Narrative)
+
+```mermaid
+flowchart TD
+    subgraph Act1["제1막: 최고급 어학 교육 & 대기업 컨설팅 (1985 ~ 2014)"]
+        A1["미국 메릴랜드대 학사 (Management/CS)<br>TOEFL 627 (원어민급 영어)"] --> A2["시사/청문/종로 대표강사<br>토플/토익/AFKN 전담 (1만+ 배출)"]
+        A2 --> A3["삼성HP · SK · 현대 대기업 출강<br>전자정부 대규모 프로젝트 총괄 PM"]
+    end
+
+    subgraph Pivot["전환점: 은퇴, 귀농, 그리고 소명의 발견 (2014 ~ 2018)"]
+        B1["27년 교육 커리어 명예 은퇴<br>고양시 일산 텃밭 귀농 (4년간 영농)"] --> B2["실존적 성찰과 인생의 변곡점<br>'남은 36년을 죽음을 기다릴 것인가,<br>남은 36년을 코딩으로 창작할 것인가'"]
+        B2 --> B3["컴퓨터 사이언스로의 100% 완전 전업 결심"]
+    end
+
+    subgraph Academies["혹독한 재교육: 3,000시간 이상의 고강도 아카데미 (2018 ~ 2025)"]
+        C1["하이미디어 1,120시간 NCS 풀스택<br>매일 8시간 수업 + 원서 320시간 완독"] --> C2["RAPA 1,080시간 5G AI 자율비행<br>C++/ROS/비행 1,000h (1종 조종자 취득)"]
+        C2 --> C3["제주오르미캠프 (AI/Cloud)<br>팀프로젝트 1위 우수상 & 개인 최우수상"]
+    end
+
+    subgraph Act2["제2막: 현업 풀스택 & AI 시스템 엔지니어 (2019 ~ 현재)"]
+        D1["온오프링크 · 하이테크 · 제이디랩<br>CTI/IoT/5G 드론 GCS 시스템 개발"] --> D2["유콘크리에이티브 개발실장 (2년 4개월)<br>로컬 LLM/Typesense RAG/3D 라이다"]
+        D2 --> D3["글로벌 테크 리더십<br>카자흐스탄 $100K 무역 계약 & 5개국 MOU"]
+    end
+
+    Act1 --> Pivot --> Academies --> Act2
+```
+
+### [제1막] 1985 ~ 2014: 27년간의 탑티어 어학원 강사 & 대기업 비즈니스 컨설턴트
+- **미국 메릴랜드대학교 학사 출신(TOEFL 627점)**으로서, 시사영어학원, 청문외국어학원, 종로외국어학원 등 당대 대한민국 대표 어학원에서 토플·토익·AFKN·통번역대학원 대비반을 총괄 지도하며 **10,000명 이상의 글로벌 인재**를 양성했습니다.
+- **삼성-HP, SK텔레콤, 현대자동차, 공무원연수원** 등 국내 유수 대기업 및 정부 기관의 핵심 임직원을 대상으로 사내 비즈니스 영어 협상 및 테크니컬 프레젠테이션 컨설팅을 전담했습니다.
+- 또한 주식회사 이오즈/유림ADS에서 기획 실장으로서 정부 전자정부 대규모 정보화 사업 제안과 대기업 B2B 계약 관리를 성공적으로 이끌었습니다.
+
+### [전환점] 2014 ~ 2018: 은퇴, 일산 텃밭 귀농, 그리고 "36 Years Left Coding"
+- 27년간 쉼 없이 달려온 교육과 비즈니스의 현장에서 명예롭게 물러난 뒤, 경기도 고양시 일산에서 4년간 소규모 농장(Small Farm)을 일구며 자연 속에서 삶을 재정비했습니다.
+- 흙을 만지고 땀을 흘리는 고요한 시간 속에서 인생의 후반부를 어떻게 살 것인가에 대한 깊은 실존적 질문과 마주했습니다:
+  > *"인간의 기대수명을 90세라 볼 때, 내게 남은 36년을 그저 노쇠와 죽음을 기다리며 흘려보낼 것인가(36 years left dying)? 아니면 평생의 갈증이었던 컴퓨터 사이언스와 소프트웨어 엔지니어링에 온몸을 던져 새로운 기술 창작자로 살 것인가(36 years left coding)?"*
+- 그 답은 명확했습니다. 50대의 나이에 모든 기득권을 내려놓고, 컴퓨터 소프트웨어 엔지니어로의 **완전한 커리어 전업(100% Full Pivot)**을 결심했습니다.
+
+### [혹독한 훈련] 2018 ~ 2025: 3,000시간 이상의 고강도 아카데미 몰입 훈련
+결심을 실행으로 옮기기 위해, 청년들과 똑같이 경쟁하며 극한의 정규 부트캠프 과정을 잇달아 수료했습니다:
+1. **하이미디어 컴퓨터학원 (2018.07 ~ 2019.01, 140일 / 1,120시간)**:
+   - NCS 스마트웹 & 콘텐츠 개발(Java, JavaScript, PHP, MySQL, CSS3). 50대의 나이에 하루 8시간 전일제 수업 외에 매일 4시간씩 원서 기술 서적을 320시간 이상 탐독하고 130시간의 온라인 강의를 병행 완주.
+2. **한국전파진흥협회(RAPA) 5G AI 자율비행 통제 (2020.07 ~ 2021.06, 136일 / 1,080시간)**:
+   - C++, Python, ROS, Gazebo, OpenCV 딥러닝 컴퓨터 비전, MAVLink 프로토콜을 체득. 동시에 한국교통안전공단 **초경량비행장치 멀티콥터 1종 조종자(비행시간 1,000+ 시간)** 및 고정익 3종 자격을 획득하며 하드웨어 제어 능력을 갖춤.
+3. **제주오르미캠프 AI/Cloud (2025.10 ~ 2025.12)**:
+   - AWS ECS Fargate, OpenSearch, Bedrock, 설명가능한 AI(XAI) 아키텍처를 총괄 설계하여 **캠프 전체 1위 팀 프로젝트 우수상 및 개인 성적 최우수상**을 동시 수상.
+
+---
+
+## 💼 2. 도메인 및 주요 기관별 프로젝트 심층 기술서 (Project Technical Descriptions by Domain & Major Institutions)
+> 지원자의 프로젝트 경험을 **4대 핵심 도메인**과 **주요 공공·민간 기관별**로 체계화하여 기술적 깊이와 실증적 비즈니스 가치를 입증합니다.
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│ [도메인 1] ⚡ 생성형 AI & 초저지연 시맨틱 RAG 시스템  │ 🏛️ 유콘크리에이티브(주)                 │
+│ [도메인 2] ☁️ 엔터프라이즈 클라우드 AI & 설명가능한 AI │ 🏛️ 제주오르미캠프 (카카오·구름·고용노동부)│
+│ [도메인 3] 🛸 5G 드론 지상관제(GCS) & 엣지 온디바이스 AI │ 🏛️ (주)제이디랩 / RAPA / 하이테크      │
+│ [도메인 4] 🌐 공공·엔터프라이즈 SI & 글로벌 기술 무역 │ 🏛️ 중앙행정기관(전자정부) / (주)이오즈    │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### [도메인 1] ⚡ 생성형 AI & 초저지연 시맨틱 RAG 시스템 (Generative AI & Semantic RAG)
+
+#### 🏛️ 주요 기관: 유콘크리에이티브주식회사 (Ucon Creative Co., Ltd.)
+- **직책/기간**: 개발 실장 / Head of Engineering (정규직) | 2023.05 ~ 2025.08 (2년 4개월)
+- **사업 분야**: 생성형 AI 솔루션, 지능형 시맨틱 검색 엔진, 3D 메타버스 공간 데이터
+- **핵심 기술 스택**: Local LLM (Ollama, llama.cpp, Mistral-7B, Solar-10.7B), CUDA GPU, GGUF 4/8-bit, Typesense, Sentence-Transformers (bge-m3), Python, FastAPI, Node.js, WebSocket, GraphQL Yoga, Redis Pub/Sub, Prisma, PostgreSQL, React, Vite, TailwindCSS
+
+---
+
+#### 📌 Project 1-1: 온프레미스 GPU 환경 로컬 LLM 서빙 및 도메인 분석 플랫폼
+- **기술 스택**: Local LLM (Ollama, llama.cpp, Mistral-7B, Solar-10.7B), CUDA, WSL2, Python, FastAPI, Node.js, GraphQL Yoga, Redis Pub/Sub, Prisma, PostgreSQL
+- **연계 기술 문서**: [technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md)
+- **1) 배경 및 당면 과제 (Situation & Challenge)**:
+  - 사내 민감 데이터 유출 방지와 외부 상용 API(OpenAI 등)의 높은 호출 비용 및 토큰 제약을 극복하기 위해, 완전 독립적인 온프레미스 GPU 기반 로컬 LLM 인프라 구축이 요구됨.
+  - 제한된 VRAM(24GB GPU) 환경에서 고품질 도메인 질의응답 및 다중 사용자 동시 처리를 보장해야 하는 엔지니어링 난제 발생.
+- **2) 아키텍처 및 구현 (Architecture & Action)**:
+  - **GGUF 양자화 최적화**: 16-bit 부동소수점 모델을 4-bit/8-bit GGUF 포맷으로 양자화하여 모델 메모리 점유율을 65% 이상 절감하고 llama.cpp 및 Ollama를 통해 GPU 레이어 오프로딩 극대화.
+  - **비동기 이벤트 큐 시스템**: Redis Pub/Sub을 활용한 요청 큐(Request Queue)를 설계하여 순간적인 트래픽 폭증 시에도 GPU VRAM OOM(Out of Memory)을 원천 차단하고 순차 안정적 추론 보장.
+  - **통합 GraphQL API 게이트웨이**: GraphQL Yoga와 Prisma ORM을 결합하여 다양한 프론트엔드 서비스가 필요한 필드만을 오버페칭(Over-fetching) 없이 유연하게 요청할 수 있는 API 계층 구현.
+- **3) 정량적 성과 (Quantifiable Results)**:
+  - 외부 클라우드 LLM API 비용 **월 100% 절감 (완전 사내 온프레미스 전환)**
+  - 초당 토큰 생성 속도(TPS) 32 tokens/sec 유지, 동시 요청 50건 이상 무중단 안정 처리
+  - 모델 로딩 시간 기존 대비 **40% 단축**
+
+---
+
+#### 📌 Project 1-2: Typesense 기반 초저지연 하이브리드 RAG 검색 & 대화형 챗봇 (YogaQ Studio)
+- **라이브 서비스**: [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) | [검색 데모](https://aiegoo.github.io/yoga/search)
+- **실제 구동 화면 캡처**:
+  ![YogaQ Studio AI Chatbot](portfolio_yoga_chat.png)
+  *▲ YogaQ Studio 대화형 AI 챗봇: Typesense RAG 청크 검색(Score: 0.942) 및 TTFT 340ms 실시간 토큰 스트리밍 UI*
+  ![Typesense Search](portfolio_yoga_search.png)
+  *▲ Typesense 하이브리드 검색: Dense(bge-m3) + BM25 동적 가중치 스코어링 및 42ms 초저지연 패싯 검색*
+- **기술 스택**: Typesense, Sentence-Transformers (bge-m3), Python, WebSocket, React, Vite, TailwindCSS
+- **연계 기술 문서**:
+  - [technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md)
+  - [technical_references/typesense_rag/TYPESENSE_SETUP.md](technical_references/typesense_rag/TYPESENSE_SETUP.md)
+  - [technical_references/typesense_rag/ARCHITECTURE_VISUAL_DIAGRAM.md](technical_references/typesense_rag/ARCHITECTURE_VISUAL_DIAGRAM.md)
+- **1) 배경 및 당면 과제 (Situation & Challenge)**:
+  - 요가 자세 및 신체 역학 도메인 지식에 대해 일반 LLM이 빈번한 할루시네이션(환각)을 유발함.
+  - 순수 밀집 벡터(Dense Vector) 검색만 적용할 경우 전문 해부학 용어 및 고유명사 키워드가 정확히 일치하지 않아 엉뚱한 문서가 컨텍스트로 전달되는 현상 발생.
+- **2) 아키텍처 및 구현 (Architecture & Action)**:
+  - **Dense + Sparse 하이브리드 인덱싱**: Typesense 검색 엔진을 도입하여 `bge-m3` 기반 1024차원 고밀도 벡터 검색과 BM25 키워드 일치 검색을 결합한 하이브리드 인덱스 스키마 설계.
+  - **동적 가중치 스코어링**: $Score = (1-\alpha)S_{BM25} + \alpha S_{Vector}$ 공식을 적용하여 질의 유형에 따라 키워드 매칭과 시맨틱 매칭 비율을 실시간 조정.
+  - **컨텍스트 최적 청킹**: 도메인 문서를 의미 단위(Semantic Section)로 분할(500 토큰, 10% 오버랩)하고 메타데이터(카테고리, 난이도, 부위) 필터링 결합.
+  - **초저지연 WebSocket 토큰 스트리밍**: HTTP 폴링 대신 WebSocket 풀 듀플렉스 채널을 통해 로컬 LLM의 추론 토큰을 브라우저에 청크 단위로 즉시 렌더링.
+- **3) 정량적 성과 (Quantifiable Results)**:
+  - 검색 쿼리 지연 시간: Elasticsearch(320ms) 대비 **42ms로 약 87% 단축**
+  - 답변 정확도 및 근거 문서 일치율: **할루시네이션 발생률 85% 감소**
+  - 실시간 첫 번째 토큰 렌더링(TTFT): **350ms 이내 달성 (실측 340ms)**
+
+---
+
+#### 📌 Project 1-3: 메타버스 3D 라이다 포인트 클라우드 데이터 파이프라인
+- **기술 스택**: Python, Open3D, CloudCompare, C++, MAVLink, WebSocket, Redis
+- **연계 기술 문서**: [technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md](technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md)
+- **1) 업무 개요 및 역할**:
+  - 드론 및 모바일 라이다 센서를 통해 수집된 수천만 개의 3D 포인트 클라우드 좌표 데이터를 메타버스 가상 공간 구축용 3D 에셋으로 정합·변환하는 분산 데이터 파이프라인 설계.
+  - 대용량 PCD/LAS 파일의 다운샘플링(Voxel Grid Filtering) 및 노이즈 제거 알고리즘 적용으로 파일 크기를 70% 압축하면서도 형상 정밀도 유지.
+
+---
+
+### [도메인 2] ☁️ 엔터프라이즈 클라우드 AI & 설명가능한 AI (Enterprise Cloud AI & Explainable AI)
+
+#### 🏛️ 주요 기관: 제주오르미캠프 (카카오·구름·고용노동부 주관)
+- **직책/기간**: 팀 리드 & 클라우드 AI 시스템 아키텍트 | 2025.10 ~ 2025.12
+- **공식 수상**: 🏆 **캠프 종합 평가 1위 팀 프로젝트 우수상 & 개인 성적 최우수상 동시 수상 (2025.12)**
+- **핵심 기술 스택**: AWS ECS Fargate, OpenSearch, AWS Bedrock (Claude 3.5 Sonnet), Terraform IaC, FastAPI, Docker, ChromaDB, Cosine Similarity Matrix
+
+---
+
+#### 📌 Project 2-1: AWS ECS Fargate & OpenSearch 기반 엔터프라이즈 멀티모달 벡터 검색 파이프라인
+- **기술 스택**: AWS ECS Fargate, OpenSearch, Terraform, Docker, Python, FastAPI
+- **연계 기술 문서**: [technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md)
+- **1) 배경 및 구현**:
+  - 온프레미스 인프라 장애 시에도 99.99% 고가용성을 보장하는 엔터프라이즈 클라우드 AI 아키텍처 수립.
+  - Terraform IaC 코드로 VPC, 다중 가용영역(Multi-AZ) 서브넷, ALB, ECS Fargate 컨테이너 클러스터 프로비저닝 자동화.
+  - OpenSearch 분산 클러스터를 연동하여 멀티모달 비정형 텍스트/이미지 벡터 데이터 대용량 인덱싱 처리.
+- **2) 정량적 성과**:
+  - 인프라 배포 시간 80% 단축 (완전 코드 기반 IaC 구축)
+  - ECS Fargate 기반 자동 오토스케일링(Auto-scaling)으로 트래픽 변동에 무중단 대응
+
+---
+
+#### 📌 Project 2-2: 코사인 유사도 역추적 기반 설명가능한 AI(XAI) 투명성 추적 엔진
+- **기술 스택**: Python, NumPy, Cosine Similarity Matrix, ChromaDB, FastAPI
+- **연계 기술 문서**: [technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md](technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md)
+- **1) 배경 및 구현**:
+  - 생성형 AI 답변의 블랙박스 문제를 해결하고, 지리/공공 데이터 질의응답 시 법적·윤리적 신뢰성을 확보하기 위한 투명한 설명가능(XAI) 프레임워크 설계.
+  - 생성된 답변의 문장별 임베딩 벡터와 검색된 지식 베이스 청크 간의 코사인 유사도 행렬을 역추적 연산.
+  - 클라이언트 UI에 각 문장의 신뢰도 점수(0.0~1.0)와 인용된 원본 지식 텍스트를 시각적으로 하이라이팅하는 XAI 추적 계층 개발.
+- **2) 정량적 성과**:
+  - 사용자 신뢰도 및 검증 속도 대폭 개선, 오르미 심사위원 평가에서 **기술 차별성 최고점** 획득.
+
+---
+
+#### 📌 Project 2-3: AWS Bedrock Claude 3.5 Sonnet 연동 및 서킷 브레이커 무중단 폴백(Failover)
+- **기술 스택**: AWS Bedrock, Claude 3.5 Sonnet, Circuit Breaker Pattern, Python
+- **연계 기술 문서**: [technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md](technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md)
+- **1) 배경 및 구현**:
+  - 1차 로컬 LLM 및 자체 모델 서버의 지연 시간 급증 또는 OOM 장애 발생 시 즉시 서비스 다운이 일어나는 취약점 보완.
+  - 서킷 브레이커(Circuit Breaker) 패턴을 적용하여 장애 감지 시 1.2초 내에 AWS Bedrock 엔드포인트(Claude 3.5 Sonnet)로 자동 스위칭되는 엔터프라이즈 페일오버 파이프라인 구축.
+- **2) 정량적 성과**:
+  - 단일 장애점(SPOF) 제거 및 **무장애 99.99% 가용성 보장 실증**.
+
+---
+
+### [도메인 3] 🛸 5G 비가시권(BVLOS) 드론 지상관제 & 엣지 온디바이스 AI (Drone GCS & Edge AI)
+
+#### 🏛️ 주요 기관 1: 주식회사 제이디랩 (JDLab Co., Ltd.)
+- **직책/기간**: 수석연구원 / Principal Engineer (정규직) | 2022.02 ~ 2022.05 (4개월)
+- **기술 스택**: C++, Qt5, MAVLink v2, ROS2, WebRTC, Linux, LTE/5G
+- **연계 기술 문서**:
+  - [technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md](technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md)
+  - [technical_references/drone_gcs/18-Heterogeneous-GCS-Product-and-Evidence-Briefing.md](technical_references/drone_gcs/18-Heterogeneous-GCS-Product-and-Evidence-Briefing.md)
+
+#### 📌 Project 3-1: 5G 기반 이기종 드론 지상관제시스템(GCS) 및 MAVLink/ROS2 프로토콜 어댑터 개발 (NDA)
+- **1) 당면 과제**: 서로 다른 비행 제어기(PX4, ArduPilot, 상용 드론) 간 통신 규격이 상이하여 군집 비행 및 비가시권 원격 조종을 수행하기 어려움.
+- **2) 아키텍처 및 구현**:
+  - MAVLink v2와 ROS2 메시지를 표준 JSON/Protobuf로 상호 변환하는 이기종 미들웨어 브리지 개발.
+  - Qt5/C++ 기반 미션 플래너 UI를 개발하여 3D 웨이포인트 경로 생성, 실시간 배터리/GPS 상태 모니터링, 비상 자동 회항(RTL) 제어 로직 구현.
+- **3) 성과**: 이기종 기체 4종 동시 연결 관제 성공 및 비행 미션 안정화.
+
+#### 📌 Project 3-2: 5G 무선망 환경 WebRTC 초저지연(200ms) P2P 비디오/텔레메트리 스트리밍
+- **1) 구현**: 5G 무선망 환경에서 WebRTC P2P 스트리밍을 연동하여 지상 관제 센터 화면까지 **지연 시간 200ms 이하**의 비디오/텔레메트리 전송 달성.
+- **2) 성과**: 비가시권(BVLOS) 비행 시 조종사의 시각 반응 속도 극대화.
+
+---
+
+#### 🏛️ 주요 기관 2: 한국전파진흥협회(RAPA) 5G 드론 AI 집중과정
+- **역할/기간**: 전일제 집중 연구원 | 2020.07 ~ 2021.06 (136일 / 1,080시간 이수)
+- **보유 자격**: 한국교통안전공단 초경량비행장치 멀티콥터 1종 조종자(1,000+ 비행시간), 고정익 3종
+- **핵심 기술 스택**: C++, Python, ROS, Gazebo, OpenCV, Hailo-8 NPU / NVIDIA Jetson, YOLOv8
+
+#### 📌 Project 3-3: 엣지 NPU 기반 60fps 실시간 온디바이스 비전 추론 및 자율비행 제어
+- **1) 구현**: 고전력 GPU 대신 저전력 엣지 AI 칩셋(Hailo-8 M.2 모듈, 26 TOPS @ 2.5W)을 드론 온보드 컴퓨터에 통합. YOLOv8 모델을 Hailo Dataflow Compiler로 최적화 양자화.
+- **2) 성과**: 드론 기체 상에서 실시간 60fps 객체 인식 및 MAVLink 기반 자동 충돌 회피 명령 피드백 제어 검증.
+
+---
+
+#### 🏛️ 주요 기관 3: 하이테크 (Hitech)
+- **직책/기간**: 개발팀장 / Lead Engineer (정규직) | 2020.02 ~ 2020.12 (11개월)
+- **기술 스택**: C, Embedded Linux, STM32, MQTT, LoRa/LTE, Python
+
+#### 📌 Project 3-4: 산업 현장용 저전력 IoT 센서 노드 펌웨어 및 이상 징후 감지 모니터링 시스템
+- **1) 구현**: 산업 현장용 저전력 IoT 환경 감지 센서 노드 펌웨어 및 게이트웨이 아키텍처 총괄. 배터리 구동 환경을 위한 딥 슬립(Deep Sleep) 전력 관리 알고리즘 적용.
+- **2) 성과**: 센서 노드 배터리 수명 기존 대비 **2.5배 연장**, MQTT 브로커 연동 실시간 이상 임계치 SMS/웹 알림 구축.
+
+---
+
+### [도메인 4] 🌐 공공/엔터프라이즈 대규모 SI & 글로벌 기술 무역 (Enterprise SI & Global Tech Trade)
+
+#### 🏛️ 주요 기관 1: 중앙행정기관·지자체 (전자정부) & 주식회사 이오즈 / 유림ADS
+- **직책/기간**: 기획 실장 / 총괄 PM (정규직) | 2005.12 ~ 2014.06 (8년 7개월)
+- **사업 분야**: 전자정부 공공 SI, 대규모 웹 정보화 포털, 대기업 B2B 디지털 미디어
+- **핵심 역량**: RFP 분석, 제안 전략 수립, 대규모 시스템 아키텍처 설계, 기술 협상, 다부처 이해관계자 조율
+
+#### 📌 Project 4-1: 공공부문 대규모 전자정부 정보화 시스템 기획 및 엔터프라이즈 B2B PM
+- **1) 업무 개요 및 역할**:
+  - 행정안전부, 국토교통부, 지자체 등 중앙행정기관 및 공공기관 대상 전자정부 정보화 구축 사업 제안 총괄 (수십억 규모 다수 사업 수주 및 납품 완수).
+  - 삼성, LG애드, SK 등 대기업 대상 B2B 디지털 미디어 시스템 기획, 계약 체결, 개발 일정 및 산출물 품질 관리 총괄.
+- **2) 시사점**: 대규모 프로젝트 라이프사이클 관리, 고객 요구사항 명세화, 엔터프라이즈 규정 준수(Compliance) 역량 확립.
+
+---
+
+#### 🏛️ 주요 기관 2: 온오프링크주식회사 (ONOFFLINK Co., Ltd.)
+- **직책/기간**: 개발책임 / Senior Developer (정규직) | 2019.03 ~ 2019.09 (7개월)
+- **기술 스택**: Asterisk, FreePBX, Linux, WebRTC, Node.js, SIP/RTP, Unity 3D
+
+#### 📌 Project 4-2: Asterisk/FreePBX 기반 대용량 VoIP CTI 음성 컨퍼런스 솔루션 & 현대모비스 CES 2020 VR 연동
+- **1) 구현**: Asterisk/FreePBX 오픈소스 기반의 대용량 VoIP CTI(Computer Telephony Integration) 음성 컨퍼런스 솔루션 구축. 수백 채널 동시 통화 세션 호 제어(SIP) 및 미디어 스트림(RTP) 라우팅 성능 최적화.
+- **2) 성과**: 현대모비스 CES 2020 글로벌 전시용 커넥티드카 가상 체험 VR 시스템과 CTI 음성 통신망 간 실시간 데이터 인터페이스 연동 성공.
+
+---
+
+#### 🏛️ 주요 기관 3: 유콘크리에이티브주식회사 글로벌 비즈니스 본부
+- **직책/기간**: Global Business Lead (개발실장 겸임) | 2023.05 ~ 2025.08
+- **핵심 역량**: 미국 메릴랜드대학교 학사 출신 원어민급 영어 협상력(TOEFL 627), 해외 기술 IR 및 글로벌 무역 계약
+
+#### 📌 Project 4-3: 카자흐스탄 현지 대학 MOU 및 10만 달러($100,000) 중계무역 계약 성사 & 5개국 글로벌 파트너십
+- **주요 글로벌 성과**:
+  - **카자흐스탄 현지 국립/사립 대학 기술 협력 MOU 체결 및 10만 달러($100,000) 규모 중계무역 계약 직접 성사 (2024.12)**
+  - 폴란드 산업 협력 한국 상단 대표사로 참가하여 유럽 바이어 대상 기술 IR 진행 (2024.11)
+  - 독일 현지 법인 고전압 BMS 모듈 기술 이전 협력 MOU 체결 (2024.08)
+  - 태국 언어 서비스 기업과 언어 AI SaaS 솔루션 파트너십 MOU 체결 (2024.05)
+  - 인도네시아 노동부 차관 면담 및 센다나대학교 기술 교류 MOU 주도 (2024.01~02)
+
+---
+
+## 🎯 3. 핵심 직무 경쟁력 요약 (Why Tony Lee?)
+
+| 역량 구분 | 상세 경쟁력 |
+| :--- | :--- |
+| **1. 엔드-투-엔드 시스템 구축** | 상용 프롬프트 튜닝에 머무르지 않고, **온프레미스 GPU 서버 세팅 -> 양자화 모델 서빙 -> Typesense 하이브리드 인덱싱 -> WebSocket 토큰 스트리밍 -> React UI**까지 AI 시스템의 전 주기를 1인 완결형으로 구축할 수 있습니다. |
+| **2. 하드웨어와 엣지를 아는 AI** | 드론 자율비행(1종 조종자), 5G 관제, Hailo-8 NPU 온디바이스 비전, IoT 펌웨어 등 하드웨어와 네트워크 레이어를 깊이 이해하여 엣지-클라우드 연동 최적화에 독보적입니다. |
+| **3. 회복탄력성과 압도적 학습력** | 27년 교육 커리어 은퇴 후 3,000시간 이상의 고강도 아카데미를 완주하고, 2025년 제주오르미캠프에서 최신 클라우드 AI 아키텍처로 1위를 차지할 만큼 시대의 기술을 가장 빠르게 흡수합니다. |
+| **4. 글로벌 비즈니스 & 테크 리더십** | 미국 대학교 학사 기반의 원어민급 영어 능력으로 해외 AI 논문 번역 지연 없이 습득하며, 카자흐스탄 $100K 수출 계약을 직접 성사시킨 비즈니스 협상 감각을 겸비하고 있습니다. |
+
+  </script>
+
+  <script type="text/plain" id="raw-md-portfolio">
+# 이병남 (Byungnam "Tony" Lee) — 포트폴리오 (Portfolio)
+
+<div align="center" style="margin: 24px 0 18px;">
+  <img src="images/tonyillust_atwork.svg" alt="Tony Lee Portrait Illustration" width="160" height="160" style="border-radius: 50%; border: 4px solid #22A39F; box-shadow: 0 4px 16px rgba(34,163,159,0.25);" onerror="this.src='tonyillust_atwork.svg'" />
+  <div style="font-size: 13px; color: #22A39F; font-weight: 700; margin-top: 10px; letter-spacing: 0.5px;">AI SYSTEMS & RAG ENGINEER | BYUNGNAM "TONY" LEE</div>
+</div>
+
+> **"로컬 LLM과 고성능 시맨틱 벡터 검색을 결합한 하이브리드 RAG, 5G 비가시권 자율비행 드론 관제, 엔터프라이즈 클라우드 AI 플랫폼을 아우르는 시각적 프로젝트 쇼케이스입니다."**
+
+---
+
+## 🌐 라이브 서비스 & 인터랙티브 데모 (Live Demos)
+
+| 서비스명 | 설명 | 라이브 링크 |
+| :--- | :--- | :--- |
+| **YogaQ Studio AI 챗봇** | Typesense 하이브리드 RAG 기반 요가·자세 전문 대화형 챗봇 | [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) |
+| **YogaQ 시맨틱 검색 엔진** | 초저지연 Dense Vector + BM25 하이브리드 검색 데모 | [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search) |
+| **Edge MCU 싱글페이지 웹** | 저사양 마이크로컨트롤러 환경에서의 로컬 웹 서빙 PoC | [festory.eggs.or.kr](https://festory.eggs.or.kr) |
+| **서버리스 자동 배포 포털** | GitHub Actions 기반 서버리스 인증 및 정적 파이프라인 | [aiegoo.github.io/pro-git](https://aiegoo.github.io/pro-git) |
+| **양자 내성 암호(PQC) 통신** | 차세대 양자 보안 알고리즘 연동 데이터 전송 PoC | [aiegoo.github.io/kisec-final/#/4/1](https://aiegoo.github.io/kisec-final/#/4/1) |
+| **엔지니어링 문서 포털** | 드론 및 시스템 아키텍처 실무 기술 문서 허브 | [pf7.eggs.or.kr](https://pf7.eggs.or.kr) |
+
+---
+
+## 🏆 대표 플래그십 프로젝트 쇼케이스 (Featured Flagship Projects)
+
+---
+
+### 1. YogaQ Studio — 초저지연 하이브리드 RAG & 생성형 AI 플랫폼
+> **핵심 RAG 아키텍처**: Typesense 초저지연 하이브리드 벡터 검색 & 로컬 LLM 자체 서빙
+
+#### 🖥️ 실제 구동 화면 캡처 (Live Service Screen Captures)
+
+##### [화면 1] 대화형 AI 챗봇 (WebSocket 실시간 토큰 스트리밍 & RAG 근거 인용)
+![YogaQ Studio AI Chatbot Screen Capture](portfolio_yoga_chat.png)
+*▲ YogaQ Studio 대화형 AI 챗봇 실제 구동 화면: Typesense 검색 청크 인용(Score: 0.942), TTFT 340ms 실시간 토큰 스트리밍, 할루시네이션 방지 해부학 정렬 코칭*
+
+##### [화면 2] Typesense 하이브리드 시맨틱 검색 엔진 대시보드 (Dense Vector + BM25)
+![Typesense Hybrid Search Screen Capture](portfolio_yoga_search.png)
+*▲ Typesense 하이브리드 검색 대시보드 실제 구동 화면: Dense Vector(bge-m3) + BM25 동적 가중치 조절(Alpha 0.75), 실시간 패싯 필터링, 검색 속도 42ms*
+
+- **서비스 형태**: 웹 애플리케이션 (반응형 모바일/데스크톱)
+- **라이브 데모**: [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) | [검색 데모](https://aiegoo.github.io/yoga/search)
+- **핵심 기술**: **Typesense Hybrid Search (Dense Vector + BM25)**, **Sentence-Transformers (bge-m3)**, **Ollama / llama.cpp**, **WebSocket 실시간 토큰 스트리밍**, **React**, **Vite**, **TailwindCSS**
+- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#1-typesense-하이브리드-rag-아키텍처](04_포트폴리오_기술문서_이병남.md)
+
+#### 📐 시스템 아키텍처 다이어그램
+```mermaid
+flowchart TD
+    subgraph Client["사용자 인터페이스 (React + Vite + Tailwind)"]
+        UI["대화형 채팅 UI & 시맨틱 검색창"]
+        WSClient["WebSocket Client (실시간 스트림 수신)"]
+    end
+
+    subgraph APILayer["API & 스트리밍 서버 (FastAPI / Node.js)"]
+        Gate["API Gateway / Router"]
+        WSHandler["WebSocket Stream Handler"]
+        PromptEngine["컨텍스트 결합 & 프롬프트 엔지니어링"]
+    end
+
+    subgraph Retrieval["초저지연 하이브리드 검색 엔진"]
+        Embedder["Sentence-Transformers (bge-m3 / 1024-dim)"]
+        Typesense["Typesense Cluster<br>• Dense Vector (HNSW k-NN)<br>• Sparse Keyword (BM25)<br>• Hybrid Scoring"]
+    end
+
+    subgraph LLMServing["온프레미스 GPU 추론 레이어"]
+        Ollama["Ollama / llama.cpp Engine<br>(Mistral-7B / Solar-10.7B GGUF)"]
+        GPU["CUDA 가속 (RTX GPU VRAM)"]
+    end
+
+    UI -->|1. 자연어 질의| Gate
+    Gate -->|2. 임베딩 생성| Embedder
+    Embedder -->|3. 벡터 질의| Typesense
+    Typesense -->|4. 상위 K개 근거 문서 (42ms)| PromptEngine
+    PromptEngine -->|5. 증강된 프롬프트 전달| Ollama
+    Ollama <--> GPU
+    Ollama -->|6. 토큰 생성| WSHandler
+    WSHandler -->|7. 실시간 토큰 스트리밍| WSClient
+```
+
+#### 🌟 핵심 기능 및 엔지니어링 차별점
+1. **Dense + Sparse 상호 보완 하이브리드 검색**:
+   - 전문 요가 자세명(예: '비라바드라아사나 II')이나 근육 명칭 등 고유명사는 BM25로 정확히 매칭하고, 추상적인 증상('허리 통증 완화 스트레칭')은 밀집 벡터 유사도로 검색하여 **할루시네이션을 85% 이상 제거**.
+2. **42ms 초저지연 검색 응답**:
+   - 기존 무거운 JVM 기반 Elasticsearch 대비 C++로 작성된 Typesense를 온메모리로 운용하여 p95 레이턴시 42ms 달성.
+3. **체감 반응속도를 극대화한 실시간 스트리밍**:
+   - 첫 번째 토큰이 생성되는 즉시(TTFT 350ms) WebSocket을 통해 클라이언트에 청크 단위로 푸시하여 매끄러운 사용자 경험 제공.
+
+---
+
+### 2. 5G BVLOS 초저지연 클라우드 드론 지상관제시스템 (Cloud Drone GCS)
+> **시스템 엔지니어링 백본**: 5G 무선망 저지연 스트리밍 & Hailo-8 NPU 온디바이스 엣지 AI
+
+- **사업 형태**: 엔터프라이즈 B2B / 방위·산업 관제 시스템 (NDA 준수 핵심 아키텍처 공개)
+- **개발 기간**: 2022 ~ 2024
+- **핵심 기술**: **MAVLink v2**, **ROS2 / micro-XRCE-DDS**, **WebRTC P2P 저지연 스트리밍**, **Raspberry Pi 5 + Hailo-8 NPU (26 TOPS)**, **Qt5 / C++**, **Gazebo Sim**
+- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#2-5g-bvlos-드론-지상관제-아키텍처](04_포트폴리오_기술문서_이병남.md)
+
+#### 📐 시스템 아키텍처 다이어그램
+```mermaid
+flowchart LR
+    subgraph AirUnit["드론 기체 (Onboard Computing)"]
+        FCU["Flight Controller (PX4 / ArduPilot)"]
+        Companion["Raspberry Pi 5 (Companion Computer)"]
+        NPU["Hailo-8 M.2 NPU (26 TOPS)<br>YOLOv8s 실시간 객체 탐지 (60fps)"]
+        Cam["4K 광학/열화상 카메라"]
+        Modem["5G/LTE 무선 통신 모뎀"]
+        
+        FCU <-->|UART / MAVLink v2| Companion
+        Cam --> NPU --> Companion
+        Companion <--> Modem
+    end
+
+    subgraph CloudServer["클라우드 중계 및 브로커 인프라"]
+        TurnServer["coturn STUN/TURN 서버"]
+        Signaling["WebRTC 시그널링 서버"]
+        MAVRouter["MAVLink 라우터 / MQTT 브로커"]
+    end
+
+    subgraph GroundGCS["지상 관제 센터 (GCS Station)"]
+        Cockpit["Qt5/C++ 멀티 콕핏 대시보드<br>• 실시간 3D 웨이포인트 경로 제어<br>• 200ms 미만 WebRTC 저지연 영상<br>• 배터리/GPS/기체 텔레메트리"]
+    end
+
+    Modem <==>|5G Network| CloudServer
+    CloudServer <==> GroundGCS
+```
+
+#### 🌟 핵심 기능 및 엔지니어링 차별점
+1. **비가시권(BVLOS) 5G 원격 조종 실현**:
+   - 통신 가시거리에 구애받지 않고 5G 통신망을 통해 전국 단위 비가시권 원격 관제 및 자동 비행 미션 수행.
+2. **200ms 이하 초저지연 영상 스트리밍**:
+   - RTSP/RTMP의 고질적인 수 초 지연을 극복하기 위해 WebRTC P2P 미디어 파이프라인을 구축하여 현장 상황을 실시간 전송.
+3. **Hailo-8 NPU 온디바이스 엣지 AI 탑재**:
+   - 26 TOPS 연산 성능의 Hailo-8 NPU를 연동하여 기체 자체에서 60 FPS로 실시간 사람, 차량, 이상 징후를 자동 식별 및 추적.
+
+---
+
+### 3. 멀티모달 벡터 검색 & 설명가능한 AI(XAI) 엔터프라이즈 클라우드 플랫폼
+> **🏆 제주오르미캠프 팀 프로젝트 1위 우수상 & 개인 최우수상 수상작 (2025.12)**  
+> **클라우드 AI 파이프라인**: AWS ECS Fargate + OpenSearch 고가용성 RAG 및 XAI 신뢰도 검증
+
+- **플랫폼 형태**: AWS 엔터프라이즈 서버리스 & 클라우드 네이티브 아키텍처
+- **핵심 기술**: **AWS ECS Fargate**, **OpenSearch Serverless**, **AWS Bedrock (Claude 3.5 Sonnet)**, **Terraform IaC**, **FastAPI**, **Docker**, **ChromaDB**
+- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#3-aws-엔터프라이즈-genai--xai-아키텍처](04_포트폴리오_기술문서_이병남.md)
+
+#### 📐 클라우드 인프라 & XAI 파이프라인 다이어그램
+```mermaid
+flowchart TD
+    subgraph Ingestion["데이터 수집 및 임베딩 파이프라인"]
+        Raw["스토리 & 지리/멀티모달 원천 데이터"] --> Preprocess["전처리 & 청킹 파이프라인"]
+        Preprocess --> Vectorizer["Titan Multimodal Embeddings"]
+        Vectorizer --> OpenSearch["AWS OpenSearch Serverless<br>(k-NN Vector Index)"]
+    end
+
+    subgraph ServiceMesh["AWS ECS Fargate 컨테이너 클러스터"]
+        ALB["Application Load Balancer"]
+        AppTask["FastAPI 백엔드 서비스 (Docker on Fargate)"]
+        XAI["Model Explainability (XAI) 엔진<br>• 문장별 역코사인 유사도 매트릭스 계산<br>• 원문 인용 하이라이트 & 근거 스코어링"]
+        CircuitBreaker["Failover Circuit Breaker<br>(로컬/자체 LLM -> Bedrock 자동 전환)"]
+        
+        ALB --> AppTask
+        AppTask --> XAI
+        AppTask --> CircuitBreaker
+    end
+
+    subgraph LLMCluster["고가용성 LLM 레이어"]
+        LocalModel["자체 호스팅 모델 (Primary)"]
+        Bedrock["AWS Bedrock Claude 3.5 Sonnet (Fallback)"]
+    end
+
+    OpenSearch <--> AppTask
+    CircuitBreaker -->|정상 시| LocalModel
+    CircuitBreaker -->|장애 시 자동 Failover| Bedrock
+```
+
+#### 🌟 핵심 기능 및 엔지니어링 차별점
+1. **설명가능한 AI (Model Explainability, XAI)**:
+   - AI 답변의 각 문장이 원천 문서의 어느 단락에서 유래했는지를 수학적 코사인 유사도 행렬로 역추적하여 근거 출처를 색상별로 하이라이팅하는 신뢰도 검증 엔진 구현.
+2. **무중단 고가용성 서킷 브레이커 (Failover)**:
+   - 자체 호스팅 모델 장애나 타임아웃 발생 시 1.2초 내에 AWS Bedrock 클라우드 엔드포인트로 무중단 자동 전환.
+3. **완전 자동화된 Terraform IaC 인프라**:
+   - VPC, 보안 그룹, ECS 태스크 정의, OpenSearch 인덱스까지 단일 명령어로 프로비저닝되는 코드형 인프라 완성.
+
+---
+
+### 4. KOR2UNITY — 한국어 음성/자연어 기반 3D 물리 제어 파이프라인
+> **대화형 인터랙션 시스템**: 한국어 자연어 지시어 기반 실시간 물리 제어 파이프라인
+
+- **프로젝트 형태**: 인터랙티브 3D 공간 시뮬레이션 및 모빌리티 제어
+- **핵심 기술**: **Python 한국어 형태소/NLP 파이프라인**, **WebSocket 서버**, **Unity 3D Physics Engine**, **C# 스크립트**
+- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#4-korean-nlp-to-unity-3d-물리-파이프라인](04_포트폴리오_기술문서_이병남.md)
+
+#### 📐 NLP to 3D Action 흐름도
+```mermaid
+flowchart LR
+    Voice["한국어 자연어 지시어<br>('전방 10미터 전진 후 좌회전')"] --> Parser["형태소 분석 & 의도 추출 (Intent Extraction)"]
+    Parser --> ActionTree["행동 트리 생성 (JSON 파라미터화)"]
+    ActionTree --> WSServer["WebSocket 브리지"]
+    WSServer --> UnityBridge["Unity C# 네트워크 수신기"]
+    UnityBridge --> Physics["Rigidbody 물리 연산 & 3D 렌더링"]
+```
+
+---
+
+## 📊 종합 프로젝트 매트릭스 비교
+
+| 프로젝트명 | 핵심 도메인 | 주요 성과 & 혁신점 | 기술 검증 문서 |
+| :--- | :--- | :--- | :--- |
+| **YogaQ Studio** | 생성형 AI & 시맨틱 RAG | 검색 레이턴시 42ms, 할루시네이션 85% 감소 | [Typesense RAG 문서](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) |
+| **Cloud Drone GCS** | 5G 비가시권 통신 & 엣지 AI | 200ms 초저지연 WebRTC, Hailo-8 60fps 추론 | [GCS 클라우드 문서](technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md) |
+| **Enterprise AWS GenAI** | 클라우드 AI & 모델 설명가능성 | **제주오르미 1위 수상**, 99.99% 고가용성 폴백 | [클라우드 아키텍처 문서](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md) |
+| **KOR2UNITY** | NLP & 실시간 3D 인터랙션 | 한국어 자연어 지시어 실시간 물리 액션 맵핑 | [KOR2UNITY 기술 문서](technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md) |
+
+  </script>
+
+  <script type="text/plain" id="raw-md-tech">
+# 이병남 (Byungnam "Tony" Lee) — 포트폴리오 기술 문서 (Technical Architecture Dossier)
+
+<div align="center" style="margin: 24px 0 18px;">
+  <img src="images/tonyillust.svg" alt="Tony Lee Portrait Illustration" width="140" height="140" style="border-radius: 50%; border: 4px solid #22A39F; box-shadow: 0 4px 16px rgba(34,163,159,0.25);" onerror="this.src='tonyillust.svg'" />
+  <div style="font-size: 13px; color: #22A39F; font-weight: 700; margin-top: 10px; letter-spacing: 0.5px;">TECHNICAL ARCHITECTURE DOSSIER | 15 ENGINEERING SPECS</div>
+</div>
+
+> **지원 분야**: **AI 시스템 & RAG 엔지니어 (AI Systems & RAG Engineer)**  
+> **문서 대상**: CTO, 테크 리드(Tech Lead), AI/시스템 아키텍트, 시니어 엔지니어  
+> **문서 목적**: 온프레미스 GPU 환경 로컬 LLM 서빙, Typesense 하이브리드 벡터 검색, 엣지 AI, 클라우드 네이티브 아키텍처 및 실제 코드 레벨의 기술적 의사결정과 벤치마크 데이터를 심층 검증하기 위한 엔지니어링 기술 명세서입니다.
+
+---
+
+## 📑 목차 (Table of Contents)
+
+1. [Typesense 초저지연 하이브리드 RAG 아키텍처 명세](#1-typesense-초저지연-하이브리드-rag-아키텍처-명세)
+2. [5G BVLOS 드론 지상관제(GCS) 및 엣지 AI 아키텍처](#2-5g-bvlos-드론-지상관제gcs-및-엣지-ai-아키텍처)
+3. [AWS 엔터프라이즈 GenAI & 설명가능한 AI(XAI) 아키텍처](#3-aws-엔터프라이즈-genai--설명가능한-aixai-아키텍처)
+4. [Korean NLP to Unity 3D 물리 제어 파이프라인](#4-korean-nlp-to-unity-3d-물리-제어-파이프라인)
+5. [트러블슈팅 및 장애 대응 엔지니어링 케이스 스터디](#5-트러블슈팅-및-장애-대응-엔지니어링-케이스-스터디)
+6. [WSL 15대 실무 아키텍처 레퍼런스 전체 색인](#6-wsl-15대-실무-아키텍처-레퍼런스-전체-색인)
+
+---
+
+## 1. Typesense 초저지연 하이브리드 RAG 아키텍처 명세
+
+> **연계 원천 문서**:
+> - [technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md)
+> - [technical_references/typesense_rag/TYPESENSE_SETUP.md](technical_references/typesense_rag/TYPESENSE_SETUP.md)
+> - [technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md)
+
+### 1.1 컬렉션 스키마 (Typesense Collection Schema)
+단순 텍스트 검색이나 단일 벡터 검색의 한계를 극복하기 위해, 키워드 검색(BM25)과 1024차원 고밀도 시맨틱 임베딩(HNSW k-NN)을 결합한 하이브리드 컬렉션을 구축했습니다.
+
+```json
+{
+  "name": "yoga_rag_knowledge",
+  "fields": [
+    {"name": "id", "type": "string"},
+    {"name": "pose_name_ko", "type": "string", "facet": true, "index": true},
+    {"name": "pose_name_en", "type": "string", "facet": true, "index": true},
+    {"name": "sanskrit_name", "type": "string", "facet": true, "index": true},
+    {"name": "target_anatomy", "type": "string[]", "facet": true, "index": true},
+    {"name": "difficulty_level", "type": "string", "facet": true},
+    {"name": "content", "type": "string", "index": true},
+    {
+      "name": "embedding",
+      "type": "float[]",
+      "num_dim": 1024,
+      "index": true,
+      "distance_threshold": 0.35,
+      "vec_dist": "cosine"
+    }
+  ],
+  "default_sorting_field": "difficulty_level"
+}
+```
+
+### 1.2 하이브리드 검색 스코어링 공식 (Scoring Formula)
+Typesense 하이브리드 검색 시, 키워드 일치 점수($S_{BM25}$)와 벡터 코사인 유사도 점수($S_{Vector}$)의 가중치($\alpha$)를 동적으로 조절하여 도메인 특화 정확도를 최적화했습니다:
+
+$$Score = (1 - \alpha) \cdot S_{BM25} + \alpha \cdot S_{Vector}$$
+
+- 일반 개념/증상 질의 (예: "허리 통증 완화 스트레칭"): $\alpha = 0.75$ (시맨틱 유사도 중심)
+- 특정 고유명사 질의 (예: "비라바드라아사나 II 주의사항"): $\alpha = 0.30$ (BM25 키워드 정확 매칭 중심)
+
+### 1.3 청킹(Chunking) 및 임베딩 파이프라인
+- **모델**: `BAAI/bge-m3` (다국어 지원, 1024 차원, 문맥 길이 8192 토큰)
+- **청킹 전략**: Sliding Window 방식 적용. 청크 크기 500 토큰, 오버랩 50 토큰. 마크다운 헤더 구조(`#`, `##`, `###`)를 보존하여 문서의 계층적 의미 단절 방지.
+- **서빙 인프라**: 로컬 CUDA GPU 환경에서 HuggingFace TEI(Text Embeddings Inference) 또는 PyTorch GPU 파이프라인으로 단일 임베딩 생성 레이턴시 **6.5ms** 달성.
+
+### 1.4 검색 엔진 성능 벤치마크 (10만 건 문서 기준)
+
+| 지표 | Typesense (본 시스템) | Elasticsearch 8.x | PostgreSQL (pgvector) |
+| :--- | :--- | :--- | :--- |
+| **p95 검색 레이턴시** | **42 ms** | 320 ms | 185 ms |
+| **메모리(RAM) 점유율** | **1.2 GB** | 4.8 GB | 2.1 GB |
+| **하이브리드 가중치 제어** | 실시간 쿼리 파라미터 조절 가능 | RRF 파이프라인 구성 필요 | 수동 SQL 유니온 연산 |
+| **초당 질의 처리량(QPS)** | **850+ QPS** | 220 QPS | 310 QPS |
+
+---
+
+## 2. 5G BVLOS 드론 지상관제(GCS) 및 엣지 AI 아키텍처
+
+> **연계 원천 문서**:
+> - [technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md](technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md)
+> - [technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md](drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md)
+> - [technical_references/drone_gcs/hardware_specs_rpi5_hailo8.md](drone_gcs/hardware_specs_rpi5_hailo8.md)
+> - [technical_references/drone_gcs/13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md](drone_gcs/13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md)
+
+### 2.1 이기종 드론 통합 프로토콜 브리지 (Protocol Adapter)
+서로 다른 비행 제어기(PX4, ArduPilot)와 지상관제 센터 간의 통신 패킷을 중계하기 위해 C++ 기반의 고성능 멀티스레드 어댑터를 설계했습니다:
+
+```
+[PX4 / ArduPilot FCU] 
+       ↕ (UART / MAVLink v2 binary protocol)
+[Raspberry Pi 5 Companion: mavlink-router]
+       ↕ (UDP / TCP Local IPC)
+[Heterogeneous ROS2 Node: micro-XRCE-DDS Client]
+       ↕ (5G LTE / MQTT & Protobuf Payload)
+[Cloud GCS Relay Broker]
+       ↕ (WebSocket / WebRTC DataChannel)
+[Qt5 / Web GCS Operator Cockpit]
+```
+
+### 2.2 초저지연 WebRTC P2P 영상 스트리밍 파이프라인
+기존 RTSP 파이프라인의 2~3초 지연 시간을 극복하고 조종사가 즉각적인 회피 기동을 수행할 수 있도록 WebRTC 미디어 파이프라인을 구축했습니다:
+
+- **카메라 캡처**: MIPI-CSI 4K 카메라 -> Raspberry Pi 5 하드웨어 H.264 인코더
+- **GStreamer 파이프라인**:
+  ```bash
+  gst-launch-1.0 libcamerasrc ! video/x-raw,width=1920,height=1080,framerate=30/1 ! \
+    v4l2convert ! v4l2h264enc extra-controls="controls,h264_profile=4,video_bitrate=4000000" ! \
+    rtph264pay config-interval=1 pt=96 ! webrtcbin name=sendrecv
+  ```
+- **지연 시간 검증**: 5G 무선망 기준 기체 렌즈 캡처부터 지상 모니터 렌더링까지 **E2E 레이턴시 180~210ms** 달성.
+
+### 2.3 온디바이스 Hailo-8 NPU 컴퓨터 비전 사양
+지상 통신망 두절(BVLOS 음영 지역) 시에도 기체 자체에서 비상 착륙 지점과 지상 장애물을 식별할 수 있도록 M.2 Hailo-8 NPU 가속기를 통합했습니다:
+
+| 항목 | 사양 및 성능 |
+| :--- | :--- |
+| **연산 성능 (Compute Power)** | **26 TOPS (Tera-Operations Per Second)** |
+| **소비 전력 (TDP)** | 전력 소모 **2.5W ~ 5.0W 미만** (배터리 효율 최적화) |
+| **적용 모델** | **YOLOv8s-pose / YOLOv8s-seg** (Hailo Dataflow Compiler 컴파일) |
+| **추론 프레임 레이트 (FPS)** | 1080p 해상도 기준 **62.5 FPS** 실시간 연산 |
+| **CPU 부하 절감** | Host Raspberry Pi 5 CPU 점유율: 85% -> **12%로 대폭 감소** |
+
+---
+
+## 3. AWS 엔터프라이즈 GenAI & 설명가능한 AI(XAI) 아키텍처
+
+> **연계 원천 문서**:
+> - [technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md)
+> - [technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md](technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md)
+> - [technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md](cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md)
+
+### 3.1 설명가능한 AI (Model Explainability, XAI) 알고리즘
+RAG 파이프라인에서 생성된 텍스트의 각 문장($S_i$)과 컨텍스트로 제공된 검색 청크($C_j$) 간의 역상관 유사도를 추적하여 사용자에게 근거 출처를 투명하게 제공합니다:
+
+```python
+def compute_sentence_attribution(generated_sentences, source_chunks, embed_fn):
+    """
+    각 생성 문장(S_i)과 검색 청크(C_j) 간의 코사인 유사도를 계산하여
+    신뢰도 스코어와 원문 하이라이트 인덱스를 반환하는 XAI 엔진
+    """
+    chunk_embeddings = embed_fn([c["text"] for c in source_chunks])
+    sentence_embeddings = embed_fn(generated_sentences)
+    
+    attribution_results = []
+    for s_idx, s_vec in enumerate(sentence_embeddings):
+        similarities = cosine_similarity([s_vec], chunk_embeddings)[0]
+        best_chunk_idx = int(np.argmax(similarities))
+        best_score = float(similarities[best_chunk_idx])
+        
+        attribution_results.append({
+            "sentence": generated_sentences[s_idx],
+            "source_chunk_id": source_chunks[best_chunk_idx]["id"],
+            "confidence_score": round(best_score, 4),
+            "is_grounded": best_score >= 0.72  # 0.72 미만은 근거 부족 경고
+        })
+    return attribution_results
+```
+
+### 3.2 AWS Bedrock 자동 폴백 (Failover Circuit Breaker)
+사내 온프레미스 GPU 서버 또는 특정 LLM 인스턴스가 다운되거나 응답 타임아웃(3.0초) 발생 시, 서비스 단절 없이 AWS Bedrock Claude 3.5 Sonnet 엔드포인트로 자동 절체(Failover)되는 서킷 브레이커 패턴을 적용했습니다:
+
+- **정상 상태 (Closed)**: 로컬 온프레미스 GPU vLLM 추론 수행 (비용 0원)
+- **장애 감지 (Open)**: 연속 3회 타임아웃 발생 시 서킷 오픈 -> AWS Bedrock API로 라우팅 (전환 시간 < 1.2초)
+- **복구 검증 (Half-Open)**: 60초 후 상태 프로브 요청을 전송하여 정상 응답 확인 시 로컬 GPU로 자동 복귀
+
+---
+
+## 4. Korean NLP to Unity 3D 물리 제어 파이프라인
+
+> **연계 원천 문서**:
+> - [technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md](technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md)
+> - [technical_references/korean_nlp_unity/KOR2UNITY_QUICK_START.md](technical_references/korean_nlp_unity/KOR2UNITY_QUICK_START.md)
+
+### 4.1 실시간 음성/자연어 의도 파싱 및 JSON 스키마
+사용자의 비정형 한국어 발화("전방 5미터 전진 후 우측으로 90도 회전해줘")를 구문 분석하여 Unity 물리 엔진이 해석 가능한 정형 행동 트리(Action Tree)로 변환합니다:
+
+```json
+{
+  "command_id": "cmd_20261122_0942",
+  "intent": "NAVIGATE_WAYPOINT_SEQUENCE",
+  "actions": [
+    {
+      "step": 1,
+      "type": "MOVE_FORWARD",
+      "distance_meters": 5.0,
+      "speed_mps": 1.5
+    },
+    {
+      "step": 2,
+      "type": "ROTATE_YAW",
+      "angle_degrees": 90.0,
+      "direction": "CLOCKWISE"
+    }
+  ],
+  "timestamp": 1732263720
+}
+```
+
+### 4.2 Unity C# 수신부 및 물리 Rigidbody 동기화
+WebSocket 클라이언트 C# 컴포넌트가 명령 큐(Command Queue)를 수신하여 Unity의 `FixedUpdate()` 물리 연산 루프에서 부드러운 가감속(S-Curve 가속도 제어)을 적용하여 기체 또는 로봇 메쉬의 물리적 충돌 및 자세를 시뮬레이션합니다.
+
+---
+
+## 5. 트러블슈팅 및 장애 대응 엔지니어링 케이스 스터디
+
+### [사례 1] 로컬 LLM 동시 요청 시 GPU VRAM OOM(Out of Memory) 크래시
+- **증상**: 다수의 사용자가 동시에 대화형 챗봇에 질의할 때 GPU VRAM이 한계(24GB)를 초과하여 LLM 서빙 프로세스가 비정상 종료되는 현상 발생.
+- **원인 분석**: 단일 HTTP 요청마다 즉시 모델 인스턴스에 컨텍스트를 할당하여 동시 KV 캐시 메모리가 폭증함.
+- **해결 방안**:
+  1. API 서버와 LLM 서빙 엔진 사이에 **Redis Pub/Sub 기반 FIFO 작업 큐** 도입.
+  2. 최대 동시 슬롯 수(Batch Slots)를 4개로 제한하고, 초과 요청은 클라이언트에 `대기 순번(Queue Position)`을 실시간 푸시.
+  3. GGUF 4-bit 양자화(Q4_K_M) 적용으로 가중치 메모리를 14GB -> 4.8GB로 절감하여 KV 캐시 가용 메모리 대폭 확보.
+- **결과**: 동시 접속 50명 부하 테스트에서도 VRAM 점유율 78% 이하로 안정 유지 및 OOM 재발률 0%.
+
+### [사례 2] 5G 무선망 핸드오버 시 WebRTC 영상 패킷 드롭 및 프리징
+- **증상**: 드론이 이동 중 기지국 셀 변경(핸드오버) 구간을 통과할 때 WebRTC 비디오 스트림이 멈추거나 화면이 깨지는 현상 발생.
+- **원인 분석**: TCP 기반 시그널링과 UDP 기반 RTP 패킷의 순간적인 지터(Jitter)로 인해 키프레임(IDR Frame)이 유실됨.
+- **해결 방안**:
+  1. 지상 GCS 클라이언트에서 프레임 디코딩 실패 감지 시 즉시 RTCP PLI(Picture Loss Indication) 패킷을 기체로 역전송하도록 설정.
+  2. Raspberry Pi 인코더에서 PLI 수신 즉시 차기 프레임을 강제 IDR 키프레임으로 즉시 재발행.
+- **결과**: 무선망 핸드오버 발생 시에도 **0.3초 이내에 정상 화면으로 자동 복구** 완료.
+
+---
+
+## 6. WSL 15대 실무 아키텍처 레퍼런스 전체 색인
+
+이 기술 문서에 요약된 모든 아키텍처의 원본 설계도 및 소스 코드는 프로젝트 내 `technical_references/` 디렉토리에 실시간 링크되어 있습니다:
+
+| 카테고리 | 문서 파일명 | 상세 기술 내용 및 증빙 |
+| :--- | :--- | :--- |
+| **드론 GCS** | [10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md](technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md) | BVLOS 5G 클라우드 드론 관제 통합 아키텍처 |
+| **드론 GCS** | [09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md](technical_references/drone_gcs/09-Heterogeneous-Drone-SDK-Adapters-and-Fleet-GCS.md) | 이기종 드론(PX4/ArduPilot) SDK 통합 어댑터 설계 |
+| **드론 GCS** | [18-Heterogeneous-GCS-Product-and-Evidence-Briefing.md](technical_references/drone_gcs/18-Heterogeneous-GCS-Product-and-Evidence-Briefing.md) | 상용 GCS 제품 기술 실증 및 PoC 브리핑 문서 |
+| **드론 GCS** | [13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md](technical_references/drone_gcs/13-Gazebo-Sim-Harmonic-Fleet-Actuation-and-Cockpit-Integration.md) | Gazebo 3D 시뮬레이션 및 콕핏 제어 연동 |
+| **드론 GCS** | [hardware_specs_rpi5_hailo8.md](technical_references/drone_gcs/hardware_specs_rpi5_hailo8.md) | Raspberry Pi 5 + Hailo-8 M.2 NPU 엣지 비전 사양 |
+| **RAG & LLM** | [YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md](technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) | 하이브리드 RAG 검색 및 챗봇 엔드-투-엔드 구조 |
+| **RAG & LLM** | [TYPESENSE_SETUP.md](technical_references/typesense_rag/TYPESENSE_SETUP.md) | Typesense 클러스터 구축 및 하이브리드 인덱싱 가이드 |
+| **RAG & LLM** | [ARCHITECTURE_VISUAL_DIAGRAM.md](technical_references/typesense_rag/ARCHITECTURE_VISUAL_DIAGRAM.md) | 계층별(UI, API, Embedding, Storage) 아키텍처 다이어그램 |
+| **RAG & LLM** | [INFRASTRUCTURE_SETUP.md](technical_references/typesense_rag/INFRASTRUCTURE_SETUP.md) | 온프레미스 GPU 가속 및 로컬 LLM 서빙 환경 명세 |
+| **클라우드 AI** | [ARCHITECTURE_FLOW.md](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md) | **제주오르미 1위 팀프로젝트** AWS ECS Fargate 클라우드 플로우 |
+| **클라우드 AI** | [MODEL_EXPLAINABILITY.md](technical_references/cloud_ai_aws/MODEL_EXPLAINABILITY.md) | 설명가능한 AI (XAI) 및 인용구 신뢰도 스코어링 알고리즘 |
+| **클라우드 AI** | [AWS_ENDPOINTS_AND_CHROMADB_MIGRATION.md](technical_references/cloud_ai_aws/AWS_ENDPOINTS_AND_CHROMADB_MIGRATION.md) | ChromaDB에서 AWS OpenSearch로의 벡터 마이그레이션 |
+| **클라우드 AI** | [AWS_BEDROCK_FALLBACK_GUIDE.md](technical_references/cloud_ai_aws/AWS_BEDROCK_FALLBACK_GUIDE.md) | 로컬 장애 시 AWS Bedrock 자동 Failover 서킷 브레이커 |
+| **NLP & XR** | [KOR2UNITY_TECHNICAL_ARCHITECTURE.md](technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md) | 한국어 자연어 지시어 기반 Unity 3D 물리 제어 파이프라인 |
+| **NLP & XR** | [KOR2UNITY_QUICK_START.md](technical_references/korean_nlp_unity/KOR2UNITY_QUICK_START.md) | KOR2UNITY 셋업 가이드 및 WebSocket 연동 명세 |
+
+  </script>
+
+  <script>
+    // Configure Marked
+    marked.setOptions({
+      gfm: true,
+      breaks: true
+    });
+
+    // Helper: Render Markdown with Mermaid support
+    function renderMarkdownToElement(rawMdId, targetElementId) {
+      const rawText = document.getElementById(rawMdId).textContent.trim();
+      const targetEl = document.getElementById(targetElementId);
+      
+      // Parse markdown to HTML
+      const html = marked.parse(rawText);
+      targetEl.innerHTML = html;
+
+      // Transform ```mermaid code blocks to <pre class="mermaid">
+      const codeBlocks = targetEl.querySelectorAll('pre code.language-mermaid');
+      codeBlocks.forEach(code => {
+        const pre = code.parentElement;
+        const mermaidDiv = document.createElement('div');
+        mermaidDiv.className = 'mermaid my-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-center overflow-x-auto';
+        mermaidDiv.textContent = code.textContent;
+        pre.parentNode.replaceChild(mermaidDiv, pre);
+      });
+    }
+
+    // Switch Tabs
+    function switchTab(tabId) {
+      // Update Tab Pane visibility
+      document.querySelectorAll('.tab-pane').forEach(el => {
+        el.classList.add('hidden');
+      });
+      const targetTab = document.getElementById(tabId);
+      if (targetTab) {
+        targetTab.classList.remove('hidden');
+      }
+
+      // Update button active state
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      const activeBtn = document.getElementById('btn-' + tabId);
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+
+      // Scroll to top of content
+      window.scrollTo({ top: 380, behavior: 'smooth' });
+
+      // Re-trigger mermaid render if not rendered yet
+      setTimeout(() => {
+        try {
+          mermaid.run();
+        } catch(e) {
+          console.warn('Mermaid render error:', e);
+        }
+      }, 50);
+    }
+
+    // Initial Load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMarkdownToElement('raw-md-resume', 'content-resume');
+      renderMarkdownToElement('raw-md-career', 'content-career');
+      renderMarkdownToElement('raw-md-portfolio', 'content-portfolio');
+      renderMarkdownToElement('raw-md-tech', 'content-tech');
+
+      // Initialize Mermaid
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'default',
+        securityLevel: 'loose',
+        flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+      });
+
+      // Handle URL query parameter for tab selection (e.g. ?tab=tab-career)
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabParam = urlParams.get('tab');
+      if (tabParam && document.getElementById(tabParam)) {
+        switchTab(tabParam);
+      }
+    });
+  </script>
+
+</body>
+</html>
