@@ -495,7 +495,12 @@
 
 ---
 
-## 🧭 1. 커리어 피봇 & 배경 요약 (Career Background)
+<details style="margin: 16px 0; border: 1px solid #e2e8f0; border-radius: 10px; background: #f8fafc; padding: 12px 16px;">
+  <summary style="font-weight: 700; cursor: pointer; color: #0f766e; font-size: 14px;">
+    🧭 1. 커리어 피봇 & 배경 스토리 펼쳐보기 (1985~2025: 교육/PM ➔ 3,000h 재교육 ➔ AI 시스템 엔지니어링)
+  </summary>
+
+<div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid #e2e8f0;">
 
 ```mermaid
 flowchart TD
@@ -515,6 +520,9 @@ flowchart TD
 - **비즈니스 교육 & IT 프로젝트 관리 (1985 ~ 2014)**: 미국 메릴랜드대학교 학사(Management/CS) 기반 원어민급 영어 능력. 삼성HP, SK텔레콤, 현대자동차 출강 및 이오즈 기획실장으로서 대규모 전자정부 사업 제안/PM 총괄.
 - **소프트웨어 엔지니어링 전문 훈련 (2018 ~ 2025)**: 하이미디어 풀스택(1,120h), RAPA 5G AI 통제(1,080h, 멀티콥터 1종 조종자), 제주오르미캠프 종합 1위 우수상 & 개인 최우수상 수상.
 - **현업 시스템 개발 및 AI 인프라 구축 (2019 ~ 현재)**: CTI, 저전력 IoT, 5G MAVLink 드론 GCS 개발에 이어, 유콘크리에이티브 개발실장으로서 YogaQ 온디바이스 비전 AI 엣지 인식 및 Typesense 하이브리드 RAG 시스템 구축 총괄.
+
+</div>
+</details>
 
 ---
 
@@ -624,6 +632,13 @@ flowchart TD
 - **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#1-요가큐yogaq-온디바이스-비전-ai-엣지-가속--하이브리드-rag-아키텍처-명세](04_포트폴리오_기술문서_이병남.md)
 
 #### 📐 시스템 아키텍처 다이어그램
+<div style="text-align: center; margin: 14px 0;">
+  <img src="images/yogaq_architecture_pipeline.svg" alt="YogaQ Two-Stage Decoupled Perception Architecture" style="width: 100%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);" />
+</div>
+
+<details style="margin: 8px 0; font-size: 11.5px; color: #64748b;">
+  <summary style="cursor: pointer;">Mermaid 소스 다이어그램 펼쳐보기</summary>
+
 ```mermaid
 flowchart TD
     subgraph Physical["현장 셋업 & 영상 입력"]
@@ -662,6 +677,7 @@ flowchart TD
     Typesense --> Contra --> Ollama --> Chat
     Markov -.-> B2B
 ```
+</details>
 
 #### 🛠️ 핵심 구현 및 엔지니어링 항목 (Key Implementations)
 1. **2단계 분리 가속 파이프라인 (Two-Stage Decoupled Perception)**:
