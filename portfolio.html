@@ -900,7 +900,7 @@ flowchart TD
     LangGraph --> Ollama
     Ollama <--> GPU
     Ollama -->|생성 토큰| WSHandler
-    WSHandler -->|실시간 스트리밍 (TTFT 340ms)| ChatUI
+    WSHandler -->|실시간 스트리밍 TTFT 340ms| ChatUI
 
     LangGraph --> JSONLD
     StudioPortal --> FreeDir
@@ -1363,15 +1363,37 @@ WebSocket 클라이언트 C# 컴포넌트가 명령 큐(Command Queue)를 수신
       const html = marked.parse(rawText);
       targetEl.innerHTML = html;
 
-      // Transform ```mermaid code blocks to <pre class="mermaid">
+      // Transform ```mermaid code blocks to lazy container
       const codeBlocks = targetEl.querySelectorAll('pre code.language-mermaid');
       codeBlocks.forEach(code => {
         const pre = code.parentElement;
         const mermaidDiv = document.createElement('div');
-        mermaidDiv.className = 'mermaid my-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-center overflow-x-auto';
-        mermaidDiv.textContent = code.textContent;
+        mermaidDiv.className = 'mermaid-container my-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-center overflow-x-auto';
+        mermaidDiv.setAttribute('data-diagram', code.textContent.trim());
         pre.parentNode.replaceChild(mermaidDiv, pre);
       });
+    }
+
+    // Render Mermaid diagrams inside a visible container
+    let mermaidCounter = 0;
+    async function renderMermaidInContainer(container) {
+      if (!container || !window.mermaid) return;
+      const unrendered = container.querySelectorAll('.mermaid-container:not([data-rendered="true"])');
+      for (const el of unrendered) {
+        const code = el.getAttribute('data-diagram');
+        if (!code) continue;
+        const uniqueId = 'mermaid-diag-' + (++mermaidCounter);
+        try {
+          const { svg } = await mermaid.render(uniqueId, code);
+          el.innerHTML = svg;
+          el.setAttribute('data-rendered', 'true');
+        } catch (err) {
+          console.error('Mermaid render error:', err);
+          const stray = document.getElementById('d' + uniqueId) || document.getElementById(uniqueId);
+          if (stray) stray.remove();
+          el.innerHTML = '<div class="text-xs text-red-500 p-2 text-left">다이어그램 렌더링 오류가 발생했습니다.</div>';
+        }
+      }
     }
 
     // Switch Tabs
@@ -1397,37 +1419,32 @@ WebSocket 클라이언트 C# 컴포넌트가 명령 큐(Command Queue)를 수신
       // Scroll to top of content
       window.scrollTo({ top: 380, behavior: 'smooth' });
 
-      // Re-trigger mermaid render if not rendered yet
-      setTimeout(() => {
-        try {
-          mermaid.run();
-        } catch(e) {
-          console.warn('Mermaid render error:', e);
-        }
-      }, 50);
+      // Render mermaid for the newly active tab
+      if (targetTab) {
+        renderMermaidInContainer(targetTab);
+      }
     }
 
     // Initial Load
     document.addEventListener('DOMContentLoaded', () => {
-      renderMarkdownToElement('raw-md-resume', 'content-resume');
-      renderMarkdownToElement('raw-md-career', 'content-career');
-      renderMarkdownToElement('raw-md-portfolio', 'content-portfolio');
-      renderMarkdownToElement('raw-md-tech', 'content-tech');
-
-      // Initialize Mermaid
+      // Initialize Mermaid with startOnLoad: false
       mermaid.initialize({
-        startOnLoad: true,
+        startOnLoad: false,
         theme: 'default',
         securityLevel: 'loose',
         flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
       });
 
+      renderMarkdownToElement('raw-md-resume', 'content-resume');
+      renderMarkdownToElement('raw-md-career', 'content-career');
+      renderMarkdownToElement('raw-md-portfolio', 'content-portfolio');
+      renderMarkdownToElement('raw-md-tech', 'content-tech');
+
       // Handle URL query parameter for tab selection (e.g. ?tab=tab-career)
       const urlParams = new URLSearchParams(window.location.search);
       const tabParam = urlParams.get('tab');
-      if (tabParam && document.getElementById(tabParam)) {
-        switchTab(tabParam);
-      }
+      const initialTabId = (tabParam && document.getElementById(tabParam)) ? tabParam : 'tab-resume';
+      switchTab(initialTabId);
     });
   </script>
 
