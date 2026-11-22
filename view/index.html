@@ -15,20 +15,55 @@
 		<title>Tonyleekorea - Interactive Resume</title>
 		
 		<!-- Bootstrap core CSS -->
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,600,700" rel="stylesheet" type="text/css" />
 		<link href="css/bootstrap.min.css" rel="stylesheet" />
 		<link href="css/jquery.iedialog.min.css" rel="stylesheet" />
 		<link href="style.css" rel="stylesheet" />
+		
+		<!-- Star Rating System CSS -->
+		<style>
+			.star-rating-container {
+				margin: 20px 0;
+				text-align: center;
+			}
+			
+			.star-rating {
+				font-size: 24px;
+				margin: 10px 0;
+			}
+			
+			.star {
+				color: #ddd !important;
+				cursor: pointer;
+				transition: color 0.2s ease;
+				margin: 0 2px;
+			}
+			
+			.star:hover {
+				color: #22A39F !important;
+			}
+			
+			.star.active {
+				color: #22A39F !important;
+			}
+			
+			.rating-feedback {
+				margin-top: 10px;
+				font-size: 14px;
+				color: #666;
+				min-height: 20px;
+			}
+		</style>
 	</head>
 	<body data-spy="scroll" data-target="#navbar-example">		
-		<div class="jumbotron" data-src="images/bike_animation.gif">
-			<noscript><img src="images/bike_animation.gif" alt="bike"></noscript>
+		<div class="jumbotron" data-src="images/giraf_animation.gif" style="background-position: center;">
+			<noscript id="noscript"><img src="images/giraf_animation.gif" alt="giraf"></noscript>
 			<div class="container">
 				<h1>Tonyleekorea</h1>
 				<p class="lead">Interactive resume<!-- <br>
 				until next time ciao&Tilde; --></p>
 			</div>
-			
+			<script>document.getElementById('noscript').style.display='none';</script>
 			<div class="overlay"></div>
 			
 			<a href="#profile" class="scroll-down">	
@@ -63,14 +98,18 @@
 			<div id="profile" class="container">
 				<h2>Profile</h2>
 				<p class="lead">Tonyleekorea BN Lee</p>
+				<p style="text-align: center; margin-top: -20px;"><a href="resume_latest.html" style="font-weight: bold; font-size: 15px; color: #22A39F;">📄 View 2026 Modern Resume (KO / EN & PDF Print)</a> &nbsp;|&nbsp; <a href="javascript: popUp();">resume in bare mode</a></p>
+				
+				
 				
 				<hr />
+
 				
 				<div class="row profile-fade">
 					<div class="col-md-4">
 						<h3>About me</h3>
 						<p>
-							YOU'RE GOING TO FALL IN LOVE WITH THE WAY I WORK, TO BUILD MY CAREER <br>
+							YOU'RE GOING TO FALL IN LOVE WITH THE WAY I WORK, IN BUILDING MY CAREER <br>
 For the duration of 140 days of NCS course, I have completely absorbed myself in learning; 1120 class hours, 320+ hours of reading, 130+ hours of online video courses and much much more.
 						</p>
 					</div>
@@ -78,15 +117,16 @@ For the duration of 140 days of NCS course, I have completely absorbed myself in
 						<img class="profile-image" src="images/tonyillust_atwork.svg" alt="tonyleekorea" />
 					</div>
 					<div class="col-md-4 col-xs-8">
-					<h3>AI Track Journey</h3>
-					<p>
-						Started with language learning and speech pipelines, then built practical AI systems: LLaMA, TinyLLaMA for SIEM, and Ollama in dashboards. Focused on modular, real-world AI for education, cybersecurity, and productivity!
-					</p>
+						<h3>AI Track Journey</h3>
+						<p>
+							CURIOUS AND HUMBLE BEGINNING I began by tinkering with Korean learning content and simple speech pipelines, then moved into practical AI systems—running LLaMA locally with GPU acceleration, integrating TinyLLaMA into Wazuh SIEM, and fusing AI with infrastructure. I built real apps along the way, from an MVP chat that grew into scalable WebSocket services to embedding Ollama in TUI dashboards. Guided by Xanthorox AI’s modular design, I now apply this work across education, cybersecurity, and systems integration—still driven by the same spirit of learning and transformation.
+						</p>
 					</div>
 				</div>
 				
 			</div>
 		</div>	
+
 		
 		<div id="experiences" class="container">
 			<h2>Experiences</h2>
@@ -99,22 +139,22 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 			
 			<h3>Educations</h3>
 			
-			<div class="experiences">
+			<div class="experiences">				
 				<div class="experience row">
 					<div class="col-md-4">
-						<h4>U. Penn</h4>
+						<h4>U of M</h4>
 						<p class="experience-period">sep 1991 - jun 1994</p>
 					</div>
 					<div class="col-md-8">
 						<p>
 							<strong>Bachelor - SMBA</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								The Classes I took and projects I completed there contributed greatly to my development of skills such as teamwork and project-oriented work management. Presentations with classmates helped to hone my ability to colloborate constructively, which is still essential to my successful career path. 
+								My motto then was 'Divde and Conquer'.
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;U.Penn
+								&#039;College Park &#039;
 							</span>
 						</p>
 					</div>
@@ -127,14 +167,13 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					</div>
 					<div class="col-md-8">
 						<p>
-							<strong>Accounting major to quit and transfer</strong>
+							<strong>Accounting major</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								I first enrolled in Biology Department of Kunkuk University with a dream for a big-shot future biochemist. I took to the USIS library, poring over books then realizing I should pursue the dream in America. With a almost perfect TOEFL score, I was admitted and started taking classes offered  to US 8th Army GIs in Seoul, as a part of UM extension programs. It was a long years because I kept a job as an English Instructor. This is still true; I am always trying to balance work and study at the same time.
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;U Maryland
+								&#039;U Maryland &#039;
 							</span>
 						</p>
 					</div>
@@ -146,6 +185,79 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 			<h3>Careers</h3>
 			
 			<div class="experiences">
+				<!-- .experience.row>.col-md-4>h4{Onofflink}+p.experience-period^div.col-md-8>p>strong{Asterisk Freepbx}+span.hidden-phone+span.location>span.glyphicon.glyphicon-map-marker -->
+				<div class="experience row">
+					<div class="col-md-4">
+						<h4>Uconcreative (유콘크리에이티브)</h4>
+						<p class="experience-period">May 2023 - Aug 2025<br>Development Director (개발 실장)</p>
+					</div>
+					<div class="col-md-8">
+						<p><strong class="hidden-phone">Generative AI & Local LLM Systems</strong><span class="hidden-phone">
+							Self-hosted local LLM servers (Ollama, llama.cpp, CUDA GPU acceleration) and designed high-throughput RAG search using Typesense semantic vector indexing. Integrated GraphQL Yoga, Prisma ORM, PostgreSQL, and WebSocket backends for low-latency interactive AI services. <a href="https://aiegoo.github.io/yoga/chat" target="_blank">Live Semantic Chat</a> &#8678; <a href="https://pf7.eggs.or.kr">Documentation Portal</a>
+						</span><br>
+						<span class="location"><span class="glyphicon glyphicon-map-marker"></span>&#039; Uconcreative &#039;</span>					
+						</p>
+						<p><strong class="hidden-phone">3D Scanning Drone & Metaverse Big Data Pipeline</strong><span class="hidden-phone">
+							Architected 3D point cloud and spatial scanning data pipelines for metaverse digital twin creation. Built distributed storage optimization and automated point cloud registration/post-processing pipelines.
+						</span><br>
+						<span class="location"><span class="glyphicon glyphicon-map-marker"></span>&#039; Spatial Data &#039;</span>
+						</p>
+						<p><strong class="hidden-phone">Autonomous Drone & EV Fleet Control Platform</strong><span class="hidden-phone">
+							Engineered 3D-IR drone embedded systems and real-time fleet telemetry monitoring backends using WebSocket & Redis Pub/Sub with automated anomaly detection and alerting.
+						</span><br>
+						<span class="location"><span class="glyphicon glyphicon-map-marker"></span>&#039; Telemetry & Control &#039;</span>
+						</p>
+					</div>
+				</div>
+				<div class="experience row">
+					<div class="col-md-4">
+						<h4>Global Strategic Partnerships</h4>
+						<p class="experience-period">Nov 2023 - Dec 2024<br>Head of International Tech Diplomacy</p>
+					</div>
+					<div class="col-md-8">
+						<p><strong class="hidden-phone">International MOUs & $100K Multilateral Trade Contract</strong><span class="hidden-phone">
+							• <strong>Kazakhstan (2024.12)</strong>: Closed $100,000 multilateral trade contract & executed technical collaboration MOU with local university.<br>
+							• <strong>Poland (2024.11)</strong>: Represented Korean business mission in metaverse & drone control industrial cooperation in Europe.<br>
+							• <strong>Germany (2024.08)</strong>: Signed technology transfer and business partnership MOU with German BMS high-voltage module entity.<br>
+							• <strong>Indonesia & Thailand (2023.11 - 2024.07)</strong>: Directed visit for council of university presidents, met Vice Minister of Manpower, and signed university/AI SaaS MOUs.
+						</span><br>
+						<span class="location"><span class="glyphicon glyphicon-map-marker"></span>&#039; Global Engagements &#039;</span>					
+						</p>
+					</div>
+				</div>
+				<div class="experience row">
+					<div class="col-md-4">
+						<h4>JDLab, Hitec</h4>
+						<p class="experience-period">feb 2020 - may 2022<br>Drone HW, GCS development, RF mesh, Quantum Encryption, monitoring app</p>
+					</div>
+					<div class="col-md-8">
+						<p><strong class="hidden-phone">MP, QGC, Firmware, GCS, DL/ML monitoring app</strong><span class="hidden-phone">
+							Licensed for UAV 1st class for multicopters and 3rd class for fixed wings, C++, QT and jupyter notebook for ML/DL<br>
+							. <a href="http://java.eggs.or.kr/index.php">credentials: admin 12345</a> &#8678; <a href="http://gcs.eggs.or.kr">GCS, dashboard</a>
+						</span><br>
+						<span class="location"><span class="glyphicon glyphicon-map-marker"></span>&#039; JDLab &#039;</span>					
+					</p>
+					</div>
+				</div>
+				<div class="experience row">
+					<div class="col-md-4">
+						<h4>Onofflink, Jiseoan</h4>
+						<p class="experience-period">mar 2019 - dec 2019<br>php, python, C#, Unity, Linux</p>
+					</div>
+					<div class="col-md-8">
+						<p><strong class="hidden-phone">Asterisk Freepbx</strong><span class="hidden-phone">
+							No prior knowledge or a mentor to guide me through the development, but I did it!!<br>
+							A call center and conference solution based on Freepbx and asterisk. All feature codes and built-in modules are configured for deployment to DO servers. <a href="http://eggs.or.kr/index.php">credentials: admin 12345</a> &#8678; <a href="http://gui.eggs.or.kr">Freepbx gui</a>
+						</span><br>
+						<strong class="hidden-phone">Unity, AR mobility experience</strong><span class="hidden-phone">
+							CMS deploy apps and CES2020 Las Vegas for Hyundai Mobis to develop a Unity app for a VR driving experience<br>
+							A python app with nginx and github webhook for payload events and deployment. <a href="http://eggs.or.kr/index.php">credentials: admin 12345</a> &#8678; <a href="http://gui.eggs.or.kr">Freepbx gui</a>
+						</span><br>
+						<span class="location"><span class="glyphicon glyphicon-map-marker"></span>&#039; onfflink &#039;</span>					
+					</p>
+					</div>
+				</div>
+				
 				<div class="experience row">
 					<div class="col-md-4">
 						<h4>Eozz Inc. (aka Yulim Ads)</h4>
@@ -155,12 +267,17 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 						<p>
 							<strong>Translation and Design Department</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								It's most devastating and tumultuous year for me. I had to come home as Korea and the world in a sense had fallen to the deep dark years of economic chaos. I took up a night-shift as a building guard and worked as a freelancing teacher and translator to survive the few years economic aftermath. I joined Yulim Ads as an apprentice and became the chief operating director until I resigned in 2014.<br>
+								<p>The company had clients such as Hana Tour, LG Ads, Sisa English, SK Constructions and small-medium-sized art/design companies in Seoul metro area. </p>
+								<ul class="list margin-b-30">
+									<li>Sisa English billboards</li>
+									<li>LG Ads for commercial building interior graphic works.</li>
+									<li>Freelancing translator and English instructor</li>
+								</ul>
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Eozz Inc.
+								&#039;Eozz Inc. &#039;
 							</span>
 						</p>
 					</div>
@@ -169,18 +286,18 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				<div class="experience row">
 					<div class="col-md-4">
 						<h4>Himedia Computer</h4>
-						<p class="experience-period">sep 2018 - jun 2019</p>
+						<p class="experience-period">sep 2018 - feb 2019</p>
 					</div>
 					<div class="col-md-8">
 						<p>
 							<strong>NCS course with focus on web App development and programming</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								<p class="margin-b-50">
+									I took up a NCI course of 7 months, 8 hours of classes a day and extra curriculum of reading intensive reference books two books every month. I never had this kind of challenge all my life. I passed the national GTQ Photoshop 1st Level test, and the National Web Technical Written test in the span of two months,a feat which I never thought I would achieve. <br> This portfolio is going to be another example how far and high I can aim to reach my goal.</p>
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Hi-media
+								&#039;Hi-media &#039;
 							</span>
 						</p>
 					</div>
@@ -193,14 +310,13 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					</div>
 					<div class="col-md-8">
 						<p>
-							<strong>TOEIC & TOEFL</strong>
+							TOEIC & TOEFL
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+									
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Sisa English Institute
+								&#039;Sisa English Institute &#039;
 							</span>
 						</p>
 					</div>
@@ -215,12 +331,12 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 						<p>
 							<strong>Pratt Institute of Arts - College Extension</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+									
+									The courses with the renowned institute has kept my artistic juice flowing ever since, if not as a profession. Hence, when the opportunity arose with the government stipends and sponsorship, I joined the 7 months of coding and web publishing with Hi-media Institute. I learned fast and became fluent in coding (html5, css3, jquery and bootstrap). I am resourceful and can be very inventive. Trust is what counts most when your job is to fulfill the goal of my clients.
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;UC
+								&#039;UC &#039;
 							</span>
 						</p>
 					</div>
@@ -228,19 +344,19 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				
 				<div class="experience row">
 					<div class="col-md-4">
-						<h4>Chu Art LA</h4>
+						<h4>Art Studio LA</h4>
 						<p class="experience-period">sep 1996 - jun 1997</p>
 					</div>
 					<div class="col-md-8">
 						<p>
-							<strong>Chu Art - Signage, CAD & silk-screen</strong>
+							<strong>Art Studio - Signage, CAD & silk-screen</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								<p class="font-semi-white margin-tb-30">My duty included coordinating outdoor signage, 4-color process printing, and silk-printing and I spent most of the work time with studio people whose work led to tangible outputs. 
+								</p>
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Chu Art
+								&#039;Chu Art &#039;
 							</span>
 						</p>
 					</div>
@@ -255,12 +371,11 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 						<p>
 							<strong>SHP and Hynix - Training Instructor</strong>
 							<span class="hidden-phone">
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit. In lacinia pulvinar enim, vel ultrices lorem tempor et. 
-								Pellentesque aliquet rutrum eros vitae posuere.
+								I taught numerous in-house classes for major companies in Korea including Hynix and Samsung but not limited to them.
 							</span>
 							<span class="location">
 								<span class="glyphicon glyphicon-map-marker"></span>
-								&#039;Hynix
+								&#039;Hynix &#039;
 							</span>
 						</p>
 					</div>
@@ -271,22 +386,21 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 		</div>
 		
 		<div class="background-white">
-			<div id="abilities" class="container">
+						<div id="abilities" class="container">
 				<h2>Abilities</h2>
 				<p class="lead">
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit. At natus commodi adipisci repellendus omnis fugit magnam tempore porro! 
-					Voluptas earum pariatur eveniet dolor blanditiis aspernatur exercitationem sapiente ducimus nihil accusamus.
+					입사 첫날부터 자체 온프레미스 GPU 환경에 로컬 LLM을 서빙하고, 초저지연 하이브리드 RAG 파이프라인을 독립적으로 구축·운영하는 실무 스킬셋입니다.
 				</p>
 				
 				<hr />
 				
-				<h3>Skills</h3>
+				<h3>AI Systems & RAG Engineering</h3>
 				
 				<div class="row">
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">PHP</span>
+								<span class="ability-title">Local LLM Serving (Ollama / llama.cpp / vLLM)</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -296,7 +410,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">MySQL</span>
+								<span class="ability-title">Typesense Hybrid Search (Dense + BM25)</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -306,13 +420,33 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">WordPress</span>
+								<span class="ability-title">CUDA GPU Acceleration & GGUF Quantization</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">Vector Embeddings (bge-m3 / 1024-dim / HNSW)</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">WebSocket Real-time Token Streaming</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 						</ul>
@@ -320,7 +454,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">HTML(5)</span>
+								<span class="ability-title">Domain Sliding Chunking & RAG Pipelines</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -330,7 +464,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">CSS(3)</span>
+								<span class="ability-title">Explainable AI (XAI) Attribution Engine</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -340,13 +474,33 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">Javascript</span>
+								<span class="ability-title">Hallucination Guard & Context Optimization</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">Redis Pub/Sub Asynchronous Request Queues</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">FastAPI & Async Python Microservices</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 						</ul>
@@ -355,29 +509,39 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				
 				<hr />
 				
-				<h3>Languages</h3>
+				<h3>Core Programming & Systems Architecture</h3>
 				
 				<div class="row">
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">Korean (mother tongue)</span>
+								<span class="ability-title">Python (FastAPI / PyTorch / Transformers)</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">English (daily use)</span>
+								<span class="ability-title">C / C++ (High-Performance / llama.cpp / MAVLink)</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">TypeScript & Node.js (Event-Driven / Streaming)</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 						</ul>
@@ -385,23 +549,33 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">Japanese</span>
+								<span class="ability-title">SQL & Databases (PostgreSQL / Prisma / Redis)</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star"></span>
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">German</span>
+								<span class="ability-title">React, Vite & TailwindCSS Frontend UX</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">Linux Systems & WSL2 CUDA Optimization</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 						</ul>
@@ -410,49 +584,49 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				
 				<hr />
 				
-				<h3>Tools</h3>
+				<h3>Cloud Infrastructure & Edge Systems</h3>
 				
 				<div class="row">
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">Notepad++</span>
+								<span class="ability-title">AWS Cloud (ECS Fargate / OpenSearch / Bedrock)</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">Git, github & command line</span>
+								<span class="ability-title">AWS Certified Cloud Practitioner (CLF-C02)</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">VS Code</span>
+								<span class="ability-title">Docker & Container Orchestration</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">Adobe products</span>
+								<span class="ability-title">5G BVLOS Drone GCS Architecture</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
-									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
 								</span>
 							</li>
 						</ul>
@@ -460,7 +634,17 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<span class="ability-title">Windows</span>
+								<span class="ability-title">UAV Pilot Licensed (초경량 멀티콥터 1종 조종자)</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">Edge NPU Acceleration (Hailo-8 / NVIDIA Jetson)</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -470,7 +654,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">Mac OS</span>
+								<span class="ability-title">Embedded C & IoT Sensor Gateways</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
@@ -480,12 +664,87 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 								</span>
 							</li>
 							<li>
-								<span class="ability-title">All browsers</span>
+								<span class="ability-title">Circuit Breaker Failover Architecture</span>
 								<span class="ability-score">
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
 									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<hr />
+				
+				<h3>Global Leadership & Languages</h3>
+				
+				<div class="row">
+					<div class="col-md-6">
+						<ul class="no-bullets">
+							<li>
+								<span class="ability-title">English (Native Business Level / TOEFL 627)</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">Global Tech Trade & $100K Contract Lead</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">Technical Project Management (Enterprise SI)</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-6">
+						<ul class="no-bullets">
+							<li>
+								<span class="ability-title">Korean (Mother Tongue)</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">Cross-Cultural Business Negotiation</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+								</span>
+							</li>
+							<li>
+								<span class="ability-title">Japanese (Conversational)</span>
+								<span class="ability-score">
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star filled"></span>
+									<span class="glyphicon glyphicon-star"></span>
+									<span class="glyphicon glyphicon-star"></span>
 									<span class="glyphicon glyphicon-star"></span>
 								</span>
 							</li>
@@ -508,7 +767,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				<div class="col-md-8 interest-content">
 					<h3>Sports</h3>
 					<p>
-						I seriously asked myself what I wanted from my life ever since my young adult years. How I die is one thing; what to decide at the right moment is another; and seeking a transcending level of awareness is the other. I believe yoga in a sheer sense encompasses all of three. Time, space and the fifth dimension I create during the yoga session are part of the process to achive them. Interacting with computer and world of internet provides me with means to reach my goals through commitment and devotion.
+						I seriously asked myself what I wanted from my life ever since my young adult years. How I die is one thing; what to decide at the right moment is another; and seeking a transcending level of awareness is the other. I chose reading, working out and practicing yoga as a way of melding these into my body and mind.
 					</p>
 				</div>
 			</div>
@@ -518,9 +777,9 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				<div class="col-md-8 interest-content">
 					<h3>Languages</h3>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-						Explicabo voluptatum delectus illum non animi libero nesciunt saepe sequi deleniti itaque repudiandae veniam facere harum ipsa ut ducimus velit quibusdam provident.
-					</p>
+						I believed that I could command at least 3 foreign tongues after I started teaching AFKN at Sisa. But I enjoyed too much reading. It virtually devoured all of my free time at the speed of a book over the weekend. (see the list <a href="javascript: popUpBooks();">here</a>). <br>
+						Computer language is my second tryout on the passion about language I left off at the time.
+					</a>
 				</div>
 			</div>
 			
@@ -529,14 +788,15 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 				<div class="col-md-8 interest-content">
 					<h3>Yoga</h3>
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-						Explicabo voluptatum delectus illum non animi libero nesciunt saepe sequi deleniti itaque repudiandae veniam facere harum ipsa ut ducimus velit quibusdam provident.
+							I took up yoga at the time when everyone seemed to accept the notion of 'over the hill'. Instead, I chose to keep my body flexible and in shape despite the age factors. Breathing, harmony, immersion in the pursuit of finding the inner most self is what I gained after 5 years of passionate yoga journey.
+						<br>
+						I believe yoga in a sheer sense encompasses all of the following three. Time, space and the fifth dimension I create during the yoga session are a part of the process to achieve my true self. Interacting with computer and world of internet provides me with means to reach my goals through commitment and devotion.
 					</p>
 				</div>
 			</div>
 		</div>
 		
-		<div class="background-gray">
+		<div class="background-gray githubstyle">
 			<div id="contact" class="container">
 				<h2>Contact</h2>
 				<p class="lead">
@@ -549,9 +809,9 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<a href="">
+								<a href="https://x.com/elbeetony" target="_blank">
 									<span class="icon icon-twitter"></span>
-									http://twitter.com/tonyleekorea
+									https://x.com/elbeetony
 								</a>
 							</li>
 							<li>
@@ -565,7 +825,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 					<div class="col-md-6">
 						<ul class="no-bullets">
 							<li>
-								<a href="">
+								<a href="skype:hsyyulim">
 									<span class="icon icon-skype"></span>
 									Tonyleekorea
 								</a>
@@ -573,29 +833,82 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 							<li>
 								<a href="">
 									<span class="icon icon-email"></span>
-									master@tonyleekorea.com
+									aiegoo@naver.com
 								</a>
 							</li>
 						</ul>
+					</div>
+					<div class="col-md-6 col-md-offset-4">
+						
+					<!-- Star Rating System -->
+					<div class="star-rating-container">
+						<h4>Rate My Resume</h4>
+						<div class="star-rating">
+							<span class="star" data-value="1">★</span>
+							<span class="star" data-value="2">★</span>
+							<span class="star" data-value="3">★</span>
+							<span class="star" data-value="4">★</span>
+							<span class="star" data-value="5">★</span>
+						</div>
+						<div id="rating-feedback" class="rating-feedback"></div>
+					</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
-		<!-- Bootstrap core JavaScript -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.iedialog.min.js"></script>
-		<script type="text/javascript">
-			
-			$('body').ieDialog({
-				closable: false
-			});  
-			
-			var lnStickyNavigation;
-			
-			$(document).ready(function()
-			{	
-				lnStickyNavigation = $('.scroll-down').offset().top + 20;
+		
+		<!-- 2026 Application Documents Action Dock (Clean Buttons Only Above Footer) -->
+		<div id="application-documents" style="background: #111827; padding: 45px 0 40px; border-top: 3px solid #22A39F; text-align: center;">
+			<div class="container" style="max-width: 1080px; padding: 0 20px;">
+				<h3 style="color: #22A39F; font-size: 26px; font-weight: 300; margin-bottom: 6px; letter-spacing: 0.5px;">2026 채용 전형 핵심 서류 열람</h3>
+				<p style="color: #94a3b8; font-size: 14px; margin-bottom: 28px;">AI 시스템 & RAG 엔지니어 실무 검증 패키지 (원클릭 바로가기)</p>
+				<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 14px;">
+					<a href="portfolio.html?tab=tab-resume" class="btn" style="background-color: #22A39F; border: 1px solid #1c8784; padding: 12px 24px; font-size: 15px; font-weight: 600; border-radius: 6px; color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(34,163,159,0.3);">
+						<span class="glyphicon glyphicon-file"></span> 1. 이력서 (Resume)
+					</a>
+					<a href="portfolio.html?tab=tab-career" class="btn" style="background-color: #2563eb; border: 1px solid #1d4ed8; padding: 12px 24px; font-size: 15px; font-weight: 600; border-radius: 6px; color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(37,99,235,0.3);">
+						<span class="glyphicon glyphicon-briefcase"></span> 2. 경력 기술서 (CV)
+					</a>
+					<a href="portfolio.html?tab=tab-portfolio" class="btn" style="background-color: #7c3aed; border: 1px solid #6d28d9; padding: 12px 24px; font-size: 15px; font-weight: 600; border-radius: 6px; color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(124,58,237,0.3);">
+						<span class="glyphicon glyphicon-picture"></span> 3. 포트폴리오 (Portfolio)
+					</a>
+					<a href="portfolio.html?tab=tab-tech" class="btn" style="background-color: #ea580c; border: 1px solid #c2410c; padding: 12px 24px; font-size: 15px; font-weight: 600; border-radius: 6px; color: #ffffff; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(234,88,12,0.3);">
+						<span class="glyphicon glyphicon-wrench"></span> 4. 기술 문서 (Dossier)
+					</a>
+					<a href="resume_latest.html" class="btn" style="background-color: #ffffff; border: 1px solid #cbd5e1; padding: 12px 22px; font-size: 15px; font-weight: 600; border-radius: 6px; color: #0f172a; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+						<span class="glyphicon glyphicon-print"></span> PDF 인쇄 / 영문 이력서
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<footer class="footer" style="background-color: #f8f9fa; padding: 20px 0; border-top: 1px solid #e9ecef; margin-top: 40px;">
+			<div class="container text-center">
+				<p class="text-muted">
+					Last published: <span id="last-updated">Loading...</span>
+				</p>
+				<p class="text-muted">
+					<small>© 2025 Tonyleekorea. Built with ❤️ and lots of ☕</small>
+				</p>
+			</div>
+		</footer>
+		
+									<!-- Bootstrap core JavaScript -->
+									<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+									<script type="text/javascript" src="js/jquery.iedialog.min.js"></script>
+									<script type="text/javascript">
+										
+										$('body').ieDialog({
+											closable: false
+										});  
+										
+										var lnStickyNavigation;
+										
+										$(document).ready(function()
+										{	
+											lnStickyNavigation = $('.scroll-down').offset().top + 20;
 				
 				$('.jumbotron').css({ height: ($(window).height() -10) +'px' });
 				
@@ -610,7 +923,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 						$('html, body').animate(
 						{
 							scrollTop: $( $.attr(this, 'href') ).offset().top
-						}, 400);
+						}, 800);
 					}
 					return false;
 				});
@@ -660,7 +973,7 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
 			}
 
 		function isInView(elem){
-       return $(elem).offset().top - $(window).scrollTop() < $(elem).height() ;
+       return $(elem).offset().top - $(window).scrollTop() < $(elem).height()-90;
 			}
 			
 			$(window).scroll(function(){
@@ -696,6 +1009,93 @@ Fountain of 'ki,' surrounded with friends of same feathers. I enjoy every moment
       fade.fadeOut(3000);
     }
   }); */
+  function popUp(){
+	  window.open("tonyresume.html", "tony", "width=500, height=500, top=200; left=300, scrollbars=no, menubar=no, toolbar=no, resizable=no, location=no, status=no, directories=no, addressbar=no");
+  }
+  function popUpBooks(){
+	  window.open("tonyresume.html#book-list", "tony", "width=500, height=500, top=200; left=300, menubar=no, toolbar=no, resizable=no, location=no, status=no, directories=no, addressbar=no");
+  }
+  
+  // Star Rating System
+  $(document).ready(function() {
+      const stars = $('.star');
+      const feedback = $('#rating-feedback');
+      let currentRating = localStorage.getItem('resumeRating') || 0;
+      
+      // Initialize display
+      updateStars(currentRating);
+      if (currentRating > 0) {
+          showFeedback(currentRating);
+      }
+      
+      // Star click handler
+      console.log('Found', stars.length, 'stars');
+      stars.on('click', function() {
+          const rating = $(this).data('value');
+          console.log('Star clicked with rating:', rating);
+          currentRating = rating;
+          localStorage.setItem('resumeRating', rating);
+          updateStars(rating);
+          showFeedback(rating);
+      });
+      
+      // Hover effects
+      stars.on('mouseenter', function() {
+          const hoverRating = $(this).data('value');
+          updateStars(hoverRating);
+      });
+      
+      $('.star-rating').on('mouseleave', function() {
+          updateStars(currentRating);
+      });
+      
+      function updateStars(rating) {
+          console.log('Updating stars with rating:', rating);
+          stars.each(function() {
+              const starValue = parseInt($(this).data('value'));
+              const $star = $(this);
+              if (starValue <= rating) {
+                  $star.addClass('active');
+                  $star.css('color', '#22A39F'); // Force color directly
+                  console.log('Added active class to star', starValue);
+              } else {
+                  $star.removeClass('active');
+                  $star.css('color', '#ddd'); // Force default color directly
+                  console.log('Removed active class from star', starValue);
+              }
+          });
+      }
+      
+      function showFeedback(rating) {
+          const messages = {
+              1: "Thanks for the feedback! I'll keep improving 💪",
+              2: "Appreciate the input! Working on getting better 📈",
+              3: "Thank you! Always room for improvement 🚀",
+              4: "Great! Thanks for the positive feedback 😊",
+              5: "Awesome! You made my day! 🌟"
+          };
+          
+          if (rating > 0) {
+              feedback.html(`⭐ You rated: ${rating}/5 - ${messages[rating]}`);
+              feedback.css('color', '#666');
+          }
+      }
+  });
+  
+  // Auto-update last modified date
+  $(document).ready(function() {
+      // Get the current date
+      const now = new Date();
+      const options = { 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric',
+          timeZone: 'Asia/Seoul'
+      };
+      const formattedDate = now.toLocaleDateString('en-US', options);
+      $('#last-updated').text(formattedDate);
+  });
+  
 		</script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	</body>
