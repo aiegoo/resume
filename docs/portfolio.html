@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>이병남 (Tony Lee) — 무인체계(드론) 임베디드 AI & 엣지 시스템 아키텍트 채용 패키지 (4대 핵심 서류)</title>
+  <title>이병남 (Tony Lee) — AI 시스템 & RAG 엔지니어 채용 패키지 (4대 핵심 서류)</title>
   
   <!-- Fonts -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -411,7 +411,7 @@
   - 전공: **경영학 학사 (Management / Computer &amp; Information Science)**
 
 ### 🛠️ 직무 핵심 코딩 스킬셋 (Coding Skillset)
-- **Drone C2 &amp; Avionics (66%)**: **5G BVLOS Cloud GCS** (gcs-uno / Webix Jet), **MAVLink v1/v2**, **ROS2 / micro-XRCE-DDS**, **DJI Mobile/Payload SDK**, **Betaflight MSP**, **K-MOSA 밀스펙 바이너리**, **WebRTC P2P 저지연 스트리밍 (&lt; 200ms)**, **Direct RF(ELRS 250Hz/CRSF) vs 4G/5G 제어권 중재기(Control Authority Arbiter)**, **BIV-6 행동 생체인식 제어 에어락**, **DDIL SHA-256 스토어앤포워드 큐**, ArduPilot/PX4 SITL, Gazebo Harmonic 3D, QGroundControl C++/Qt5 HUD
+- **Drone C2 &amp; Avionics (66%)**: **CO2 추진식 그물 포획 드론(Uc-dronusnet6)**, **PX4/STM32 펌웨어 임베딩 &amp; PID 튜닝(50km/h 고속 순항 및 화물 인양 제어)**, **3D LiDAR/Visual SLAM &amp; OctoMap 드롭오프 구역 자율 경로 탐색**,  **5G BVLOS Cloud GCS** (gcs-uno / Webix Jet), **MAVLink v1/v2**, **ROS2 / micro-XRCE-DDS**, **DJI Mobile/Payload SDK**, **Betaflight MSP**, **K-MOSA 밀스펙 바이너리**, **WebRTC P2P 저지연 스트리밍 (&lt; 200ms)**, **Direct RF(ELRS 250Hz/CRSF) vs 4G/5G 제어권 중재기(Control Authority Arbiter)**, **BIV-6 행동 생체인식 제어 에어락**, **DDIL SHA-256 스토어앤포워드 큐**, ArduPilot/PX4 SITL, Gazebo Harmonic 3D, QGroundControl C++/Qt5 HUD
 - **Edge AI &amp; Vision NPU (25%)**: **Hailo-8 (26 TOPS) / Hailo-8L (13 TOPS) DFC 컴파일 (INT8 HEF)**, **YOLOv8s / YOLOv8s-Pose 60fps**, **2단계 분리 가속 파이프라인 (NPU 20.4ms + ARM Cortex-A76 CPU Pure NumPy 0.018ms)**, **Safe Torso Scale Guard**, 3D 공간 리프팅, 마르코프 5-프레임 디바운서, PyHailoRT, OpenCV
 - **Backend &amp; Cloud (9%)**: **Typesense Hybrid Search (Dense bge-m3 1024차원 + BM25, p95 42ms)**, **AWS (CLF-C02 자격 취득)**, **ECS Fargate**, **OpenSearch Serverless**, **AWS Bedrock 무중단 Failover**, Redis Pub/Sub 비동기 큐, FastAPI, Docker, Linux/WSL2
 
@@ -477,7 +477,7 @@
 | **2025.11** | **AWS 자격증** | ☁️ **AWS Certified Cloud Practitioner (CLF-C02)** 취득 |
 | **1994.06** | **학위 및 어학** | 🎓 **미국 메릴랜드대학교 경영학 학사** (Management/CS) &amp; 🗣️ **TOEFL 627점** (원어민급) |
 
-</script>
+  </script>
 
   <script type="text/plain" id="raw-md-career">
 # 이병남 (Byungnam "Tony" Lee) — 기술 경력서 (Technical Career Description)
@@ -566,6 +566,23 @@
 
 ---
 
+#### 📌 Project 2-2: CO2 추진식 그물 포획 드론(Uc-dronusnet6) &amp; 50km/h 고속 인양 자율비행 시스템 (유콘크리에이티브)
+- **개발 환경 / 기술 스택**: Embedded C/C++, STM32, Pixhawk (PX4), MAVLink v2, CO2 Pneumatic Actuator, Rate/Attitude PID Controller Tuning, 3D LiDAR / Visual SLAM, OctoMap, ROS/ROS2, A* Path Planning
+- **참조 저장소**: [git@github.com:aiegoo/Uc-dronusnet6.git](https://github.com/aiegoo/Uc-dronusnet6)
+- **1) 문제 정의 &amp; 기술적 당면 과제**:
+  - 중요 시설 침입 비인가 불법 드론을 물리적 파괴 없이 안전하게 포획(Anti-Drone Net Catcher)하고, 포획된 기체 및 중량 화물을 매단 상태에서 흔들림 없이 최고 시속 50km/h로 비행하여 안전 투하 구역(Drop-off Zone)으로 신속 운송해야 하는 복합 제어 과제.
+  - 화물 인양 시 무게중심(CG) 이동과 CO2 발사 시의 강력한 순간 반동으로 인한 기체 자세 불안정 및 제어 발산 위험.
+- **2) 핵심 엔지니어링 구현**:
+  - **임베디드 펌웨어 &amp; PID 레이트 제어 최적화**: 중량 화물 인양 시 관성 모멘트 변동을 실시간 보상하는 피드포워드(Feedforward) 및 안티와인드업(Anti-windup) PID 제어 알고리즘 구현. 최대 풍속 외란 환경에서도 **최고 시속 50km/h 고속 순항 안정성** 달성.
+  - **CO2 공압 그물 발사 시퀀스 제어**: STM32 MCU 기반 타이머 인터럽트와 솔레노이드 밸브 펄스 제어를 통해 CO2 가스를 순간 방출, 팽창 그물을 정밀 전개하여 타깃 드론 무력화 및 포획.
+  - **SLAM 기반 3차원 장애물 회피 및 드롭오프 구역 경로 탐색**: 3D LiDAR/Visual SLAM 센서 융합 및 OctoMap 3차원 점유 격자 지도 생성. A* 알고리즘 기반 실시간 궤적 최적화로 지상 장애물을 우회하며 지정된 드롭오프 구역(Drop-off Zone)으로 정밀 유도 및 안전 투하.
+- **3) 정량적 성과**:
+  - CO2 그물 발사 성공률 90% 이상 확보 및 발사 반동 시 자세 복구 시간 0.2초 이내 안정화.
+  - 중량 화물 인양 상태에서 최고 시속 **50km/h 고속 순항** 검증 및 비행 중 진동/오버슈트 15% 이하 제어.
+  - SLAM 기반 실시간 경로 재계획 지연시간 50ms 미만 및 드롭오프 구역 오차 0.5m 이내 정밀 하역.
+
+---
+
 ### [도메인 3] ☁️ 엔터프라이즈 클라우드 AI &amp; 글로벌 기술 사업화 (오르미 / 유콘크리에이티브 — 비중 9%)
 
 #### 📌 Project 3-1: AWS 엔터프라이즈 GenAI (오르미 1위) &amp; $100K 글로벌 무역 계약
@@ -579,7 +596,7 @@
 2. **현장 안전 우선의 방어적 아키텍처**: Direct RF 수동 조종 개입 시 15ms 내 강제 절체되는 제어권 중재기와 생체인식 제어 에어락으로 사고 가능성 원천 차단.
 3. **원어민급 글로벌 비즈니스 &amp; 검증된 실행력**: 미국 메릴랜드대 학사 및 $100K 수출 실적을 바탕으로 글로벌 방산/무인체계 파트너십 즉각 주도 가능.
 
-</script>
+  </script>
 
   <script type="text/plain" id="raw-md-portfolio">
 # 이병남 (Byungnam "Tony" Lee) — 엔지니어링 포트폴리오 (Engineering Portfolio)
@@ -626,6 +643,11 @@
    - 고지연 4G/5G 클라우드 제어 중 안전 조종사의 물리 스틱(ELRS 250Hz / TBS CRSF) 변위 감지 시, 15ms 이내에 즉각 전파 수동 조종으로 강제 핸드오버하여 기체 조종 안정성 및 안전성 확보.
 4. **BIV-6 조종사 행동생체인식 &amp; 인지적 Zero-Trust 에어락**:
    - 조종사의 6-DOF 터치/모션 벡터를 실시간 채점하여 비인가자 단말 탈취 시 0.5초 이내에 기동 명령을 강제 차단(Soft-Cloak)하고, 적 전자전 재밍 시 표적 텔레메트리를 SHA-256 블록체인형 큐에 누적 동기화.
+6. **CO2 추진 그물 포획 및 50km/h 고속 인양 자율비행 (Uc-dronusnet6)**:
+   - PX4/STM32 펌웨어 임베딩 & PID 튜닝으로 중량 화물 인양 및 50km/h 고속 안정 순항 달성.
+   - CO2 공압식 그물 발사 포획 메커니즘 시퀀스 제어.
+   - 3D LiDAR SLAM 및 OctoMap 점유 격자 기반 안전 드롭오프 구역(Drop-off Zone) A* 자율 경로 생성.
+
 5. **기체 온보드 Hailo-8 NPU 엣지 비전 자율비행**:
    - 26 TOPS Hailo-8 모듈을 드론 기체에 직결하여 60fps 실시간 객체 인식 및 Gazebo 3D 시뮬레이션 연동 자율 회피 구현.
 
@@ -675,7 +697,7 @@
 | **Enterprise AWS GenAI** | 클라우드 AI &amp; 모델 설명가능성 | **제주오르미 1위 수상**, 99.99% 고가용성 폴백 | [클라우드 아키텍처 문서](technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md) |
 | **KOR2UNITY** | NLP &amp; 실시간 3D 인터랙션 | 한국어 의미 파싱 -&gt; 3D 물리 벡터 제어 | [KOR2UNITY 아키텍처](technical_references/korean_nlp_unity/KOR2UNITY_TECHNICAL_ARCHITECTURE.md) |
 
-</script>
+  </script>
 
   <script type="text/plain" id="raw-md-tech">
 # 이병남 (Byungnam "Tony" Lee) — 기술 아키텍처 명세서 (Technical Dossier)
@@ -717,6 +739,20 @@
 
 ---
 
+### 1.5 CO2 추진 그물 포획 메커니즘 &amp; 50km/h 화물 인양 PID 튜닝 및 SLAM 드롭오프 파이프라인 (Uc-dronusnet6)
+- **시스템 개요 &amp; 아키텍처 토폴로지**:
+  - 중요 시설 방공용 안티드론 그물 발사 시스템과 중량 화물 인양 고속 자율 운송을 결합한 통합 무인체계 아키텍처.
+- **CO2 공압 발사 시퀀스 회로 및 임베디드 펄스 제어**:
+  - STM32 고속 타이머 인터럽트를 통해 솔레노이드 밸브에 80ms 정밀 펄스를 인가, 고압 CO2 가스를 순간 개방하여 4방향 균일 텐션 그물을 전개(유효 사거리 8m).
+- **관성 보상형 PID Rate/Attitude Controller (50km/h 고속 순항 &amp; 화물 인양)**:
+  - 중량 화물(Payload) 매달림 시 발생하는 진자 운동(Pendulum Oscillation)과 관성 모멘트 급변을 억제하기 위해 가속도 피드포워드(Acceleration Feedforward) 및 D-게인 저역통과 필터(LPF) 적용.
+  - 최대 시속 **50km/h 고속 순항 상태**에서도 오버슈트 15% 이내 및 풍속 외란 10m/s 급격 제어 복원 달성.
+- **3D LiDAR / Visual SLAM &amp; 드롭오프 구역 자율 경로 생성**:
+  - Fast-LIO / OctoMap 기반 실시간 3차원 점유 격자 지도(Occupancy Grid) 생성.
+  - A* 및 비선형 궤적 최적화(Trajectory Optimization)를 연동하여 지상 장애물을 자율 회피하고 사전에 지정된 드롭오프 구역(Drop-off Zone)으로 정밀 진입하여 화물 안전 투하.
+
+---
+
 ## 2. 요가큐(YogaQ): 온디바이스 비전 AI (Hailo-8L) &amp; 초저지연 하이브리드 RAG 아키텍처
 > **온디바이스 엣지 AI와 시맨틱 검색을 결합하여 클라우드 GPU 비용 0원화와 실시간 생체역학 코칭을 실현한 핵심 설계 결정 (비중 25%)**
 
@@ -753,7 +789,7 @@
 | **YogaQ 엣지 인식** | 전굴 자세 시 발목/골반 키포인트가 화면 밖으로 25배 폭발 이탈 | 상체 숙임 시 2D 투영 몸통 길이가 12배 수축하여 정규화 분모가 0으로 수렴 | **Safe Torso Scale Guard** 하한 클램핑($0.250 \cdot ref$) 알고리즘을 적용하여 좌표 폭발 100% 방지 ($max\_abs < 4.81$) |
 | **온프레미스 LLM** | 동시 질의 인입 시 GPU VRAM OOM으로 서버 전체 크래시 | 사용자 요청이 큐 제어 없이 GPU VRAM으로 직접 동시 인입 | **Redis Pub/Sub 비동기 요청 대기열 큐**를 구축하여 VRAM 점유를 통제, 동시 50건 이상 무중단 안정 처리 달성 |
 
-</script>
+  </script>
 
   <script>
     // Configure Marked
@@ -771,37 +807,15 @@
       const html = marked.parse(rawText);
       targetEl.innerHTML = html;
 
-      // Transform ```mermaid code blocks to lazy container
+      // Transform ```mermaid code blocks to <pre class="mermaid">
       const codeBlocks = targetEl.querySelectorAll('pre code.language-mermaid');
       codeBlocks.forEach(code => {
         const pre = code.parentElement;
         const mermaidDiv = document.createElement('div');
-        mermaidDiv.className = 'mermaid-container my-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-center overflow-x-auto';
-        mermaidDiv.setAttribute('data-diagram', code.textContent.trim());
+        mermaidDiv.className = 'mermaid my-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-center overflow-x-auto';
+        mermaidDiv.textContent = code.textContent;
         pre.parentNode.replaceChild(mermaidDiv, pre);
       });
-    }
-
-    // Render Mermaid diagrams inside a visible container
-    let mermaidCounter = 0;
-    async function renderMermaidInContainer(container) {
-      if (!container || !window.mermaid) return;
-      const unrendered = container.querySelectorAll('.mermaid-container:not([data-rendered="true"])');
-      for (const el of unrendered) {
-        const code = el.getAttribute('data-diagram');
-        if (!code) continue;
-        const uniqueId = 'mermaid-diag-' + (++mermaidCounter);
-        try {
-          const { svg } = await mermaid.render(uniqueId, code);
-          el.innerHTML = svg;
-          el.setAttribute('data-rendered', 'true');
-        } catch (err) {
-          console.error('Mermaid render error:', err);
-          const stray = document.getElementById('d' + uniqueId) || document.getElementById(uniqueId);
-          if (stray) stray.remove();
-          el.innerHTML = '<div class="text-xs text-red-500 p-2 text-left">다이어그램 렌더링 오류가 발생했습니다.</div>';
-        }
-      }
     }
 
     // Switch Tabs
@@ -827,32 +841,37 @@
       // Scroll to top of content
       window.scrollTo({ top: 380, behavior: 'smooth' });
 
-      // Render mermaid for the newly active tab
-      if (targetTab) {
-        renderMermaidInContainer(targetTab);
-      }
+      // Re-trigger mermaid render if not rendered yet
+      setTimeout(() => {
+        try {
+          mermaid.run();
+        } catch(e) {
+          console.warn('Mermaid render error:', e);
+        }
+      }, 50);
     }
 
     // Initial Load
     document.addEventListener('DOMContentLoaded', () => {
-      // Initialize Mermaid with startOnLoad: false
-      mermaid.initialize({
-        startOnLoad: false,
-        theme: 'default',
-        securityLevel: 'loose',
-        flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
-      });
-
       renderMarkdownToElement('raw-md-resume', 'content-resume');
       renderMarkdownToElement('raw-md-career', 'content-career');
       renderMarkdownToElement('raw-md-portfolio', 'content-portfolio');
       renderMarkdownToElement('raw-md-tech', 'content-tech');
 
+      // Initialize Mermaid
+      mermaid.initialize({
+        startOnLoad: true,
+        theme: 'default',
+        securityLevel: 'loose',
+        flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+      });
+
       // Handle URL query parameter for tab selection (e.g. ?tab=tab-career)
       const urlParams = new URLSearchParams(window.location.search);
       const tabParam = urlParams.get('tab');
-      const initialTabId = (tabParam && document.getElementById(tabParam)) ? tabParam : 'tab-resume';
-      switchTab(initialTabId);
+      if (tabParam && document.getElementById(tabParam)) {
+        switchTab(tabParam);
+      }
     });
   </script>
 
