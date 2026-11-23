@@ -2,9 +2,12 @@
 node_modules/
 json/
 
+# Root assets (mirrored in docs/assets for GitHub Pages)
+/assets/
+
 # Asset & audit directories
-assets/
-docs/assets/
+assets/audit/
+docs/assets/audit/
 
 # Generated preview and test files
 page_preview_*.png
@@ -22,5 +25,4 @@ docs/images/drone_gcs_architecture_topology.png
 docs/images/yogaq_architecture_pipeline.png
 
 # Media & design assets
-*.mp4
 *.pcraft
