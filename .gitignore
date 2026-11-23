@@ -1,1 +1,26 @@
-json/*
+# Dependencies & data
+node_modules/
+json/
+
+# Asset & audit directories
+assets/
+docs/assets/
+
+# Generated preview and test files
+page_preview_*.png
+preview_*.png
+pdf_preview_*.png
+test_*.pdf
+pdf_packets/
+scratch_tmp/
+temp_print_html/
+graphic_html_templates/
+
+# Newly generated PNG diagrams & assets
+images/*.png
+docs/images/drone_gcs_architecture_topology.png
+docs/images/yogaq_architecture_pipeline.png
+
+# Media & design assets
+*.mp4
+*.pcraft
