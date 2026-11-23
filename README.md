@@ -30,7 +30,7 @@
 - **라이브 서비스 데모**:
   - **5G BVLOS 드론 GCS 관제 대시보드**: [pf1.eggs.or.kr/portfolio.html](https://pf1.eggs.or.kr/portfolio.html)
   - **엔지니어링 기술문서 포털**: [pf7.eggs.or.kr](https://pf7.eggs.or.kr)
-  - **요가큐(YogaQ) 사업·기술 슬라이드**: [elbee.yogaman.club/modoo](https://elbee.yogaman.club/modoo)
+  - **Dronus-Net6 대드론 넷 캐처 & SLAM 자율 운송**: [github.com/aiegoo/Uc-dronusnet6](https://github.com/aiegoo/Uc-dronusnet6)
   - **YogaQ Studio 대화형 AI 챗봇**: [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat)
   - **YogaQ Studio 시맨틱 검색 데모**: [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search)
   - **양자 내성 암호(PQC) 통신 PoC**: [aiegoo.github.io/kisec-final/#/4/1](https://aiegoo.github.io/kisec-final/#/4/1)
