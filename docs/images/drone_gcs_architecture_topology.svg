@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+    <linearGradient id="airlockGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#be123c" />
+    </linearGradient>
+    <linearGradient id="arbiterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="fleetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#047857" />
+    </linearGradient>
+    <linearGradient id="npuGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#6d28d9" />
+    </linearGradient>
+    <filter id="cardShadow" x="-2%" y="-2%" width="104%" height="106%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.06" />
+    </filter>
+  </defs>
+
+  <!-- Background Base -->
+  <rect x="0" y="0" width="940" height="380" rx="14" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- Top Title Bar -->
+  <rect x="0" y="0" width="940" height="42" rx="14" fill="url(#headerGrad)" />
+  <rect x="0" y="28" width="940" height="14" fill="#1e293b" />
+  <text x="20" y="26" fill="#f8fafc" font-size="14" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-weight="700">5G BVLOS Cloud Drone GCS &amp; Heterogeneous Fleet Architecture</text>
+  <text x="820" y="26" fill="#38bdf8" font-size="11" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="600">BVLOS C2 &amp; Edge AI</text>
+
+  <!-- Main Pipeline Container -->
+  <g transform="translate(18, 56)">
+    
+    <!-- Tier 1: Cloud Dispatch (GCS.uno / Webix Jet) -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="210" height="304" rx="10" fill="#ffffff" stroke="#bae6fd" stroke-width="1.2" filter="url(#cardShadow)" />
+      <rect x="0" y="0" width="210" height="34" rx="10" fill="url(#cloudGrad)" />
+      <rect x="0" y="24" width="210" height="10" fill="#0284c7" />
+      <text x="14" y="22" fill="#ffffff" font-size="12" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="700">Tier 1: Cloud BVLOS Core</text>
+      
+      <!-- Sub-blocks inside Tier 1 -->
+      <g transform="translate(10, 44)">
+        <rect x="0" y="0" width="190" height="54" rx="6" fill="#f0f9ff" stroke="#e0f2fe" />
+        <text x="10" y="18" fill="#0369a1" font-size="11" font-weight="700">PM2 Micro-Daemons</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">drones-server · io-server</text>
+        <text x="10" y="47" fill="#64748b" font-size="9.5">drone-udp-server (Dyn 30k-65k)</text>
+      </g>
+      
+      <g transform="translate(10, 106)">
+        <rect x="0" y="0" width="190" height="54" rx="6" fill="#f0f9ff" stroke="#e0f2fe" />
+        <text x="10" y="18" fill="#0369a1" font-size="11" font-weight="700">Storage &amp; Changefeeds</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">RethinkDB Changefeeds Pub/Sub</text>
+        <text x="10" y="47" fill="#64748b" font-size="9.5">Redis In-Memory Session &amp; Metrics</text>
+      </g>
+      
+      <g transform="translate(10, 168)">
+        <rect x="0" y="0" width="190" height="54" rx="6" fill="#f0f9ff" stroke="#e0f2fe" />
+        <text x="10" y="18" fill="#0369a1" font-size="11" font-weight="700">Ultra-Low Latency Video</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">Nimble Streamer (WebRTC/RTSP)</text>
+        <text x="10" y="47" fill="#0f766e" font-size="9.5" font-weight="700">&lt; 200ms End-to-End Latency</text>
+      </g>
+
+      <g transform="translate(10, 230)">
+        <rect x="0" y="0" width="190" height="64" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+        <text x="10" y="18" fill="#334155" font-size="11" font-weight="700">Cockpit &amp; Scripting Surfaces</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">GCS.uno (Webix Jet PFD/Joysticks)</text>
+        <text x="10" y="47" fill="#64748b" font-size="9.5">QGroundControl (:14550 MAVLink)</text>
+        <text x="10" y="59" fill="#64748b" font-size="9.5">DroneKit-Python Automated Sorties</text>
+      </g>
+    </g>
+
+    <!-- Arrow 1 -> 2 -->
+    <path d="M 218 152 L 234 152" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrowBlue)" />
+
+    <!-- Tier 2: Zero-Trust Security Gateway & Airlock -->
+    <g transform="translate(238, 0)">
+      <rect x="0" y="0" width="220" height="304" rx="10" fill="#ffffff" stroke="#fecdd3" stroke-width="1.2" filter="url(#cardShadow)" />
+      <rect x="0" y="0" width="220" height="34" rx="10" fill="url(#airlockGrad)" />
+      <rect x="0" y="24" width="220" height="10" fill="#e11d48" />
+      <text x="14" y="22" fill="#ffffff" font-size="12" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="700">Tier 2: Cognitive Airlock C2</text>
+
+      <g transform="translate(10, 44)">
+        <rect x="0" y="0" width="200" height="60" rx="6" fill="#fff1f2" stroke="#ffe4e6" />
+        <text x="10" y="18" fill="#be123c" font-size="11" font-weight="700">BIV-6 Pilot Biometrics</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">6-DOF Touch Vector (P, V, A, G, K, L)</text>
+        <text x="10" y="47" fill="#be123c" font-size="9.5" font-weight="700">Anomalous Hijack Gate &lt; 0.5s</text>
+      </g>
+
+      <g transform="translate(10, 112)">
+        <rect x="0" y="0" width="200" height="60" rx="6" fill="#fff1f2" stroke="#ffe4e6" />
+        <text x="10" y="18" fill="#be123c" font-size="11" font-weight="700">Temporal Leaky-Bucket Filter</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">HEALTHY → CAUTION → SOFT → HARD</text>
+        <text x="10" y="47" fill="#64748b" font-size="9.5">Kinetic C2 Freeze / Session Zeroize</text>
+      </g>
+
+      <g transform="translate(10, 180)">
+        <rect x="0" y="0" width="200" height="54" rx="6" fill="#fff1f2" stroke="#ffe4e6" />
+        <text x="10" y="18" fill="#be123c" font-size="11" font-weight="700">DDIL Reconnaissance Queue</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">SHA-256 Hash-Chained Store &amp; Fwd</text>
+        <text x="10" y="47" fill="#0f766e" font-size="9.5" font-weight="700">0% Loss in Contested EW Jamming</text>
+      </g>
+
+      <g transform="translate(10, 242)">
+        <rect x="0" y="0" width="200" height="52" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+        <text x="10" y="18" fill="#334155" font-size="11" font-weight="700">Dual-Mode Transport HAL</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">UDP (SITL Sim) · Serial/PTY (HIL FC)</text>
+        <text x="10" y="46" fill="#64748b" font-size="9.5">KCMVP Real-Time Crypto Pipeline</text>
+      </g>
+    </g>
+
+    <!-- Arrow 2 -> 3 -->
+    <path d="M 466 152 L 482 152" stroke="#e11d48" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Tier 3: Multi-Link Control Authority Arbiter -->
+    <g transform="translate(486, 0)">
+      <rect x="0" y="0" width="190" height="304" rx="10" fill="#ffffff" stroke="#fde68a" stroke-width="1.2" filter="url(#cardShadow)" />
+      <rect x="0" y="0" width="190" height="34" rx="10" fill="url(#arbiterGrad)" />
+      <rect x="0" y="24" width="190" height="10" fill="#d97706" />
+      <text x="14" y="22" fill="#ffffff" font-size="12" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="700">Tier 3: Control Arbiter</text>
+
+      <g transform="translate(10, 44)">
+        <rect x="0" y="0" width="170" height="74" rx="6" fill="#fffbeb" stroke="#fef3c7" />
+        <text x="10" y="18" fill="#b45309" font-size="11" font-weight="700">Direct RF Link (LOS)</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">ELRS 250Hz · TBS CRSF</text>
+        <text x="10" y="47" fill="#64748b" font-size="9.5">Direct Sticks &lt; 15ms Latency</text>
+        <text x="10" y="62" fill="#b45309" font-size="9.5" font-weight="700">Manual Pilot Priority Takeover</text>
+      </g>
+
+      <g transform="translate(10, 126)">
+        <rect x="0" y="0" width="170" height="74" rx="6" fill="#fffbeb" stroke="#fef3c7" />
+        <text x="10" y="18" fill="#b45309" font-size="11" font-weight="700">4G / 5G Cellular (BVLOS)</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">Tailscale Mesh / WireGuard</text>
+        <text x="10" y="47" fill="#64748b" font-size="9.5">CGNAT Auto Outbound Relay</text>
+        <text x="10" y="62" fill="#0f766e" font-size="9.5" font-weight="700">Dynamic 3-Net: VPC/LAN/SITL</text>
+      </g>
+
+      <g transform="translate(10, 208)">
+        <rect x="0" y="0" width="170" height="86" rx="6" fill="#f8fafc" stroke="#cbd5e1" />
+        <text x="10" y="18" fill="#334155" font-size="11" font-weight="700">Authority State Machine</text>
+        <text x="10" y="34" fill="#64748b" font-size="9.5">STICK_DEFLECT → RF_MANUAL</text>
+        <text x="10" y="47" fill="#64748b" font-size="9.5">WAYPOINT_ACT → 4G_AUTONOMOUS</text>
+        <text x="10" y="60" fill="#64748b" font-size="9.5">LINK_LOSS → AUTO_LOITER/RTL</text>
+        <text x="10" y="75" fill="#0f766e" font-size="9.5" font-weight="700">Seamless Dual-Link Handover</text>
+      </g>
+    </g>
+
+    <!-- Arrow 3 -> 4 -->
+    <path d="M 684 152 L 700 152" stroke="#d97706" stroke-width="2.5" stroke-linecap="round" />
+
+    <!-- Tier 4: Heterogeneous Fleet Aircraft Edge -->
+    <g transform="translate(704, 0)">
+      <rect x="0" y="0" width="200" height="304" rx="10" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.2" filter="url(#cardShadow)" />
+      <rect x="0" y="0" width="200" height="34" rx="10" fill="url(#fleetGrad)" />
+      <rect x="0" y="24" width="200" height="10" fill="#059669" />
+      <text x="14" y="22" fill="#ffffff" font-size="12" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif" font-weight="700">Tier 4: Hetero Fleet Edge</text>
+
+      <g transform="translate(10, 44)">
+        <rect x="0" y="0" width="180" height="48" rx="6" fill="#ecfdf5" stroke="#d1fae5" />
+        <text x="10" y="17" fill="#047857" font-size="10.5" font-weight="700">UAV-01: MAVLink-K / PX4</text>
+        <text x="10" y="31" fill="#64748b" font-size="9">ArduPilot Quad Recon (:14555)</text>
+        <text x="10" y="43" fill="#64748b" font-size="9">RPi 5 + drone_board daemon</text>
+      </g>
+
+      <g transform="translate(10, 98)">
+        <rect x="0" y="0" width="180" height="48" rx="6" fill="#ecfdf5" stroke="#d1fae5" />
+        <text x="10" y="17" fill="#047857" font-size="10.5" font-weight="700">UAV-02: DJI Enterprise PSDK</text>
+        <text x="10" y="31" fill="#64748b" font-size="9">Matrice 350 / COTS Heavy (:14560)</text>
+        <text x="10" y="43" fill="#64748b" font-size="9">Android MSDK Bridge / Cloud API</text>
+      </g>
+
+      <g transform="translate(10, 152)">
+        <rect x="0" y="0" width="180" height="48" rx="6" fill="#ecfdf5" stroke="#d1fae5" />
+        <text x="10" y="17" fill="#047857" font-size="10.5" font-weight="700">UAV-03: Betaflight MSP</text>
+        <text x="10" y="31" fill="#64748b" font-size="9">High-Speed FPV Interceptor (:14565)</text>
+        <text x="10" y="43" fill="#64748b" font-size="9">Raw RC Sticks / CRSF Telemetry</text>
+      </g>
+
+      <g transform="translate(10, 206)">
+        <rect x="0" y="0" width="180" height="46" rx="6" fill="#ecfdf5" stroke="#d1fae5" />
+        <text x="10" y="17" fill="#047857" font-size="10.5" font-weight="700">UAV-04: K-MOSA Mil Binary</text>
+        <text x="10" y="31" fill="#64748b" font-size="9">Fixed-Wing Recon VTOL (:14570)</text>
+        <text x="10" y="42" fill="#64748b" font-size="9">32-Byte Defense Framing / HIL</text>
+      </g>
+
+      <g transform="translate(10, 258)">
+        <rect x="0" y="0" width="180" height="38" rx="6" fill="#f5f3ff" stroke="#ddd6fe" />
+        <text x="10" y="16" fill="#6d28d9" font-size="10.5" font-weight="700">Airborne Hailo-8 NPU</text>
+        <text x="10" y="30" fill="#6d28d9" font-size="9" font-weight="700">26 TOPS @ 2.5W · 60fps YOLOv8s</text>
+      </g>
+    </g>
+  </g>
+</svg>
