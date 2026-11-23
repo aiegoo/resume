@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhotoCraft Custom Soft 3D Icon Pack — Prototype QA Contact Sheet</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --accent: #38bdf8;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      padding: 32px;
+      line-height: 1.5;
+    }
+    header {
+      max-width: 1200px;
+      margin: 0 auto 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 { font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    p.sub { font-size: 14px; color: var(--text-muted); }
+    .badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    /* Grid of Icons */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .icon-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .icon-meta h3 { font-size: 16px; font-weight: 600; color: #fff; }
+    .icon-meta .tag { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+    .replaces {
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.08);
+      color: #cbd5e1;
+    }
+
+    /* Dual Theme Viewports */
+    .viewports {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .viewport {
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      border: 1px solid var(--border);
+    }
+    .viewport.dark { background: #0b1329; }
+    .viewport.light { background: #f8fafc; border-color: #cbd5e1; }
+
+    .master-preview {
+      width: 112px;
+      height: 112px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+    }
+
+    /* Size Ramp Test */
+    .size-ramp {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      width: 100%;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .size-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .size-label { font-size: 10px; color: var(--text-muted); font-family: monospace; }
+    .size-item img { object-fit: contain; }
+
+    /* Specification summary */
+    .spec-box {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      background: #131c31;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 24px;
+    }
+    .spec-box h2 { font-size: 18px; margin-bottom: 12px; color: #fff; }
+    .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .spec-table th, .spec-table td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #1e293b; }
+    .spec-table th { color: var(--text-muted); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🎨 PhotoCraft Custom Soft 3D Icon Pack</h1>
+    <p class="sub">Production Prototype Set (Phase 1: 8 Representative Icons) & Multiscale Legibility Audit</p>
+    <div class="badge">Master Specification: 1024×1024 RGBA • Lossless PhotoCraft Project (.pcraft) • Transparent PNG</div>
+  </header>
+
+  <div class="icon-grid" id="grid">
+    <!-- Populated by JS -->
+  </div>
+
+  <div class="spec-box">
+    <h2>📐 Master Style & Rendering Specification</h2>
+    <table class="spec-table">
+      <tr><th>Property</th><th>Specification Guideline</th><th>Enforcement / Quality Target</th></tr>
+      <tr><td><strong>Visual Language</strong></td><td>Soft 3D / Sculpted Tactile Claymorphism</td><td>Subtle ambient occlusion, controlled highlights, smooth bevels</td></tr>
+      <tr><td><strong>Lighting Vector</strong></td><td>45° Top-Left Key Light + Soft Ambient Fill</td><td>180-240 alpha specular sheen with ground drop shadow</td></tr>
+      <tr><td><strong>Color Philosophy</strong></td><td>Slate Teal (#0E4D64), Emerald (#10B981), Amber (#F59E0B), Cyan (#00F0FF)</td><td>Cohesive modern edge perception palette, zero loud neon clash</td></tr>
+      <tr><td><strong>Canvas & Margin</strong></td><td>1024 × 1024 Master Canvas, Max 800px Inner Bound</td><td>112px safe margins on all sides, 100% transparent alpha channel</td></tr>
+      <tr><td><strong>Legibility Ramp</strong></td><td>Recognizable at 24px, 32px, 48px, 64px, 112px</td><td>Tested on both Dark (#0B1329) and Light (#F8FAFC) UI backgrounds</td></tr>
+      <tr><td><strong>Lossless Project</strong></td><td>PhotoCraft <code>custom_soft3d_icon_pack.pcraft</code></td><td>Embedded Smart Objects, layer hierarchy preserved</td></tr>
+    </table>
+  </div>
+
+  <script>
+    const icons = [
+      {
+        id: "workflow_check_pass",
+        name: "Checkmark Pass",
+        category: "workflow",
+        replaces: "Replaces ✅ / ✓",
+        path: "workflow/workflow_check_pass_soft3d_v1.png"
+      },
+      {
+        id: "tech_hardware_accel",
+        name: "Hardware Acceleration",
+        category: "technology",
+        replaces: "Replaces ⚡",
+        path: "technology/tech_hardware_accel_soft3d_v1.png"
+      },
+      {
+        id: "workflow_warning_guard",
+        name: "Warning & Guard Alert",
+        category: "workflow",
+        replaces: "Replaces ⚠️",
+        path: "workflow/workflow_warning_guard_soft3d_v1.png"
+      },
+      {
+        id: "tech_safe_shield",
+        name: "Safe Torso Guard Shield",
+        category: "technology",
+        replaces: "Replaces 🛡️",
+        path: "technology/tech_safe_shield_soft3d_v1.png"
+      },
+      {
+        id: "media_camera_sensor",
+        name: "Edge Vision Sensor",
+        category: "technology",
+        replaces: "Replaces 🎥 / 🎬",
+        path: "technology/media_camera_sensor_soft3d_v1.png"
+      },
+      {
+        id: "ai_target_pose",
+        name: "Precision Target",
+        category: "ai",
+        replaces: "Replaces 🎯",
+        path: "ai/ai_target_pose_soft3d_v1.png"
+      },
+      {
+        id: "tech_edge_npu",
+        name: "Edge NPU Accelerator",
+        category: "technology",
+        replaces: "Replaces 🖥️ / 🔌",
+        path: "technology/tech_edge_npu_soft3d_v1.png"
+      },
+      {
+        id: "pose_asana_yoga",
+        name: "Asana Lotus Posture",
+        category: "pose",
+        replaces: "Replaces 🧘",
+        path: "pose/pose_asana_yoga_soft3d_v1.png"
+      }
+    ];
+
+    const grid = document.getElementById('grid');
+    icons.forEach(icon => {
+      const card = document.createElement('div');
+      card.className = 'icon-card';
+      card.innerHTML = `
+        <div class="card-header">
+          <div class="icon-meta">
+            <h3>${icon.name}</h3>
+            <span class="tag">${icon.category}/${icon.id}</span>
+          </div>
+          <span class="replaces">${icon.replaces}</span>
+        </div>
+        <div class="viewports">
+          <div class="viewport dark">
+            <span class="size-label">Dark Theme</span>
+            <img src="${icon.path}" class="master-preview" alt="${icon.name}">
+          </div>
+          <div class="viewport light">
+            <span class="size-label" style="color: #64748b;">Light Theme</span>
+            <img src="${icon.path}" class="master-preview" alt="${icon.name}">
+          </div>
+        </div>
+        <div class="size-ramp">
+          <div class="size-item">
+            <img src="${icon.path}" width="64" height="64">
+            <span class="size-label">64px</span>
+          </div>
+          <div class="size-item">
+            <img src="${icon.path}" width="48" height="48">
+            <span class="size-label">48px</span>
+          </div>
+          <div class="size-item">
+            <img src="${icon.path}" width="32" height="32">
+            <span class="size-label">32px</span>
+          </div>
+          <div class="size-item">
+            <img src="${icon.path}" width="24" height="24">
+            <span class="size-label">24px</span>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  </script>
+</body>
+</html>
