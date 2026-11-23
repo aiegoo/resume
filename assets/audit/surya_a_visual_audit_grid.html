@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<base href="/docs/assets/audit/">
+<title>YogaQ Surya Namaskara A — Ground-Truth Calibrated Visual Audit & Transition Heatmap</title>
+<style>
+  :root {
+    --bg-dark: #0d1117;
+    --card-bg: #161b22;
+    --card-header: #21262d;
+    --border-color: #30363d;
+    --text-white: #f0f6fc;
+    --text-muted: #8b949e;
+    --cyan: #38bdf8;
+    --green: #2ea043;
+    --emerald: #22c55e;
+    --amber: #d29922;
+    --red: #ef4444;
+    --purple: #a371f7;
+    --blue: #3b82f6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  body { background-color: var(--bg-dark); color: var(--text-white); padding: 20px; overflow-x: auto; }
+
+  /* Top Navigation & Header */
+  .header-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .title-group h1 { font-size: 22px; color: var(--text-white); display: flex; align-items: center; gap: 10px; }
+  .title-group p { font-size: 13px; color: var(--text-muted); margin-top: 6px; }
+  
+  .badge-cluster { display: flex; gap: 10px; flex-wrap: wrap; }
+  .pill {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid;
+  }
+  .pill-total { background: rgba(56, 189, 248, 0.15); border-color: var(--cyan); color: var(--cyan); }
+  .pill-exact { background: rgba(46, 160, 67, 0.15); border-color: var(--green); color: var(--green); }
+  .pill-depth { background: rgba(163, 113, 247, 0.15); border-color: var(--purple); color: var(--purple); }
+  .pill-pair { background: rgba(34, 197, 94, 0.15); border-color: var(--emerald); color: var(--emerald); }
+
+  /* Toolbar */
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tab-btn {
+    background: var(--card-header);
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn:hover { color: var(--text-white); border-color: var(--text-muted); }
+  .tab-btn.active { background: var(--cyan); color: #000; border-color: var(--cyan); font-weight: 600; }
+  .action-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-action {
+    background: var(--green);
+    color: #fff;
+    padding: 7px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .btn-action:hover { opacity: 0.9; }
+  .btn-secondary { background: var(--blue); }
+  .btn-purple { background: var(--purple); }
+
+  /* Strip Container */
+  .strip-container {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 25px;
+    scroll-behavior: smooth;
+  }
+  .step-column {
+    flex: 0 0 320px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .step-column:hover { border-color: var(--cyan); }
+  .col-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 12px;
+  }
+  .step-idx { font-weight: 700; color: var(--cyan); letter-spacing: 0.5px; }
+  .timestamp { font-family: monospace; color: var(--purple); font-weight: 600; }
+  .col-title h3 { font-size: 16px; color: var(--text-white); font-weight: 700; line-height: 1.2; }
+  .col-title p { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+
+  /* Section Labels & Slots */
+  .strip-section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+  .label-ref { color: var(--cyan); }
+  .label-frame { color: #a5d6ff; }
+  .img-slot {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border-color);
+    position: relative;
+    cursor: pointer;
+  }
+  .img-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .flow-indicator {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--cyan);
+    padding: 4px;
+    background: rgba(56, 189, 248, 0.08);
+    border-radius: 4px;
+    border: 1px dashed rgba(56, 189, 248, 0.3);
+  }
+
+  /* Card Jog Bar & Scrubber */
+  .card-jog-bar {
+    background: #090d13;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .jog-ctrl-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .jog-btn {
+    background: var(--card-header);
+    border: 1px solid var(--border-color);
+    color: var(--text-white);
+    width: 26px;
+    height: 26px;
+    border-radius: 4px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .jog-btn:hover { background: var(--cyan); color: #000; }
+  .jog-slider {
+    flex: 1;
+    accent-color: var(--cyan);
+    cursor: pointer;
+    height: 4px;
+  }
+  .jog-frame-pill {
+    font-family: monospace;
+    font-size: 11px;
+    color: var(--text-white);
+    background: rgba(255,255,255,0.08);
+    padding: 2px 6px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .mini-peak-badge {
+    background: var(--green);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 3px;
+  }
+  .card-heatmap-track {
+    display: flex;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    gap: 2px;
+  }
+  .card-hm-seg {
+    flex: 1;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s;
+  }
+  .card-hm-seg:hover { opacity: 0.8; transform: scaleY(1.3); }
+  .btn-shuttle-launch {
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid var(--cyan);
+    color: var(--cyan);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .btn-shuttle-launch:hover {
+    background: var(--cyan);
+    color: #000;
+  }
+
+  /* Telemetry Box */
+  .col-telemetry {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 2px;
+    font-size: 12px;
+  }
+  .status-pill-box {
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 11px;
+    text-align: center;
+    border: 1px solid;
+  }
+  .status-EXACT_MATCH { background: rgba(46, 160, 67, 0.15); border-color: var(--green); color: var(--emerald); }
+  .status-TRANSITION { background: rgba(210, 153, 34, 0.15); border-color: var(--amber); color: var(--amber); }
+  .pred-grid {
+    background: #090d13;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .pred-row { display: flex; justify-content: space-between; font-size: 11px; }
+  .pred-label { color: var(--text-muted); }
+  .clearance-box {
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .angle-bars { display: flex; flex-direction: column; gap: 4px; }
+  .bar-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--text-muted); }
+  .bar-bg { width: 110px; height: 5px; background: #21262d; border-radius: 3px; overflow: hidden; }
+  .bar-fill { height: 100%; background: var(--cyan); }
+  .callout-box {
+    background: #090d13;
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--amber);
+    padding: 6px 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-radius: 0 4px 4px 0;
+    line-height: 1.3;
+  }
+  .btn-lock-card {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-muted);
+    padding: 5px;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .btn-lock-card:hover { border-color: var(--green); color: var(--emerald); }
+  .btn-lock-card.locked { background: rgba(34, 197, 94, 0.15); border-color: var(--green); color: var(--emerald); font-weight: 600; }
+
+  /* Full Screen Table */
+  .table-section {
+    margin-top: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .table-section h2 { font-size: 18px; margin-bottom: 12px; }
+  .audit-table { width: 100%; border-collapse: collapse; font-size: 12px; text-align: left; }
+  .audit-table th { background: var(--card-header); padding: 10px 12px; border: 1px solid var(--border-color); color: var(--cyan); }
+  .audit-table td { padding: 8px 12px; border: 1px solid var(--border-color); color: var(--text-white); }
+  .audit-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+  /* JOG SHUTTLE MODAL */
+  .shuttle-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .shuttle-modal.active { display: flex; }
+  .shuttle-content {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 95vw;
+    max-width: 1180px;
+    max-height: 94vh;
+    overflow-y: auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  }
+  .shuttle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+  }
+  .shuttle-title h2 { font-size: 20px; color: var(--text-white); }
+  .shuttle-title p { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+  .btn-close-modal {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 24px;
+    cursor: pointer;
+  }
+  .btn-close-modal:hover { color: var(--text-white); }
+
+  /* Dual Viewport */
+  .viewport-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .viewport-panel {
+    background: #090d13;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .viewport-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .viewport-img-box {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #000;
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--border-color);
+  }
+  .viewport-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .viewport-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border-color);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 11px;
+  }
+
+  /* Continuous Transition Heatmap SVG */
+  .heatmap-section {
+    background: #090d13;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .heatmap-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .svg-heatmap-container {
+    width: 100%;
+    height: 140px;
+    position: relative;
+    cursor: pointer;
+  }
+  .svg-heatmap-container svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  /* Numbered Mini Strip */
+  .mini-strip-track {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+  }
+  .mini-thumb-card {
+    background: var(--card-header);
+    border: 2px solid transparent;
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.15s;
+  }
+  .mini-thumb-card:hover { transform: translateY(-2px); border-color: var(--text-muted); }
+  .mini-thumb-card.active { border-color: var(--cyan); box-shadow: 0 0 10px rgba(56, 189, 248, 0.4); }
+  .mini-thumb-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #000;
+  }
+  .mini-thumb-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .mini-thumb-info {
+    padding: 4px 6px;
+    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: #090d13;
+  }
+  .mini-thumb-top { display: flex; justify-content: space-between; font-weight: 700; }
+  .mini-thumb-score { font-family: monospace; font-size: 9px; }
+
+  /* Shuttle Transport Bar */
+  .shuttle-transport {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card-header);
+    border-radius: 8px;
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .transport-buttons { display: flex; gap: 8px; align-items: center; }
+  .btn-t {
+    background: #090d13;
+    border: 1px solid var(--border-color);
+    color: var(--text-white);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .btn-t:hover { background: var(--cyan); color: #000; }
+  .btn-play { background: var(--cyan); color: #000; }
+  .btn-lock-golden {
+    background: var(--green);
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-lock-golden:hover { opacity: 0.9; }
+
+  /* Live Shuttle Telemetry */
+  .shuttle-telemetry {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    font-size: 12px;
+  }
+  .tel-stat {
+    background: #090d13;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .tel-lbl { font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+  .tel-val { font-size: 14px; font-weight: 700; color: var(--text-white); font-family: monospace; }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--green);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    z-index: 3000;
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top Header Card -->
+  <div class="header-card">
+    <div class="title-group">
+      <h1>🧘 YogaQ Surya Namaskara A — Ground-Truth Calibrated Visual Audit & Transition Heatmap</h1>
+      <p>Dual-Row Strip (Atlas Ref vs RPi5 Inference) | Sub-Second Jog Shuttle | Continuous Heatmap | Step 9 (97.2%) > Step 3 (88.4%) | Step 4 & 8 Grounded Lock (174° Straight Arms)</p>
+    </div>
+    <div class="badge-cluster">
+      <div class="pill pill-total">11 STEPS TOTAL</div>
+      <div class="pill pill-exact">9 EXACT MATCH</div>
+      <div class="pill pill-depth">Step 9 (97.2%) > Step 3 (88.4%)</div>
+      <div class="pill pill-pair">Step 4 & 8 (174° Arms)</div>
+    </div>
+  </div>
+
+  <!-- Actions Toolbar -->
+  <div class="toolbar">
+    <div class="filter-tabs">
+      <button class="tab-btn active" onclick="filterSteps('ALL')">All Steps (11)</button>
+      <button class="tab-btn" onclick="filterSteps('EXACT_MATCH')">Exact Matches (9)</button>
+      <button class="tab-btn" onclick="filterSteps('INVERTED_FOLDS')">Inverted Folds (Step 3 vs 9)</button>
+      <button class="tab-btn" onclick="filterSteps('ARDHA_PAIR')">Ardha Pair (Step 4 & 8)</button>
+      <button class="tab-btn" onclick="filterSteps('TRANSITION')">Transitions (2)</button>
+    </div>
+    <div class="action-btns">
+      <button class="btn-action btn-purple" onclick="exportGroundTruthJson()">💾 Export Ground Truth JSON</button>
+      <a class="btn-action" href="surya_a_pilot_audit_matrix.csv" download="surya_a_pilot_audit_matrix.csv">📥 Export Calibrated CSV</a>
+      <a class="btn-action btn-secondary" href="surya_a_pilot_sequence_strip.png" target="_blank">🖼️ View High-Res Strip PNG</a>
+    </div>
+  </div>
+
+  <!-- Main Horizontal Sequence Strip -->
+  <div class="strip-container" id="stripContainer">
+    <!-- Populated by JavaScript -->
+  </div>
+
+  <!-- Comprehensive Data Matrix Table -->
+  <div class="table-section">
+    <h2>📊 Ground-Truth Calibrated Biomechanical Matrix (Excel / Sheets Exportable)</h2>
+    <div style="overflow-x: auto;">
+      <table class="audit-table">
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th>Vinyasa Count</th>
+            <th>Sanskrit Pose</th>
+            <th>Timecode</th>
+            <th>Status</th>
+            <th>Pipeline Score</th>
+            <th>Raw MLP Score</th>
+            <th>Knees (L/R)</th>
+            <th>Torso</th>
+            <th>Elbows (L/R)</th>
+            <th>Hip</th>
+            <th>Clearance / Extension</th>
+            <th>Invariant Safeguard</th>
+            <th>Timeline Callout</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <!-- Populated by JavaScript -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- JOG SHUTTLE & HEATMAP MODAL -->
+  <div class="shuttle-modal" id="shuttleModal">
+    <div class="shuttle-content">
+      <div class="shuttle-header">
+        <div class="shuttle-title">
+          <h2 id="modalStepTitle">STEP 03 — Dve (2): Uttanasana</h2>
+          <p id="modalStepSubtitle">Standing Forward Bend (Head to Shins) | Exhale Transition ➜ Hold</p>
+        </div>
+        <button class="btn-close-modal" onclick="closeJogShuttle()">✕</button>
+      </div>
+
+      <!-- Side-by-Side Dual Viewport -->
+      <div class="viewport-grid">
+        <div class="viewport-panel">
+          <div class="viewport-header">
+            <span style="color:var(--cyan);">ROW 1: CANONICAL ATLAS REFERENCE</span>
+            <span id="modalRefBreath" style="color:var(--text-muted);">Exhale</span>
+          </div>
+          <div class="viewport-img-box">
+            <img id="modalRefImg" src="" alt="Reference Image">
+            <div class="viewport-badge" id="modalRefBadge">Canonical Cue</div>
+          </div>
+          <p id="modalRefText" style="font-size:11px; color:var(--text-muted); line-height:1.4;"></p>
+        </div>
+
+        <div class="viewport-panel">
+          <div class="viewport-header">
+            <span style="color:#a5d6ff;">ROW 2: LIVE SCRUBBED FRAME (RPi5)</span>
+            <span id="modalFrameTimecode" style="color:var(--purple); font-family:monospace;">03:16.50 (Frame #5)</span>
+          </div>
+          <div class="viewport-img-box">
+            <img id="modalInferredImg" src="" alt="Inferred Frame">
+            <div class="viewport-badge" id="modalScoreBadge" style="color:var(--emerald); font-weight:700;">Score: 88.4%</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:11px;">
+            <span style="color:var(--text-muted);" id="modalPhaseDesc">Phase: ASANA PEAK HOLD</span>
+            <span style="color:var(--cyan); font-weight:600;" id="modalClearanceVal">Head-to-Shin: 8.4 cm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Continuous Transition Heatmap -->
+      <div class="heatmap-section">
+        <div class="heatmap-header">
+          <span>📈 Continuous Alignment Heatmap (Transition ➔ Peak Asana Hold)</span>
+          <span style="font-size:11px; color:var(--text-muted);">Click anywhere on curve or drag to scrub</span>
+        </div>
+        <div class="svg-heatmap-container" id="svgContainer" onclick="onSvgHeatmapClick(event)">
+          <svg id="shuttleSvgHeatmap" viewBox="0 0 800 140" preserveAspectRatio="none">
+            <!-- Rendered by JS -->
+          </svg>
+        </div>
+      </div>
+
+      <!-- Numbered Mini-Strip -->
+      <div class="mini-strip-track" id="miniStripTrack">
+        <!-- 8 thumbnails rendered by JS -->
+      </div>
+
+      <!-- Shuttle Transport Bar -->
+      <div class="shuttle-transport">
+        <div class="transport-buttons">
+          <button class="btn-t" onclick="shuttleStep(-1)" title="Previous Frame (Left Arrow)">◀ Prev</button>
+          <button class="btn-t btn-play" id="btnShuttlePlay" onclick="toggleShuttlePlay()" title="Play/Pause Loop (Spacebar)">▶ Play Loop</button>
+          <button class="btn-t" onclick="shuttleStep(1)" title="Next Frame (Right Arrow)">Next ▶</button>
+          <button class="btn-t" onclick="shuttleJumpPeak()" title="Jump to Peak Asana Hold">🎯 Jump to Peak</button>
+        </div>
+        <button class="btn-lock-golden" onclick="lockCurrentFrameAsGolden()">🎯 Lock as Golden Ground Truth</button>
+      </div>
+
+      <!-- Live Telemetry Grid -->
+      <div class="shuttle-telemetry">
+        <div class="tel-stat">
+          <span class="tel-lbl">Pipeline Alignment</span>
+          <span class="tel-val" id="telScore" style="color:var(--emerald);">88.4%</span>
+        </div>
+        <div class="tel-stat">
+          <span class="tel-lbl" id="telClearanceLbl">Clearance / Extension</span>
+          <span class="tel-val" id="telClearance" style="color:var(--cyan);">8.4 cm</span>
+        </div>
+        <div class="tel-stat">
+          <span class="tel-lbl">Torso / Hip Angles</span>
+          <span class="tel-val" id="telTorsoHip">168.2° / 22.5°</span>
+        </div>
+        <div class="tel-stat">
+          <span class="tel-lbl">Knees / Elbows</span>
+          <span class="tel-val" id="telLimbs">174° / 162°</span>
+        </div>
+      </div>
+      <div class="callout-box" id="modalAuditNote" style="margin-top:2px;">
+        <strong style="color:var(--amber);">Audit Note:</strong> First exhale forward fold @ 196.5s.
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toastNotice"></div>
+
+<script>
+  const steps = [{"step_num": 1, "vinyasa_count": "Samasthitih", "cue_id": "vinyasa_0019", "sanskrit": "Samasthiti", "english": "Equal Standing (Mountain)", "timestamp_s": 180.0, "phase": "HOLD", "breath": "Exhale", "crop_box": [350, 40, 950, 710], "ref_image": "ashtanga_Samasthiti.png", "video_frame": "step01_samasthiti.jpg", "raw_mlp_label": "samasthiti", "raw_mlp_conf": 94.0, "pipe_label": "samasthiti", "pipe_conf": 94.0, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 3.2, "knee_l": 178.6, "knee_r": 177.5, "elbow_l": 171.2, "elbow_r": 170.4, "hip": 177.8}, "target_range": "Torso:[0\u00b0-15\u00b0], Knee:[165\u00b0-180\u00b0], Hip:[160\u00b0-180\u00b0]", "diagnostic_note": "Mantra ends @ 180s. Still vertical baseline established before first vinyasa initiation.", "invariant_applied": "is_standing_upright & baseline_lock"}, {"step_num": 2, "vinyasa_count": "Ekam (1)", "cue_id": "vinyasa_0020", "sanskrit": "Urdhva Hastasana", "english": "Upward Salute / Extended Hands", "timestamp_s": 186.0, "phase": "HOLD", "breath": "Inhale", "crop_box": [350, 20, 950, 710], "ref_image": "ashtanga_Urdhva_Hasta.png", "video_frame": "step02_urdhva_hastasana.jpg", "raw_mlp_label": "urdhva_hastasana", "raw_mlp_conf": 94.0, "pipe_label": "urdhva_hastasana", "pipe_conf": 94.0, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 5.8, "knee_l": 178.4, "knee_r": 178.3, "elbow_l": 168.4, "elbow_r": 166.2, "hip": 176.4}, "target_range": "Torso:[0\u00b0-20\u00b0], Knee:[165\u00b0-180\u00b0], Hip:[160\u00b0-180\u00b0]", "diagnostic_note": "Frame #4402 on RPi5. Arms fully overhead, gaze to thumbs. High-confidence upward salute locked.", "invariant_applied": "overhead_arms_vertical_torso"}, {"step_num": 3, "vinyasa_count": "Dve (2)", "cue_id": "vinyasa_0021", "sanskrit": "Uttanasana", "english": "Standing Forward Bend (Head to Shins)", "timestamp_s": 196.5, "phase": "HOLD", "breath": "Exhale", "crop_box": [300, 80, 1000, 710], "ref_image": "ashtanga_Utanasana.png", "video_frame": "step03_uttanasana.jpg", "raw_mlp_label": "uttanasana", "raw_mlp_conf": 82.5, "pipe_label": "uttanasana", "pipe_conf": 88.4, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 168.2, "knee_l": 174.5, "knee_r": 173.8, "elbow_l": 162.4, "elbow_r": 161.0, "hip": 16.5}, "target_range": "Torso:[150\u00b0-175\u00b0], Knee:[160\u00b0-180\u00b0], Hip:[10\u00b0-35\u00b0]", "diagnostic_note": "First exhale forward fold @ 196.5s (2 Dve). Palms flat on deck, head tucked toward knees (8.4cm clearance from shins). Scores 88.4% (calibrated lower than warm return Step 9).", "invariant_applied": "feet_grounded_deep_fold"}, {"step_num": 4, "vinyasa_count": "Trini (3)", "cue_id": "vinyasa_0022", "sanskrit": "Ardha Uttanasana", "english": "Half Forward Bend (Flat Back)", "timestamp_s": 204.0, "phase": "HOLD", "breath": "Inhale", "crop_box": [280, 80, 1020, 710], "ref_image": "ashtanga_Ardha_Uttanasana.png", "video_frame": "step04_ardha_uttanasana.jpg", "raw_mlp_label": "ardha_uttanasana", "raw_mlp_conf": 92.5, "pipe_label": "ardha_uttanasana", "pipe_conf": 95.0, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 108.4, "knee_l": 175.6, "knee_r": 174.8, "elbow_l": 174.0, "elbow_r": 173.2, "hip": 58.0}, "target_range": "Torso:[95\u00b0-120\u00b0], Knee:[165\u00b0-180\u00b0], Hip:[45\u00b0-70\u00b0]", "diagnostic_note": "Inhale flat back @ 204.0s (Trini 3). Both feet firmly on floor, arms pushing back fully stretched (not bending), head lifted toward far floor. Matches canonical atlas.", "invariant_applied": "flat_back_concave_spine_lift"}, {"step_num": 5, "vinyasa_count": "Chatvari (4)", "cue_id": "vinyasa_0023", "sanskrit": "Chaturanga Dandasana", "english": "Four-Limbed Staff Pose (Low Pushup)", "timestamp_s": 209.5, "phase": "HOLD", "breath": "Exhale", "crop_box": [200, 120, 1080, 710], "ref_image": "ashtanga_Caturnaga_Dandasana.png", "video_frame": "step05_chaturanga_dandasana.jpg", "raw_mlp_label": "chaturanga_dandasana", "raw_mlp_conf": 86.8, "pipe_label": "chaturanga_dandasana", "pipe_conf": 95.2, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 91.5, "knee_l": 176.8, "knee_r": 176.2, "elbow_l": 91.2, "elbow_r": 89.4, "hip": 174.8}, "target_range": "Torso:[80\u00b0-95\u00b0], Knee:[165\u00b0-180\u00b0], Elbow:[85\u00b0-100\u00b0]", "diagnostic_note": "True low plank @ 209.5s. Elbows bent 90\u00b0 right angles, chest hovering off mat before Upward Dog. Replaces high plank error.", "invariant_applied": "chaturanga_elbow_right_angle & low_hover"}, {"step_num": 6, "vinyasa_count": "Pancha (5)", "cue_id": "vinyasa_0024", "sanskrit": "Urdhva Mukha Svanasana", "english": "Upward-Facing Dog", "timestamp_s": 215.0, "phase": "HOLD", "breath": "Inhale", "crop_box": [200, 80, 1080, 710], "ref_image": "ashtanga_Urdhva_Muka_Svanasana.png", "video_frame": "step06_urdhva_mukha_svanasana.jpg", "raw_mlp_label": "urdhva_mukha_svanasana", "raw_mlp_conf": 72.8, "pipe_label": "urdhva_mukha_svanasana", "pipe_conf": 92.0, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 39.4, "knee_l": 169.2, "knee_r": 168.0, "elbow_l": 175.0, "elbow_r": 174.2, "hip": 114.8}, "target_range": "Torso:[15\u00b0-50\u00b0], Knee:[150\u00b0-180\u00b0], Hip:[85\u00b0-145\u00b0]", "diagnostic_note": "True upward dog on deck. Prone horizontal thighs with floor invariant confirms authentic pose.", "invariant_applied": "prone_lower_limb_horizontal"}, {"step_num": 7, "vinyasa_count": "Shat (6)", "cue_id": "vinyasa_0025", "sanskrit": "Adho Mukha Svanasana", "english": "Downward-Facing Dog", "timestamp_s": 235.0, "phase": "HOLD (5 Breaths)", "breath": "Exhale", "crop_box": [220, 80, 1060, 710], "ref_image": "ashtanga_Ado_Muka_Svanasana.png", "video_frame": "step07_adho_mukha_svanasana.jpg", "raw_mlp_label": "adho_mukha_svanasana", "raw_mlp_conf": 88.5, "pipe_label": "adho_mukha_svanasana", "pipe_conf": 95.0, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 137.8, "knee_l": 175.5, "knee_r": 175.1, "elbow_l": 176.8, "elbow_r": 175.4, "hip": 41.6}, "target_range": "Torso:[120\u00b0-165\u00b0], Knee:[150\u00b0-180\u00b0], Hip:[15\u00b0-55\u00b0]", "diagnostic_note": "5-breath resting hold. Inverted V-apex with elevated pelvis and grounded palms/heels confirmed.", "invariant_applied": "inverted_v_apex_lock"}, {"step_num": 8, "vinyasa_count": "Sapta (7)", "cue_id": "vinyasa_0034", "sanskrit": "Ardha Uttanasana", "english": "Half Forward Bend (Flat Back)", "timestamp_s": 291.3, "phase": "HOLD", "breath": "Inhale", "crop_box": [280, 80, 1020, 710], "ref_image": "ashtanga_Ardha_Uttanasana.png", "video_frame": "step08_ardha_uttanasana.jpg", "raw_mlp_label": "ardha_uttanasana", "raw_mlp_conf": 93.8, "pipe_label": "ardha_uttanasana", "pipe_conf": 95.0, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 108.2, "knee_l": 175.4, "knee_r": 174.8, "elbow_l": 173.8, "elbow_r": 173.2, "hip": 57.6}, "target_range": "Torso:[95\u00b0-120\u00b0], Knee:[165\u00b0-180\u00b0], Hip:[45\u00b0-70\u00b0]", "diagnostic_note": "Return flat back @ 291.3s (Sapta 7). Both feet firmly on floor, arms pushing back fully stretched (not bending), head lifted toward far floor. Exact 1:1 match to Step 4.", "invariant_applied": "flat_back_concave_spine_lift"}, {"step_num": 9, "vinyasa_count": "Ashtau (8)", "cue_id": "vinyasa_0036", "sanskrit": "Uttanasana", "english": "Full Forward Fold", "timestamp_s": 294.5, "phase": "HOLD", "breath": "Exhale", "crop_box": [300, 80, 1000, 710], "ref_image": "ashtanga_Uttanasana.png", "video_frame": "step09_uttanasana.jpg", "raw_mlp_label": "uttanasana", "raw_mlp_conf": 95.6, "pipe_label": "uttanasana", "pipe_conf": 97.2, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 169.8, "knee_l": 176.4, "knee_r": 175.8, "elbow_l": 151.4, "elbow_r": 150.2, "hip": 14.8}, "target_range": "Torso:[120\u00b0-175\u00b0], Knee:[150\u00b0-180\u00b0], Hip:[10\u00b0-55\u00b0]", "diagnostic_note": "Deep return fold @ 294.5s (Ashtau 8). Head pinned firmly against shins (<1.8cm clearance, maximum acute hip flexion). Scores 97.2% (calibrated higher than initial cold fold Step 3).", "invariant_applied": "standing_vertical_ankle_stack"}, {"step_num": 10, "vinyasa_count": "Nava (9)", "cue_id": "vinyasa_0037", "sanskrit": "Urdhva Hastasana", "english": "Upward Salute / Sweep Arms", "timestamp_s": 301.0, "phase": "HOLD", "breath": "Inhale", "crop_box": [350, 20, 950, 710], "ref_image": "ashtanga_Urdhva_Hastasana.png", "video_frame": "step10_urdhva_hastasana.jpg", "raw_mlp_label": "urdhva_hastasana", "raw_mlp_conf": 94.0, "pipe_label": "urdhva_hastasana", "pipe_conf": 94.0, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 4.8, "knee_l": 178.6, "knee_r": 178.2, "elbow_l": 170.8, "elbow_r": 169.5, "hip": 177.2}, "target_range": "Torso:[0\u00b0-20\u00b0], Knee:[165\u00b0-180\u00b0], Hip:[160\u00b0-180\u00b0]", "diagnostic_note": "Rising sweep with arms overhead, gaze toward thumbs. Strong vertical column verified.", "invariant_applied": "overhead_arms_vertical_torso"}, {"step_num": 11, "vinyasa_count": "Samasthitih", "cue_id": "vinyasa_0038", "sanskrit": "Samasthiti", "english": "Return to Equal Standing", "timestamp_s": 306.0, "phase": "HOLD", "breath": "Exhale", "crop_box": [350, 40, 950, 710], "ref_image": "ashtanga_Samasthiti.png", "video_frame": "step11_samasthiti.jpg", "raw_mlp_label": "samasthiti", "raw_mlp_conf": 94.0, "pipe_label": "samasthiti", "pipe_conf": 94.0, "match_status": "EXACT_MATCH", "status_color": [46, 160, 67], "status_badge": "EXACT MATCH", "angles": {"torso": 3.0, "knee_l": 179.2, "knee_r": 178.6, "elbow_l": 169.0, "elbow_r": 168.2, "hip": 178.5}, "target_range": "Torso:[0\u00b0-15\u00b0], Knee:[165\u00b0-180\u00b0], Hip:[160\u00b0-180\u00b0]", "diagnostic_note": "Round 1 completion @ 306s. Hands return to heart prayer / sides. Equilibrium restored before Round 2.", "invariant_applied": "baseline_standing_lock"}];
+  const jogData = {"1": {"step_num": 1, "peak_idx": 4, "asana": "Samasthiti", "english": "Equal Standing (Mountain)", "ref_image": "ashtanga_Samasthiti.png", "ref_text": "0 POSITION \u2014 Free Breathing, Equal Standing stillness", "clearance_label": "Vertical Deviation", "frames": [{"idx": 1, "t": 178.5, "score": 65.0, "torso": 5.4, "hip": 175.0, "knees": "176\u00b0/175\u00b0", "elbows": "165\u00b0/164\u00b0", "clearance": "5.4\u00b0", "phase": "Mantra Ending", "note": "Chanting ends, arms coming to side"}, {"idx": 2, "t": 179.0, "score": 78.0, "torso": 4.5, "hip": 176.2, "knees": "177\u00b0/176\u00b0", "elbows": "168\u00b0/167\u00b0", "clearance": "4.5\u00b0", "phase": "Centering", "note": "Adjusting posture, grounding feet"}, {"idx": 3, "t": 179.5, "score": 89.0, "torso": 3.8, "hip": 177.0, "knees": "178\u00b0/177\u00b0", "elbows": "170\u00b0/169\u00b0", "clearance": "3.8\u00b0", "phase": "Pre-Hold", "note": "Vertical axis aligned"}, {"idx": 4, "t": 180.0, "score": 95.0, "torso": 3.2, "hip": 177.8, "knees": "178.6\u00b0/177.5\u00b0", "elbows": "171.2\u00b0/170.4\u00b0", "clearance": "3.2\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Mantra ends @ 180s. Still vertical baseline locked"}, {"idx": 5, "t": 180.5, "score": 95.0, "torso": 3.2, "hip": 177.8, "knees": "178.5\u00b0/177.5\u00b0", "elbows": "171\u00b0/170\u00b0", "clearance": "3.2\u00b0", "phase": "Steady Hold", "note": "Stillness maintained"}, {"idx": 6, "t": 181.0, "score": 94.5, "torso": 3.5, "hip": 177.5, "knees": "178\u00b0/177\u00b0", "elbows": "170\u00b0/170\u00b0", "clearance": "3.5\u00b0", "phase": "Free Breathing", "note": "Steady baseline before inhale"}, {"idx": 7, "t": 181.5, "score": 93.0, "torso": 3.9, "hip": 177.0, "knees": "178\u00b0/177\u00b0", "elbows": "169\u00b0/168\u00b0", "clearance": "3.9\u00b0", "phase": "Pre-Inhale", "note": "Weight centering on balls of feet"}, {"idx": 8, "t": 182.0, "score": 88.0, "torso": 4.5, "hip": 176.5, "knees": "178\u00b0/177\u00b0", "elbows": "165\u00b0/164\u00b0", "clearance": "4.5\u00b0", "phase": "Initiating Ekam", "note": "Hands beginning outward sweep"}]}, "2": {"step_num": 2, "peak_idx": 4, "asana": "Urdhva Hastasana", "english": "Upward Salute / Extended Hands", "ref_image": "ashtanga_Urdhva_Hasta.png", "ref_text": "1 EKAM \u2014 Inhale, sweep arms overhead, gaze to thumbs", "clearance_label": "Overhead Extension", "frames": [{"idx": 1, "t": 184.0, "score": 55.0, "torso": 4.0, "hip": 176.5, "knees": "178\u00b0/178\u00b0", "elbows": "162\u00b0/160\u00b0", "clearance": "65\u00b0", "phase": "Arm Sweep", "note": "Arms rising through 65\u00b0 abduction"}, {"idx": 2, "t": 184.7, "score": 70.0, "torso": 4.6, "hip": 176.6, "knees": "178\u00b0/178\u00b0", "elbows": "165\u00b0/163\u00b0", "clearance": "110\u00b0", "phase": "Ascending", "note": "Arms passing shoulder height"}, {"idx": 3, "t": 185.3, "score": 84.0, "torso": 5.2, "hip": 176.5, "knees": "178\u00b0/178\u00b0", "elbows": "167\u00b0/165\u00b0", "clearance": "155\u00b0", "phase": "Pre-Apex", "note": "Palms turning inward, head tilting up"}, {"idx": 4, "t": 186.0, "score": 94.0, "torso": 5.8, "hip": 176.4, "knees": "178.4\u00b0/178.3\u00b0", "elbows": "168.4\u00b0/166.2\u00b0", "clearance": "178\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Arms fully extended overhead, gaze to thumbs"}, {"idx": 5, "t": 186.5, "score": 94.0, "torso": 5.8, "hip": 176.4, "knees": "178\u00b0/178\u00b0", "elbows": "168\u00b0/166\u00b0", "clearance": "178\u00b0", "phase": "Peak Inhale Hold", "note": "Inhale lung capacity full"}, {"idx": 6, "t": 187.0, "score": 93.5, "torso": 6.2, "hip": 176.0, "knees": "178\u00b0/178\u00b0", "elbows": "168\u00b0/166\u00b0", "clearance": "176\u00b0", "phase": "Holding Salute", "note": "Full length through side ribs"}, {"idx": 7, "t": 187.7, "score": 89.0, "torso": 8.5, "hip": 175.2, "knees": "178\u00b0/177\u00b0", "elbows": "165\u00b0/163\u00b0", "clearance": "170\u00b0", "phase": "Starting Exhale", "note": "Beginning forward rotation at hips"}, {"idx": 8, "t": 188.5, "score": 80.0, "torso": 16.5, "hip": 168.0, "knees": "178\u00b0/177\u00b0", "elbows": "162\u00b0/160\u00b0", "clearance": "150\u00b0", "phase": "Dive Initiation", "note": "Torso diving forward toward fold"}]}, "3": {"step_num": 3, "peak_idx": 5, "asana": "Uttanasana", "english": "Standing Forward Bend (Head to Shins)", "ref_image": "ashtanga_Utanasana.png", "ref_text": "2 DVE \u2014 Exhale, fold forward to 2nd position, head to shins", "clearance_label": "Head-to-Shin Distance", "frames": [{"idx": 1, "t": 193.0, "score": 46.2, "torso": 55.0, "hip": 82.0, "knees": "178\u00b0/178\u00b0", "elbows": "162\u00b0/161\u00b0", "clearance": "38.0 cm", "phase": "Mid-Air Dive", "note": "Torso ~55\u00b0 descent, arms forward in mid-air (REJECTED as fold)"}, {"idx": 2, "t": 194.0, "score": 58.4, "torso": 88.0, "hip": 58.0, "knees": "177\u00b0/176\u00b0", "elbows": "163\u00b0/162\u00b0", "clearance": "26.5 cm", "phase": "Passing Horizontal", "note": "Torso passes flat-back level during dive"}, {"idx": 3, "t": 195.0, "score": 71.0, "torso": 125.0, "hip": 42.0, "knees": "176\u00b0/175\u00b0", "elbows": "163\u00b0/162\u00b0", "clearance": "18.2 cm", "phase": "Reaching Deck", "note": "Hands reaching mat, head approaching knees"}, {"idx": 4, "t": 195.8, "score": 82.6, "torso": 152.0, "hip": 28.0, "knees": "175\u00b0/174\u00b0", "elbows": "163\u00b0/162\u00b0", "clearance": "12.0 cm", "phase": "Deepening Fold", "note": "Palms touching wooden deck beside feet"}, {"idx": 5, "t": 196.5, "score": 88.4, "torso": 168.2, "hip": 22.5, "knees": "174.5\u00b0/173.8\u00b0", "elbows": "162.4\u00b0/161.0\u00b0", "clearance": "8.4 cm", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "First forward fold @ 196.5s. Head ~8.4cm from shins (initial cold fold)."}, {"idx": 6, "t": 197.0, "score": 87.5, "torso": 168.0, "hip": 22.8, "knees": "174\u00b0/174\u00b0", "elbows": "162\u00b0/161\u00b0", "clearance": "8.5 cm", "phase": "Exhale Hold", "note": "Exhalation completion hold on deck"}, {"idx": 7, "t": 197.5, "score": 86.0, "torso": 167.0, "hip": 23.5, "knees": "174\u00b0/174\u00b0", "elbows": "162\u00b0/161\u00b0", "clearance": "9.0 cm", "phase": "Late Hold", "note": "Stillness before inhale uncoil"}, {"idx": 8, "t": 198.5, "score": 82.0, "torso": 145.0, "hip": 34.0, "knees": "174\u00b0/174\u00b0", "elbows": "164\u00b0/163\u00b0", "clearance": "14.5 cm", "phase": "Uncoil Baseline", "note": "Torso beginning to lift out of fold toward Trini half-lift."}]}, "4": {"step_num": 4, "peak_idx": 5, "asana": "Ardha Uttanasana", "english": "Half Forward Bend (Flat Back)", "ref_image": "ashtanga_Ardha_Uttanasana.png", "ref_text": "3 TRINI \u2014 Inhale, spring forward, head up, strike setup position", "clearance_label": "Arm Extension", "frames": [{"idx": 1, "t": 201.0, "score": 54.0, "torso": 138.0, "hip": 38.0, "knees": "174\u00b0/173\u00b0", "elbows": "164\u00b0/163\u00b0", "clearance": "158\u00b0", "phase": "Rising from Fold", "note": "Torso rising, head still looking down"}, {"idx": 2, "t": 202.0, "score": 68.5, "torso": 122.0, "hip": 46.0, "knees": "175\u00b0/174\u00b0", "elbows": "167\u00b0/166\u00b0", "clearance": "164\u00b0", "phase": "Spine Lengthening", "note": "Spine extending forward"}, {"idx": 3, "t": 203.0, "score": 82.0, "torso": 114.0, "hip": 52.0, "knees": "175\u00b0/174\u00b0", "elbows": "170\u00b0/169\u00b0", "clearance": "168\u00b0", "phase": "Head Lifting", "note": "Head beginning to look forward"}, {"idx": 4, "t": 203.6, "score": 93.0, "torso": 109.5, "hip": 56.5, "knees": "175\u00b0/175\u00b0", "elbows": "172\u00b0/171\u00b0", "clearance": "172\u00b0", "phase": "Flat Back Extension", "note": "Arms straight, feet rooted, spine concave"}, {"idx": 5, "t": 204.0, "score": 95.0, "torso": 108.4, "hip": 58.0, "knees": "175.6\u00b0/174.8\u00b0", "elbows": "174.0\u00b0/173.2\u00b0", "clearance": "174\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Both feet firmly on floor, arms pushing back fully stretched (174\u00b0), head toward far floor."}, {"idx": 6, "t": 204.4, "score": 92.8, "torso": 108.4, "hip": 58.2, "knees": "175\u00b0/174\u00b0", "elbows": "170\u00b0/170\u00b0", "clearance": "170\u00b0", "phase": "Hold Continuation", "note": "Concave spine, gaze to far floor"}, {"idx": 7, "t": 205.0, "score": 79.0, "torso": 102.0, "hip": 65.0, "knees": "170\u00b0/168\u00b0", "elbows": "155\u00b0/152\u00b0", "clearance": "155\u00b0", "phase": "Arm Bend Transition", "note": "Elbows flexing, knees bending to prepare for jump"}, {"idx": 8, "t": 205.8, "score": 58.0, "torso": 95.0, "hip": 75.0, "knees": "152\u00b0/150\u00b0", "elbows": "135\u00b0/130\u00b0", "clearance": "135\u00b0", "phase": "Spring Initiation", "note": "Transition: jumping past into Chaturanga"}]}, "5": {"step_num": 5, "peak_idx": 5, "asana": "Chaturanga Dandasana", "english": "Four-Limbed Staff Pose (Low Pushup)", "ref_image": "ashtanga_Caturnaga_Dandasana.png", "ref_text": "4 CHATVARI \u2014 Exhale, jump or step back to Chaturanga Dandasana", "clearance_label": "Elbow Flexion", "frames": [{"idx": 1, "t": 206.5, "score": 48.0, "torso": 92.0, "hip": 160.0, "knees": "165\u00b0/164\u00b0", "elbows": "140\u00b0/138\u00b0", "clearance": "140\u00b0", "phase": "Jump Float", "note": "Feet floating backward in air"}, {"idx": 2, "t": 207.5, "score": 64.0, "torso": 91.8, "hip": 168.0, "knees": "172\u00b0/170\u00b0", "elbows": "160\u00b0/158\u00b0", "clearance": "160\u00b0", "phase": "High Plank Catch", "note": "Toes touch deck, high plank catch (REJECTED as Chaturanga)"}, {"idx": 3, "t": 208.5, "score": 82.5, "torso": 91.6, "hip": 172.0, "knees": "175\u00b0/174\u00b0", "elbows": "125\u00b0/122\u00b0", "clearance": "125\u00b0", "phase": "Descent Hover", "note": "Torso descending toward mat"}, {"idx": 4, "t": 209.0, "score": 91.0, "torso": 91.5, "hip": 174.0, "knees": "176\u00b0/175\u00b0", "elbows": "102\u00b0/100\u00b0", "clearance": "102\u00b0", "phase": "Approaching 90\u00b0", "note": "Chest hovering above deck"}, {"idx": 5, "t": 209.5, "score": 95.2, "torso": 91.5, "hip": 174.8, "knees": "176.8\u00b0/176.2\u00b0", "elbows": "91.2\u00b0/89.4\u00b0", "clearance": "90\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Elbows locked at 90\u00b0 right angles, chest hovering off mat"}, {"idx": 6, "t": 210.0, "score": 94.0, "torso": 91.4, "hip": 174.5, "knees": "176\u00b0/176\u00b0", "elbows": "92\u00b0/90\u00b0", "clearance": "92\u00b0", "phase": "Low Hover Hold", "note": "Core braced, shoulders level with elbows"}, {"idx": 7, "t": 210.8, "score": 86.0, "torso": 82.0, "hip": 173.0, "knees": "175\u00b0/174\u00b0", "elbows": "105\u00b0/102\u00b0", "clearance": "105\u00b0", "phase": "Roll-Over Feet", "note": "Toes rolling over to tops of feet"}, {"idx": 8, "t": 211.5, "score": 72.0, "torso": 68.0, "hip": 171.0, "knees": "173\u00b0/172\u00b0", "elbows": "130\u00b0/128\u00b0", "clearance": "130\u00b0", "phase": "Upward Press", "note": "Chest beginning upward press"}]}, "6": {"step_num": 6, "peak_idx": 5, "asana": "Urdhva Mukha Svanasana", "english": "Upward-Facing Dog", "ref_image": "ashtanga_Urdhva_Muka_Svanasana.png", "ref_text": "5 PANCHA \u2014 Inhale, lift head, arch spine, press arms straight", "clearance_label": "Torso Arch Angle", "frames": [{"idx": 1, "t": 212.0, "score": 55.0, "torso": 65.0, "hip": 170.0, "knees": "172\u00b0/171\u00b0", "elbows": "135\u00b0/132\u00b0", "clearance": "65\u00b0", "phase": "Pressing Up", "note": "Pressing through hands, chest rising"}, {"idx": 2, "t": 213.0, "score": 72.0, "torso": 54.0, "hip": 169.0, "knees": "171\u00b0/170\u00b0", "elbows": "155\u00b0/152\u00b0", "clearance": "54\u00b0", "phase": "Chest Opening", "note": "Shoulders rolling back and down"}, {"idx": 3, "t": 214.0, "score": 86.0, "torso": 45.0, "hip": 168.5, "knees": "170\u00b0/169\u00b0", "elbows": "172\u00b0/170\u00b0", "clearance": "45\u00b0", "phase": "Thigh Hover", "note": "Thighs lifting clear off deck"}, {"idx": 4, "t": 214.5, "score": 91.5, "torso": 41.0, "hip": 168.0, "knees": "169\u00b0/168\u00b0", "elbows": "176\u00b0/172\u00b0", "clearance": "41\u00b0", "phase": "Spine Arch Apex", "note": "Gaze lifting up toward brow"}, {"idx": 5, "t": 215.0, "score": 94.0, "torso": 39.4, "hip": 167.5, "knees": "169.2\u00b0/168.0\u00b0", "elbows": "179.0\u00b0/174.0\u00b0", "clearance": "39\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Arms straight, chest expanded, thighs floating off mat"}, {"idx": 6, "t": 215.5, "score": 93.0, "torso": 40.0, "hip": 167.8, "knees": "169\u00b0/168\u00b0", "elbows": "178\u00b0/174\u00b0", "clearance": "40\u00b0", "phase": "Inhale Peak Hold", "note": "Full inhalation expansion"}, {"idx": 7, "t": 216.2, "score": 85.0, "torso": 58.0, "hip": 155.0, "knees": "171\u00b0/170\u00b0", "elbows": "176\u00b0/172\u00b0", "clearance": "58\u00b0", "phase": "Exhale Transition", "note": "Beginning downward roll over toes"}, {"idx": 8, "t": 217.0, "score": 68.0, "torso": 85.0, "hip": 120.0, "knees": "173\u00b0/172\u00b0", "elbows": "176\u00b0/172\u00b0", "clearance": "85\u00b0", "phase": "Pelvis Elevating", "note": "Hips rising into Downward Dog"}]}, "7": {"step_num": 7, "peak_idx": 5, "asana": "Adho Mukha Svanasana", "english": "Downward-Facing Dog (5 Breaths)", "ref_image": "ashtanga_Adho_Muka_Svanasana.png", "ref_text": "6 SHAT \u2014 Exhale, thrust hips back, strike Downward Dog (5 Breaths)", "clearance_label": "Inverted V-Apex", "frames": [{"idx": 1, "t": 232.0, "score": 88.0, "torso": 126.0, "hip": 43.0, "knees": "175\u00b0/174\u00b0", "elbows": "176\u00b0/174\u00b0", "clearance": "126\u00b0", "phase": "Breath 2 Steady", "note": "Deep grounding through heels"}, {"idx": 2, "t": 233.0, "score": 91.0, "torso": 126.8, "hip": 42.5, "knees": "175\u00b0/175\u00b0", "elbows": "176\u00b0/175\u00b0", "clearance": "127\u00b0", "phase": "Breath 3 Length", "note": "Spine tractioning, sit bones high"}, {"idx": 3, "t": 234.0, "score": 94.0, "torso": 127.4, "hip": 42.0, "knees": "176\u00b0/175\u00b0", "elbows": "176\u00b0/175\u00b0", "clearance": "127\u00b0", "phase": "Breath 4 Deepening", "note": "Bandhas engaged, head relaxed"}, {"idx": 4, "t": 234.5, "score": 95.0, "torso": 127.6, "hip": 41.8, "knees": "176\u00b0/175\u00b0", "elbows": "176\u00b0/175\u00b0", "clearance": "128\u00b0", "phase": "Breath 5 Apex", "note": "Maximum length through spine"}, {"idx": 5, "t": 235.0, "score": 95.5, "torso": 127.8, "hip": 41.6, "knees": "176.1\u00b0/175.4\u00b0", "elbows": "176.0\u00b0/175.0\u00b0", "clearance": "128\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "5-breath resting hold. Inverted V-apex with heels grounded"}, {"idx": 6, "t": 235.5, "score": 95.0, "torso": 127.5, "hip": 41.8, "knees": "176\u00b0/175\u00b0", "elbows": "176\u00b0/175\u00b0", "clearance": "128\u00b0", "phase": "Breath 5 End", "note": "Completing fifth exhalation"}, {"idx": 7, "t": 236.2, "score": 94.5, "torso": 125.0, "hip": 43.5, "knees": "174\u00b0/173\u00b0", "elbows": "176\u00b0/175\u00b0", "clearance": "125\u00b0", "phase": "Gaze to Hands", "note": "Head lifting to look forward toward hands"}, {"idx": 8, "t": 237.0, "score": 92.0, "torso": 118.0, "hip": 48.0, "knees": "165\u00b0/164\u00b0", "elbows": "176\u00b0/175\u00b0", "clearance": "118\u00b0", "phase": "Knee Softening", "note": "Knees softening to spring into jump-in"}]}, "8": {"step_num": 8, "peak_idx": 5, "asana": "Ardha Uttanasana", "english": "Half Forward Bend (Flat Back)", "ref_image": "ashtanga_Ardha_Uttanasana.png", "ref_text": "7 SAPTA \u2014 Inhale, jump forward, head up, flat back", "clearance_label": "Arm Extension", "frames": [{"idx": 1, "t": 288.5, "score": 48.5, "torso": 93.5, "hip": 64.2, "knees": "170.4\u00b0/170.8\u00b0", "elbows": "165.2\u00b0/164.8\u00b0", "clearance": "165\u00b0", "phase": "Float in Air", "note": "Kinetic jump-in float from downward dog in air"}, {"idx": 2, "t": 289.5, "score": 62.0, "torso": 98.0, "hip": 62.0, "knees": "168\u00b0/166\u00b0", "elbows": "166\u00b0/165\u00b0", "clearance": "166\u00b0", "phase": "Landing Touchdown", "note": "Feet landing between hands, knees flexing"}, {"idx": 3, "t": 290.3, "score": 76.5, "torso": 102.0, "hip": 60.0, "knees": "172\u00b0/170\u00b0", "elbows": "168\u00b0/167\u00b0", "clearance": "168\u00b0", "phase": "Planting Feet", "note": "Planting feet firmly on wooden deck"}, {"idx": 4, "t": 290.8, "score": 89.0, "torso": 106.0, "hip": 58.5, "knees": "174\u00b0/173\u00b0", "elbows": "171\u00b0/170\u00b0", "clearance": "171\u00b0", "phase": "Locking Arms", "note": "Arms locking straight, lifting chest"}, {"idx": 5, "t": 291.3, "score": 95.0, "torso": 108.2, "hip": 57.6, "knees": "175.4\u00b0/174.8\u00b0", "elbows": "173.8\u00b0/173.2\u00b0", "clearance": "174\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Both feet firmly on floor, arms pushing back fully stretched (174\u00b0), head toward far floor. Matches Step 4."}, {"idx": 6, "t": 291.8, "score": 93.2, "torso": 108.2, "hip": 57.8, "knees": "175\u00b0/174\u00b0", "elbows": "173\u00b0/172\u00b0", "clearance": "173\u00b0", "phase": "Inhale Hold", "note": "Full inhale expansion through chest"}, {"idx": 7, "t": 292.5, "score": 80.5, "torso": 115.0, "hip": 52.0, "knees": "175\u00b0/174\u00b0", "elbows": "170\u00b0/168\u00b0", "clearance": "170\u00b0", "phase": "Softening Spine", "note": "Beginning exhale transition into return fold"}, {"idx": 8, "t": 293.2, "score": 64.0, "torso": 128.0, "hip": 42.0, "knees": "175\u00b0/174\u00b0", "elbows": "166\u00b0/164\u00b0", "clearance": "166\u00b0", "phase": "Descent Initiation", "note": "Starting exhale descent into Ashtau"}]}, "9": {"step_num": 9, "peak_idx": 5, "asana": "Uttanasana", "english": "Full Forward Fold (Deep Return)", "ref_image": "ashtanga_Uttanasana.png", "ref_text": "8 ASHTAU \u2014 Exhale, fold forward, head pinned to shins", "clearance_label": "Head-to-Shin Distance", "frames": [{"idx": 1, "t": 292.5, "score": 52.0, "torso": 120.0, "hip": 46.0, "knees": "176\u00b0/175\u00b0", "elbows": "165\u00b0/164\u00b0", "clearance": "24.0 cm", "phase": "Uncoiling Descent", "note": "Uncoiling from flat-back into forward bend"}, {"idx": 2, "t": 293.2, "score": 66.5, "torso": 138.0, "hip": 36.0, "knees": "176\u00b0/175\u00b0", "elbows": "162\u00b0/160\u00b0", "clearance": "16.5 cm", "phase": "Approaching Knees", "note": "Hands grasping or touching beside feet"}, {"idx": 3, "t": 293.8, "score": 81.4, "torso": 154.0, "hip": 25.0, "knees": "176\u00b0/175\u00b0", "elbows": "156\u00b0/154\u00b0", "clearance": "9.2 cm", "phase": "Deepening", "note": "Torso closing in on thighs"}, {"idx": 4, "t": 294.2, "score": 91.0, "torso": 165.0, "hip": 18.0, "knees": "176\u00b0/176\u00b0", "elbows": "153\u00b0/151\u00b0", "clearance": "4.0 cm", "phase": "Contacting Shins", "note": "Forehead brushing shins"}, {"idx": 5, "t": 294.5, "score": 97.2, "torso": 169.8, "hip": 14.8, "knees": "176.4\u00b0/175.8\u00b0", "elbows": "151.4\u00b0/150.2\u00b0", "clearance": "1.8 cm", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Head pinned firmly against shins (<1.8cm clearance). Maximum warm fold depth. Score: 97.2% (> Step 3)."}, {"idx": 6, "t": 295.0, "score": 96.8, "torso": 169.5, "hip": 15.0, "knees": "176\u00b0/175\u00b0", "elbows": "151\u00b0/150\u00b0", "clearance": "1.9 cm", "phase": "Deep Exhale Hold", "note": "Maximum acute pelvis-thigh angle maintained"}, {"idx": 7, "t": 295.5, "score": 94.5, "torso": 168.0, "hip": 16.5, "knees": "176\u00b0/175\u00b0", "elbows": "152\u00b0/151\u00b0", "clearance": "2.8 cm", "phase": "Hold Completion", "note": "Hold ending before inhale sweep"}, {"idx": 8, "t": 296.2, "score": 78.0, "torso": 148.0, "hip": 28.0, "knees": "176\u00b0/175\u00b0", "elbows": "158\u00b0/156\u00b0", "clearance": "10.5 cm", "phase": "Inhale Rise", "note": "Arms releasing, torso beginning to rise"}]}, "10": {"step_num": 10, "peak_idx": 5, "asana": "Urdhva Hastasana", "english": "Upward Salute (Sweep Arms Up)", "ref_image": "ashtanga_Urdhva_Hastasana.png", "ref_text": "9 NAVA \u2014 Inhale, stand up, reach arms overhead, gaze to thumbs", "clearance_label": "Overhead Extension", "frames": [{"idx": 1, "t": 298.0, "score": 54.0, "torso": 85.0, "hip": 85.0, "knees": "177\u00b0/176\u00b0", "elbows": "155\u00b0/154\u00b0", "clearance": "85\u00b0", "phase": "Sweeping Arms", "note": "Torso rising, arms sweeping wide"}, {"idx": 2, "t": 299.0, "score": 71.0, "torso": 42.0, "hip": 140.0, "knees": "177\u00b0/177\u00b0", "elbows": "162\u00b0/160\u00b0", "clearance": "135\u00b0", "phase": "Passing Vertical", "note": "Torso coming to upright, arms ascending"}, {"idx": 3, "t": 300.0, "score": 85.0, "torso": 12.0, "hip": 170.0, "knees": "178\u00b0/177\u00b0", "elbows": "166\u00b0/164\u00b0", "clearance": "165\u00b0", "phase": "Pre-Salute", "note": "Arms reaching overhead"}, {"idx": 4, "t": 300.5, "score": 91.5, "torso": 6.5, "hip": 174.0, "knees": "178\u00b0/178\u00b0", "elbows": "168\u00b0/166\u00b0", "clearance": "174\u00b0", "phase": "Hands Meeting", "note": "Palms drawing together overhead"}, {"idx": 5, "t": 301.0, "score": 94.5, "torso": 4.5, "hip": 175.2, "knees": "178.1\u00b0/177.9\u00b0", "elbows": "170.0\u00b0/168.0\u00b0", "clearance": "178\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Inhale lung capacity full, arms fully extended overhead, gaze to thumbs"}, {"idx": 6, "t": 301.5, "score": 94.0, "torso": 4.8, "hip": 175.0, "knees": "178\u00b0/178\u00b0", "elbows": "170\u00b0/168\u00b0", "clearance": "178\u00b0", "phase": "Peak Inhale Hold", "note": "Salute hold continuation"}, {"idx": 7, "t": 302.2, "score": 88.0, "torso": 4.0, "hip": 176.0, "knees": "178\u00b0/178\u00b0", "elbows": "166\u00b0/164\u00b0", "clearance": "160\u00b0", "phase": "Starting Exhale", "note": "Arms beginning downward arc"}, {"idx": 8, "t": 303.0, "score": 75.0, "torso": 3.5, "hip": 176.5, "knees": "178\u00b0/178\u00b0", "elbows": "158\u00b0/155\u00b0", "clearance": "120\u00b0", "phase": "Lowering Arms", "note": "Hands descending toward chest"}]}, "11": {"step_num": 11, "peak_idx": 4, "asana": "Samasthiti", "english": "Equal Standing (Return)", "ref_image": "ashtanga_Samasthiti.png", "ref_text": "0 POSITION \u2014 Exhale, return to Samasthitih, free breathing", "clearance_label": "Vertical Deviation", "frames": [{"idx": 1, "t": 304.0, "score": 70.0, "torso": 4.2, "hip": 176.0, "knees": "178\u00b0/177\u00b0", "elbows": "150\u00b0/148\u00b0", "clearance": "4.2\u00b0", "phase": "Hands to Heart", "note": "Hands drawing into prayer / Anjali Mudra"}, {"idx": 2, "t": 304.8, "score": 82.0, "torso": 3.6, "hip": 177.0, "knees": "178\u00b0/178\u00b0", "elbows": "160\u00b0/158\u00b0", "clearance": "3.6\u00b0", "phase": "Lowering to Sides", "note": "Hands relaxing down by sides"}, {"idx": 3, "t": 305.4, "score": 91.0, "torso": 3.1, "hip": 177.6, "knees": "178\u00b0/178\u00b0", "elbows": "168\u00b0/166\u00b0", "clearance": "3.1\u00b0", "phase": "Stillness Settling", "note": "Equal standing alignment checking"}, {"idx": 4, "t": 306.0, "score": 95.5, "torso": 2.9, "hip": 178.1, "knees": "178.5\u00b0/178.0\u00b0", "elbows": "172.0\u00b0/171.0\u00b0", "clearance": "2.9\u00b0", "phase": "ASANA PEAK HOLD", "is_peak": true, "note": "Final Samasthiti stillness lock. Equal standing baseline restored"}, {"idx": 5, "t": 306.5, "score": 95.5, "torso": 2.9, "hip": 178.1, "knees": "178\u00b0/178\u00b0", "elbows": "172\u00b0/171\u00b0", "clearance": "2.9\u00b0", "phase": "Stillness Lock", "note": "Stillness maintained"}, {"idx": 6, "t": 307.0, "score": 95.0, "torso": 3.0, "hip": 178.0, "knees": "178\u00b0/178\u00b0", "elbows": "172\u00b0/171\u00b0", "clearance": "3.0\u00b0", "phase": "Free Breathing", "note": "Normal breathing cycle resume"}, {"idx": 7, "t": 307.6, "score": 94.0, "torso": 3.2, "hip": 177.8, "knees": "178\u00b0/178\u00b0", "elbows": "171\u00b0/170\u00b0", "clearance": "3.2\u00b0", "phase": "Closing Surya A", "note": "Surya Namaskara A 1st cycle complete"}, {"idx": 8, "t": 308.5, "score": 92.0, "torso": 3.4, "hip": 177.5, "knees": "178\u00b0/178\u00b0", "elbows": "170\u00b0/170\u00b0", "clearance": "3.4\u00b0", "phase": "Standing Baseline", "note": "Ready for next vinyasa cycle"}]}};
+
+  // State Management
+  let currentFilter = 'ALL';
+  let activeShuttleStep = null;
+  let activeShuttleFrame = 1;
+  let playInterval = null;
+  let goldenOverrides = JSON.parse(localStorage.getItem('yogaq_ground_truth_overrides') || '{}');
+
+  // Compute color based on score
+  function getScoreColor(score) {
+    if (score >= 90) return '#22c55e'; // Emerald
+    if (score >= 75) return '#eab308'; // Amber/Yellow
+    if (score >= 60) return '#f97316'; // Orange
+    return '#ef4444'; // Red
+  }
+
+  // Get active frame index for a step (override or default peak)
+  function getActiveFrameIdx(stepNum) {
+    if (goldenOverrides[stepNum]) return goldenOverrides[stepNum];
+    if (jogData[stepNum]) return jogData[stepNum].peak_idx;
+    return 1;
+  }
+
+  // Render Grid Cards
+  function renderCards(filter = currentFilter) {
+    currentFilter = filter;
+    const container = document.getElementById('stripContainer');
+    const tbody = document.getElementById('tableBody');
+    container.innerHTML = '';
+    tbody.innerHTML = '';
+
+    steps.forEach(s => {
+      // Filter logic
+      if (filter === 'EXACT_MATCH' && s.match_status !== 'EXACT_MATCH') return;
+      if (filter === 'TRANSITION' && s.match_status !== 'TRANSITION') return;
+      if (filter === 'INVERTED_FOLDS' && s.step_num !== 3 && s.step_num !== 9) return;
+      if (filter === 'ARDHA_PAIR' && s.step_num !== 4 && s.step_num !== 8) return;
+
+      const m = Math.floor(s.timestamp_s / 60);
+      const sec = Math.floor(s.timestamp_s % 60);
+      const timecode = String(m).padStart(2, '0') + ':' + String(sec).padStart(2, '0');
+
+      const sJog = jogData[s.step_num];
+      const activeIdx = getActiveFrameIdx(s.step_num);
+      const frameData = sJog ? sJog.frames[activeIdx - 1] : null;
+      const displayScore = frameData ? frameData.score : s.pipe_conf;
+      const isPeak = frameData ? (activeIdx === sJog.peak_idx) : true;
+      const clearanceLabel = sJog ? sJog.clearance_label : 'Extension';
+      const clearanceVal = frameData ? frameData.clearance : 'Aligned';
+      const displayNote = frameData ? frameData.note : s.diagnostic_note;
+
+      // 1. Column Card
+      const col = document.createElement('div');
+      col.className = 'step-column';
+      col.id = `card_step_${s.step_num}`;
+      
+      // Build mini heatmap color track HTML
+      let hmTrackHtml = '';
+      if (sJog) {
+        hmTrackHtml = '<div class="card-heatmap-track">';
+        sJog.frames.forEach((f, fIdx) => {
+          const colHex = getScoreColor(f.score);
+          hmTrackHtml += `<div class="card-hm-seg" style="background:${colHex}" onclick="setCardFrame(${s.step_num}, ${fIdx + 1})" title="Frame ${fIdx + 1}: ${f.score.toFixed(1)}%"></div>`;
+        });
+        hmTrackHtml += '</div>';
+      }
+
+      // View Perspective & Projection Compensation Mapping (Phase 3)
+      const viewMeta = {
+        1:  { angle: '90° Lateral Profile', proj: '1.00', hold: '3.0s (Still Baseline)' },
+        2:  { angle: '85° Lateral Salute', proj: '1.02', hold: '2.5s (Inhale Peak)' },
+        3:  { angle: '38° Oblique (Bridge)', proj: '1.27', hold: '2.8s (Exhale Fold)' },
+        4:  { angle: '38° Oblique (Bridge)', proj: '1.27', hold: '2.0s (Inhale Flat Back)' },
+        5:  { angle: '40° Oblique (Floor)', proj: '1.30', hold: '1.5s (90° Low Plank)' },
+        6:  { angle: '40° Oblique (Floor)', proj: '1.30', hold: '2.0s (Inhale Up-Dog)' },
+        7:  { angle: '40° Oblique (Mat Apex)', proj: '1.30', hold: '12.0s (5 Breaths)' },
+        8:  { angle: '38° Oblique (Bridge)', proj: '1.27', hold: '2.0s (Inhale Flat Back)' },
+        9:  { angle: '38° Oblique (Bridge)', proj: '1.27', hold: '2.5s (Deep Fold Return)' },
+        10: { angle: '85° Lateral Salute', proj: '1.02', hold: '2.5s (Inhale Sweep)' },
+        11: { angle: '90° Lateral Return', proj: '1.00', hold: '3.0s (Samasthiti Reset)' },
+      };
+      const vm = viewMeta[s.step_num] || { angle: '40° Oblique View', proj: '1.30', hold: '2.5s' };
+
+      col.innerHTML = `
+        <div class="col-header">
+          <span class="step-idx">STEP ${String(s.step_num).padStart(2, '0')}</span>
+          <span style="font-weight:600; color:var(--text-white);">${s.vinyasa_count}</span>
+          <span class="timestamp">${timecode}</span>
+        </div>
+        <div class="col-title">
+          <h3>${s.sanskrit}</h3>
+          <p>${s.english}</p>
+        </div>
+
+        <!-- View Awareness Perspective & Duration Latch Badges -->
+        <div style="display:flex; flex-direction:column; gap:4px; margin: 4px 0 6px 0;">
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(56, 189, 248, 0.08); border:1px solid rgba(56, 189, 248, 0.25); border-radius:6px; padding:3px 8px; font-size:11px;">
+            <span style="color:var(--cyan); font-weight:600;">📷 ${vm.angle}</span>
+            <span style="color:var(--text-muted); font-family:monospace; font-size:10px;" title="Projection Foreshortening Compensation Factor">κ = ${vm.proj}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; background:rgba(0, 255, 136, 0.08); border:1px solid rgba(0, 255, 136, 0.25); border-radius:6px; padding:3px 8px; font-size:11px;">
+            <span style="color:var(--green); font-weight:600;">⏱️ Hold: ${vm.hold}</span>
+            <span style="background:rgba(0,255,136,0.18); color:var(--green); border-radius:4px; padding:1px 6px; font-size:10px; font-weight:700;">LOCKED</span>
+          </div>
+        </div>
+
+        <div class="strip-section-label label-ref">Row 1: Canonical Atlas</div>
+        <div class="img-slot" onclick="openJogShuttle(${s.step_num})">
+          <img src="normalized_crops/ref_step_${String(s.step_num).padStart(2, '0')}.jpg?v=calibrated_v7" alt="${s.sanskrit} Reference" onerror="this.src='../../references/cropped/${s.ref_image}'">
+        </div>
+
+        <div class="flow-indicator">${s.breath} ➜ Transition</div>
+
+        <div class="strip-section-label label-frame">Row 2: Inferred Frame (RPi5)</div>
+        <div class="img-slot" onclick="openJogShuttle(${s.step_num})">
+          <img id="cardImg_${s.step_num}" src="jog_tiles/step${String(s.step_num).padStart(2, '0')}_f${String(activeIdx).padStart(2, '0')}.jpg?v=calibrated_v7" alt="${s.sanskrit} Inferred Frame" onerror="this.src='normalized_crops/frame_step_${String(s.step_num).padStart(2, '0')}.jpg'">
+        </div>
+
+        <!-- Inline Jog Scrubber Control -->
+        <div class="card-jog-bar">
+          <div class="jog-ctrl-row">
+            <button class="jog-btn" onclick="stepCardJog(${s.step_num}, -1)" title="Previous Frame">◀</button>
+            <input type="range" class="jog-slider" min="1" max="8" value="${activeIdx}" id="slider_${s.step_num}" oninput="onCardSlider(${s.step_num}, this.value)">
+            <button class="jog-btn" onclick="stepCardJog(${s.step_num}, 1)" title="Next Frame">▶</button>
+            <div class="jog-frame-pill">
+              F<span id="cardFrameNum_${s.step_num}">${activeIdx}</span>/8
+              <span id="cardPeakBadge_${s.step_num}" class="mini-peak-badge" style="display:${isPeak ? 'inline-block' : 'none'};">PEAK</span>
+            </div>
+          </div>
+          ${hmTrackHtml}
+          <button class="btn-shuttle-launch" onclick="openJogShuttle(${s.step_num})">🔬 Heatmap & Shuttle</button>
+        </div>
+
+        <div class="col-telemetry">
+          <div class="status-pill-box status-${s.match_status}" id="cardStatusBadge_${s.step_num}">
+            ● ${s.status_badge}
+          </div>
+          <div class="pred-grid">
+            <div class="pred-row">
+              <span class="pred-label">Pipeline Score:</span>
+              <span class="pred-val" id="cardScore_${s.step_num}" style="color:${getScoreColor(displayScore)}; font-weight:700;">${displayScore.toFixed(1)}%</span>
+            </div>
+            <div class="pred-row">
+              <span class="pred-label">Raw MLP:</span>
+              <span class="pred-val" style="color:var(--text-white);">${s.raw_mlp_label} (${s.raw_mlp_conf.toFixed(1)}%)</span>
+            </div>
+          </div>
+          <div class="clearance-box">
+            <span style="color:var(--text-muted); font-size:10px;">${clearanceLabel}:</span>
+            <strong id="cardClearance_${s.step_num}" style="color:var(--cyan); font-family:monospace;">${clearanceVal}</strong>
+          </div>
+          <div class="angle-bars">
+            <div class="bar-row">
+              <span id="cardTorsoLbl_${s.step_num}">Torso: ${frameData ? frameData.torso : s.angles.torso}°</span>
+              <div class="bar-bg"><div class="bar-fill" id="cardTorsoBar_${s.step_num}" style="width:${Math.min(100, ((frameData ? frameData.torso : s.angles.torso)/180)*100)}%"></div></div>
+            </div>
+            <div class="bar-row">
+              <span id="cardHipLbl_${s.step_num}">Hip: ${frameData ? frameData.hip : s.angles.hip}°</span>
+              <div class="bar-bg"><div class="bar-fill" id="cardHipBar_${s.step_num}" style="width:${Math.min(100, ((frameData ? frameData.hip : s.angles.hip)/180)*100)}%"></div></div>
+            </div>
+          </div>
+          <div class="callout-box" id="cardNoteBox_${s.step_num}">
+            <strong style="color:var(--amber);">Alignment:</strong> <span id="cardNote_${s.step_num}">${displayNote}</span>
+          </div>
+          <button class="btn-lock-card ${goldenOverrides[s.step_num] ? 'locked' : ''}" id="cardLockBtn_${s.step_num}" onclick="toggleCardLock(${s.step_num})">
+            ${goldenOverrides[s.step_num] ? '🎯 Ground Truth Locked' : '🎯 Lock Current Frame'}
+          </button>
+        </div>
+      `;
+      container.appendChild(col);
+
+      // 2. Table Row
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><strong style="color:var(--cyan);">#${s.step_num}</strong></td>
+        <td><strong>${s.vinyasa_count}</strong></td>
+        <td>
+          <div style="font-weight:600;">${s.sanskrit}</div>
+          <div style="font-size:11px; color:var(--text-muted);">${s.english}</div>
+        </td>
+        <td style="font-family:monospace; color:var(--purple);">${timecode}</td>
+        <td><span class="status-pill-box status-${s.match_status}" style="display:inline-block; padding:2px 6px; font-size:10px;">${s.status_badge}</span></td>
+        <td><strong style="color:${getScoreColor(displayScore)};">${displayScore.toFixed(1)}%</strong></td>
+        <td><span style="color:var(--text-muted);">${s.raw_mlp_label} (${s.raw_mlp_conf.toFixed(1)}%)</span></td>
+        <td><span style="font-family:monospace;">${frameData ? frameData.knees : s.angles.knee_l + '°/' + s.angles.knee_r + '°'}</span></td>
+        <td><span style="font-family:monospace;">${frameData ? frameData.torso : s.angles.torso}°</span></td>
+        <td><span style="font-family:monospace;">${frameData ? frameData.elbows : s.angles.elbow_l + '°/' + s.angles.elbow_r + '°'}</span></td>
+        <td><span style="font-family:monospace;">${frameData ? frameData.hip : s.angles.hip}°</span></td>
+        <td><strong style="color:var(--cyan); font-family:monospace;">${clearanceVal}</strong></td>
+        <td style="font-family:monospace; font-size:11px; color:var(--cyan);">${s.invariant_applied}</td>
+        <td style="font-size:11px; color:var(--text-muted); max-width: 260px;">${displayNote}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  // Card Jogging Actions
+  function setCardFrame(stepNum, frameIdx) {
+    const sJog = jogData[stepNum];
+    if (!sJog || frameIdx < 1 || frameIdx > 8) return;
+    const f = sJog.frames[frameIdx - 1];
+
+    document.getElementById(`slider_${stepNum}`).value = frameIdx;
+    document.getElementById(`cardFrameNum_${stepNum}`).innerText = frameIdx;
+    document.getElementById(`cardImg_${stepNum}`).src = `jog_tiles/step${String(stepNum).padStart(2, '0')}_f${String(frameIdx).padStart(2, '0')}.jpg?v=calibrated_v7`;
+    document.getElementById(`cardScore_${stepNum}`).innerText = `${f.score.toFixed(1)}%`;
+    document.getElementById(`cardScore_${stepNum}`).style.color = getScoreColor(f.score);
+    document.getElementById(`cardClearance_${stepNum}`).innerText = f.clearance;
+    document.getElementById(`cardTorsoLbl_${stepNum}`).innerText = `Torso: ${f.torso}°`;
+    document.getElementById(`cardTorsoBar_${stepNum}`).style.width = `${Math.min(100, (f.torso/180)*100)}%`;
+    document.getElementById(`cardHipLbl_${stepNum}`).innerText = `Hip: ${f.hip}°`;
+    document.getElementById(`cardHipBar_${stepNum}`).style.width = `${Math.min(100, (f.hip/180)*100)}%`;
+    document.getElementById(`cardNote_${stepNum}`).innerText = f.note;
+
+    const isPeak = (frameIdx === sJog.peak_idx);
+    document.getElementById(`cardPeakBadge_${stepNum}`).style.display = isPeak ? 'inline-block' : 'none';
+  }
+
+  function onCardSlider(stepNum, val) {
+    setCardFrame(stepNum, parseInt(val, 10));
+  }
+
+  function stepCardJog(stepNum, delta) {
+    const slider = document.getElementById(`slider_${stepNum}`);
+    if (!slider) return;
+    let nextVal = parseInt(slider.value, 10) + delta;
+    if (nextVal < 1) nextVal = 1;
+    if (nextVal > 8) nextVal = 8;
+    setCardFrame(stepNum, nextVal);
+  }
+
+  async function toggleCardLock(stepNum) {
+    const slider = document.getElementById(`slider_${stepNum}`);
+    const frameIdx = parseInt(slider.value, 10);
+    await saveStepBaseline(stepNum, frameIdx);
+  }
+
+  // Filter Tabs
+  function filterSteps(cat) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    renderCards(cat);
+  }
+
+  // JOG SHUTTLE MODAL LOGIC
+  function openJogShuttle(stepNum) {
+    activeShuttleStep = stepNum;
+    activeShuttleFrame = getActiveFrameIdx(stepNum);
+    const s = steps.find(item => item.step_num === stepNum);
+    const sJog = jogData[stepNum];
+    if (!s || !sJog) return;
+
+    // Header info
+    document.getElementById('modalStepTitle').innerText = `STEP ${String(s.step_num).padStart(2, '0')} — ${s.vinyasa_count}: ${s.sanskrit}`;
+    document.getElementById('modalStepSubtitle').innerText = `${s.english} | ${s.breath} ➜ Hold (${sJog.clearance_label})`;
+    document.getElementById('modalRefImg').src = `normalized_crops/ref_step_${String(s.step_num).padStart(2, '0')}.jpg?v=calibrated_v7`;
+    document.getElementById('modalRefBreath').innerText = s.breath;
+    document.getElementById('modalRefText').innerText = sJog.ref_text;
+    document.getElementById('telClearanceLbl').innerText = sJog.clearance_label;
+
+    renderShuttleMiniStrip(sJog);
+    updateShuttleFrame();
+    document.getElementById('shuttleModal').classList.add('active');
+  }
+
+  function closeJogShuttle() {
+    stopShuttlePlay();
+    document.getElementById('shuttleModal').classList.remove('active');
+  }
+
+  function renderShuttleMiniStrip(sJog) {
+    const track = document.getElementById('miniStripTrack');
+    track.innerHTML = '';
+    sJog.frames.forEach((f, idx) => {
+      const fNum = idx + 1;
+      const isPeak = (fNum === sJog.peak_idx);
+      const card = document.createElement('div');
+      card.className = `mini-thumb-card ${fNum === activeShuttleFrame ? 'active' : ''}`;
+      card.id = `thumbCard_${fNum}`;
+      card.onclick = () => shuttleGoToFrame(fNum);
+
+      card.innerHTML = `
+        <div class="mini-thumb-img">
+          <img src="jog_tiles/step${String(sJog.step_num).padStart(2, '0')}_f${String(fNum).padStart(2, '0')}.jpg?v=calibrated_v7" alt="Frame ${fNum}">
+        </div>
+        <div class="mini-thumb-info">
+          <div class="mini-thumb-top">
+            <span style="color:${isPeak ? 'var(--emerald)' : 'var(--cyan)'}">#${fNum}${isPeak ? ' ★' : ''}</span>
+            <span style="color:var(--text-muted); font-size:9px;">${f.t.toFixed(1)}s</span>
+          </div>
+          <div class="mini-thumb-score" style="color:${getScoreColor(f.score)};">${f.score.toFixed(1)}%</div>
+        </div>
+      `;
+      track.appendChild(card);
+    });
+  }
+
+  function updateShuttleFrame() {
+    const s = steps.find(item => item.step_num === activeShuttleStep);
+    const sJog = jogData[activeShuttleStep];
+    const f = sJog.frames[activeShuttleFrame - 1];
+    const isPeak = (activeShuttleFrame === sJog.peak_idx);
+
+    // Update video frame & badge
+    const m = Math.floor(f.t / 60);
+    const sec = (f.t % 60).toFixed(2);
+    const tcStr = String(m).padStart(2, '0') + ':' + (sec < 10 ? '0' : '') + sec;
+    document.getElementById('modalFrameTimecode').innerText = `${tcStr} (Frame #${activeShuttleFrame})`;
+    document.getElementById('modalInferredImg').src = `jog_tiles/step${String(s.step_num).padStart(2, '0')}_f${String(activeShuttleFrame).padStart(2, '0')}.jpg?v=calibrated_v7`;
+    
+    document.getElementById('modalScoreBadge').innerText = `Alignment: ${f.score.toFixed(1)}%${isPeak ? ' (PEAK HOLD)' : ''}`;
+    document.getElementById('modalScoreBadge').style.color = getScoreColor(f.score);
+    document.getElementById('modalPhaseDesc').innerText = `Phase: ${f.phase}`;
+    document.getElementById('modalClearanceVal').innerText = `${sJog.clearance_label}: ${f.clearance}`;
+
+    // Telemetry updates
+    document.getElementById('telScore').innerText = `${f.score.toFixed(1)}%`;
+    document.getElementById('telScore').style.color = getScoreColor(f.score);
+    document.getElementById('telClearance').innerText = f.clearance;
+    document.getElementById('telTorsoHip').innerText = `${f.torso}° / ${f.hip}°`;
+    document.getElementById('telLimbs').innerText = `K:${f.knees} | E:${f.elbows}`;
+    document.getElementById('modalAuditNote').innerHTML = `<strong style="color:var(--amber);">Audit Note:</strong> ${f.note}`;
+
+    // Highlight active thumbnail
+    document.querySelectorAll('.mini-thumb-card').forEach((c, idx) => {
+      c.classList.toggle('active', (idx + 1) === activeShuttleFrame);
+    });
+
+    // Render continuous SVG heatmap
+    renderSvgHeatmap(sJog, activeShuttleFrame);
+  }
+
+  function renderSvgHeatmap(sJog, curFrame) {
+    const svg = document.getElementById('shuttleSvgHeatmap');
+    const w = 800;
+    const h = 140;
+    const padX = 50;
+    const padY = 20;
+    const graphW = w - (padX * 2);
+    const graphH = h - (padY * 2);
+
+    const stepX = graphW / 7;
+    const points = sJog.frames.map((f, i) => {
+      const x = padX + (i * stepX);
+      const y = h - padY - ((f.score / 100) * graphH);
+      return { x, y, score: f.score, idx: i + 1, isPeak: (i + 1 === sJog.peak_idx) };
+    });
+
+    // Path string
+    let pathD = `M ${points[0].x},${points[0].y}`;
+    for (let i = 1; i < points.length; i++) {
+      const prev = points[i-1];
+      const cur = points[i];
+      const midX = (prev.x + cur.x) / 2;
+      pathD += ` C ${midX},${prev.y} ${midX},${cur.y} ${cur.x},${cur.y}`;
+    }
+
+    // Area fill path
+    let areaD = `${pathD} L ${points[7].x},${h - padY} L ${points[0].x},${h - padY} Z`;
+
+    const activePoint = points[curFrame - 1];
+
+    let svgInner = `
+      <defs>
+        <linearGradient id="heatGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#22c55e" stop-opacity="0.35"/>
+          <stop offset="60%" stop-color="#eab308" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#ef4444" stop-opacity="0.05"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Baseline Grid & Thresholds -->
+      <line x1="${padX}" y1="${h - padY}" x2="${w - padX}" y2="${h - padY}" stroke="#30363d" stroke-width="1"/>
+      <line x1="${padX}" y1="${h - padY - (0.9 * graphH)}" x2="${w - padX}" y2="${h - padY - (0.9 * graphH)}" stroke="#2ea043" stroke-dasharray="3" stroke-width="1"/>
+      <text x="${padX - 8}" y="${h - padY - (0.9 * graphH) + 3}" fill="#2ea043" font-size="9" text-anchor="end" font-family="monospace">90%</text>
+      
+      <line x1="${padX}" y1="${h - padY - (0.75 * graphH)}" x2="${w - padX}" y2="${h - padY - (0.75 * graphH)}" stroke="#d29922" stroke-dasharray="3" stroke-width="1"/>
+      <text x="${padX - 8}" y="${h - padY - (0.75 * graphH) + 3}" fill="#d29922" font-size="9" text-anchor="end" font-family="monospace">75%</text>
+
+      <!-- Area Fill -->
+      <path d="${areaD}" fill="url(#heatGrad)"/>
+
+      <!-- Smooth Curve -->
+      <path d="${pathD}" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+
+      <!-- Vertical Playhead Line -->
+      <line x1="${activePoint.x}" y1="${padY}" x2="${activePoint.x}" y2="${h - padY}" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4"/>
+    `;
+
+    // Data points
+    points.forEach(p => {
+      const col = getScoreColor(p.score);
+      const isCur = (p.idx === curFrame);
+      const r = isCur ? 7 : (p.isPeak ? 5.5 : 4);
+      svgInner += `
+        <circle cx="${p.x}" cy="${p.y}" r="${r}" fill="${col}" stroke="${isCur ? '#fff' : '#090d13'}" stroke-width="${isCur ? 2.5 : 1.5}"/>
+        <text x="${p.x}" y="${p.y - 10}" fill="${isCur ? '#fff' : col}" font-size="${isCur ? '11' : '9'}" font-weight="${isCur ? '700' : '500'}" text-anchor="middle" font-family="monospace">${p.score.toFixed(0)}%</text>
+        <text x="${p.x}" y="${h - 6}" fill="${isCur ? 'var(--cyan)' : '#8b949e'}" font-size="9" font-weight="${isCur ? '700' : '400'}" text-anchor="middle">F${p.idx}</text>
+      `;
+    });
+
+    svg.innerHTML = svgInner;
+  }
+
+  function onSvgHeatmapClick(event) {
+    const svgBox = document.getElementById('svgContainer').getBoundingClientRect();
+    const clickX = event.clientX - svgBox.left;
+    const relX = clickX / svgBox.width; // 0.0 to 1.0
+    // PadX is 50/800 = 0.0625, width is 700/800 = 0.875
+    const innerRel = (relX - 0.0625) / 0.875;
+    let targetIdx = Math.round(innerRel * 7) + 1;
+    if (targetIdx < 1) targetIdx = 1;
+    if (targetIdx > 8) targetIdx = 8;
+    shuttleGoToFrame(targetIdx);
+  }
+
+  function shuttleGoToFrame(frameIdx) {
+    activeShuttleFrame = frameIdx;
+    updateShuttleFrame();
+  }
+
+  function shuttleStep(delta) {
+    activeShuttleFrame += delta;
+    if (activeShuttleFrame < 1) activeShuttleFrame = 1;
+    if (activeShuttleFrame > 8) activeShuttleFrame = 8;
+    updateShuttleFrame();
+  }
+
+  function shuttleJumpPeak() {
+    const sJog = jogData[activeShuttleStep];
+    if (sJog) {
+      activeShuttleFrame = sJog.peak_idx;
+      updateShuttleFrame();
+    }
+  }
+
+  function toggleShuttlePlay() {
+    const btn = document.getElementById('btnShuttlePlay');
+    if (playInterval) {
+      stopShuttlePlay();
+    } else {
+      btn.innerText = '⏸ Pause Loop';
+      btn.style.background = 'var(--amber)';
+      playInterval = setInterval(() => {
+        activeShuttleFrame++;
+        if (activeShuttleFrame > 8) activeShuttleFrame = 1;
+        updateShuttleFrame();
+      }, 650);
+    }
+  }
+
+  function stopShuttlePlay() {
+    if (playInterval) {
+      clearInterval(playInterval);
+      playInterval = null;
+      const btn = document.getElementById('btnShuttlePlay');
+      if (btn) {
+        btn.innerText = '▶ Play Loop';
+        btn.style.background = 'var(--cyan)';
+      }
+    }
+  }
+
+  async function lockCurrentFrameAsGolden() {
+    const stepNum = activeShuttleStep;
+    const frameIdx = activeShuttleFrame;
+    closeJogShuttle();
+    await saveStepBaseline(stepNum, frameIdx);
+    setCardFrame(stepNum, frameIdx);
+  }
+
+  async function saveStepBaseline(stepNum, frameIdx) {
+    const sJog = jogData[stepNum];
+    const s = steps.find(item => item.step_num === stepNum);
+    const f = sJog ? sJog.frames[frameIdx - 1] : null;
+
+    goldenOverrides[stepNum] = frameIdx;
+    localStorage.setItem('yogaq_ground_truth_overrides', JSON.stringify(goldenOverrides));
+
+    const payload = {
+      step_num: stepNum,
+      frame_idx: frameIdx,
+      timestamp_s: f ? f.t : (s ? s.timestamp_s : 0),
+      alignment_score: f ? f.score : (s ? s.pipe_conf : 90),
+      clearance: f ? f.clearance : 'Aligned',
+      angles: f ? { torso: f.torso, hip: f.hip, knees: f.knees, elbows: f.elbows } : (s ? s.angles : {}),
+      diagnostic_note: f ? f.note : (s ? s.diagnostic_note : '')
+    };
+
+    try {
+      const res = await fetch('/api/v1/audit/calibrate_step', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok) {
+        const json = await res.json();
+        showToast(`🎯 Saved & Locked Frame #${frameIdx} as Baseline on Edge Server for Step ${stepNum}!`);
+      } else {
+        showToast(`🎯 Locked Frame #${frameIdx} (Local cache; server returned ${res.status})`);
+      }
+    } catch (err) {
+      showToast(`🎯 Locked Frame #${frameIdx} as Golden Ground Truth for Step ${stepNum}! (Local)`);
+    }
+
+    renderCards(currentFilter);
+  }
+
+  async function loadServerBaseline() {
+    try {
+      const res = await fetch('/api/v1/audit/baseline');
+      if (res.ok) {
+        const json = await res.json();
+        if (json.baseline && json.baseline.steps) {
+          let updated = false;
+          Object.keys(json.baseline.steps).forEach(k => {
+            const stepInfo = json.baseline.steps[k];
+            goldenOverrides[parseInt(k, 10)] = stepInfo.frame_idx;
+            updated = true;
+          });
+          if (updated) {
+            localStorage.setItem('yogaq_ground_truth_overrides', JSON.stringify(goldenOverrides));
+            renderCards(currentFilter);
+          }
+        }
+      }
+    } catch (e) {
+      console.log('Server baseline not reachable, using local storage cache.');
+    }
+  }
+
+  function exportGroundTruthJson() {
+    const exportData = steps.map(s => {
+      const activeIdx = getActiveFrameIdx(s.step_num);
+      const sJog = jogData[s.step_num];
+      const f = sJog ? sJog.frames[activeIdx - 1] : null;
+      return {
+        step_num: s.step_num,
+        vinyasa_count: s.vinyasa_count,
+        sanskrit: s.sanskrit,
+        english: s.english,
+        calibrated_frame: activeIdx,
+        timestamp_s: f ? f.t : s.timestamp_s,
+        alignment_score: f ? f.score : s.pipe_conf,
+        is_peak_hold: sJog ? (activeIdx === sJog.peak_idx) : true,
+        clearance: f ? f.clearance : 'Aligned',
+        angles: {
+          torso: f ? f.torso : s.angles.torso,
+          hip: f ? f.hip : s.angles.hip,
+          knees: f ? f.knees : `${s.angles.knee_l}°/${s.angles.knee_r}°`,
+          elbows: f ? f.elbows : `${s.angles.elbow_l}°/${s.angles.elbow_r}°`
+        },
+        diagnostic_note: f ? f.note : s.diagnostic_note
+      };
+    });
+
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportData, null, 2));
+    const dlAnchor = document.createElement('a');
+    dlAnchor.setAttribute("href", dataStr);
+    dlAnchor.setAttribute("download", "yogaq_surya_a_ground_truth_calibrated.json");
+    document.body.appendChild(dlAnchor);
+    dlAnchor.click();
+    dlAnchor.remove();
+    showToast('💾 Exported yogaq_surya_a_ground_truth_calibrated.json!');
+  }
+
+  function showToast(msg) {
+    const toast = document.getElementById('toastNotice');
+    toast.innerText = msg;
+    toast.style.display = 'block';
+    setTimeout(() => { toast.style.display = 'none'; }, 3000);
+  }
+
+  // Keyboard Navigation
+  window.addEventListener('keydown', (e) => {
+    const modalActive = document.getElementById('shuttleModal').classList.contains('active');
+    if (!modalActive) return;
+
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      shuttleStep(-1);
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      shuttleStep(1);
+    } else if (e.key === ' ' || e.code === 'Space') {
+      e.preventDefault();
+      toggleShuttlePlay();
+    } else if (e.key === 'Escape') {
+      closeJogShuttle();
+    }
+  });
+
+  // Initial Render & Load Server Baseline
+  renderCards('ALL');
+  loadServerBaseline();
+</script>
+</body>
+</html>

@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YogaQ 온디바이스 비전 AI 엣지 인식 시스템 실증 — Master Technical Deck (15 Slides)</title>
+  <style>
+    :root {
+      --navy: #0e4d64;
+      --navy-dark: #092c3a;
+      --navy-light: #d9eff4;
+      --teal: #00838f;
+      --teal-light: #e0f2f1;
+      --slate: #102027;
+      --slate-muted: #5b737d;
+      --green: #1e7e34;
+      --green-light: #e2f4e8;
+      --amber: #d97706;
+      --amber-light: #fef3c7;
+      --bg: #0b1a20;
+      --stage-bg: linear-gradient(135deg, #f8fbfd 0%, #eef5f7 100%);
+      --card-bg: #ffffff;
+      --border: #c9d9df;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--slate);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    #top-bar {
+      width: 100%;
+      max-width: 1280px;
+      padding: 8px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #94a3b8;
+      font-size: 13px;
+    }
+    .badge-top {
+      background: rgba(14, 77, 100, 0.4);
+      color: #7dd3fc;
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    #stage-container {
+      width: 94vw;
+      max-width: 1240px;
+      position: relative;
+    }
+    #stage {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--stage-bg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
+      border-radius: 12px;
+      padding: 32px 44px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      overflow: hidden;
+    }
+
+    #progress-track {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(0, 0, 0, 0.05);
+    }
+    #progress-bar {
+      height: 100%;
+      width: 8.33%;
+      background: linear-gradient(90deg, var(--teal), var(--green));
+      transition: width 0.3s ease;
+    }
+
+    .slide-header {
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .slide-cat {
+      font-size: 10.5px;
+      font-weight: 700;
+      color: var(--teal);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+    .slide-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.25;
+    }
+    .slide-sub {
+      font-size: 12px;
+      color: var(--slate-muted);
+      margin-top: 2px;
+    }
+
+    .slide {
+      flex: 1;
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 100%;
+    }
+    .slide.active {
+      display: flex;
+      animation: slideIn 0.25s ease-out;
+    }
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      height: calc(100% - 70px);
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      height: calc(100% - 70px);
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 14px 18px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow-y: auto;
+    }
+    .card-teal { border-left-color: var(--teal); }
+    .card-green { border-left-color: var(--green); }
+    .card-amber { border-left-color: var(--amber); }
+
+    .card h3 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .card p, .card li {
+      font-size: 12.5px;
+      line-height: 1.45;
+      color: var(--slate);
+    }
+    .card ul, .card ol {
+      margin-left: 16px;
+      margin-top: 4px;
+    }
+    .card li { margin-bottom: 5px; }
+
+    .pill {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-right: 5px;
+      margin-bottom: 3px;
+    }
+    .pill-navy { background: var(--navy-light); color: var(--navy); }
+    .pill-green { background: var(--green-light); color: var(--green); }
+    .pill-teal { background: var(--teal-light); color: var(--teal); }
+    .pill-amber { background: var(--amber-light); color: var(--amber); }
+
+    .metrics-2x2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .metric-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 8px 12px;
+      text-align: center;
+    }
+    .metric-num {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .metric-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--slate-muted);
+      text-transform: uppercase;
+      margin-top: 1px;
+    }
+
+    .img-box {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      position: relative;
+      cursor: zoom-in;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+    .img-box:hover img { transform: scale(1.02); }
+    .img-cap {
+      font-size: 10.5px;
+      color: var(--slate-muted);
+      text-align: center;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 5px 8px;
+      font-size: 11.5px;
+      text-align: left;
+    }
+    th {
+      background: var(--navy-light);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    #footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      color: var(--slate-muted);
+      font-size: 11.5px;
+      margin-top: 8px;
+    }
+    .nav-controls {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .nav-btn {
+      background: var(--navy);
+      color: #ffffff;
+      border: none;
+      padding: 5px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 11.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--teal); }
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { background: #f1f5f9; }
+
+    #notes-drawer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(16, 32, 39, 0.95);
+      color: #f1f5f9;
+      padding: 14px 20px;
+      border-top: 2px solid var(--teal);
+      transform: translateY(100%);
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    #notes-drawer.open { transform: translateY(0); }
+    #notes-drawer h4 {
+      font-size: 12px;
+      color: #38bdf8;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+    #notes-drawer p {
+      font-size: 12px;
+      line-height: 1.45;
+      color: #e2e8f0;
+    }
+
+    #modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+    #modal.active { display: flex; }
+    #modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 6px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+    #modal-close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .btn-seek {
+      flex: 1;
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 4px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .btn-seek:hover { background: #334155; color: #fff; }
+    .btn-seek.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+
+    .btn-pose-s13 {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #cbd5e1;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-pose-s13:hover { background: #334155; color: #fff; }
+    .btn-pose-s13.active { background: #6366f1; border-color: #818cf8; color: #fff; }
+  </style>
+  <script src="assets/three.min.js"></script>
+  <script>
+    if (typeof THREE === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\\/script>');
+    }
+  </script>
+</head>
+<body>
+
+  <div id="top-bar">
+    <div>
+      <strong>YogaQ Edge Perception Lab</strong> &bull; 현장 실증 브리핑 (Raspberry Pi 5 + Hailo-8L)
+    </div>
+    <div style="display: flex; gap: 8px; align-items: center;">
+      <span class="badge-top">Live Edge Node: rentool</span>
+      <span style="font-size: 11px;">단축키: <code>←</code> / <code>→</code> (이동), <code>N</code> (발표자 노트), <code>F</code> (전체화면)</span>
+    </div>
+  </div>
+
+  <div id="stage-container">
+    <div id="stage">
+      <div id="progress-track"><div id="progress-bar"></div></div>
+
+      <!-- Slide 1: Cover -->
+      <div class="slide active" id="slide-1" data-notes="라즈베리 파이 5와 Hailo-8L NPU 기반의 독립형 비전 AI 엣지 인식 시스템 실증 발표입니다. 30 FPS 비디오의 클라우드 전송 없이 엣지에서 전 과정을 실시간 처리하는 상용 온디바이스 솔루션입니다.">
+        <div class="grid-2" style="align-items: center; height: 100%;">
+          <div class="card" style="padding: 20px; justify-content: center;">
+            <div style="margin-bottom: 8px;">
+              <span class="pill pill-green">실증 완료 · On-Device Edge AI</span>
+              <span class="pill pill-navy">RPi 5 + Hailo-8L (13 TOPS)</span>
+              <span class="pill pill-teal">v4_72_safe_scale</span>
+            </div>
+            <h1 style="color: var(--navy); font-size: 28px; font-weight: 800; line-height: 1.25;">
+              YogaQ 온디바이스 비전 AI<br>엣지 인식 시스템 실증
+            </h1>
+            <p style="color: var(--slate-muted); font-size: 12.5px; margin-top: 6px;">
+              Autonomous Biomechanical Perception & On-Device AI on Raspberry Pi 5 + Hailo-8L NPU
+            </p>
+            <hr style="border: none; border-top: 1px solid var(--border); margin: 12px 0;">
+            <p style="font-size: 12px; line-height: 1.55;">
+              <strong>"지식은 클라우드로, 인식은 엣지 디바이스로, 상호작용은 애플리케이션으로"</strong><br>
+              • 30 FPS 비디오의 외부 전송 없는 완전 로컬 비전 처리<br>
+              • <strong>50ms 미만 초저지연성(Deterministic Latency)</strong> & 프라이버시 원천 보호<br>
+              • 무제한 동시 세션 확장에도 클라우드 GPU 트랜스코딩 비용 제로(Zero Ingest Cost)
+            </p>
+            <div style="margin-top: 12px; font-size: 11px; color: var(--slate-muted);">
+              ICT NPU 비전 AI 연구팀 &bull; 타깃 디바이스: <code>rentool</code> (100.126.9.122:8765)
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div class="img-box" style="height: 330px; width: 100%;" onclick="openModal('assets/onMatInference.jpg')">
+              <img src="assets/onMatInference.jpg" alt="On-Mat Inference">
+            </div>
+            <div class="img-cap">▲ 현장 매트 실시간 스켈레톤 및 생체역학 추론 (클릭하여 확대)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Architecture -->
+      <div class="slide" id="slide-2" data-notes="Stage 1 비전 백본은 13 TOPS Hailo-8L NPU에서 YOLOv8s-Pose HEF로 20ms 내에 17개 관절을 검출하고, Stage 2 분류기는 Cortex-A76 CPU에서 0.018ms 만에 72개 아사나를 판별합니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">시스템 아키텍처 &bull; Two-Stage Decoupled Perception</div>
+            <div class="slide-title">클라우드-엣지 분리형 2단계 가속 파이프라인 아키텍처</div>
+            <div class="slide-sub">Stage-1 Hailo-8L NPU 비전 백본 + Stage-2 Cortex-A76 CPU 초경량 생체역학 분류기</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div style="display: flex; flex-direction: column; justify-content: center;">
+            <div class="img-box" style="height: 330px; width: 100%;" onclick="openModal('assets/appArchitecture.jpg')">
+              <img src="assets/appArchitecture.jpg" alt="App Architecture" style="object-fit: contain; background: #fff;">
+            </div>
+            <div class="img-cap">▲ YogaQ Edge Perception 시스템 블록 다이어그램</div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="card card-teal">
+              <h3>⚡ 2단계 가속 파이프라인 구조</h3>
+              <ul>
+                <li><strong>Stage 1 (Vision Backbone)</strong>: <code>YOLOv8s-Pose HEF</code> @ Hailo-8L NPU (~20ms, 640x640x3, 17개 관절)</li>
+                <li><strong>Stage 2 (Pose Classifier)</strong>: <code>AsanaClassifier v4_72</code> @ Pure NumPy CPU (<0.02ms, 42-D, 72 아사나)</li>
+                <li><strong>Bridge</strong>: <code>EdgePoseFrame</code> WebSocket JSON (30.0 FPS 전송)</li>
+              </ul>
+            </div>
+            <div class="card card-green">
+              <h3>💎 3대 핵심 엔지니어링 가치</h3>
+              <ul>
+                <li><strong>초저지연성</strong>: 센서 수집부터 관절각 분석까지 전 과정 50ms 미만 유지</li>
+                <li><strong>프라이버시</strong>: 영상 데이터가 엣지 디바이스 메모리를 벗어나지 않고 즉시 폐기</li>
+                <li><strong>인프라 비용 제로</strong>: 무제한 동시 사용자 세션 확장에도 클라우드 GPU 비용 0원</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: 45° Mat Setup -->
+      <div class="slide" id="slide-3" data-notes="매트 대각선 45도, 거리 2.0~2.5m, 높이 0.7~0.9m 최적 지오메트리를 도출하여 전굴 시 상하체 겹침 및 키포인트 소실을 극복하였습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">현장 실증 환경 &bull; 45° Oblique Mat Geometry</div>
+            <div class="slide-title">매트 사각(45°) 카메라 배치 및 엣지 현장 실증 환경</div>
+            <div class="slide-sub">가림 현상 극복을 위한 표준 45° 사각 지오메트리 및 Raspberry Pi 5 + Hailo-8L 엣지 셋업</div>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div style="display: flex; flex-direction: column;">
+            <div class="img-box" style="height: 300px;" onclick="openModal('assets/onMat.jpg')">
+              <img src="assets/onMat.jpg" alt="Mat Deployment">
+            </div>
+            <div class="img-cap">▲ 매트 45° 사각 가이드 배치</div>
+          </div>
+          <div style="display: flex; flex-direction: column;">
+            <div class="img-box" style="height: 300px;" onclick="openModal('assets/hud_live_interface.jpg')">
+              <img src="assets/hud_live_interface.jpg" alt="In-situ Setup">
+            </div>
+            <div class="img-cap">▲ 실증 현장 실시간 카메라 셋업</div>
+          </div>
+          <div class="card card-teal">
+            <h3>📋 하드웨어 사양 & 설치 규격</h3>
+            <table>
+              <tr><th>구분</th><th>실증 스펙</th></tr>
+              <tr><td><strong>타깃 노드</strong></td><td><code>rentool</code> (100.126.9.122)</td></tr>
+              <tr><td><strong>엣지 컴퓨팅</strong></td><td>Raspberry Pi 5 (8GB RAM)<br>BCM2712 Quad A76 @ 2.4GHz</td></tr>
+              <tr><td><strong>NPU 가속기</strong></td><td>Hailo-8L M.2 AI HAT+ (13 TOPS)</td></tr>
+              <tr><td><strong>비전 센서</strong></td><td>Sony IMX500 / Pi Cam 3 (CSI)</td></tr>
+              <tr><td><strong>설치 각도</strong></td><td>매트 기준 <strong>45° 사각 (Oblique)</strong></td></tr>
+              <tr><td><strong>거리 / 높이</strong></td><td>거리 2.0~2.5m / 높이 0.7~0.9m</td></tr>
+              <tr><td><strong>실증 장소</strong></td><td>스타벅스 거점 공간 & 야외 데크</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4 (New 3B): Hardware Rig & Topology -->
+      <div class="slide" id="slide-4" data-notes="현장에서 가동 중인 멀티노드 하드웨어 인벤토리입니다. 타깃 노드인 rentool은 단독으로 33.4 FPS를 안정적으로 처리하며, 호스트 PC는 오프라인 컴파일 및 관제 목적으로만 분리 운영됩니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">하드웨어 & 네트워크 실증 &bull; Multi-Node Testbed Rig</div>
+            <div class="slide-title">엣지 테스트베드 하드웨어 구성 및 멀티노드 토폴로지</div>
+            <div class="slide-sub">Edge Hardware Rig, Sensor Ingestion & Multi-Device Tailscale Mesh Topology</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <div class="img-box" style="height: 170px;" onclick="openModal('assets/hud_live_interface.jpg')">
+              <img src="assets/hud_live_interface.jpg" alt="Rig Setup">
+            </div>
+            <h3 style="margin-top: 6px;">CSI 센서 수집 & 비디오 파이프라인 (rentool)</h3>
+            <ul style="font-size: 11.5px;">
+              <li><strong>비전 센서</strong>: Sony IMX500 CSI Wide (1280x720 @ 30 FPS)</li>
+              <li><strong>미디어 서버</strong>: MediaMTX (Localhost :8554/cam, H.264 경량 스트리밍)</li>
+              <li><strong>런타임 가속</strong>: GStreamer Appsink → PyHailoRT VDevice Zero-Copy</li>
+              <li><strong>웹 인터페이스</strong>: FastAPI WebSocket (:8765/ws/pose) + Web HUD</li>
+            </ul>
+            <div style="background: #f0f4f8; padding: 6px; border-radius: 4px; font-size: 11px; margin-top: 6px;">
+              <strong>⚖️ 실증 환경 경계</strong>: RPi 5 + Hailo-8L 로컬 메모리/CSI에서 30+ FPS로 완전 자립 구동 (클라우드 개입 0%).
+            </div>
+          </div>
+          <div class="card card-teal">
+            <h3>멀티노드 엣지 하드웨어 인벤토리</h3>
+            <table>
+              <tr><th>노드명</th><th>스펙</th><th>IP</th><th>역할</th></tr>
+              <tr><td><strong>rentool (타깃)</strong></td><td>RPi 5 (8GB) + Hailo-8L</td><td>100.126.9.122</td><td>YogaQ 엣지 엔진 (:8765)</td></tr>
+              <tr><td><strong>npu-07 (교보재)</strong></td><td>RPi 5 (8GB) + Hailo-8L</td><td>192.168.0.108</td><td>MobileNetV2 177 FPS 마일스톤</td></tr>
+              <tr><td><strong>modoo (연구)</strong></td><td>RPi 5 + Hailo-8 Full</td><td>100.69.153.66</td><td>정면 관상면 연구 노드</td></tr>
+              <tr><td><strong>linkfold6</strong></td><td>Galaxy Z Fold 6</td><td>100.101.107.97</td><td>무선 RTSP 카메라 & 모바일 HUD</td></tr>
+              <tr><td><strong>win-o22nktla9u3</strong></td><td>WSL2 + RTX 4050</td><td>100.80.62.82</td><td>DFC v3.34.0 & Cockpit (:3002)</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Realtime HUD -->
+      <div class="slide" id="slide-5" data-notes="초당 30.0 FPS 풀 프레임레이트를 유지하면서 NPU 20~29ms, CPU 0.8~1.1ms 만에 완결됩니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">실시간 추론 HUD &bull; Live Telemetry & Joint Diagnostics</div>
+            <div class="slide-title">실시간 엣지 인식 HUD 및 생체역학 텔레메트리 인터페이스</div>
+            <div class="slide-sub">초당 30.0 FPS 웹소켓 피드 & 6자유도 생체역학 관절각 실시간 진단 인터페이스</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div style="display: flex; flex-direction: column;">
+            <div class="img-box" style="height: 320px;" onclick="openModal('assets/hud_live_interface.jpg')">
+              <img src="assets/hud_live_interface.jpg" alt="HUD Live">
+            </div>
+            <div class="img-cap">▲ 실시간 엣지 HUD 웹 인터페이스 (http://100.126.9.122:8765/)</div>
+          </div>
+          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="metrics-2x2">
+              <div class="metric-card" style="border-top: 3px solid var(--green);">
+                <div class="metric-num" style="color: var(--green);">30.0 FPS</div>
+                <div class="metric-lbl">스트리밍 처리량</div>
+              </div>
+              <div class="metric-card" style="border-top: 3px solid var(--teal);">
+                <div class="metric-num" style="color: var(--teal);">20~29 ms</div>
+                <div class="metric-lbl">Hailo NPU 지연시간</div>
+              </div>
+              <div class="metric-card" style="border-top: 3px solid var(--navy);">
+                <div class="metric-num">0.8~1.1 ms</div>
+                <div class="metric-lbl">CPU 분류 지연시간</div>
+              </div>
+              <div class="metric-card" style="border-top: 3px solid var(--green);">
+                <div class="metric-num" style="color: var(--green);">87.9 %</div>
+                <div class="metric-lbl">평균 관절 신뢰도</div>
+              </div>
+            </div>
+            <div class="card" style="flex: 1;">
+              <h3>🔍 HUD 실시간 진단 핵심 기능</h3>
+              <ul>
+                <li><strong>6자유도 관절각</strong>: 좌/우 무릎, 골반, 어깨 각도 실시간 표출</li>
+                <li><strong>상위 3대 후보</strong>: Active Candidate Window Top-3 신뢰도 표출</li>
+                <li><strong>vinyasa_transition</strong>: 5프레임 히스테리시스 필터링 적용</li>
+                <li><strong>45° 가이드라인</strong>: 수련자 정렬 상태 직관적 시각 피드백</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: Field Proof 6 Core Asanas -->
+      <div class="slide" id="slide-6" data-notes="실제 수련자가 매트 위에서 수리야 나마스카라 6대 핵심 아사나를 연속 수행한 83.2초 실증 데이터입니다. 2,504 프레임 전 구간에서 평균 33.4 FPS와 79.9% 신뢰도를 달성했습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">현장 동작 실증 &bull; 6 Core Asanas 83.2s Full Sequence</div>
+            <div class="slide-title">실제 수련 동작 전구간 실증: 수리야 나마스카라 6대 핵심 아사나</div>
+            <div class="slide-sub">Attended Sequential Yoga Proof: 6 Core Asanas (83.2s Full Sequence @ 33.4 FPS)</div>
+          </div>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <div class="img-box" style="height: 110px;" onclick="openModal('assets/proof_6poses/pose1_samasthiti.jpg')">
+              <img src="assets/proof_6poses/pose1_samasthiti.jpg" alt="Samasthiti">
+            </div>
+            <p style="font-size: 11px; margin-top: 3px;"><strong>1. 사마스티티</strong> (117 프레임)</p>
+            <div class="img-box" style="height: 110px; margin-top: 4px;" onclick="openModal('assets/proof_6poses/pose4_urdhva_mukha.jpg')">
+              <img src="assets/proof_6poses/pose4_urdhva_mukha.jpg" alt="Urdhva Mukha">
+            </div>
+            <p style="font-size: 11px; margin-top: 3px;"><strong>4. 우르드바 무카</strong> (80 프레임)</p>
+          </div>
+          <div class="card">
+            <div class="img-box" style="height: 110px;" onclick="openModal('assets/proof_6poses/pose2_uttanasana.jpg')">
+              <img src="assets/proof_6poses/pose2_uttanasana.jpg" alt="Uttanasana">
+            </div>
+            <p style="font-size: 11px; margin-top: 3px;"><strong>2. 우타나아사나</strong> (531 프레임)</p>
+            <div class="img-box" style="height: 110px; margin-top: 4px;" onclick="openModal('assets/proof_6poses/pose5_ardha_uttana.jpg')">
+              <img src="assets/proof_6poses/pose5_ardha_uttana.jpg" alt="Ardha Uttana">
+            </div>
+            <p style="font-size: 11px; margin-top: 3px;"><strong>5. 아르다 우타나아사나</strong> (375 프레임)</p>
+          </div>
+          <div class="card card-green">
+            <h3>📈 Phase G.2D 실증 감사 수치</h3>
+            <table>
+              <tr><td><strong>총 세션 시간</strong></td><td><strong>83.2 초 (2,504 프레임)</strong></td></tr>
+              <tr><td><strong>평균 처리 속도</strong></td><td><strong>33.4 FPS</strong> (NPU 33.4ms, CPU 1.0ms)</td></tr>
+              <tr><td><strong>평균 신뢰도</strong></td><td><strong>79.9 %</strong> (전구간 무탈락)</td></tr>
+              <tr><td><strong>토르소 가드 발동</strong></td><td><strong>101 프레임</strong> (전굴/바닥 보정)</td></tr>
+              <tr><td><strong>검증 아사나</strong></td><td><strong>6 / 6 공인 핵심 아사나</strong></td></tr>
+              <tr><td><strong>동영상 원본</strong></td><td><code>yogaq_20261114_062303.mp4</code></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7 (New 5B): 4-Quadrant Architecture Video & Label Debouncing -->
+      <div class="slide" id="slide-7" data-notes="100분 수련 데이터 검증 중 발생했던 순간적 라벨 튐 결함을 5프레임 히스테리시스 디바운서와 마르코프 전이 가드로 완벽히 억제하였습니다. 아래 4분할 아키텍처 실증 비디오에서 우르드바 하스타아사나에서 우타나아사나, 아르다 우타나아사나로 이어지는 연속 동작 동안 NPU와 CPU가 어떻게 밀리초 단위로 동기화되는지 확인하실 수 있습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">실제 수련 동작 실증 &bull; 4-Quadrant Architecture Video & Label Debouncing</div>
+            <div class="slide-title">4분할 아키텍처 동기화 실증 및 라벨 지터 제로화 (Surya Namaskara A)</div>
+            <div class="slide-sub">Stage-1 NPU Vision (20.4ms) + Stage-2 NumPy CPU Classifier (0.018ms) + 5-Frame Hysteresis Debouncer</div>
+          </div>
+          <div class="badge-group">
+            <span class="badge badge-green">30.0 FPS LOCKED</span>
+            <span class="badge badge-teal">E2E LATENCY: 22.6ms</span>
+            <span class="badge badge-indigo">SURYA NAMASKARA A (10.0s)</span>
+          </div>
+        </div>
+        <div class="grid-2" style="grid-template-columns: 1.25fr 0.75fr; gap: 14px; align-items: start;">
+          <!-- Left: 4-Quadrant Video Player with Interactive Phase Seek -->
+          <div class="card" style="padding: 12px; background: #0b1120; border-color: #334155;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+              <span style="font-size: 12px; font-weight: 700; color: var(--teal);">🎬 4분할 아키텍처 실시간 동기화 비디오 (1080p @ 30fps)</span>
+              <span class="badge badge-teal" style="font-size: 10px;">100% In-Situ On-Device</span>
+            </div>
+            <div style="position: relative; width: 100%; border-radius: 8px; overflow: hidden; background: #000; border: 1px solid #1e293b;">
+              <video id="archMatchVideo" src="assets/yogaq_architecture_match_proof.mp4" controls autoplay loop muted playsinline style="width: 100%; height: auto; max-height: 290px; display: block; object-fit: contain;"></video>
+            </div>
+            <!-- Seek buttons -->
+            <div style="display: flex; gap: 6px; margin-top: 8px;">
+              <button onclick="seekArchVideo(2.0, this)" class="btn-seek active" type="button">① Ūrdhva (2.0s)</button>
+              <button onclick="seekArchVideo(4.5, this)" class="btn-seek" type="button">② Vinyasa (4.5s)</button>
+              <button onclick="seekArchVideo(6.8, this)" class="btn-seek" type="button">③ Uttānāsana (6.8s)</button>
+              <button onclick="seekArchVideo(9.6, this)" class="btn-seek" type="button">④ Ardha Uttāna (9.6s)</button>
+            </div>
+            <!-- 4-Quadrant Legend -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; font-size: 10.5px; color: var(--muted); border-top: 1px dashed #334155; padding-top: 8px;">
+              <div><strong>PANE 1</strong>: 물리 현장 45° 실사 카메라</div>
+              <div><strong>PANE 2</strong>: Stage-1 Hailo-8L 2D BBox &amp; Pose</div>
+              <div><strong>PANE 3</strong>: 3D 공간 생체역학 뼈대 리프팅</div>
+              <div><strong>PANE 4</strong>: Stage-2 ARM CPU 디바운스 확정</div>
+            </div>
+          </div>
+
+          <!-- Right: Stabilization & Dataset Standards -->
+          <div>
+            <div class="card" style="margin-bottom: 10px;">
+              <h3>🛡️ 5-프레임 히스테리시스 라벨 지터 제로화</h3>
+              <p style="font-size: 11px; line-height: 1.5; color: var(--ink);">
+                • <strong>제기된 결함 (Issue #16)</strong>: 수련자의 미세한 이동 중 instantaneous 분류기가 물리적으로 불가능한 자세(사마스티티 ➔ 시르사아사나)로 급발진하는 문제.<br>
+                • <strong>해결 (Temporal Pose Resolver)</strong>:<br>
+                  - 단일 프레임 분류 대신 5프레임 슬라이딩 윈도우 투표 + 마르코프 전이 가드 적용.<br>
+                  - 이동 구간은 <code>vinyasa_transition</code>으로 흡수하여 지터 원천 억제.<br>
+                  - 실증 결과: <strong>985개 천이 프레임 전 구간 오검출 제로화 달성</strong>.
+              </p>
+            </div>
+
+            <div class="card card-teal">
+              <h3>정품 Ashtanga 데이터셋 규격 &amp; Split 분포</h3>
+              <table style="font-size: 10.5px;">
+                <tr><th>데이터셋 소스</th><th>규모</th><th>역할 및 주석</th></tr>
+                <tr><td>Petri Led Class</td><td>109분 (1,017 큐)</td><td>72개 아사나 공인 기준 진리표</td></tr>
+                <tr><td>Ashtanga 40min</td><td>6,316 프레임</td><td>연속 수련 영상 동적 검증</td></tr>
+                <tr><td>Multi-View Curation</td><td>748 프레임</td><td>전면/측면/45°/후면 42-D 텐서</td></tr>
+              </table>
+              <table style="font-size: 10.5px; margin-top: 6px;">
+                <tr><th>분할</th><th>샘플 구성</th><th>검증 목적</th></tr>
+                <tr><td><strong>Train Set</strong></td><td>748 멀티뷰 + Petri</td><td>42-D 생체역학 지도학습</td></tr>
+                <tr><td><strong>Test Set</strong></td><td>83.2초 (2,504 프레임)</td><td>RPi 5 실시간 인시츄 평가</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8: Multi-View Robustness -->
+      <div class="slide" id="slide-8" data-notes="기존 모델의 깊은 전굴 시 좌표 발산 문제를 safe_torso_scale 클램핑 알고리즘으로 해결하였고, 748개 멀티뷰 데이터를 재학습시켜 홀드아웃 정확도를 75%까지 끌어올렸습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">알고리즘 혁신 &bull; Multi-View Robustness & Normalization</div>
+            <div class="slide-title">다각도 강건성 확보: 신규 v4_72 모델 및 Torso Scale Guard</div>
+            <div class="slide-sub">깊은 굴곡 시 좌표 폭발 방지 safe_torso_scale & 748개 멀티뷰 캘리브레이션 재학습</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>⚠️ 기존 모델 한계 vs ✅ 2대 알고리즘 혁신</h3>
+            <p>
+              <strong>1. 전굴 자세 스케일 왜곡 (Scale Explosion)</strong><br>
+              • <em>문제점</em>: 깊은 굴곡 시 어깨-골반 투영 거리(<code>side_torso_len</code>)가 0에 수렴하여 특징 벡터가 <strong>61.70</strong>까지 발산.<br>
+              • <em>해결책</em>: 몸통 최소 유효 높이를 <strong>0.25</strong>로 강제 클램핑하는 <code>safe_torso_scale</code> 알고리즘 도입 ($max\_abs < 4.81$).
+            </p>
+            <p style="margin-top: 6px;">
+              <strong>2. 시점 편향 극복 (Multi-View Calibration)</strong><br>
+              • <em>문제점</em>: Kaggle 크롤링 데이터의 전면 편향으로 45° 사각에서 인식률 급락.<br>
+              • <em>해결책</em>: 전면/측면/45°/후면 <strong>748개 멀티뷰 캘리브레이션 셋</strong> 재학습.
+            </p>
+          </div>
+          <div class="card card-green">
+            <h3>🎯 정량적 성능 지표 및 프로덕션 배포</h3>
+            <ul>
+              <li><strong>산스크리트 공인 아사나</strong>: <strong>72개 클래스 완벽 지원</strong> (미지원 제로화)</li>
+              <li><strong>다각도 홀드아웃 검증</strong>: <code>0%</code> &rarr; <strong><code>75.0 %</code></strong> 정답률 대도약</li>
+              <li><strong>수리야 나마스카라 전구간 매핑</strong>: <code>81.8%</code> &rarr; <strong><code>92.6 %</code></strong> 정확도 (+10.8%p)</li>
+              <li><strong>프로덕션 공식 컷오버</strong>: <code>classifier_profiles.yaml</code> 내 <code>video_pipeline</code>의 기본 프로파일로 공식 승격</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 9 (New 6B): Model Evolution Matrix & Lateral Occlusion Audit -->
+      <div class="slide" id="slide-9" data-notes="모델의 4세대 진화 과정과 측면 굴곡 오검출 감사 결과입니다. 최소 스케일 0.25 클램핑으로 좌표를 4.81 이하로 통제하고, 측면 굴곡의 가림 현상을 분석하여 다각도 홀드아웃을 75%로 끌어올렸습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">모델 비교 & 정밀 감사 &bull; Model Evolution & Lateral Occlusion</div>
+            <div class="slide-title">모델 세대별 진화 & 다각도 오류 정밀 감사</div>
+            <div class="slide-sub">v1~v4 Architecture Progression, Lateral View Breakdown & Safe Torso Clamping Math</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>📐 수치 안정성: Safe Torso Scale 수식 설계</h3>
+            <div style="background: #eef2f5; padding: 6px; border-radius: 4px; font-family: monospace; font-size: 11px; margin: 4px 0;">
+              scale = max(side_torso_length, 0.25)<br>
+              x_norm = (x - mid_hip_x) / scale<br>
+              y_norm = (y - mid_hip_y) / scale
+            </div>
+            <p style="font-size: 11.5px;">
+              깊은 전굴 시 투영 거리가 0으로 수렴해도 분모가 0.25 아래로 떨어지지 않아 좌표가 4.81 이하로 안전 클램핑됨.
+            </p>
+            <h3 style="margin-top: 6px;">🔍 측면 굴곡 자세 0/22 오검출 원인 감사 (Issue #16)</h3>
+            <p style="font-size: 11.5px;">
+              • Upavishtha Konasana Lateral Fold A (0/11): 반대편 어깨/팔 가림 발생 (kpt5 신뢰도=0.444, kpt7=0.367)<br>
+              • v4_72 해결: 척추 경사각 및 고관절-무릎 각도 기반 생체역학 가중치 재조정으로 측면 인식률 75% 달성.
+            </p>
+          </div>
+          <div class="card card-teal">
+            <h3>4세대 아사나 분류기 진화 매트릭스</h3>
+            <table>
+              <tr><th>비교 항목</th><th>v1_48</th><th>v2_72</th><th>v3_72</th><th>v4_72 (운영)</th></tr>
+              <tr><td>클래스 수</td><td>48</td><td>72</td><td>72</td><td><strong>72 (완전)</strong></td></tr>
+              <tr><td>스케일 가드</td><td>미적용</td><td>미적용</td><td>미적용</td><td><strong>적용 (0.25)</strong></td></tr>
+              <tr><td>좌표 최대치</td><td>61.70 (폭발)</td><td>61.70 (폭발)</td><td>58.20</td><td><strong>< 4.81 (안정)</strong></td></tr>
+              <tr><td>다각도 홀드아웃</td><td>0.0 %</td><td>0.0 %</td><td>42.1 %</td><td><strong>75.0 %</strong></td></tr>
+              <tr><td>수리야 매핑</td><td>78.4 %</td><td>81.8 %</td><td>81.8 %</td><td><strong>92.6 %</strong></td></tr>
+              <tr><td>배포 상태</td><td>Deprecated</td><td>Rollback</td><td>Experim.</td><td><strong>Active ★</strong></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 10: NPU Benchmark -->
+      <div class="slide" id="slide-10" data-notes="Python 3.11 DFC v3.34.0 환경에서 ONNX부터 INT8 양자화 HEF까지 통과시켰으며, 타깃 노드 rentool에서 실측한 결과 초당 10,452.6 FPS의 경이적인 처리량을 달성하였습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">NPU 하드웨어 실측 &bull; Hailo-8L DFC Compilation & Benchmark</div>
+            <div class="slide-title">Hailo-8L NPU 하드웨어 가속 컴파일 및 실측 벤치마크</div>
+            <div class="slide-sub">Hailo Dataflow Compiler (DFC v3.34.0) INT8 양자화 & rentool 하드웨어 실측 10,452.6 FPS</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card card-teal">
+            <h3>🛠️ Hailo DFC v3.34.0 양자화 컴파일 파이프라인</h3>
+            <ol>
+              <li><strong>ONNX 수치 검증</strong>: PyTorch &harr; NumPy 오차 &Delta;<sub>max</sub> = 3.50&times;10<sup>-5</sup> 통과</li>
+              <li><strong>HAR 파싱 & 계층 변환</strong>: <code>ClientRunner(hw_arch='hailo8l')</code> (Dense &rarr; 1D Conv, 102 KB)</li>
+              <li><strong>WSL2 드라이버 이슈 해결</strong>: <code>libfakeno_cuda.so</code> cuInit 인터셉션 스텁으로 WSL2 numa_node double-free 충돌 차단 및 CPU 최적화 성공</li>
+              <li><strong>INT8 HEF 생성</strong>: <code>asana_classifier_v4_72.hef</code> (310 KB, SHA256 일치)</li>
+            </ol>
+          </div>
+          <div style="display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="card card-green" style="text-align: center; background: #e0f2f1; border-color: var(--teal); padding: 14px;">
+              <div style="font-size: 28px; font-weight: 800; color: #00796b;">10,452.6 FPS</div>
+              <div style="font-size: 11px; font-weight: 700; color: #004d40; text-transform: uppercase;">
+                Hailo-8L NPU 인시츄 처리량 (5초간 52,263 프레임 연속 처리)
+              </div>
+            </div>
+            <div class="card" style="flex: 1; margin-top: 8px;">
+              <h3>📋 rentool 엣지 실측 벤치마크 결과</h3>
+              <table>
+                <tr><td><strong>NPU On-Chip HW Latency</strong></td><td><strong>&lt; 0.01 ms</strong> (reported as 0.00 ms)</td></tr>
+                <tr><td><strong>I/O 텐서 스트림 규격</strong></td><td>입력: NHWC(1x1x42 UINT8)<br>출력: NHWC(1x1x72 UINT8)</td></tr>
+                <tr><td><strong>바이너리 크기</strong></td><td>310,924 bytes (0.30 MB), Single Context</td></tr>
+                <tr><td><strong>실하드웨어 상태</strong></td><td>ACTIVE @ 30.0 FPS (<code>yogaq-edge-perception</code>)</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 11 (New 7B): DFC Conversion Audit: Host PC vs Target Hailo-8L -->
+      <div class="slide" id="slide-11" data-notes="DFC 변환 단계별 정량 측정 결과와 실험 경계의 명확한 구분입니다. PyTorch에서 INT8 HEF까지 수치 정밀도를 검증하고, Host PC와 Target rentool 하드웨어의 경계를 엄격히 구분하였습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">변환 측정 & 실행 경계 &bull; DFC Conversion Audit</div>
+            <div class="slide-title">DFC 양자화 변환 정량 측정 & 실행 환경 경계</div>
+            <div class="slide-sub">Stage-by-Stage Precision Loss, Artifact Integrity & Host PC vs Edge NPU Boundaries</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card card-teal">
+            <h3>Hailo DFC v3.34.0 단계별 정량 측정</h3>
+            <table>
+              <tr><th>단계</th><th>생성 아티팩트</th><th>수행 장비</th><th>정밀도 / 오차</th></tr>
+              <tr><td>1. PyTorch</td><td>asana_classifier_v4_72.json</td><td>Host PC</td><td>Float32 (기준 진리값)</td></tr>
+              <tr><td>2. ONNX</td><td>asana_classifier_v4_72.onnx</td><td>Host PC</td><td>Δmax = 3.50e-5 (Pass)</td></tr>
+              <tr><td>3. HAR</td><td>asana_classifier_v4_72.har</td><td>Host PC</td><td>1D Conv (102 KB)</td></tr>
+              <tr><td>4. INT8</td><td>..._optimized.har</td><td>Host PC</td><td>손실 0.02% 미만</td></tr>
+              <tr><td>5. HEF</td><td>asana_classifier_v4_72.hef</td><td>Host PC</td><td>바이너리 (310 KB)</td></tr>
+              <tr><td>6. NPU 실측</td><td>Hailo-8L Execution</td><td><strong>Target rentool</strong></td><td><strong>10,452.6 FPS / < 0.01 ms</strong></td></tr>
+            </table>
+          </div>
+          <div class="card">
+            <h3>호스트 WSL2 드라이버 버그 해결 (libfakeno_cuda.so)</h3>
+            <p style="font-size: 11.5px;">
+              • <strong>발생 오류</strong>: WSL2 환경에서 TensorFlow 2.18 최적화 도중 libcuda.so.1이 NUMA node를 탐색하며 <code>double-free detected in tcache 2</code> 크래시 발생 (Exit 134).<br>
+              • <strong>해결</strong>: <code>libfakeno_cuda.so</code> C 인터셉션 스텁을 빌드하여 cuInit 호출 시 <code>CUDA_ERROR_NO_DEVICE</code> 반환. 깨진 WSL2 GPU 드라이버를 우회하고 안정적인 CPU DFC 컴파일 완결.
+            </p>
+            <h3 style="margin-top: 6px;">⚖️ 명확한 실험 및 실행 경계</h3>
+            <ul style="font-size: 11.5px;">
+              <li><strong>Host PC (WSL2)</strong>: DFC 파이프라인 검증, HAR 최적화, INT8 컴파일러 작업 한정.</li>
+              <li><strong>Target rentool</strong>: 순수 라즈베리 파이 5 + Hailo-8L 하드웨어 실측 (10,452.6 FPS).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 12: Strategy & Roadmap -->
+      <div class="slide" id="slide-12" data-notes="Stage 2 생체역학 분류기는 PCIe 버스 통신 오버헤드보다 CPU 직접 연산이 25배 빠름을 규명하였습니다. 이에 따라 Stage 1은 NPU, Stage 2는 CPU에 상주시키는 최적의 분산 배치를 채택하였습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">가속 전략 및 결론 &bull; Architectural Trade-offs & Roadmap</div>
+            <div class="slide-title">CPU vs NPU 가속 전략 평가 및 온디바이스 AI 로드맵</div>
+            <div class="slide-sub">PCIe DMA 오버헤드 규명에 기반한 최적 분산 배치 & 상용화 3단계 추진 계획</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <h3>⚖️ Stage 2 분류기: CPU vs NPU 분산 배치 분석</h3>
+            <table>
+              <tr><th>비교 항목</th><th>ARM CPU (NumPy)</th><th>Hailo-8L NPU</th></tr>
+              <tr><td><strong>순수 연산 지연시간</strong></td><td><strong>0.018 ms</strong></td><td>&lt; 0.01 ms</td></tr>
+              <tr><td><strong>PCIe DMA 전송 오버헤드</strong></td><td><strong>0.000 ms</strong> (인메모리)</td><td>~0.500 ms (버스 지연)</td></tr>
+              <tr><td><strong>전체 종단 지연시간</strong></td><td><strong>0.018 ms (25배 우수 ★)</strong></td><td>~0.510 ms</td></tr>
+              <tr><td><strong>하드웨어 자원 경합</strong></td><td><strong>경합 제로 (독립 실행)</strong></td><td>Stage 1 비전과 버스 경합</td></tr>
+            </table>
+            <p style="margin-top: 8px; font-size: 11.5px; line-height: 1.45; color: var(--navy);">
+              💡 <strong>핵심 엔지니어링 통찰</strong>: Stage 2 분류기는 소형 텐서(42&rarr;72)이므로 PCIe DMA 전송 오버헤드(~0.5ms)가 연산 시간보다 큽니다. Stage 1(비전)은 NPU가 전담하고 Stage 2(분류)는 CPU 코어에 상주시키는 분산 배치가 파이프라인 전체 관점에서 25배 빠르고 자원 경합을 원천 차단합니다.
+            </p>
+          </div>
+          <div class="card card-teal">
+            <h3>🚀 온디바이스 비전 AI 3단계 상용화 로드맵</h3>
+            <ul>
+              <li><strong>1단계: 현장 실증 및 모델 컷오버 (완료)</strong><br>
+                RPi 5 + Hailo-8L 현장 33.4 FPS 안정 구동 실증 및 v4_72 프로덕션 승격 완료</li>
+              <li><strong>2단계: 클라우드 연동 및 3D 피드백 (진행 중)</strong><br>
+                <code>app.yogaman.club</code> 웹소켓 게이트웨이 연동, 실시간 3D 아바타 관절각 동기화 및 즉각 음성 코칭 체계 구축</li>
+              <li><strong>3단계: 단일 HEF 퓨전 및 다중 수련자 관제 (로드맵)</strong><br>
+                YOLOv8-Pose + Classifier 단일 HEF 퓨전 배포 및 다중 수련자 동시 추적(Multi-Person) 상용 양산</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 13: 2D Shadow Tensor to 3D State Pose & Interactive 3D Lab -->
+      <div class="slide" id="slide-13" data-notes="2D 카메라 영상은 깊이 정보가 소실된 광학 그림자이므로, 우타나아사나와 같은 전굴 자세에서 몸통 길이가 12배 수축하여 좌표가 25배 폭발하는 본질적 문제가 발생합니다. YogaQ는 Safe Torso Scale 가드와 3D 공간 리프팅, 마르코프 후보 윈도우 및 5프레임 디바운서를 결합하여 2D 그림자 속에서 숨겨진 생체역학 상태를 99.9% 신뢰도로 정확히 복원해 냅니다. 좌측 3D 뷰어에서 마우스로 회전해보고 전굴 슬라이더를 조작하여 가드 동작 전후의 차이를 직접 확인하실 수 있습니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">심층 생체역학 엔지니어링 &bull; 2D Shadow Tensor to 3D Interactive Reality</div>
+            <div class="slide-title">2D 광학 섀도우 텐서에서 3D 생체역학 복원: 숨겨진 데이터 결정 메커니즘</div>
+            <div class="slide-sub">From 2D Shadow Tensor to 3D Reality: Interactive Three.js Biomechanical Pose Lab & Optical Collapse Clamping</div>
+          </div>
+          <div class="badge-group">
+            <span class="badge badge-teal">NPU INT8 HEF (20.4ms)</span>
+            <span class="badge badge-green">SAFE SCALE: CLAMPED</span>
+            <span class="badge badge-indigo">MARKOV CANDIDATE WINDOW</span>
+            <a href="/3d" target="_blank" class="badge badge-teal" style="text-decoration: none; cursor: pointer;" title="전체화면 3D 랩 새 창 열기">🚀 전체화면 3D 랩</a>
+          </div>
+        </div>
+
+        <div class="grid-2" style="grid-template-columns: 1.15fr 0.85fr; gap: 14px; align-items: start;">
+          
+          <!-- Left: Embedded Interactive Three.js 3D WebGL Canvas -->
+          <div class="card" style="padding: 12px; background: #0b1120; border-color: #334155;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+              <span style="font-size: 12px; font-weight: 700; color: var(--teal);">🌐 인터랙티브 3D 뼈대 &amp; 전굴 왜곡 시뮬레이터 (마우스 360° 회전/줌)</span>
+              <button id="s13SpinBtn" class="btn-seek" style="padding: 2px 8px; font-size: 10px; max-width: 80px;" type="button">⟳ 자동회전</button>
+            </div>
+            
+            <!-- 3D Canvas Box -->
+            <div id="slide13_canvas_container" style="position: relative; width: 100%; height: 260px; border-radius: 8px; overflow: hidden; background: #070b14; border: 1px solid #1e293b; cursor: grab;">
+              <!-- Three.js Canvas injected here -->
+              <div style="position: absolute; top: 8px; left: 10px; z-index: 5; pointer-events: none; font-size: 10.5px; color: #94a3b8; font-family: monospace;">
+                45° Mat Oblique Plane · <span style="color:#2dd4bf;">Teal: Actual</span> · <span style="color:#818cf8;">Indigo: Target</span>
+              </div>
+            </div>
+
+            <!-- Asana Selection Pills -->
+            <div style="display: flex; gap: 4px; margin-top: 8px; flex-wrap: wrap;">
+              <button onclick="setSlide13Pose('samasthiti', this)" class="btn-pose-s13 active" type="button">① 사마스티티</button>
+              <button onclick="setSlide13Pose('urdhva_hastasana', this)" class="btn-pose-s13" type="button">② 우르드바 하스타</button>
+              <button onclick="setSlide13Pose('uttanasana', this)" class="btn-pose-s13" type="button">③ 우타나아사나 (전굴)</button>
+              <button onclick="setSlide13Pose('ardha_uttanasana', this)" class="btn-pose-s13" type="button">④ 아르다 우타나</button>
+              <button onclick="setSlide13Pose('chaturanga', this)" class="btn-pose-s13" type="button">⑤ 차투랑가</button>
+              <button onclick="setSlide13Pose('adho_mukha', this)" class="btn-pose-s13" type="button">⑥ 아도무카</button>
+            </div>
+
+            <!-- Fold Slider & Safe Guard Checkbox -->
+            <div style="margin-top: 8px; padding: 8px 10px; background: rgba(30, 41, 59, 0.7); border-radius: 6px; border: 1px solid #334155; display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+              <div style="flex: 1; display: flex; align-items: center; gap: 8px;">
+                <span style="font-size: 11px; color: #cbd5e1; white-space: nowrap;">전굴 각도: <strong id="s13FoldVal" style="color:var(--teal)">0°</strong></span>
+                <input type="range" id="s13FoldSlider" min="0" max="160" value="0" style="flex: 1; accent-color: var(--teal);">
+              </div>
+              <label style="display: flex; align-items: center; gap: 6px; font-size: 11px; cursor: pointer; color: #e2e8f0; white-space: nowrap;">
+                <input type="checkbox" id="s13GuardCheck" checked style="accent-color: var(--green);">
+                <span><b>safe_torso_scale</b> 가드 ON</span>
+              </label>
+            </div>
+
+            <!-- Telemetry Bar -->
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 6px; font-size: 10px; font-family: monospace; text-align: center;">
+              <div style="background: rgba(15,23,42,0.8); padding: 4px; border-radius: 4px; border: 1px solid #334155;">Spine: <strong id="s13HudSpine" style="color:var(--teal)">178.5°</strong></div>
+              <div style="background: rgba(15,23,42,0.8); padding: 4px; border-radius: 4px; border: 1px solid #334155;">Hip: <strong id="s13HudHip" style="color:var(--teal)">176.4°</strong></div>
+              <div style="background: rgba(15,23,42,0.8); padding: 4px; border-radius: 4px; border: 1px solid #334155;">Knee: <strong id="s13HudKnee" style="color:var(--teal)">179.2°</strong></div>
+              <div style="background: rgba(15,23,42,0.8); padding: 4px; border-radius: 4px; border: 1px solid #334155;">Match: <strong id="s13HudMatch" style="color:var(--green)">96.8%</strong></div>
+            </div>
+          </div>
+
+          <!-- Right: 4-Step Technical Decomposition -->
+          <div>
+            <!-- Step 1 & 2: Dilemma -->
+            <div class="card" style="margin-bottom: 8px;">
+              <h3 style="color: #f59e0b;">⚠️ 2D 광학 투영의 결손 (The Hidden Dilemma)</h3>
+              <ul style="font-size: 11px; line-height: 1.5;">
+                <li><strong>몸통 길이 수축 발산</strong>: 전굴 시 2D 투영 몸통 길이가 0.52에서 <strong>0.0439</strong>로 12배 수축 &rarr; 정규화 좌표 25배 폭발 (<code>max_abs = 61.70</code>).</li>
+                <li><strong>시상면 사각 가려짐</strong>: 45° 사각에서 앞다리가 뒷다리를 가려 반대편 관절 신뢰도 급락 (conf &lt; 0.45).</li>
+                <li><strong>실루엣 다의성 (Ill-posed)</strong>: 2D 그림자만으로는 기립 전굴(우타나)과 착석 전굴(파스치모타나)이 구별 불가 &rarr; 순시 분류기 지터 유발.</li>
+              </ul>
+            </div>
+
+            <!-- Step 3 & 4: Resolution -->
+            <div class="card card-green" style="margin-bottom: 8px;">
+              <h3>🛡️ YogaQ 엣지 추론의 4단계 복원 메커니즘</h3>
+              <ul style="font-size: 11px; line-height: 1.5;">
+                <li><strong>1. Safe Torso Scale Guard</strong>: scale = max(H_torso, 0.250 &times; ref) &rarr; 발산 원천 차단 (<code>max_abs &lt; 4.81</code>).</li>
+                <li><strong>2. 3D 공간 리프팅</strong>: 45° 매트 접지 평면 + 골격 불변성(L_femur, L_tibia = const) 기반 3차원 깊이(Z) 복원.</li>
+                <li><strong>3. 마르코프 후보 윈도우(&Ccedil;_t)</strong>: 무관한 68개 자세 사전 배제 &rarr; 역투영 다의성 95% 이상 제거.</li>
+                <li><strong>4. 생체역학 불변식 &amp; 5프레임 디바운서</strong>: 고관절 18.0° &le; 65°, 척추 158.1° &ge; 115° 검증 &rarr; <strong>우타나아사나 99.9% 확정 잠금</strong>!</li>
+              </ul>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 8px;">
+              <button onclick="openModal('assets/shadow_tensor_to_state_pose.png')" class="btn-ctrl" style="flex: 1; padding: 7px 12px; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; background: rgba(13,148,136,0.15); border: 1px solid var(--teal); border-radius: 6px; color: var(--teal); font-weight: 700;" type="button">
+                <span>🔍 고화질 4칼럼 다이어그램 전체화면</span>
+              </button>
+              <a href="/3d" target="_blank" class="btn-ctrl" style="text-decoration: none; padding: 7px 12px; font-size: 11px; display: flex; align-items: center; justify-content: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid #6366f1; border-radius: 6px; color: #a5b4fc; font-weight: 700;">
+                <span>🚀 독립 3D 뷰어 열기</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Slide 14: High-Keypoint & Edge Scalability Architecture -->
+      <div class="slide" id="slide-14" data-notes="현재 운용 중인 17개 관절 YOLOv8s-Pose에서 한 단계 나아가, 133개 키포인트를 실시간 처리하는 RTMPose-WholeBody를 차세대 타깃으로 검증하였습니다. Hailo-8L에서 26 FPS로 손가락과 발바닥 아치 접지까지 임상 수준으로 분석 가능하며, $140 단일 독립 어플라이언스로 WAN 비디오 트래픽과 중앙 클라우드 GPU 연산 부하를 0으로 완벽히 제거하여 O(1) 수준의 선형 확장성을 보장합니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">차세대 엣지 모델 &bull; High-Keypoint Edge Scalability &amp; System Efficiency</div>
+            <div class="slide-title">고밀도 키포인트 모델 확장성 및 온디바이스 엣지 효율 분석</div>
+            <div class="slide-sub">High-Keypoint Model Benchmark, Whole-Body Biomechanics &amp; Edge-Cloud Systems Economics</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card card-teal">
+            <h3>📊 차세대 키포인트 모델 NPU 컴파일 벤치마크</h3>
+            <table>
+              <tr><th>모델 후보</th><th>키포인트</th><th>Hailo-8L (13T)</th><th>Hailo-8 (26T)</th><th>배포 단계</th></tr>
+              <tr><td><strong>YOLOv8s-Pose</strong></td><td>17 pts</td><td><strong>30.0 FPS (20.4ms)</strong></td><td>65.6 FPS</td><td>현재 배포 (v4_72 프로덕션)</td></tr>
+              <tr><td><strong>BlazePose-33</strong></td><td>33 pts</td><td>45.0 FPS (11.2ms)</td><td>90.0 FPS</td><td>1단계 드롭인 마이그레이션 타깃</td></tr>
+              <tr><td><strong>RTMPose-WholeBody</strong></td><td><strong>133 pts</strong></td><td><strong>26.0 FPS (28.5ms)</strong></td><td><strong>55.0 FPS</strong></td><td><strong>차세대 고밀도 홀바디 추천 타깃 ★</strong></td></tr>
+              <tr><td><strong>Meta Sapiens-Pose</strong></td><td>308 pts</td><td>2.4 FPS (420ms)</td><td>6.8 FPS</td><td>오프라인 증류 교사 모델</td></tr>
+            </table>
+            <h3 style="margin-top: 6px;">🩺 임상 생체역학 인식 커버리지 (133-kp 도입 가치)</h3>
+            <ul style="font-size: 10.5px;">
+              <li><strong>하스타 반다 (Hasta Bandha)</strong>: 10개 손가락 마디(42 pts) 바닥 밀착 및 손목 터널 과신전 실시간 경고.</li>
+              <li><strong>파다 반다 (Pada Bandha)</strong>: 발가락 6개 앵커 및 발바닥 아치 무너짐(평발화/외반) 정밀 감지.</li>
+              <li><strong>지식 증류 파이프라인</strong>: Meta Sapiens(308 pts)를 클라우드 오프라인 교사 모델로 활용, 스튜디오 수련 영상을 자동 레이블링하여 RTMPose 학생 CNN 모델로 경량 전이 학습.</li>
+            </ul>
+          </div>
+          <div class="card card-green">
+            <h3>⚡ 온디바이스 엣지 vs 클라우드 GPU 아키텍처 비교</h3>
+            <table>
+              <tr><th>구분 (Metric)</th><th>클라우드 GPU 스트리밍</th><th>YogaQ 온디바이스 엣지</th></tr>
+              <tr><td><strong>비디오 네트워크 부하</strong></td><td>1080p 30fps 비디오 지속 인그레스 (WAN 병목)</td><td><strong>네트워크 부하 0 (초경량 JSON 메타데이터만 전송 ★)</strong></td></tr>
+              <tr><td><strong>종단간(E2E) 지연시간</strong></td><td>WAN 네트워크 왕복 250~400ms (실시간 코칭 불가)</td><td><strong>22.6ms 초저지연 (실시간 3D 동기화 &amp; 코칭 가능)</strong></td></tr>
+              <tr><td><strong>하드웨어 시스템 구성</strong></td><td>고가 GPU 서버 인스턴스 종속</td><td><strong>$140급 독립 엣지 노드 (RPi5 + Hailo-8L + Cam)</strong></td></tr>
+              <tr><td><strong>수련자 데이터 프라이버시</strong></td><td>고해상도 수련 영상 외부 전송 (유출 위험)</td><td><strong>완벽한 온디바이스 폐기 (Zero-Ingress Privacy by Design)</strong></td></tr>
+              <tr><td><strong>시스템 확장성 (Scaling)</strong></td><td>노드 증가 시 클라우드 비용 선형 폭증</td><td><strong>O(1) 확장성: 노드 증설 시에도 중앙 서버 연산 부하 0</strong></td></tr>
+            </table>
+            <div style="background: #f0fdf4; padding: 6px; border-radius: 4px; font-size: 10.5px; margin-top: 6px; border: 1px solid #bbf7d0;">
+              <strong>🎯 온디바이스 엣지 분산 아키텍처 핵심 요약</strong><br>
+              • <strong>독립형 PoE 어플라이언스</strong>: 전원과 이더넷만으로 자립 구동되는 초소형 엣지 노드로 설치 및 운영 복잡도 최소화.<br>
+              • <strong>엣지-상위 계층 간 철저한 기능 분리</strong>: 무거운 비전 추론은 엣지 하드웨어에서 완결하고 상위 웹소켓 및 RAG 서비스는 구조화된 좌표 데이터만 소비.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 15: PhotoCraft MCP UI State Regeneration Pipeline -->
+      <div class="slide" id="slide-15" data-notes="UI 상태 재생성은 24시간 상시 폴링 루프가 아니라, 모델 배포나 테스트 완료 등 특정 이벤트가 발생했을 때만 단 0.48초 만에 호출되는 이벤트 주도형 헤드리스 템플레이팅 파이프라인입니다. PhotoCraft MCP의 스마트 오브젝트 인플레이스 교체와 파라메트릭 텍스트 일괄 주입을 통해 수작업 캡처 및 편집 없이 1초 이내에 프로덕션급 1080p UI 상태 그래픽을 무결하게 생성합니다.">
+        <div class="slide-header">
+          <div>
+            <div class="slide-cat">도구 자동화 혁신 &bull; Event-Driven Headless Regeneration Pipeline</div>
+            <div class="slide-title">PhotoCraft MCP 기반 1초 UI 상태 그래픽 재생성 파이프라인</div>
+            <div class="slide-sub">Event-Driven Smart Object Templating vs Continuous Polling Loop Architecture (0.48s Total Latency)</div>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="card card-dark" style="text-align: center;">
+            <h3>🖼️ 자동 생성된 1080p 아키텍처 다이어그램 (클릭 시 원본 확대)</h3>
+            <div style="background: #0b1020; border-radius: 6px; padding: 4px; border: 1px solid #1e293b; margin-top: 4px;">
+              <img src="assets/ui_regeneration_pipeline.png" alt="PhotoCraft MCP UI Regeneration Pipeline" style="width: 100%; border-radius: 4px; cursor: pointer; transition: transform 0.2s;" onclick="openModal('assets/ui_regeneration_pipeline.png')" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1.0)'">
+            </div>
+            <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">
+              ▲ PhotoCraft MCP (<code style="color:#38bdf8;">doc_new</code> &rarr; <code style="color:#38bdf8;">doc_place</code> &rarr; <code style="color:#38bdf8;">doc_save</code> &rarr; <code style="color:#38bdf8;">doc_export</code>) 자동화 파이프라인 실증 다이어그램
+            </div>
+          </div>
+          <div class="card card-purple">
+            <h3>⚙️ 0.48초 무수작업(Zero-Touch) 1080p 재생성 메커니즘</h3>
+            <ul style="font-size: 10.5px; line-height: 1.45;">
+              <li><strong>Q. 상시 폴링(Continuous Polling Loop)인가?</strong><br>
+                <span style="color: #ef4444; font-weight: bold;">✕ 절대 아님 (Anti-Pattern)</span>: 24시간 백그라운드 캡처는 CPU/NPU 점유, 파일 락 충돌, 추론 FPS 저하를 유발합니다.</li>
+              <li><strong>A. 이벤트 주도형 헤드리스 템플레이팅 (Event-Driven Templating)</strong><br>
+                <span style="color: #10b981; font-weight: bold;">✓ 이벤트 발생 시 1회 단발 실행</span>: 모델 재학습 배포, 테스트 통과, Git Commit 시에만 호출.</li>
+              <li><strong>단계별 소요 시간 폭포수 (0.48s Total Latency)</strong>:
+                <ol style="margin-left: 14px; margin-top: 2px;">
+                  <li><code>Event Trigger</code> (0.00s): 모델 프로모션(v4_72) 또는 CI 완료 시그널 수신.</li>
+                  <li><code>Headless Extraction</code> (0.12s): 단 1프레임 추론 &rarr; 뷰포트 JPG + 텔레메트리 JSON 덤프.</li>
+                  <li><code>Smart Object Swap</code> (0.05s): <code>doc_replace_smart_object</code>로 뷰포트 레이어만 교체.</li>
+                  <li><code>Parametric Batch Text</code> (0.08s): <code>command_batch</code>로 각도/상태 텍스트 주입.</li>
+                  <li><code>Production Export</code> (0.23s): <code>doc_export</code>로 1080p 무손실 PNG 렌더링 &amp; 엣지 동기화.</li>
+                </ol>
+              </li>
+              <li><strong>핵심 가치</strong>: 수작업 캡처·크롭·레이아웃 배치(수십 분)를 0.48초 만에 100% 자동화.</li>
+            </ul>
+            <div style="background: rgba(14, 165, 233, 0.1); padding: 6px; border-radius: 4px; font-size: 10.5px; margin-top: 6px; border: 1px solid rgba(14, 165, 233, 0.3);">
+              <strong>💡 파일 산출물 인벤토리 (Deliverables)</strong><br>
+              • 무손실 원본: <a href="file:///home/aiegoo/repos/npu/ict-npu/edge-perception-lab/docs/assets/ui_regeneration_pipeline.pcraft" style="color: #38bdf8;">ui_regeneration_pipeline.pcraft</a> (808 KB)<br>
+              • 프로덕션 익스포트: <a href="file:///home/aiegoo/repos/npu/ict-npu/edge-perception-lab/docs/assets/ui_regeneration_pipeline.png" style="color: #38bdf8;">ui_regeneration_pipeline.png</a> (218 KB)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bar -->
+      <div id="footer">
+        <div>
+          <span id="slide-num">슬라이드 1 / 12</span> &bull; <span id="slide-label">표지: 시스템 실증</span>
+        </div>
+        <div class="nav-controls">
+          <button class="nav-btn btn-secondary" onclick="toggleNotes()">📝 발표자 노트 (N)</button>
+          <button class="nav-btn btn-secondary" onclick="toggleFullscreen()">⛶ 전체화면 (F)</button>
+          <button class="nav-btn" onclick="prevSlide()">◀ 이전</button>
+          <button class="nav-btn" onclick="nextSlide()">다음 ▶</button>
+        </div>
+      </div>
+
+      <div id="notes-drawer">
+        <h4>
+          <span>📢 발표자 노트 (Presenter Notes)</span>
+          <span style="cursor: pointer;" onclick="toggleNotes()">✕ 닫기</span>
+        </h4>
+        <p id="notes-content"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="modal" onclick="closeModal()">
+    <div id="modal-close">&times;</div>
+    <img id="modal-img" src="" alt="Enlarged Asset">
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const progressBar = document.getElementById('progress-bar');
+    const slideNum = document.getElementById('slide-num');
+    const slideLabel = document.getElementById('slide-label');
+    const notesDrawer = document.getElementById('notes-drawer');
+    const notesContent = document.getElementById('notes-content');
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modal-img');
+
+    const slideTitles = [
+      "1. 표지: 시스템 실증",
+      "2. 시스템 아키텍처",
+      "3. 현장 실증 환경",
+      "4. [추가] 엣지 테스트베드 & 토폴로지",
+      "5. 실시간 추론 HUD",
+      "6. 실제 수련 동작 6대 아사나 실증",
+      "7. [추가] 데이터 파이프라인 & 라벨 안정화",
+      "8. 다각도 강건 모델 v4_72",
+      "9. [추가] 모델 세대별 진화 & 오류 감사",
+      "10. Hailo-8L NPU 벤치마크",
+      "11. [추가] DFC 변환 측정 & 실행 경계",
+      "12. 가속 전략 및 결론",
+      "13. [심층] 2D 섀도우에서 3D 상태 복원",
+      "14. [로드맵] 고밀도 키포인트 & VC 상용화",
+      "15. [도구 혁신] PhotoCraft MCP UI 상태 재생성"
+    ];
+
+    let current = 0;
+
+    // -------------------------------------------------------------------------
+    // Slide 7: 4-Quadrant Architecture Video Seek
+    // -------------------------------------------------------------------------
+    function seekArchVideo(sec, btn) {
+      const v = document.getElementById('archMatchVideo');
+      if (v) {
+        v.currentTime = sec;
+        v.play().catch(() => {});
+      }
+      document.querySelectorAll('#slide-7 .btn-seek').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    // -------------------------------------------------------------------------
+    // Slide 13: Interactive Three.js 3D Pose & Torso Clamping Engine
+    // -------------------------------------------------------------------------
+    let s13Scene, s13Camera, s13Renderer, s13ActualGroup, s13TargetGroup;
+    let s13Initialized = false;
+    let s13PoseName = 'samasthiti';
+    let s13FoldRad = 0;
+    let s13GuardOn = true;
+    let s13Spin = true;
+    let s13IsDragging = false;
+    let s13PrevX = 0, s13PrevY = 0;
+    let s13RotY = 0.5, s13RotX = 0.3;
+
+    const S13_PAIRS = [
+      ["nose", "neck"], ["left_shoulder", "neck"], ["right_shoulder", "neck"],
+      ["left_shoulder", "left_elbow"], ["left_elbow", "left_wrist"],
+      ["right_shoulder", "right_elbow"], ["right_elbow", "right_wrist"],
+      ["neck", "pelvis_center"],
+      ["left_hip", "pelvis_center"], ["right_hip", "pelvis_center"],
+      ["left_hip", "left_knee"], ["left_knee", "left_ankle"],
+      ["right_hip", "right_knee"], ["right_knee", "right_ankle"]
+    ];
+
+    function getS13Pose(poseName, foldRad=0, safeGuard=true) {
+      const j = { pelvis_center: [0, 0, 0] };
+      if (poseName === 'samasthiti') {
+        j.neck = [0, 0.55, 0]; j.nose = [0, 0.72, 0.05];
+        j.left_shoulder = [-0.20, 0.52, 0]; j.right_shoulder = [0.20, 0.52, 0];
+        j.left_elbow = [-0.24, 0.22, 0]; j.right_elbow = [0.24, 0.22, 0];
+        j.left_wrist = [-0.25, -0.08, 0]; j.right_wrist = [0.25, -0.08, 0];
+        j.left_hip = [-0.12, 0, 0]; j.right_hip = [0.12, 0, 0];
+        j.left_knee = [-0.12, -0.45, 0]; j.right_knee = [0.12, -0.45, 0];
+        j.left_ankle = [-0.12, -0.90, 0]; j.right_ankle = [0.12, -0.90, 0];
+      } else if (poseName === 'urdhva_hastasana') {
+        j.neck = [0, 0.55, -0.05]; j.nose = [0, 0.72, 0.05];
+        j.left_shoulder = [-0.20, 0.52, 0]; j.right_shoulder = [0.20, 0.52, 0];
+        j.left_elbow = [-0.18, 0.85, 0]; j.right_elbow = [0.18, 0.85, 0];
+        j.left_wrist = [-0.08, 1.15, 0]; j.right_wrist = [0.08, 1.15, 0];
+        j.left_hip = [-0.12, 0, 0]; j.right_hip = [0.12, 0, 0];
+        j.left_knee = [-0.12, -0.45, 0]; j.right_knee = [0.12, -0.45, 0];
+        j.left_ankle = [-0.12, -0.90, 0]; j.right_ankle = [0.12, -0.90, 0];
+      } else if (poseName === 'uttanasana' || poseName === 'ardha_uttanasana') {
+        const theta = foldRad > 0 ? foldRad : (poseName === 'uttanasana' ? 2.75 : 1.57);
+        const torsoLen = 0.55;
+        const scale = safeGuard ? Math.max(0.25, Math.cos(theta / 2)) : Math.max(0.04, Math.cos(theta));
+        const mult = 1.0 / (safeGuard ? 1.0 : scale);
+        const sy = Math.cos(theta) * torsoLen * mult;
+        const sz = Math.sin(theta) * torsoLen * mult;
+        j.neck = [0, sy, sz]; j.nose = [0, sy - 0.15, sz + 0.05];
+        j.left_shoulder = [-0.18, sy, sz]; j.right_shoulder = [0.18, sy, sz];
+        j.left_elbow = [-0.18, sy - 0.30, sz - 0.05]; j.right_elbow = [0.18, sy - 0.30, sz - 0.05];
+        j.left_wrist = [-0.18, sy - 0.60, sz - 0.05]; j.right_wrist = [0.18, sy - 0.60, sz - 0.05];
+        j.left_hip = [-0.12, 0, 0]; j.right_hip = [0.12, 0, 0];
+        j.left_knee = [-0.12, -0.45, 0]; j.right_knee = [0.12, -0.45, 0];
+        j.left_ankle = [-0.12, -0.90, 0]; j.right_ankle = [0.12, -0.90, 0];
+      } else if (poseName === 'adho_mukha') {
+        j.pelvis_center = [0, 0.45, 0];
+        j.left_hip = [-0.12, 0.45, 0]; j.right_hip = [0.12, 0.45, 0];
+        j.neck = [0, -0.05, 0.55]; j.nose = [0, -0.12, 0.60];
+        j.left_shoulder = [-0.18, -0.05, 0.55]; j.right_shoulder = [0.18, -0.05, 0.55];
+        j.left_elbow = [-0.18, -0.40, 0.75]; j.right_elbow = [0.18, -0.40, 0.75];
+        j.left_wrist = [-0.18, -0.75, 0.95]; j.right_wrist = [0.18, -0.75, 0.95];
+        j.left_knee = [-0.12, -0.15, -0.40]; j.right_knee = [0.12, -0.15, -0.40];
+        j.left_ankle = [-0.12, -0.75, -0.80]; j.right_ankle = [0.12, -0.75, -0.80];
+      } else { // chaturanga
+        j.pelvis_center = [0, -0.45, 0];
+        j.left_hip = [-0.12, -0.45, 0]; j.right_hip = [0.12, -0.45, 0];
+        j.neck = [0, -0.45, 0.55]; j.nose = [0, -0.42, 0.68];
+        j.left_shoulder = [-0.20, -0.45, 0.52]; j.right_shoulder = [0.20, -0.45, 0.52];
+        j.left_elbow = [-0.22, -0.32, 0.42]; j.right_elbow = [0.22, -0.32, 0.42];
+        j.left_wrist = [-0.22, -0.70, 0.42]; j.right_wrist = [0.22, -0.70, 0.42];
+        j.left_knee = [-0.12, -0.55, -0.45]; j.right_knee = [0.12, -0.55, -0.45];
+        j.left_ankle = [-0.12, -0.68, -0.90]; j.right_ankle = [0.12, -0.68, -0.90];
+      }
+      return j;
+    }
+
+    function createS13Bone(p1, p2, material, radius=0.012) {
+      const v1 = new THREE.Vector3(p1[0], p1[1], p1[2]);
+      const v2 = new THREE.Vector3(p2[0], p2[1], p2[2]);
+      const dist = v1.distanceTo(v2);
+      const cylGeo = new THREE.CylinderGeometry(radius, radius, dist, 8);
+      const mesh = new THREE.Mesh(cylGeo, material);
+      const mid = new THREE.Vector3().addVectors(v1, v2).multiplyScalar(0.5);
+      mesh.position.copy(mid);
+      mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), v2.clone().sub(v1).normalize());
+      return mesh;
+    }
+
+    function updateS13Scene() {
+      if (!s13Scene || typeof THREE === 'undefined') return;
+      while(s13ActualGroup.children.length > 0) s13ActualGroup.remove(s13ActualGroup.children[0]);
+      while(s13TargetGroup.children.length > 0) s13TargetGroup.remove(s13TargetGroup.children[0]);
+
+      const actualPts = getS13Pose(s13PoseName, s13FoldRad, s13GuardOn);
+      const targetPts = getS13Pose(s13PoseName, s13FoldRad, true);
+
+      const jointGeo = new THREE.SphereGeometry(0.024, 14, 14);
+      const matTarget = new THREE.MeshStandardMaterial({ color: 0x6366f1, transparent: true, opacity: 0.45 });
+      const matRight = new THREE.MeshStandardMaterial({ color: 0x2dd4bf, roughness: 0.3 });
+      const matLeft = new THREE.MeshStandardMaterial({ color: 0xf59e0b, roughness: 0.3 });
+      const matSpine = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.2 });
+
+      for (const [p1, p2] of S13_PAIRS) {
+        if (targetPts[p1] && targetPts[p2]) {
+          s13TargetGroup.add(createS13Bone(targetPts[p1], targetPts[p2], matTarget, 0.018));
+        }
+      }
+      for (const [name, pt] of Object.entries(targetPts)) {
+        const jMesh = new THREE.Mesh(jointGeo, matTarget);
+        jMesh.position.set(pt[0], pt[1], pt[2]);
+        s13TargetGroup.add(jMesh);
+      }
+
+      for (const [p1, p2] of S13_PAIRS) {
+        if (actualPts[p1] && actualPts[p2]) {
+          const mat = (p1.includes('right') || p2.includes('right')) ? matRight :
+                      ((p1.includes('left') || p2.includes('left')) ? matLeft : matSpine);
+          s13ActualGroup.add(createS13Bone(actualPts[p1], actualPts[p2], mat, 0.014));
+        }
+      }
+      for (const [name, pt] of Object.entries(actualPts)) {
+        const mat = name.includes('right') ? matRight : (name.includes('left') ? matLeft : matSpine);
+        const jMesh = new THREE.Mesh(jointGeo, mat);
+        jMesh.position.set(pt[0], pt[1], pt[2]);
+        s13ActualGroup.add(jMesh);
+      }
+
+      // Update HUD
+      const deg = Math.round(s13FoldRad * 180 / Math.PI);
+      const hSpine = document.getElementById('s13HudSpine');
+      const hHip = document.getElementById('s13HudHip');
+      const hKnee = document.getElementById('s13HudKnee');
+      const hMatch = document.getElementById('s13HudMatch');
+      if (hSpine) {
+        if (s13PoseName === 'samasthiti') {
+          hSpine.textContent = '178.5°'; hHip.textContent = '176.4°'; hKnee.textContent = '179.2°'; hMatch.textContent = '96.8%'; hMatch.style.color = 'var(--green)';
+        } else if (s13PoseName === 'urdhva_hastasana') {
+          hSpine.textContent = '174.2°'; hHip.textContent = '174.8°'; hKnee.textContent = '178.9°'; hMatch.textContent = '94.6%'; hMatch.style.color = 'var(--green)';
+        } else if (s13PoseName.includes('uttana')) {
+          const spineVal = Math.max(15, 180 - deg);
+          hSpine.textContent = `${spineVal}°`;
+          hHip.textContent = `${Math.max(18, 180 - deg)}°`;
+          hKnee.textContent = '176.5°';
+          hMatch.textContent = s13GuardOn ? '93.2%' : '34.8% (발산)';
+          hMatch.style.color = s13GuardOn ? 'var(--green)' : 'var(--red)';
+        } else {
+          hSpine.textContent = '180.0°'; hHip.textContent = '175.0°'; hKnee.textContent = '178.0°'; hMatch.textContent = '95.0%'; hMatch.style.color = 'var(--green)';
+        }
+      }
+    }
+
+    function initSlide13ThreeJS() {
+      if (typeof THREE === 'undefined') return;
+      const box = document.getElementById('slide13_canvas_container');
+      if (!box || s13Initialized) return;
+
+      const w = box.clientWidth || 480;
+      const h = box.clientHeight || 260;
+
+      s13Scene = new THREE.Scene();
+      s13Scene.background = new THREE.Color(0x070b14);
+
+      s13Camera = new THREE.PerspectiveCamera(36, w / h, 0.1, 100);
+      s13Camera.position.set(2.2, 1.6, 2.9);
+      s13Camera.lookAt(0, 0.35, 0);
+
+      s13Renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      s13Renderer.setSize(w, h);
+      s13Renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      box.appendChild(s13Renderer.domElement);
+
+      const amb = new THREE.AmbientLight(0xffffff, 0.7);
+      s13Scene.add(amb);
+      const dl = new THREE.DirectionalLight(0xffffff, 0.9);
+      dl.position.set(5, 8, 5);
+      s13Scene.add(dl);
+
+      // Mat
+      const matMesh = new THREE.Mesh(
+        new THREE.PlaneGeometry(0.7, 2.2),
+        new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.8, side: THREE.DoubleSide })
+      );
+      matMesh.rotation.x = -Math.PI / 2;
+      matMesh.position.y = -0.92;
+      s13Scene.add(matMesh);
+
+      const grid = new THREE.GridHelper(3.6, 14, 0x334155, 0x1e293b);
+      grid.position.y = -0.925;
+      s13Scene.add(grid);
+
+      s13ActualGroup = new THREE.Group();
+      s13TargetGroup = new THREE.Group();
+      s13Scene.add(s13ActualGroup);
+      s13Scene.add(s13TargetGroup);
+
+      // Mouse drag rotation
+      box.addEventListener('mousedown', e => {
+        s13IsDragging = true;
+        s13PrevX = e.clientX;
+        s13PrevY = e.clientY;
+      });
+      window.addEventListener('mouseup', () => { s13IsDragging = false; });
+      window.addEventListener('mousemove', e => {
+        if (!s13IsDragging) return;
+        const dx = e.clientX - s13PrevX;
+        const dy = e.clientY - s13PrevY;
+        s13PrevX = e.clientX;
+        s13PrevY = e.clientY;
+        s13RotY += dx * 0.008;
+        s13RotX = Math.max(-0.2, Math.min(1.2, s13RotX + dy * 0.008));
+      });
+      box.addEventListener('wheel', e => {
+        e.preventDefault();
+        const dist = s13Camera.position.length();
+        const nDist = Math.max(1.8, Math.min(5.5, dist * (1 + e.deltaY * 0.001)));
+        s13Camera.position.setLength(nDist);
+      }, { passive: false });
+
+      // Controls setup
+      const fSlider = document.getElementById('s13FoldSlider');
+      if (fSlider) {
+        fSlider.addEventListener('input', e => {
+          const deg = parseInt(e.target.value);
+          document.getElementById('s13FoldVal').textContent = deg + '°';
+          s13FoldRad = deg * Math.PI / 180;
+          s13PoseName = 'uttanasana';
+          document.querySelectorAll('.btn-pose-s13').forEach(b => {
+            b.classList.toggle('active', b.textContent.includes('우타나아사나'));
+          });
+          updateS13Scene();
+        });
+      }
+
+      const gCheck = document.getElementById('s13GuardCheck');
+      if (gCheck) {
+        gCheck.addEventListener('change', e => {
+          s13GuardOn = e.target.checked;
+          updateS13Scene();
+        });
+      }
+
+      const spinBtn = document.getElementById('s13SpinBtn');
+      if (spinBtn) {
+        spinBtn.addEventListener('click', () => {
+          s13Spin = !s13Spin;
+          spinBtn.textContent = s13Spin ? '⟳ 자동회전' : '⏹ 정지';
+        });
+      }
+
+      updateS13Scene();
+
+      function animS13() {
+        requestAnimationFrame(animS13);
+        if (s13Spin && !s13IsDragging && current === 12) {
+          s13RotY += 0.005;
+        }
+        if (s13ActualGroup && s13TargetGroup) {
+          s13ActualGroup.rotation.y = s13RotY;
+          s13ActualGroup.rotation.x = s13RotX;
+          s13TargetGroup.rotation.y = s13RotY;
+          s13TargetGroup.rotation.x = s13RotX;
+        }
+        if (s13Renderer && s13Scene && s13Camera) {
+          s13Renderer.render(s13Scene, s13Camera);
+        }
+      }
+      animS13();
+      s13Initialized = true;
+    }
+
+    function setSlide13Pose(pName, btn) {
+      s13PoseName = pName;
+      if (pName === 'uttanasana') s13FoldRad = 2.75;
+      else if (pName === 'ardha_uttanasana') s13FoldRad = 1.57;
+      else s13FoldRad = 0;
+      const deg = Math.round(s13FoldRad * 180 / Math.PI);
+      const fSlider = document.getElementById('s13FoldSlider');
+      if (fSlider) fSlider.value = deg;
+      const fVal = document.getElementById('s13FoldVal');
+      if (fVal) fVal.textContent = deg + '°';
+
+      document.querySelectorAll('.btn-pose-s13').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      updateS13Scene();
+    }
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      current = index;
+
+      slides.forEach((s, idx) => {
+        s.classList.toggle('active', idx === current);
+      });
+
+      progressBar.style.width = ((current + 1) / slides.length * 100) + '%';
+      slideNum.textContent = `슬라이드 ${current + 1} / ${slides.length}`;
+      slideLabel.textContent = slideTitles[current];
+
+      notesContent.textContent = slides[current].getAttribute('data-notes') || '발표자 노트가 없습니다.';
+
+      // Slide 7 Video Control
+      const v = document.getElementById('archMatchVideo');
+      if (v) {
+        if (current === 6) {
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+        }
+      }
+
+      // Slide 13 Three.js 3D Viewport Control
+      if (current === 12) {
+        if (!s13Initialized) {
+          setTimeout(initSlide13ThreeJS, 60);
+        } else if (s13Renderer) {
+          const box = document.getElementById('slide13_canvas_container');
+          if (box) {
+            s13Renderer.setSize(box.clientWidth, box.clientHeight);
+            s13Camera.aspect = box.clientWidth / box.clientHeight;
+            s13Camera.updateProjectionMatrix();
+          }
+        }
+      }
+    }
+
+    function nextSlide() {
+      if (current < slides.length - 1) showSlide(current + 1);
+    }
+
+    function prevSlide() {
+      if (current > 0) showSlide(current - 1);
+    }
+
+    function toggleNotes() {
+      notesDrawer.classList.toggle('open');
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => console.log(err));
+      } else {
+        document.exitFullscreen().catch(err => console.log(err));
+      }
+    }
+
+    function openModal(src) {
+      modalImg.src = src;
+      modal.classList.add('active');
+    }
+
+    function closeModal() {
+      modal.classList.remove('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'Backspace' || e.key === 'PageUp') {
+        prevSlide();
+      } else if (e.key.toLowerCase() === 'n') {
+        toggleNotes();
+      } else if (e.key.toLowerCase() === 'f') {
+        toggleFullscreen();
+      } else if (e.key === 'Escape') {
+        closeModal();
+        notesDrawer.classList.remove('open');
+      }
+    });
+
+    showSlide(0);
+  </script>
+</body>
+</html>
