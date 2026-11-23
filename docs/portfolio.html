@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>이병남 (Tony Lee) — AI 시스템 & RAG 엔지니어 채용 패키지 (4대 핵심 서류)</title>
+  <title>이병남 (Tony Lee) — 무인체계(드론) 임베디드 AI & 엣지 시스템 아키텍트 채용 패키지 (4대 핵심 서류)</title>
   
   <!-- Fonts -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -16,29 +16,6 @@
   
   <!-- Mermaid.js (Diagrams) -->
   <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
-          },
-          colors: {
-            brand: {
-              50: '#f0fdfa',
-              100: '#ccfbf1',
-              500: '#22A39F',
-              600: '#1c8784',
-              700: '#22A39F',
-              800: '#115e59',
-              900: '#134e4a',
-            }
-          }
-        }
-      }
-    }
-  </script>
 
   <style>
     body {
@@ -144,122 +121,73 @@
       overflow-x: auto;
       margin: 1.2rem 0;
     }
-    .markdown-body pre code {
-      background-color: transparent;
-      color: inherit;
-      padding: 0;
-      font-size: 13px;
-    }
     .markdown-body a {
       color: #0d9488;
       text-decoration: underline;
       font-weight: 600;
     }
-    .markdown-body a:hover {
-      color: #0f766e;
-    }
     .markdown-body img {
       max-width: 100%;
       height: auto;
       border-radius: 8px;
-      margin: 1rem 0;
+      margin: 1rem auto;
+      display: block;
     }
-
     .tab-btn.active {
       background-color: #22A39F;
       color: #ffffff;
       border-color: #1c8784;
       box-shadow: 0 4px 12px rgba(13, 148, 136, 0.35);
     }
-
-    @media print {
-      body {
-        background: #ffffff !important;
-        color: #000000 !important;
-      }
-      .no-print {
-        display: none !important;
-      }
-      .tab-pane {
-        display: block !important;
-        page-break-after: always;
-      }
-      .markdown-body {
-        color: #000000 !important;
-      }
-      .print-shadow {
-        box-shadow: none !important;
-        border: none !important;
-      }
-    }
   </style>
 </head>
 <body class="min-h-screen bg-slate-900 text-slate-100 flex flex-col">
 
   <!-- TOP HEADER / NAV -->
-  <header class="no-print bg-slate-950/90 backdrop-blur sticky top-0 z-50 border-b border-slate-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap items-center justify-between gap-3">
-      
-      <!-- Brand & Title -->
+  <header class="bg-slate-950/90 backdrop-blur sticky top-0 z-50 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-3">
       <div class="flex items-center space-x-3">
-        <a href="index.html" class="flex items-center space-x-2 text-white hover:text-teal-400 transition">
-          <img src="images/tonyillust_atwork.svg" alt="Tony Lee" class="w-9 h-9 rounded-full border-2 border-teal-400 bg-white shadow-sm" onerror="this.src='tonyillust_atwork.svg'">
-          <div>
-            <span class="text-base font-bold tracking-tight">이병남 (Tony Lee)</span>
-            <span class="hidden sm:inline-block ml-2 text-xs font-semibold px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">AI Systems & RAG Engineer</span>
-          </div>
+        <a href="portfolio.html" class="flex items-center space-x-2 text-white hover:text-teal-400 transition">
+          <span class="text-base font-bold tracking-tight">이병남 (Byungnam "Tony" Lee)</span>
+          <span class="hidden sm:inline-block ml-2 text-xs font-semibold px-2.5 py-0.5 rounded-full bg-teal-500/20 text-teal-300 border border-teal-500/30">무인체계(드론) 임베디드 AI & 엣지 시스템 아키텍트</span>
         </a>
       </div>
-
-      <!-- Quick Action Buttons -->
       <div class="flex items-center space-x-2 text-xs sm:text-sm">
-        <a href="https://aiegoo.github.io/yoga/chat" target="_blank" class="px-3 py-1.5 rounded-md bg-teal-600/30 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white transition flex items-center gap-1.5 font-medium">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          YogaQ AI 데모
-        </a>
         <a href="https://github.com/aiegoo" target="_blank" class="px-3 py-1.5 rounded-md bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 hover:text-white transition flex items-center gap-1.5 font-medium">
-          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
           GitHub
         </a>
-        <button onclick="window.print()" class="px-3 py-1.5 rounded-md bg-teal-500 text-slate-950 font-bold hover:bg-teal-400 transition flex items-center gap-1.5">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-          PDF 인쇄 / 저장
-        </button>
+        <a href="https://pf7.eggs.or.kr" target="_blank" class="px-3 py-1.5 rounded-md bg-teal-600/30 border border-teal-500/40 text-teal-300 hover:bg-teal-600 hover:text-white transition flex items-center gap-1.5 font-medium">
+          기술문서 허브
+        </a>
       </div>
-
     </div>
   </header>
 
   <!-- HERO BANNER & APPLICANT PROFILE -->
-  <section class="no-print bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 py-6 border-b border-slate-800">
+  <section class="bg-gradient-to-b from-slate-950 via-slate-900 to-slate-900 py-6 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <!-- Profile Header Hero -->
       <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-6 p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl">
         <div class="flex items-center gap-5">
           <div class="relative shrink-0">
-            <img src="images/tonyillust_atwork.svg" alt="Tony Lee Portrait" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full border-4 border-[#22A39F] shadow-lg bg-white p-1" onerror="this.src='tonyillust_atwork.svg'">
+            <img src="images/tonyillust_gray.png" alt="Tony Lee Portrait" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full border-3 border-[#22A39F] shadow-lg bg-white p-1" onerror="this.src='tonyillust_gray.png'">
           </div>
           <div>
             <div class="flex flex-wrap items-center gap-3">
               <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">이병남 <span class="text-lg sm:text-xl font-normal text-slate-400">Byungnam "Tony" Lee</span></h1>
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#22A39F]/20 text-[#22A39F] border border-[#22A39F]/40">AI Systems & RAG Engineer</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-[#22A39F]/20 text-[#22A39F] border border-[#22A39F]/40">무인체계(드론) 임베디드 AI & 엣지 시스템 아키텍트</span>
             </div>
             <p class="text-sm text-slate-300 mt-1.5 max-w-2xl leading-relaxed">
-              27년 글로벌 교육·비즈니스, 은퇴 후 귀농의 소명(36 Years Left Coding), 3,000시간 이상의 극한 몰입을 거쳐 실무 로컬 LLM 서빙 & Typesense 초저지연 RAG 아키텍트로 거듭난 기술 엔지니어링 포털입니다.
+              5G 비가시권(BVLOS) 이기종 드론 지상관제(GCS), CO2 리볼버 넷 캐처 및 LiDAR SLAM 자율 하역 펌웨어, 행동 생체인식 기반 Zero-Trust 제어권 잠금, Hailo-8 NPU 온보드 비전 AI 실무 포털입니다.
             </p>
             <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400 mt-2.5">
-              <span>📧 xraiegoo@gmail.com</span>
+              <span>📧 <a href="mailto:xraiegoo@gmail.com" class="text-teal-300 hover:underline">xraiegoo@gmail.com</a></span>
               <span>📱 010-2544-1197</span>
-              <span>📍 서울 마포구 공덕동</span>
-              <span>💰 희망연봉: 회사 내규에 따름 / 협의 가능</span>
+              <span>📍 경기도 고양시 일산동구 <em>(본적: 마포구 공덕동)</em></span>
+              <span>💰 희망연봉: 회사 내규에 따름 (협의 가능)</span>
             </div>
-          </div>
-        </div>
-        <div class="hidden lg:flex items-center gap-3 shrink-0">
-          <div class="text-center">
-            <img src="images/profile_formal_suit.png" alt="정장 프로필" class="w-20 h-28 object-cover rounded-lg border border-slate-700 shadow-md" onerror="this.src='profile_formal_suit.png'">
-            <div class="text-[10px] text-slate-400 mt-1">정장 프로필</div>
+            <div class="text-xs text-teal-400 font-semibold mt-1.5">
+              "36 Years of Systems Engineering Ahead — 펌웨어부터 엣지 NPU, 클라우드 관제까지 엔드투엔드(End-to-End) 아키텍처 단독 설계·구현"
+            </div>
           </div>
         </div>
       </div>
@@ -267,24 +195,24 @@
       <!-- Quick Highlights Bar -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-center">
         <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/70">
-          <div class="text-xs text-teal-400 font-medium">최신 핵심 역량</div>
-          <div class="text-sm font-bold text-white mt-0.5">로컬 LLM & Typesense RAG</div>
-          <div class="text-xs text-slate-400 mt-1">42ms 레이턴시 / -85% 환각</div>
+          <div class="text-xs text-teal-400 font-medium">5G BVLOS 드론 GCS</div>
+          <div class="text-sm font-bold text-white mt-0.5">WebRTC < 200ms</div>
+          <div class="text-xs text-slate-400 mt-1">4종 프로토콜 통합 정규화</div>
         </div>
         <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/70">
-          <div class="text-xs text-teal-400 font-medium">대외 수상 & 클라우드</div>
-          <div class="text-sm font-bold text-white mt-0.5">제주오르미 1위 & AWS 자격</div>
-          <div class="text-xs text-slate-400 mt-1">AWS ECS / OpenSearch / XAI</div>
+          <div class="text-xs text-teal-400 font-medium">안티드론(C-UAS) 넷 캐처</div>
+          <div class="text-sm font-bold text-white mt-0.5">50km/h PID & CO2 리볼버</div>
+          <div class="text-xs text-slate-400 mt-1">LiDAR SLAM 자율 하역 < 10cm</div>
         </div>
         <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/70">
-          <div class="text-xs text-teal-400 font-medium">엣지 & 하드웨어</div>
-          <div class="text-sm font-bold text-white mt-0.5">5G BVLOS 드론 GCS</div>
-          <div class="text-xs text-slate-400 mt-1">초경량 1종 조종자 / Hailo-8 NPU</div>
+          <div class="text-xs text-teal-400 font-medium">온디바이스 NPU & RAG</div>
+          <div class="text-sm font-bold text-white mt-0.5">Hailo-8L 2단계 가속</div>
+          <div class="text-xs text-slate-400 mt-1">33.4 FPS / Safe Scale Guard</div>
         </div>
         <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700/70">
-          <div class="text-xs text-teal-400 font-medium">글로벌 비즈니스</div>
-          <div class="text-sm font-bold text-white mt-0.5">미 메릴랜드 학사 / $100K 수출</div>
-          <div class="text-xs text-slate-400 mt-1">원어민급 영어 (TOEFL 627)</div>
+          <div class="text-xs text-teal-400 font-medium">글로벌 & 대외 검증</div>
+          <div class="text-sm font-bold text-white mt-0.5">오르미 1위 & AWS 인증</div>
+          <div class="text-xs text-slate-400 mt-1">미 메릴랜드 학사 / TOEFL 627점</div>
         </div>
       </div>
 
@@ -292,7 +220,7 @@
   </section>
 
   <!-- 4 CORE DOCUMENTS TAB NAVIGATION -->
-  <nav class="no-print sticky top-[57px] z-40 bg-slate-900/95 backdrop-blur border-b border-slate-700 py-3 shadow-md">
+  <nav class="sticky top-[53px] z-40 bg-slate-900/95 backdrop-blur border-b border-slate-700 py-3 shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-start sm:justify-center space-x-2 overflow-x-auto pb-1 sm:pb-0">
         
@@ -322,7 +250,7 @@
 
   <!-- MAIN DOCUMENT CONTAINER (WHITE PAPER CARD) -->
   <main class="flex-grow py-8 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
-    <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-14 border border-slate-200 print-shadow text-slate-900">
+    <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 lg:p-14 border border-slate-200 text-slate-900">
       
       <!-- TAB 1: 이력서 -->
       <section id="tab-resume" class="tab-pane">
@@ -339,7 +267,7 @@
         <div class="markdown-body" id="content-portfolio"></div>
       </section>
 
-      <!-- TAB 4: 포트폴리오 기술 문서 -->
+      <!-- TAB 4: 기술 문서 -->
       <section id="tab-tech" class="tab-pane hidden">
         <div class="markdown-body" id="content-tech"></div>
       </section>
@@ -348,452 +276,71 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="no-print bg-slate-950 py-8 border-t border-slate-800 text-center text-slate-500 text-xs sm:text-sm">
+  <footer class="bg-slate-950 border-t border-slate-800 py-6 text-center text-xs text-slate-400">
     <div class="max-w-7xl mx-auto px-4">
-      <p class="font-medium text-slate-400">이병남 (Byungnam "Tony" Lee) — AI Systems & RAG Engineer</p>
-      <p class="mt-1">Email: <a href="mailto:xraiegoo@gmail.com" class="text-teal-400 hover:underline">xraiegoo@gmail.com</a> &nbsp;|&nbsp; Phone: 010-2544-1197 &nbsp;|&nbsp; GitHub: <a href="https://github.com/aiegoo" class="text-teal-400 hover:underline">github.com/aiegoo</a></p>
-      <p class="mt-2 text-slate-600">Built with Semantic Hybrid RAG, 5G BVLOS GCS & Clean Engineering Architecture. All rights reserved.</p>
+      <p>이병남 (Byungnam "Tony" Lee) — 무인체계(드론) 임베디드 AI & 엣지 시스템 아키텍트 | 010-2544-1197 | xraiegoo@gmail.com</p>
+      <p class="mt-1 text-slate-500">포털: <a href="https://pf1.eggs.or.kr/portfolio.html" class="text-teal-400 hover:underline">pf1.eggs.or.kr</a> | 기술 문서 허브: <a href="https://pf7.eggs.or.kr" class="text-teal-400 hover:underline">pf7.eggs.or.kr</a></p>
     </div>
   </footer>
 
-  <!-- EMBEDDED RAW MARKDOWN DATA -->
-  <script type="text/plain" id="raw-md-resume">
-# 이병남 (Byungnam "Tony" Lee) — 이력서 (Resume)
-
----
-
-## 📌 1. 인적사항 · 지원목표 · 학력 · 핵심스킬 (Profile / Objective / Education / Skillset)
-
-<table style="width: 100%; border: none; margin-bottom: 12px;">
-  <tr>
-    <td style="width: 140px; vertical-align: top; border: none; padding-right: 15px;">
-      <img src="profile_formal_suit.png" alt="이병남 정장 프로필" width="130" style="border-radius: 6px; border: 1px solid #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
-    </td>
-    <td style="vertical-align: top; border: none;">
-      <table style="width: 100%; font-size: 13.5px; border-collapse: collapse;">
-        <tr>
-          <td style="width: 100px; font-weight: 700; background: #f1f5f9; padding: 5px 8px;">성명 / 영문</td>
-          <td style="padding: 5px 8px;"><strong>이병남</strong> (Byungnam "Tony" Lee)</td>
-          <td style="width: 100px; font-weight: 700; background: #f1f5f9; padding: 5px 8px;">지원 직무</td>
-          <td style="padding: 5px 8px;"><strong style="color: #0f766e;">무인체계(드론) 임베디드 AI &amp; 엣지 시스템 아키텍트</strong></td>
-        </tr>
-        <tr>
-          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">희망 연봉</td>
-          <td style="padding: 5px 8px;"><strong>회사 내규에 따름 / 면접 후 협의 (협의 가능)</strong></td>
-          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">연락처</td>
-          <td style="padding: 5px 8px;">010-2544-1197</td>
-        </tr>
-        <tr>
-          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">이메일</td>
-          <td style="padding: 5px 8px;"><a href="mailto:xraiegoo@gmail.com">xraiegoo@gmail.com</a></td>
-          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">거주지</td>
-          <td style="padding: 5px 8px;">서울특별시 마포구 공덕동</td>
-        </tr>
-        <tr>
-          <td style="font-weight: 700; background: #f1f5f9; padding: 5px 8px;">GitHub / 웹</td>
-          <td colspan="3" style="padding: 5px 8px;">
-            <a href="https://github.com/aiegoo" target="_blank">github.com/aiegoo</a> &nbsp;|&nbsp; 
-            <a href="https://github.com/aiegoo/Uc-dronusnet6" target="_blank">Uc-dronusnet6 (드론 넷캐처)</a> &nbsp;|&nbsp; 
-            <a href="https://pf1.eggs.or.kr/portfolio.html" target="_blank">통합 포트폴리오 포털</a> &nbsp;|&nbsp; 
-            <a href="https://pf7.eggs.or.kr" target="_blank">엔지니어링 문서 허브</a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-</table>
-
-### 🎯 지원 목표 (Objective)
-**"5G 비가시권(BVLOS) 이기종 드론 지상관제(GCS), CO2 리볼버 넷 캐처 및 SLAM 자율 운송 펌웨어, 인지적 Zero-Trust 제어권 에어락, Hailo-8 NPU 온보드 비전 AI를 1인 완결형으로 구축하여 미래 무인체계의 작전 자율성과 데이터 주권 확보에 기여하겠습니다."**
-
-### 🎓 학력 사항 (Education)
-- **University of Maryland (미국 메릴랜드 대학교)** | **1985.08 ~ 1994.06 (졸업)**
-  - 전공: **경영학 학사 (Management / Computer &amp; Information Science)**
-
-### 🛠️ 직무 핵심 코딩 스킬셋 (Coding Skillset)
-- **Drone C2 &amp; Avionics (66%)**: **5G BVLOS Cloud GCS** (gcs-uno / Webix Jet), **STM32/PX4 펌웨어 임베딩 (Firmware Embedding)**, **드론 PID 커스터마이징 (최대 50km/h 고속 추격)**, **CO2 추진 6연발 리볼버 넷 캐처 (Dronus-Net6)**, **LiDAR SLAM 자율 경로 탐색 &amp; 화물 인양/Drop-off 투하 제어**, **MAVLink v1/v2**, **ROS2**, **DJI PSDK**, **Betaflight MSP**, **K-MOSA 밀스펙**, **WebRTC 저지연 영상 (&lt; 200ms)**, **Direct RF(ELRS/CRSF) 제어권 중재기**, **BIV-6 행동 생체인식 제어 에어락**, **DDIL SHA-256 큐**, QGroundControl Qt5 HUD
-- **Edge AI &amp; Vision NPU (25%)**: **Hailo-8 (26 TOPS) / Hailo-8L (13 TOPS) DFC 컴파일 (INT8 HEF)**, **YOLOv8s / YOLOv8s-Pose 60fps**, **2단계 분리 가속 파이프라인 (NPU 20.4ms + ARM CPU Pure NumPy 0.018ms)**, **Safe Torso Scale Guard**, 3D 공간 리프팅, 마르코프 5-프레임 디바운서, PyHailoRT, OpenCV
-- **Backend &amp; Cloud (9%)**: **Typesense Hybrid Search (Dense bge-m3 1024차원 + BM25, p95 42ms)**, **AWS (CLF-C02 자격 취득)**, **ECS Fargate**, **OpenSearch Serverless**, **AWS Bedrock 무중단 Failover**, Redis Pub/Sub 비동기 큐, FastAPI, Docker, Linux/WSL2
-
----
-
-## 🚀 2. 핵심 수행 역량 및 실증 지표 (Core Competencies &amp; Metrics)
-
-| 핵심 수행 역량 | 내가 분명히 수행할 수 있는 구체적 실무 역량 | 검증 지표 및 산출물 |
-| :--- | :--- | :--- |
-| **1. 5G BVLOS 드론 GCS &amp; 이기종 관제**<br>*(무인체계 통신/미들웨어 — 비중 35%)* | • 5G 무선망 기반 초저지연 WebRTC P2P 비디오/텔레메트리 파이프라인 구축<br>• MAVLink v2, DJI PSDK, Betaflight MSP, K-MOSA 4종 프로토콜 통합 변환 브리지 설계<br>• RethinkDB 실시간 Changefeeds 및 Redis 인메모리 버스 기반 1인 다수 기체 동시 관제 | • **WebRTC 종단간 지연 200ms 이하 실측**<br>• 4종 이기종 기체 동시 관제 및 자율 편대 비행<br>• [드론 GCS 생태계 아키텍처 명세](https://github.com/aiegoo/resume/blob/starRating/technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md) |
-| **2. CO2 넷 캐처 &amp; SLAM 화물 하역 드론**<br>*(기체 펌웨어/SLAM/PID — 비중 31%)* | • CO2 추진 6연발 리볼버 넷(Net-Catcher) 펌웨어 임베딩 및 솔레노이드 격발 제어<br>• 최고 시속 50km/h 급가속 요격 및 발사 반동 억제를 위한 PX4/ArduPilot PID 튜닝<br>• LiDAR SLAM 3D 경로 탐색으로 포획 표적/화물(Cargo) 인양 및 지정 Drop-off Zone 자동 투하 | • **50km/h 고속 비행 안정성 &amp; 넷 반동 복원**<br>• SLAM 기반 자율 하역 경로 오차 10cm 이내<br>• [Dronus-Net6 레퍼런스](https://github.com/aiegoo/Uc-dronusnet6) |
-| **3. 온디바이스 NPU 비전 AI &amp; 3D 복원**<br>*(YogaQ Edge AI &amp; RAG — 비중 25%)* | • RPi5 + Hailo-8L(13 TOPS) 2단계 분리 가속 (NPU 20.4ms + CPU NumPy 0.018ms)<br>• 전굴 시 2D 몸통 12배 수축 좌표 폭발을 Safe Torso Scale Guard로 원천 방어 ($max\_abs < 4.81$)<br>• 165쪽 도서 OCR 지식베이스 기반 Typesense 하이브리드 RAG (p95 42ms, 할루시네이션 85% 차단) | • **30.0 FPS 고정 실측 / 라벨 지터 제로**<br>• **$140 단일 어플라이언스로 월 GPU $720 0원화**<br>• [YogaQ 엣지 NPU 아키텍처 명세](https://github.com/aiegoo/resume/blob/starRating/technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) |
-| **4. 엔터프라이즈 Cloud AI &amp; XAI**<br>*(Cloud &amp; GenAI — 비중 9%)* | • Terraform IaC 기반 AWS ECS Fargate &amp; OpenSearch Serverless k-NN 클러스터 자동화<br>• 생성 답변의 신뢰도를 실시간 계산하는 설명가능한 AI(XAI) 역코사인 유사도 엔진 구축 | • **캠프 전체 1위 우수상 &amp; 개인 최우수상**<br>• 장애 시 1.2초 내 Bedrock 무중단 자동 전환 |
-
----
-
-## 💼 3. 최근 엔지니어링 경력 사항 (Work Experience)
-
-### 1. 유콘크리에이티브주식회사 (Ucon Creative Co., Ltd.)
-- **직책**: **개발 실장 / Head of Engineering** (정규직) | **2023.05 ~ 2025.08 (2년 4개월)**
-- **핵심 역할 및 성과**:
-  - **Dronus-Net6 대드론 포획 및 중량물 자율 하역 체계 (드론 엔지니어링 — 비중 40%)**:
-    - **CO2 추진 6연발 리볼버 넷 캐처 펌웨어 임베딩**: 고압 CO2 솔레노이드 밸브 및 서보 회전 탄창 제어 드라이버를 비행제어기(FC)에 임베딩, MAVLink 페이로드 격발 명령 트리거 연동.
-    - **비행제어 PID 커스터마이징**: 넷 발사 시 발생하는 순간 반동 충격을 억제하고 **최대 속도 50km/h** 고속 요격 추격 시 롤/피치 복원력을 극대화하도록 PID 게인 및 FeedForward 튜닝.
-    - **LiDAR SLAM 기반 화물 인양 &amp; 하역장 자율 투하**: 3D 실시간 매핑/경로 탐색으로 포획된 적 드론 및 중량물(Cargo)을 기체 하부로 안전 인양(Lift)하여 지정된 안전 하역 구역(Drop-off Zone)까지 자율 복귀 후 투하.
-  - **요가큐(YogaQ) 온디바이스 비전 AI 엣지 인식 &amp; 생체역학 RAG 플랫폼 총괄 (비중 25%)**:
-    - **2단계 분리 가속 파이프라인**: 13 TOPS Hailo-8L NPU(YOLOv8s-Pose 20.4ms) + ARM Cortex-A76 CPU(순수 NumPy 분류 0.018ms) 배치로 PCIe DMA 오버헤드(0.5ms) 대비 25배 빠른 초저지연 추론 달성.
-    - **Safe Torso Scale Guard**: 깊은 전굴 시 2D 광학 섀도우의 몸통 12배 수축으로 인한 25배 좌표 폭발을 하한 클램핑($\text{scale} = \max(H_{\text{torso}}, 0.250 \cdot ref)$)으로 완벽 방어 ($max\_abs < 4.81$).
-    - **온프레미스 인프라 경량화 &amp; 엣지 시스템 구축**: 13 TOPS Hailo-8L NPU 기반 $140 단일 PoE 엣지 어플라이언스로 중앙 클라우드 GPU 인프라 의존성을 100% 제거하고, 현장 엣지 디바이스 단독으로 33.4 FPS 실시간 생체역학 피드백을 완결하는 초저지연 온디바이스 비전 시스템 구축.
-
----
-
-### 2. 주식회사 제이디랩 (JDLab Co., Ltd.) &amp; 무인체계 자율비행 연구
-- **직책**: **수석연구원 / Principal Engineer** (정규직) | **2022.02 ~ 2022.05 (4개월 및 연속 연구)**
-- **핵심 성과**: 5G MAVLink v2/ROS2 이기종 드론 관제 어댑터 및 200ms 이하 WebRTC 스트리밍 파이프라인 구축. Direct RF(ELRS 250Hz/CRSF)와 4G/5G 셀룰러 간 15ms 무충돌 제어권 중재기(Control Authority Arbiter) 구현. BIV-6 조종사 행동생체인식 기반 0.5초 Soft-Cloak 제어 에어락 설계.
-
----
-
-### 3. 제주오르미캠프 (AI / Cloud Intensive)
-- **역할**: **팀 리드 &amp; 클라우드 AI 아키텍트** | **2025.10 ~ 2025.12 (2개월 풀타임)**
-- **핵심 성과**: Terraform IaC 기반 AWS ECS Fargate &amp; OpenSearch RAG 클러스터 자동 배포. 코사인 유사도 역추적 XAI 엔진 설계. 로컬 장애 시 1.2초 내 AWS Bedrock 무중단 자동 전환. **캠프 전체 1위 팀 우수상 &amp; 개인 최우수상 동시 수상**.
-
----
-
-### 📌 이전 기반 경력 요약 (Foundational Experience Overview)
-- **2020.02 ~ 2020.12**: 하이테크 개발팀장 — 저전력 IoT 센서 노드 펌웨어 및 MQTT/LTE 원격 관제 (배터리 2.5배 연장)
-- **2019.03 ~ 2019.09**: 온오프링크 개발책임 — Asterisk/FreePBX 기반 대용량 VoIP CTI 음성 솔루션 및 VR 통신 연동
-- **2005.12 ~ 2014.06**: (주)이오즈 / 유림ADS 기획실장/총괄 PM — 전자정부 공공 정보화 사업 제안 및 대기업 B2B 계약 총괄
-- **1985.03 ~ 2014.02**: 어학 교육 대표강사 / 비즈니스 영어 컨설턴트 (삼성HP, SK, 현대 사내 연수 및 10,000+ 인재 배출)
-
----
-
-## 📚 4. 직무 교육 및 자격·수상 (Professional Training &amp; Awards)
-
-| 기간 | 기관 및 과정명 | 핵심 내용 및 검증 성과 |
-| :--- | :--- | :--- |
-| **2020.07 ~ 2021.06** | **한국전파진흥협회 (RAPA, 1,080h)** | 5G AI 제어 시스템 (C++, ROS, Linux, Gazebo, Hailo-8 NPU 컴퓨터 비전)<br>• 🚁 **초경량비행장치 멀티콥터 1종 조종자 취득** (1,000+ 비행시간) |
-| **2025.10 ~ 2025.12** | **제주오르미캠프 (AI/Cloud)** | AWS ECS Fargate, OpenSearch, Bedrock 기반 RAG/XAI 아키텍처<br>• 🏆 **캠프 전체 1위 팀프로젝트 우수상 &amp; 개인 성적 최우수상 수상** |
-| **2018.07 ~ 2019.01** | **하이미디어 아카데미 (1,120h)** | 풀스택 소프트웨어 엔지니어링 집중 이수 (Java, JS, PHP, MySQL, 비동기 통신) |
-| **2025.11** | **AWS 자격증** | ☁️ **AWS Certified Cloud Practitioner (CLF-C02)** 취득 |
-| **1994.06** | **학위 및 어학** | 🎓 **미국 메릴랜드대학교 경영학 학사** (Management/CS) &amp; 🗣️ **TOEFL 627점** (원어민급) |
-
-  </script>
-
-  <script type="text/plain" id="raw-md-career">
-# 이병남 (Byungnam "Tony" Lee) — 기술 경력서 (Technical Career Description)
-### 무인체계(드론) 임베디드 AI &amp; 엣지 시스템 아키텍트 실무 기술 경력서
-
-> **"5G 비가시권(BVLOS) 클라우드 드론 GCS, CO2 6연발 리볼버 넷 캐처 및 SLAM 자율 운송 펌웨어, 인지적 Zero-Trust 제어 에어락, Hailo-8 NPU 온보드 비전 AI를 1인 완결형으로 구축하는 실전 엔지니어링 여정입니다."**
-
----
-
-## 🎯 지원 직무 및 입증된 핵심 역량 (Target Role &amp; Verified Competencies)
-
-### **지원 분야: 무인체계(드론) 임베디드 AI &amp; 엣지 자율비행 시스템 아키텍트**
-> **"입사 첫날부터 5G BVLOS 드론 관제망 구축, 기체 임베디드 펌웨어 및 CO2 넷 캐처 메커니즘 제어, 50km/h PID 커스터마이징, SLAM 기반 자율 하역 경로 생성, 이기종 프로토콜 브리지 및 Direct RF 제어권 중재기를 독립적으로 설계·운영할 수 있는 완결형 역량을 입증합니다."**
-
-| 핵심 수행 역량 | 내가 분명히 수행할 수 있는 구체적 실무 역량 | 검증 지표 및 산출물 |
-| :--- | :--- | :--- |
-| **1. 5G BVLOS 드론 GCS &amp; 이기종 관제**<br>*(무인체계 통신/미들웨어 — 비중 35%)* | • 5G 무선망 기반 초저지연 WebRTC P2P 비디오/텔레메트리 파이프라인 구축<br>• MAVLink v2, DJI PSDK, Betaflight MSP, K-MOSA 4종 프로토콜 통합 변환 브리지 설계<br>• Direct RF(ELRS 250Hz/CRSF)와 4G/5G 셀룰러 간 15ms 무충돌 제어권 중재기 구현 | • **WebRTC 종단간 지연 200ms 이하 실측**<br>• 4종 이기종 기체 동시 관제 및 자율 편대 비행<br>• [드론 GCS 생태계 아키텍처 명세](https://github.com/aiegoo/resume/blob/starRating/technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md) |
-| **2. CO2 넷 캐처 &amp; SLAM 화물 하역 드론**<br>*(기체 펌웨어/SLAM/PID — 비중 31%)* | • CO2 추진 6연발 리볼버 넷(Net-Catcher) 펌웨어 임베딩 및 솔레노이드 격발 제어<br>• 최고 시속 50km/h 급가속 요격 및 발사 반동 억제를 위한 PX4/ArduPilot PID 튜닝<br>• LiDAR SLAM 3D 경로 탐색으로 포획 표적/화물(Cargo) 인양 및 지정 Drop-off Zone 자동 투하 | • **50km/h 고속 비행 안정성 &amp; 넷 반동 복원**<br>• SLAM 기반 자율 하역 경로 오차 10cm 이내<br>• [Dronus-Net6 레퍼런스](https://github.com/aiegoo/Uc-dronusnet6) |
-| **3. 온디바이스 NPU 비전 AI &amp; 3D 복원**<br>*(YogaQ Edge AI &amp; RAG — 비중 25%)* | • RPi5 + Hailo-8L(13 TOPS) 2단계 분리 가속 (NPU 20.4ms + CPU NumPy 0.018ms)<br>• 전굴 시 2D 몸통 12배 수축 좌표 폭발을 Safe Torso Scale Guard로 원천 방어 ($max\_abs < 4.81$)<br>• 165쪽 도서 OCR 지식베이스 기반 Typesense 하이브리드 RAG (p95 42ms, 할루시네이션 85% 차단) | • **30.0 FPS 고정 실측 / 라벨 지터 제로**<br>• **$140 단일 어플라이언스로 월 GPU $720 0원화**<br>• [YogaQ 엣지 NPU 아키텍처 명세](https://github.com/aiegoo/resume/blob/starRating/technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md) |
-
----
-
-### 🧭 1. 커리어 피봇 & 배경 요약
-- **1985 ~ 2014 (비즈니스 교육 & IT 프로젝트 관리)**: 미국 메릴랜드대학교 학사(Management/CS) 기반 원어민급 영어 협상 능력. 삼성HP, SK텔레콤, 현대자동차 사내 출강 및 이오즈 기획실장으로 전자정부 대형 정보화 사업 제안/수주 총괄.
-- **2014 ~ 2018 (일산 농장 귀농 & 엔지니어링 전향)**: "남은 삶 36년은 코딩에 전념하겠다(36 years left coding)"는 결심과 소명으로 실전 소프트웨어 엔지니어 전향.
-- **2018 ~ 2025 (3,000시간 혹독한 기술 재교육)**: 하이미디어(1,120h 풀스택), RAPA 5G 자율비행(1,080h, 초경량 1종 조종자 취득), 제주오르미(팀 1위 우수상 & 개인 최우수상)를 거치며 C++, ROS2, MAVLink, Hailo NPU, PX4 펌웨어를 체화.
-- **2019 ~ 현재 (무인체계 자율비행 & AI 시스템 엔지니어링)**: 유콘크리에이티브 개발실장으로 Dronus-Net6 CO2 넷 캐처 드론 펌웨어 및 Hailo-8L NPU 플랫폼 완결 구축, 제이디랩 수석연구원으로 5G BVLOS 드론 관제 어댑터 개발.
-
----
-
-## 💼 2. 도메인 및 주요 기관별 프로젝트 심층 기술서 (Project Technical Descriptions)
-
-### [도메인 1] 🛸 5G BVLOS 클라우드 드론 지상관제(GCS) &amp; 이기종 무인체계 자율비행 (제이디랩 / R&amp;D — 비중 35%)
-
-#### 📌 Project 1-1: 5G 비가시권(BVLOS) 클라우드 드론 GCS 통합 관제 플랫폼 (gcs-uno)
-- **개발 환경**: Node.js, Webix Jet, RethinkDB, Redis, Nimble Streamer, C++/Qt5, MAVLink v1/v2, 5G Cellular
-- **핵심 구현**: PM2 마이크로서비스(`drones-server`, `drone-udp-server`, `gcs-tcp-server`, `io-server`), UDP 기반 WebRTC P2P로 패킷 재전송 대기 없이 **200ms 이하 초저지연** 비디오/텔레메트리 스트리밍, RethinkDB Changefeeds 기반 제로 폴링(Zero Polling) 실시간 브로드캐스트.
-
-#### 📌 Project 1-2: 이기종 비행제어기 통신 버스 및 제어권 중재기 (Control Authority Arbiter)
-- **개발 환경**: Python, C++, MAVLink v2, DJI Mobile/Payload SDK, Betaflight MSP v1/v2, K-MOSA, POSIX PTY, Serial UART
-- **핵심 구현**: 4종 이기종 프로토콜 어댑터를 단일 `DroneTelemetry` 인터페이스로 정규화하고 QGroundControl에 다중 기체(sysid 1~4)로 단일 포트(:14550) 브로드캐스트. 안전 조종사의 물리 스틱(ELRS 250Hz / TBS CRSF) 변위 감지 시 4G/5G 클라우드 제어 명령을 즉각 차단하고 **15ms 이내에 수동 조종으로 강제 핸드오버**하는 제어권 중재기 구현.
-
----
-
-### [도메인 2] 🎯 대드론 넷 캐처(Dronus-Net6) &amp; 온디바이스 NPU(YogaQ) (유콘크리에이티브 — 비중 56%)
-
-#### 📌 Project 2-1: Dronus-Net6 — CO2 6연발 리볼버 넷 캐처 및 SLAM 기반 화물 인양/하역 드론 (드론 플래그십 — 비중 31%)
-- **개발 환경**: STM32, PX4 / ArduPilot Custom Firmware, C/C++, LiDAR SLAM, ROS2 Navigation, CO2 솔레노이드 공압 밸브, 서보 탄창 액추에이터
-- **문제 정의**: 불법 침입 드론을 비파괴 포획(Non-kinetic Capture)해야 하며, 넷 발사 반동을 극복하며 최고 50km/h로 고속 추격하고, 포획된 기체/화물을 안전 하역장(Drop-off Zone)까지 자율 운송·투하하는 복합 임무 수행 필요.
-- **핵심 엔지니어링 구현**:
-  1. **CO2 추진 6연발 리볼버 넷 캐처 펌웨어 임베딩 (Firmware Embedding)**:
-     - 회전식 탄창 서보 스텝 모터와 고압 CO2 솔레노이드 밸브 구동 펄스(PWM/GPIO) 타이밍 드라이버를 비행제어기 펌웨어 내 인터럽트 서비스 루틴(ISR)으로 직결 구현. MAVLink 페이로드 격발 명령 트리거 연동.
-  2. **비행제어 PID 커스터마이징 &amp; 50km/h 고속 추격 제어**:
-     - 넷 발사 시 발생하는 순간 반동 충격을 억제하고 **최고 속도 50km/h** 급기동 시 자세가 무너지지 않도록 PX4/ArduPilot 속도/자세 PID 제어 루프를 재설계 ($K_p, K_i, K_d$ 게인 튜닝 및 가속도 피드포워드 적용).
-  3. **LiDAR SLAM 기반 화물 인양 &amp; 하역장 자율 투하 (Cargo Lift &amp; Drop-off Zone)**:
-     - 3D LiDAR 기반 실시간 SLAM 경로 계획(Pathfinding) 알고리즘을 탑재하여, 포획된 적 드론 및 중량물(Cargo)을 기체 하부 윈치/그리퍼로 인양(Lift)한 후 사전 지정된 안전 하역 구역(Drop-off Zone)으로 자율 비행하여 안전 투하 완료.
-
-#### 📌 Project 2-2: 요가큐(YogaQ) — 온디바이스 비전 AI (Hailo-8L) &amp; 생체역학 RAG 플랫폼 (비중 25%)
-- **개발 환경**: Raspberry Pi 5, Hailo-8L (13 TOPS), YOLOv8s-Pose INT8 HEF, Typesense, Ollama, FastAPI, WebSocket
-- **핵심 엔지니어링 구현**:
-  1. **2단계 분리 가속 (Decoupled Perception)**: Stage-1 비전 백본을 13 TOPS Hailo-8L NPU(20.4ms)에 배치하고, Stage-2 분류기를 ARM Cortex-A76 CPU에서 순수 NumPy 연산(0.018ms)으로 직결. PCIe DMA 버스 왕복 오버헤드(0.5ms) 대비 25배 빠른 초저지연 달성.
-  2. **Safe Torso Scale Guard &amp; 디바운서**: 단일 2D 카메라 전굴 시 몸통 길이가 12배 수축하여 발생하는 25배 좌표 폭발을 $\text{scale} = \max(H_{\text{torso}}, 0.250 \cdot ref)$ 클램핑으로 원천 차단 ($max\_abs < 4.81$). 마르코프 5-프레임 디바운서로 라벨 지터 제로화 (99.9% 확정 잠금).
-  3. **초저지연 하이브리드 RAG &amp; 인프라 경량화 (Zero Cloud Ingress)**: Typesense Dense(1024차원)+BM25 결합(p95 42ms), 신체 금기 조건(디스크·임신) 마스킹으로 할루시네이션 85% 차단. $140 단일 PoE 엣지 어플라이언스로 월 $720 클라우드 GPU 인프라를 $0으로 제거하고, 중앙 서버 연산 부하 0(O(1) 선형 확장성)을 달성하는 완전한 엣지 분산 구조 구축.
-
----
-
-### [도메인 3] ☁️ 엔터프라이즈 클라우드 AI &amp; 설명가능한 AI (오르미 / AWS — 비중 9%)
-- **AWS ECS Fargate &amp; OpenSearch Serverless XAI 아키텍처**: Terraform IaC 100% 자동화, 역코사인 유사도 기반 문장별 신뢰도 시각화, 장애 시 1.2초 내 AWS Bedrock 무중단 전환 (**캠프 전체 1위 팀 우수상 &amp; 개인 최우수상**).
-
----
-
-## 🎯 3. 핵심 직무 경쟁력 요약 (Why Tony Lee?)
-1. **무인체계 하드웨어-펌웨어-클라우드 수직 통합 능력**: CO2 리볼버 액추에이터 펌웨어 임베딩, 50km/h PID 제어, LiDAR SLAM 경로 탐색, 5G BVLOS 클라우드 GCS까지 전 계층을 1인 완결형으로 구축.
-2. **현장 안전 우선의 방어적 아키텍처**: Direct RF 수동 조종 개입 시 15ms 내 강제 절체되는 제어권 중재기와 생체인식 제어 에어락으로 사고 가능성 원천 차단.
-3. **원어민급 글로벌 기술 커뮤니케이션 &amp; 검증된 실행력**: 미국 메릴랜드대 학사(Management/CS) 기반 원어민급 영어 역량으로 해외 최신 오픈소스/논문 지연 없는 분석 및 글로벌 방산/무인체계 기술 협력 즉각 주도 가능.
-
-  </script>
-
-  <script type="text/plain" id="raw-md-portfolio">
-# 이병남 (Byungnam "Tony" Lee) — 엔지니어링 포트폴리오 (Engineering Portfolio)
-### 무인체계(드론) 임베디드 AI &amp; 엣지 시스템 플래그십 쇼케이스
-
-> **"5G 비가시권(BVLOS) 자율비행 드론 관제, 대드론 CO2 리볼버 넷 캐처 &amp; SLAM 화물 하역 펌웨어, 이기종 제어권 중재기, Hailo-8 NPU 온보드 비전 AI 및 Typesense 하이브리드 RAG를 아우르는 플래그십 엔지니어링 쇼케이스입니다."**  
-
----
-
-## 🌐 라이브 서비스 &amp; 인터랙티브 데모 (Live Demos)
-
-| 서비스명 | 설명 | 라이브 링크 |
-| :--- | :--- | :--- |
-| **5G BVLOS 드론 GCS 관제 웹** | 다수 기체 텔레메트리 및 200ms WebRTC 실시간 관제 대시보드 | [pf1.eggs.or.kr/portfolio.html](https://pf1.eggs.or.kr/portfolio.html) |
-| **Dronus-Net6 대드론 넷 캐처** | CO2 6연발 리볼버 넷 발사 펌웨어 및 SLAM 자율 운송 레퍼런스 | [github.com/aiegoo/Uc-dronusnet6](https://github.com/aiegoo/Uc-dronusnet6) |
-| **엔지니어링 기술 문서 허브** | 5G 드론 GCS, 펌웨어 임베딩, Zero-Trust 보안 실무 아키텍처 포털 | [pf7.eggs.or.kr](https://pf7.eggs.or.kr) |
-| **YogaQ Studio AI 챗봇 데모** | Typesense 하이브리드 RAG 기반 해부학 정렬 코칭 대화형 챗봇 | [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) |
-| **YogaQ 시맨틱 검색 엔진 데모** | 초저지연 Dense Vector + BM25 동적 가중치 하이브리드 검색 | [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search) |
-
----
-
-## 🏆 대표 플래그십 프로젝트 쇼케이스 (Featured Flagship Projects)
-
-### 1. 5G BVLOS 초저지연 클라우드 드론 지상관제시스템 &amp; 이기종 자율비행 (Cloud Drone GCS &amp; Hetero Fleet C2)
-> **무인체계 핵심 아키텍처**: 5G 무선망 저지연 WebRTC (&lt; 200ms), 이기종 4종 프로토콜 브리지, Direct RF vs 4G/5G 제어권 중재기, BIV-6 인지 에어락, 기체 탑재 Hailo-8 NPU (26 TOPS)
-
-#### 🖥️ 실증 라이브 데모 &amp; 주요 규격 (Live Specs)
-- **핵심 기술**: **5G Cellular BVLOS**, **WebRTC P2P (종단간 200ms 이하)**, **MAVLink v2 / ROS2**, **DJI PSDK**, **Betaflight MSP**, **K-MOSA 밀스펙**, **Direct RF(ELRS/CRSF) 중재기**, **BIV-6 행동 생체인식**, **DDIL SHA-256 큐**, **Hailo-8 M.2 (26 TOPS @ 2.5W)**, **QGroundControl (:14550)**
-- **기술 상세 문서**: [04_포트폴리오_기술문서_이병남.md#1-5g-bvlos-드론-지상관제gcs-이기종-어댑터-및-인지-제어권-에어락-아키텍처](https://github.com/aiegoo/resume/blob/starRating/04_포트폴리오_기술문서_이병남.md)
-
-#### 📐 시스템 아키텍처 다이어그램
-<div style="text-align: center; margin: 14px 0;">
-  <img src="images/drone_gcs_architecture_topology.svg" alt="5G BVLOS Cloud Drone GCS Architecture" style="width: 100%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);" />
-</div>
-
-#### 🛠️ 핵심 구현 및 엔지니어링 항목 (Key Implementations — 비중 35%)
-1. **4-Tier 분산 토폴로지 &amp; 200ms 초저지연 스트리밍**:
-   - `drones-server`(기체 키 관리), `drone-udp-server`(동적 인그레스 30k~65k), `gcs-tcp-server`(1시간 에페머럴 브리지), `io-server` 마이크로서비스 클러스터링 및 UDP 기반 WebRTC P2P로 종단간 지연 200ms 이하 달성.
-2. **이기종 4종 프로토콜 통합 어댑터 &amp; MAVLink 멀티플렉서**:
-   - MAVLink-K(:14555), DJI PSDK(:14560), Betaflight MSP(:14565), K-MOSA(:14570) 4종 규격을 단일 정규화 `DroneTelemetry` 인터페이스로 융합하고 QGroundControl에 다중 기체(sysid 1~4)로 단일 포트(:14550) 브로드캐스트.
-3. **Direct RF vs 4G/5G 제어권 중재기 (Control Authority Arbiter)**:
-   - 고지연 4G/5G 클라우드 제어 중 안전 조종사의 물리 스틱(ELRS 250Hz / TBS CRSF) 변위 감지 시, 15ms 이내에 즉각 전파 수동 조종으로 강제 핸드오버하여 기체 조종 안정성 및 안전성 확보.
-
----
-
-### 2. Dronus-Net6: 대드론 CO2 6연발 넷 캐처 &amp; SLAM 화물 하역 드론
-> **기체 펌웨어 &amp; 비행역학 핵심**: CO2 추진 6연발 리볼버 넷 발사체 펌웨어 임베딩, 50km/h PID 추격 루프, LiDAR SLAM 화물 인양 및 Drop-off Zone 정밀 투하
-
-#### 🛠️ 핵심 구현 및 엔지니어링 항목 (Key Implementations — 비중 31%)
-1. **CO2 추진 6연발 리볼버 넷 발사체 펌웨어 임베딩 (Firmware Embedding)**:
-   - 고압 CO2 솔레노이드 밸브 펄스 제어(PWM/GPIO) 드라이버와 6연발 회전식 서보 탄창 시퀀서를 FC(STM32/PX4) 펌웨어 레벨에 직결하여 MAVLink 페이로드 격발 명령 100% 신뢰성 구현.
-2. **비행제어 PID 커스터마이징 &amp; 50km/h 고속 추격 제어**:
-   - 넷 발사 순간의 강한 공압 반동 충격을 억제하고 **최고 속도 50km/h** 급기동 시 자세가 흩어지지 않도록 PX4/ArduPilot 자세/속도 PID 루프 재설계 ($K_p, K_i, K_d$ 게인 튜닝 및 가속도 피드포워드).
-3. **LiDAR SLAM 기반 화물 인양 &amp; 하역장 자율 투하 (Cargo Lift &amp; Drop-off)**:
-   - 3D LiDAR SLAM 실시간 매핑/경로 탐색을 통해 포획된 표적 드론 및 중량물(Cargo)을 인양(Lift)하여 안전 하역 구역(Drop-off Zone)까지 자율 복귀 후 오차 10cm 이내로 안전 투하 완료.
-
----
-
-### 3. 요가큐 (YogaQ) — 온디바이스 비전 AI 엣지 인식 &amp; 생체역학 RAG 플랫폼
-> **엣지 AI 핵심 아키텍처**: Hailo-8L NPU 2단계 분리 가속 파이프라인, Safe Torso Scale Guard, Typesense 하이브리드 RAG, $140 PoE 단일 어플라이언스 (비중 25%)
-
-#### 📐 시스템 아키텍처 다이어그램
-<div style="text-align: center; margin: 14px 0;">
-  <img src="images/yogaq_architecture_pipeline.svg" alt="YogaQ Two-Stage Decoupled Perception Architecture" style="width: 100%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);" />
-</div>
-
-#### 🛠️ 핵심 구현 및 엔지니어링 항목 (Key Implementations)
-1. **2단계 분리 가속**: Hailo-8L NPU(YOLOv8s-Pose 20.4ms) + ARM Cortex-A76 CPU(순수 NumPy 0.018ms)로 PCIe DMA 버스 왕복 오버헤드(0.5ms) 대비 25배 빠른 초저지연 실증.
-2. **Safe Torso Scale Guard**: 깊은 전굴 시 2D 몸통 12배 수축으로 인한 25배 좌표 폭발을 $\text{scale} = \max(H_{\text{torso}}, 0.250 \cdot ref)$ 클램핑으로 원천 차단 ($max\_abs < 4.81$). 마르코프 5-프레임 디바운서로 라벨 지터 제로화 (99.9% 확정 잠금).
-3. **Typesense 하이브리드 RAG &amp; 인프라 경량화 (Zero Cloud Ingress)**: Dense(1024차원)+BM25 결합(p95 42ms), 신체 금기 마스킹으로 할루시네이션 85% 차단. $140 단일 어플라이언스로 월 $720 GPU 인프라 $0 달성 및 완전한 엣지 분산 O(1) 확장성 실증.
-
----
-
-### 4. AWS 엔터프라이즈 GenAI &amp; 설명가능한 AI (Enterprise Cloud AI / 오르미 1위)
-> **클라우드 아키텍처 백본**: AWS ECS Fargate, OpenSearch Serverless, AWS Bedrock 무중단 Failover (비중 9%)
-- **공식 수상**: 🏆 **제주오르미캠프 종합 평가 1위 팀 프로젝트 우수상 &amp; 개인 최우수상**
-
----
-
-## 📊 종합 프로젝트 매트릭스 비교
-
-| 프로젝트명 | 핵심 도메인 | 주요 성과 &amp; 혁신점 | 기술 검증 문서 |
-| :--- | :--- | :--- | :--- |
-| **Cloud Drone GCS &amp; Fleet C2** | 5G 비가시권 통신 &amp; 이기종 제어 | **WebRTC &lt; 200ms**, 4종 프로토콜 통합, Direct RF 15ms 중재 | [드론 아키텍처 문서](https://github.com/aiegoo/resume/blob/starRating/technical_references/drone_gcs/10-GCS-Ecosystem-Architecture-and-BVLOS-Cloud-Integration.md) |
-| **Dronus-Net6 넷 캐처 드론** | 기체 펌웨어 임베딩 &amp; SLAM 하역 | **50km/h PID 추격**, CO2 6연발 리볼버 격발, 화물 인양/Drop-off | [Dronus-Net6 레퍼런스](https://github.com/aiegoo/Uc-dronusnet6) |
-| **요가큐 (YogaQ)** | 온디바이스 NPU &amp; 하이브리드 RAG | **NPU 20.4ms + CPU 0.018ms**, Safe Torso 가드, RAG 42ms | [YogaQ 기술 명세](https://github.com/aiegoo/resume/blob/starRating/04_포트폴리오_기술문서_이병남.md#2-요가큐yogaq-온디바이스-비전-ai-hailo-8l--초저지연-하이브리드-rag-아키텍처) |
-| **Enterprise AWS GenAI** | 클라우드 AI &amp; 모델 설명가능성 | **제주오르미 1위 수상**, 99.99% 고가용성 폴백 | [클라우드 아키텍처 문서](https://github.com/aiegoo/resume/blob/starRating/technical_references/cloud_ai_aws/ARCHITECTURE_FLOW.md) |
-
-  </script>
-
-  <script type="text/plain" id="raw-md-tech">
-# 이병남 (Byungnam "Tony" Lee) — 기술 아키텍처 명세서 (Technical Dossier)
-### 무인체계(드론) &amp; 온디바이스 엣지 AI 심층 시스템 엔지니어링 명세
-
----
-
-## 1. 5G BVLOS 드론 GCS, Dronus-Net6 펌웨어 및 제어권 중재 아키텍처
-> **5G 비가시권(BVLOS) 자율비행 관제, 대드론 CO2 6연발 넷 캐처 &amp; SLAM 화물 하역 펌웨어, 이기종 제어권 중재기 명세 (비중 66%)**
-
-### 1.1 5G BVLOS 클라우드 관제 백본 &amp; WebRTC 초저지연 미디어 파이프라인
-- **인프라 및 기술적 당면 과제**: LTE/5G 무선망의 기지국 핸드오버 및 무선 신호 변동으로 인한 TCP 재전송 지연을 회피해야 함.
-- **아키텍처 설계 &amp; 저지연 실측**: WebRTC P2P(UDP 기반 RTP/SRTP)를 관제 센터와 기체 간 직결하여 **종단간 200ms 이하 초저지연** 비디오 스트리밍 달성. PM2 마이크로서비스(`drones-server`, `drone-udp-server`, `gcs-tcp-server`, `io-server`) 및 RethinkDB Changefeeds 기반 제로 폴링(Zero Polling) 실시간 브로드캐스트.
-
-### 1.2 이기종 비행제어기 통신 버스 및 Transport HAL
-- **이기종 프로토콜 통합**: MAVLink v2(:14555), DJI PSDK(:14560), Betaflight MSP(:14565), K-MOSA(:14570) 4개 규격을 단일 `DroneTelemetry` 인터페이스로 정규화하고 QGroundControl에 다중 기체(sysid 1~4)로 단일 MAVLink 포트(:14550) 브로드캐스트.
-- **Transport HAL**: `UDPTransport`(SITL 시뮬레이션)와 `SerialTransport`(물리 Pixhawk 등 HIL용 UART/PTY)를 완벽 분리하여 코드 수정 없는 무중단 스위칭 보장.
-
-### 1.3 Direct RF 수동 조종 vs 4G/5G 셀룰러 제어권 중재기 (Control Authority Arbiter)
-- **제어권 충돌 방어**: 안전 조종사가 물리 조종기(ELRS 250Hz / TBS CRSF) 스틱을 15% 이상 변위시킬 경우, 인터럽트로 감지하여 **15ms 이내에 4G/5G 자율비행 명령을 즉시 무효화하고 Direct RF 수동 조종으로 강제 핸드오버**.
-
-### 1.4 Dronus-Net6: CO2 6연발 리볼버 넷 캐처 펌웨어 임베딩 &amp; SLAM 화물 하역
-- **CO2 6연발 리볼버 격발 펌웨어 임베딩 (Firmware Embedding)**:
-  - 회전식 탄창 서보 스텝 모터와 고압 CO2 솔레노이드 밸브 구동 펄스(PWM/GPIO) 타이밍 드라이버를 비행제어기(FC) 인터럽트 서비스 루틴(ISR)에 직결 구현. MAVLink 페이로드 명령과 100% 동기화 격발.
-- **비행제어 PID 커스터마이징 &amp; 50km/h 고속 추격 제어**:
-  - 넷 발사 순간의 강한 공압 반동 충격을 억제하고 **최고 속도 50km/h** 급기동 시 자세가 흩어지지 않도록 PX4/ArduPilot 3축 레이트 PID 제어 루프를 재설계 ($u(t) = K_p e(t) + K_i \int e(\tau)d\tau + K_d \frac{de(t)}{dt} + K_{ff} a_{target}$).
-- **LiDAR SLAM 기반 화물 인양 &amp; 하역장 자율 투하 (Cargo Lift &amp; Drop-off)**:
-  - 3D LiDAR SLAM 실시간 매핑/경로 탐색을 통해 포획된 표적 드론 및 중량물(Cargo)을 인양(Lift)하여 안전 하역 구역(Drop-off Zone)까지 자율 복귀 후 오차 10cm 이내로 안전 투하 완료.
-
-### 1.5 BIV-6 조종사 행동생체인식 &amp; DDIL 암호화 큐 &amp; 온보드 Hailo-8 NPU
-- **BIV-6 에어락**: 조종사 6-DOF 생체역학 벡터 채점으로 단말 탈취 시 0.5초 내 Soft-Cloak 기동 차단.
-- **DDIL SHA-256 큐**: 적 전자전 재밍 시 감시 데이터를 암호화 해시체인에 보관하여 복구 시 누락 0건 동기화.
-- **기체 탑재 Hailo-8 NPU**: 26 TOPS NPU로 60fps 실시간 온보드 객체 인식 및 Gazebo 3D 연동 자율 회피.
-
----
-
-## 2. 요가큐(YogaQ): 온디바이스 비전 AI (Hailo-8L) &amp; 초저지연 하이브리드 RAG 아키텍처
-> **온디바이스 엣지 AI와 시맨틱 검색을 결합하여 클라우드 GPU 비용 0원화와 실시간 생체역학 코칭을 실현한 핵심 설계 결정 (비중 25%)**  
-> 📐 **기술 실증 아키텍처**: [YogaQ 엣지 NPU 및 파이프라인 명세](https://github.com/aiegoo/resume/blob/starRating/technical_references/typesense_rag/YOGA_PROJECT_STRUCTURE_AND_WORKFLOW.md)
-
-### 2.1 클라우드 GPU의 한계와 2단계 분리 가속 (Two-Stage Decoupled Perception)
-- **시스템 인프라 및 기술적 당면 과제**: 30 FPS 비디오 스트림을 클라우드로 전송 시 매트 1대당 **월 $720의 인프라 비용**과 탈의 영상 외부 유출 리스크(GDPR)가 발생함.
-- **2단계 분리 가속**: Stage-1 비전 백본은 13 TOPS Hailo-8L NPU(YOLOv8s-Pose 20.4ms)에서 처리하고, Stage-2 분류기는 ARM Cortex-A76 CPU에서 순수 NumPy 연산(0.018ms)으로 직결. 소형 텐서의 PCIe DMA 버스 왕복 오버헤드(0.5ms) 대비 CPU 직접 연산이 **25배 빠른 초저지연** 달성.
-
-### 2.2 광학 결손 극복: Safe Torso Scale Guard &amp; 디바운서
-- **Safe Torso Scale Guard**: 깊은 전굴 시 2D 몸통 길이가 12배 수축($0.52 \to 0.04$)하여 좌표가 25배 폭발하는 현상을 $\text{scale} = \max(H_{\text{torso}}, 0.250 \cdot ref)$ 하한 클램핑으로 원천 방어 ($max\_abs < 4.81$).
-- **마르코프 5-프레임 디바운서**: `vinyasa_transition` 완충을 통해 수리야 나마스카라 전이 구간 99.9% 확정 상태 잠금.
-
-### 2.3 초저지연 하이브리드 RAG &amp; 인프라 경량화 (Zero Cloud Ingress)
-- **Typesense 하이브리드 RAG**: 165쪽 도서 OCR 지식베이스 기반 Dense(bge-m3 1024차원) + BM25 동적 결합. 신체 금기 조건(디스크·임신) 페널티 마스킹으로 **할루시네이션 85% 차단** (p95 42ms).
-- **$140 단일 어플라이언스**: RPi5 + NPU + 광각 카메라를 PoE 단일 케이블로 구동하여 **월 GPU 인프라 $0.00 달성** (Zero Cloud Ingress). 중앙 클라우드 GPU 연산 부하 0(O(1) 선형 확장성)을 실측 검증하고, 현장 엣지 노드 단독 33.4 FPS 실시간 피드백을 완결하는 시스템 아키텍처 구축.
-
----
-
-## 3. AWS 엔터프라이즈 GenAI &amp; 설명가능한 AI(XAI) 아키텍처 (제주오르미 종합 1위)
-- **Terraform IaC 기반 서버리스 인프라**: Multi-AZ 서브넷, ALB, ECS Fargate, OpenSearch Serverless k-NN 인덱스를 IaC로 100% 자동화 (비중 9%). 문장별 벡터-원문 청크 간 역코사인 유사도 기반 신뢰도 시각화, 장애 시 1.2초 내 AWS Bedrock 무중단 자동 전환 (99.99% 고가용성).
-
----
-
-## 4. 실무 트러블슈팅 및 장애 극복 케이스 스터디 (Production Troubleshoot)
-
-| 핵심 시스템 | 실제 발생한 장애 및 기술적 난제 | 근본 원인 분석 | 엔지니어링 해결책 및 실증 결과 |
-| :--- | :--- | :--- | :--- |
-| **5G 드론 GCS** | 5G 무선망 패킷 손실 시 관제 화면 프리징 및 제어 명령 수초 지연 | TCP 재전송 대기 및 비디오 디코딩 버퍼 지연 누적 | **WebRTC P2P (UDP RTP)** 파이프라인으로 전면 전환하고 적응형 지터 버퍼를 적용하여 지연 시간 200ms 이하 유지 |
-| **Dronus-Net6** | CO2 넷 발사 순간 기체 롤/피치 축이 급격히 기울어지며 50km/h 추격 시 자세 붕괴 | 고압 공압 분출의 강한 반작용력 및 모터 추력 응답 지연 | **가속도 피드포워드(FeedForward) 및 D 게인 선제 억제 알고리즘**을 FC 펌웨어에 이식하여 발사 반동 0.2초 내 수평 복원 완료 |
-| **드론 제어권 충돌** | 4G/5G 고지연 셀룰러 제어 중 긴급 수동 전환 지연으로 충돌 위험 | 원격 클라우드 제어와 로컬 조종기 간 우선순위 중재 메커니즘 부재 | **Direct RF 스틱 변위 감지 제어권 중재기**를 구축하여 물리 스틱 개입 시 **15ms 이내 즉각 수동 조종으로 강제 핸드오버** |
-| **YogaQ 엣지 인식** | 전굴 자세 시 발목/골반 키포인트가 화면 밖으로 25배 폭발 이탈 | 상체 숙임 시 2D 투영 몸통 길이가 12배 수축하여 정규화 분모가 0으로 수렴 | **Safe Torso Scale Guard** 하한 클램핑($0.250 \cdot ref$) 알고리즘을 적용하여 좌표 폭발 100% 방지 ($max\_abs < 4.81$) |
-
-  </script>
-
+  <!-- Script to parse Markdown into Tabs -->
   <script>
-    // Configure Marked
+    const mdResume = "# \uc774\ubcd1\ub0a8 (Byungnam \"Tony\" Lee) \u2014 \uc774\ub825\uc11c (Resume)\n\n---\n\n## \ud83d\udccc 1. \uc778\uc801\uc0ac\ud56d \u00b7 \uc9c0\uc6d0\ubaa9\ud45c \u00b7 \ud559\ub825 \u00b7 \ud575\uc2ec\uc2a4\ud0ac (Profile / Objective / Education / Skillset)\n\n<table style=\"width: 100%; border: none; margin-bottom: 12px;\">\n  <tr>\n    <td style=\"width: 140px; vertical-align: top; border: none; padding-right: 15px;\">\n      <img src=\"profile_formal_suit.png\" alt=\"\uc774\ubcd1\ub0a8 \uc815\uc7a5 \ud504\ub85c\ud544\" width=\"130\" style=\"border-radius: 6px; border: 1px solid #cbd5e1; box-shadow: 0 2px 8px rgba(0,0,0,0.1);\" />\n    </td>\n    <td style=\"vertical-align: top; border: none;\">\n      <table style=\"width: 100%; font-size: 13.5px; border-collapse: collapse;\">\n        <tr>\n          <td style=\"width: 100px; font-weight: 700; background: #f1f5f9; padding: 5px 8px;\">\uc131\uba85 / \uc601\ubb38</td>\n          <td style=\"padding: 5px 8px;\"><strong>\uc774\ubcd1\ub0a8</strong> | Byungnam \"Tony\" Lee</td>\n          <td style=\"width: 100px; font-weight: 700; background: #f1f5f9; padding: 5px 8px;\">\uc9c0\uc6d0 \uc9c1\ubb34</td>\n          <td style=\"padding: 5px 8px;\"><strong style=\"color: #0f766e;\">\ubb34\uc778\uccb4\uacc4(\ub4dc\ub860) \uc784\ubca0\ub514\ub4dc AI &amp; \uc5e3\uc9c0 \uc2dc\uc2a4\ud15c \uc544\ud0a4\ud14d\ud2b8</strong></td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: 700; background: #f1f5f9; padding: 5px 8px;\">\ud76c\ub9dd \uc5f0\ubd09</td>\n          <td style=\"padding: 5px 8px;\"><strong>\ud68c\uc0ac \ub0b4\uaddc\uc5d0 \ub530\ub984 (\uba74\uc811 \ud6c4 \ud611\uc758)</strong></td>\n          <td style=\"font-weight: 700; background: #f1f5f9; padding: 5px 8px;\">\uc5f0\ub77d\ucc98</td>\n          <td style=\"padding: 5px 8px;\">010-2544-1197 | <a href=\"mailto:xraiegoo@gmail.com\">xraiegoo@gmail.com</a></td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: 700; background: #f1f5f9; padding: 5px 8px;\">\ud604\uac70\uc8fc\uc9c0</td>\n          <td colspan=\"3\" style=\"padding: 5px 8px;\">\uacbd\uae30\ub3c4 \uace0\uc591\uc2dc \uc77c\uc0b0\ub3d9\uad6c <em>(\ubcf8\uc801/\ub4f1\ub85d\uc9c0: \uc11c\uc6b8\ud2b9\ubcc4\uc2dc \ub9c8\ud3ec\uad6c \uacf5\ub355\ub3d9)</em></td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: 700; background: #f1f5f9; padding: 5px 8px;\">\uc6f9 \ud3ec\ud138 / GitHub</td>\n          <td colspan=\"3\" style=\"padding: 5px 8px;\">\n            <a href=\"https://github.com/aiegoo\" target=\"_blank\">github.com/aiegoo</a> &nbsp;|&nbsp; \n            <a href=\"https://pf1.eggs.or.kr/portfolio.html\" target=\"_blank\">pf1.eggs.or.kr (\ud3ec\ud2b8\ud3f4\ub9ac\uc624)</a> &nbsp;|&nbsp; \n            <a href=\"https://pf7.eggs.or.kr\" target=\"_blank\">pf7.eggs.or.kr (\uc544\ud0a4\ud14d\ucc98 \ubb38\uc11c \ud5c8\ube0c)</a>\n          </td>\n        </tr>\n        <tr>\n          <td style=\"font-weight: 700; background: #f1f5f9; padding: 5px 8px;\">Core Motto</td>\n          <td colspan=\"3\" style=\"padding: 5px 8px; color: #0f766e; font-weight: 600;\">\n            \"36 Years of Systems Engineering Ahead \u2014 \ud38c\uc6e8\uc5b4\ubd80\ud130 \uc5e3\uc9c0 NPU, \ud074\ub77c\uc6b0\ub4dc \uad00\uc81c\uae4c\uc9c0 \uc5d4\ub4dc\ud22c\uc5d4\ub4dc(End-to-End) \uc544\ud0a4\ud14d\ucc98 \ub2e8\ub3c5 \uc124\uacc4\u00b7\uad6c\ud604\"\n          </td>\n        </tr>\n      </table>\n    </td>\n  </tr>\n</table>\n\n### \ud83c\udfaf \uc9c0\uc6d0 \ubaa9\ud45c (Objective)\n**\"5G \ube44\uac00\uc2dc\uad8c(BVLOS) \uc774\uae30\uc885 \ub4dc\ub860 \uc9c0\uc0c1\uad00\uc81c(GCS), CO2 \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 \ubc0f LiDAR SLAM \uc790\uc728 \ud558\uc5ed \ud38c\uc6e8\uc5b4, \ud589\ub3d9 \uc0dd\uccb4\uc778\uc2dd \uae30\ubc18 Zero-Trust \uc81c\uc5b4\uad8c \uc7a0\uae08, Hailo-8 NPU \uc628\ubcf4\ub4dc \ube44\uc804 AI\ub97c \ub2e8\ub3c5 \uc124\uacc4\u00b7\uad6c\ud604\ud558\uc5ec \ucc28\uc138\ub300 \ubb34\uc778\uccb4\uacc4\uc758 \uc791\uc804 \uc790\uc728\uc131\uacfc \uc6b4\uc6a9 \uc548\uc804\uc131\uc744 \uadf9\ub300\ud654\ud558\uaca0\uc2b5\ub2c8\ub2e4.\"**\n\n### \ud83c\udf93 \ud559\ub825 \uc0ac\ud56d (Education)\n- **University of Maryland (\ubbf8\uad6d \uba54\ub9b4\ub79c\ub4dc\ub300)** | **1985.08 ~ 1994.06 (\uc878\uc5c5)**\n  - \uc804\uacf5: **\uacbd\uc601\ud559 \ud559\uc0ac (Management / Computer &amp; Information Science)** \u2022 **TOEFL 627\uc810** (\uc6d0\uc5b4\ubbfc\uae09 \uae30\uc220 \ubb38\uc11c \uc791\uc131\u00b7\ud611\uc0c1)\n\n### \ud83d\udee0\ufe0f \uc9c1\ubb34 \ud575\uc2ec \ucf54\ub529 \uc2a4\ud0ac\uc14b (Coding Skillset)\n- **Drone C2 &amp; Avionics (66%)**: **5G BVLOS Cloud GCS** (gcs-uno / Webix Jet), **STM32/PX4 \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529 (Firmware Embedding)**, **\ub4dc\ub860 PID \ucee4\uc2a4\ud130\ub9c8\uc774\uc9d5 (\ucd5c\ub300 50km/h \uace0\uc18d \ucd94\uaca9)**, **CO2 \ucd94\uc9c4 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 (Dronus-Net6)**, **LiDAR SLAM \uc790\uc728 \uacbd\ub85c \ud0d0\uc0c9 &amp; \ud654\ubb3c \uc778\uc591/Drop-off \ud22c\ud558 \uc81c\uc5b4**, **MAVLink v1/v2**, **ROS2**, **DJI PSDK**, **Betaflight MSP**, **K-MOSA \ubc00\uc2a4\ud399**, **WebRTC \uc800\uc9c0\uc5f0 \uc601\uc0c1 (&lt; 200ms)**, **Direct RF(ELRS/CRSF) \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30**, **BIV-6 \ud589\ub3d9 \uc0dd\uccb4\uc778\uc2dd \uc81c\uc5b4 \uc5d0\uc5b4\ub77d**, **DDIL SHA-256 \ud050**, QGroundControl Qt5 HUD\n- **Edge AI &amp; Vision NPU (25%)**: **Hailo-8 (26 TOPS) / Hailo-8L (13 TOPS) DFC \ucef4\ud30c\uc77c (INT8 HEF)**, **YOLOv8s / YOLOv8s-Pose 60fps**, **2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778 (NPU 20.4ms + ARM CPU Pure NumPy 0.018ms)**, **Safe Torso Scale Guard**, 3D \uacf5\uac04 \ub9ac\ud504\ud305, \ub9c8\ub974\ucf54\ud504 5-\ud504\ub808\uc784 \ub514\ubc14\uc6b4\uc11c, PyHailoRT, OpenCV\n- **Backend &amp; Cloud (9%)**: **Typesense Hybrid Search (Dense bge-m3 1024\ucc28\uc6d0 + BM25, p95 42ms)**, **AWS (CLF-C02 \uc790\uaca9 \ucde8\ub4dd)**, **ECS Fargate**, **OpenSearch Serverless**, **AWS Bedrock \ubb34\uc911\ub2e8 Failover**, Redis Pub/Sub \ube44\ub3d9\uae30 \ud050, FastAPI, Docker, Linux/WSL2\n\n---\n\n## \ud83d\ude80 2. \ud575\uc2ec \uc218\ud589 \uc5ed\ub7c9 \ubc0f \uc2e4\uc99d \uc9c0\ud45c (Core Competencies &amp; Metrics)\n\n| \ud575\uc2ec \uc218\ud589 \uc5ed\ub7c9 | \ub0b4\uac00 \ubd84\uba85\ud788 \uc218\ud589\ud560 \uc218 \uc788\ub294 \uad6c\uccb4\uc801 \uc2e4\ubb34 \uc5ed\ub7c9 | \uac80\uc99d \uc9c0\ud45c \ubc0f \uc0b0\ucd9c\ubb3c |\n| :--- | :--- | :--- |\n| **1. 5G BVLOS \ub4dc\ub860 GCS &amp; \uc774\uae30\uc885 \uad00\uc81c**<br>*(\ubb34\uc778\uccb4\uacc4 \ud1b5\uc2e0/\ubbf8\ub4e4\uc6e8\uc5b4 \u2014 \ube44\uc911 35%)* | \u2022 5G \ubb34\uc120\ub9dd \uae30\ubc18 \ucd08\uc800\uc9c0\uc5f0 WebRTC P2P \ube44\ub514\uc624/\ud154\ub808\uba54\ud2b8\ub9ac \ud30c\uc774\ud504\ub77c\uc778 \uad6c\ucd95<br>\u2022 MAVLink v2, DJI PSDK, Betaflight MSP, K-MOSA 4\uc885 \ud504\ub85c\ud1a0\ucf5c \ud1b5\ud569 \uc815\uaddc\ud654 \ube0c\ub9ac\uc9c0 \uc124\uacc4<br>\u2022 Direct RF(ELRS 250Hz/CRSF) \uc2a4\ud2f1 \uac1c\uc785 \uc2dc 15ms \uc774\ub0b4 \uc218\ub3d9 \uc870\uc885 \uac15\uc81c \uc808\uccb4 \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30 \uad6c\ud604 | \u2022 **WebRTC \uc885\ub2e8\uac04 \uc9c0\uc5f0 200ms \uc774\ud558 \uc2e4\uce21**<br>\u2022 4\uc885 \uc774\uae30\uc885 \uae30\uccb4 \ub3d9\uc2dc \uad00\uc81c \ubc0f \uc790\uc728 \ud3b8\ub300 \ube44\ud589<br>\u2022 [\ub4dc\ub860 GCS \uc0dd\ud0dc\uacc4 \uc544\ud0a4\ud14d\ucc98 \uba85\uc138](https://pf7.eggs.or.kr) |\n| **2. CO2 \ub137 \uce90\ucc98 &amp; SLAM \ud654\ubb3c \ud558\uc5ed \ub4dc\ub860**<br>*(\uae30\uccb4 \ud38c\uc6e8\uc5b4/SLAM/PID \u2014 \ube44\uc911 31%)* | \u2022 CO2 \ucd94\uc9c4 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 \ud38c\uc6e8\uc5b4 STM32/PX4 \uc778\ud130\ub7fd\ud2b8(ISR) \uc9c1\uacb0 \uc784\ubca0\ub529<br>\u2022 50km/h \uace0\uc18d \uc694\uaca9 \ubc0f \ubc1c\uc0ac \ubc18\ub3d9 \uc5b5\uc81c\ub97c \uc704\ud55c PID\u00b7\uac00\uc18d\ub3c4 \ud53c\ub4dc\ud3ec\uc6cc\ub4dc \ud29c\ub2dd(0.2\ucd08 \ub0b4 \uc218\ud3c9 \ubcf5\uc6d0)<br>\u2022 3D LiDAR SLAM \uae30\ubc18 \ud45c\uc801\u00b7\ud654\ubb3c \uc778\uc591(Lift) \ubc0f \uc9c0\uc815 \uad6c\uc5ed(Drop-off Zone) \uc815\ubc00 \ud22c\ud558(\uc624\ucc28 10cm \uc774\ub0b4) | \u2022 **50km/h \uace0\uc18d \ube44\ud589 \uc548\uc815\uc131 &amp; \ub137 \ubc18\ub3d9 \ubcf5\uc6d0**<br>\u2022 SLAM \uae30\ubc18 \uc790\uc728 \ud558\uc5ed \uacbd\ub85c \uc624\ucc28 10cm \uc774\ub0b4<br>\u2022 [Dronus-Net6 \ub808\ud37c\ub7f0\uc2a4](https://github.com/aiegoo/Uc-dronusnet6) |\n| **3. \uc628\ub514\ubc14\uc774\uc2a4 NPU \ube44\uc804 AI &amp; 3D \ubcf5\uc6d0**<br>*(YogaQ Edge AI &amp; RAG \u2014 \ube44\uc911 25%)* | \u2022 13 TOPS Hailo-8L NPU(20.4ms) + ARM Cortex-A76 CPU(\uc21c\uc218 NumPy 0.018ms) 2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778 \uc124\uacc4<br>\u2022 \uae09\uac01\ub3c4 \uc6d0\uadfc \ud22c\uc601 \uc65c\uace1\uc5d0 \ub530\ub978 25\ubc30 \uc88c\ud45c \ud3ed\ubc1c\uc744 Safe Torso Scale Guard($max\\_abs < 4.81$)\ub85c \uc5b5\uc81c<br>\u2022 165\ucabd \ub3c4\uc11c OCR \uc9c0\uc2dd\ubca0\uc774\uc2a4 \uae30\ubc18 Typesense \ud558\uc774\ube0c\ub9ac\ub4dc RAG (p95 42ms, \ud560\ub8e8\uc2dc\ub124\uc774\uc158 85% \ucc28\ub2e8) | \u2022 **33.4 FPS \uc2e4\uc2dc\uac04 \ucd94\ub860 \uc644\uacb0 / \ub77c\ubca8 \uc9c0\ud130 \uc81c\ub85c**<br>\u2022 **$140 \ub2e8\uc77c \uc5b4\ud50c\ub77c\uc774\uc5b8\uc2a4\ub85c \uc6d4 GPU $720 \uc81c\uac70(Zero Cloud Egress)**<br>\u2022 [YogaQ \uc5e3\uc9c0 NPU \uc544\ud0a4\ud14d\ucc98 \uba85\uc138](https://pf7.eggs.or.kr) |\n| **4. \uc5d4\ud130\ud504\ub77c\uc774\uc988 Cloud AI &amp; XAI**<br>*(Cloud &amp; GenAI \u2014 \ube44\uc911 9%)* | \u2022 Terraform IaC \uae30\ubc18 AWS ECS Fargate &amp; OpenSearch Serverless k-NN \ud074\ub7ec\uc2a4\ud130 100% \uc790\ub3d9\ud654 \ubc30\ud3ec<br>\u2022 \ubb38\uc7a5\ubcc4 \ubca1\ud130-\uc6d0\ubb38 \uccad\ud06c \uc5ed\ucf54\uc0ac\uc778 \uc720\uc0ac\ub3c4 \uae30\ubc18 XAI \uc2e0\ub8b0\ub3c4 \uac80\uc99d \uc5d4\uc9c4 \ubc0f 1.2\ucd08 \ub0b4 Bedrock \ubb34\uc911\ub2e8 \ud398\uc77c\uc624\ubc84 | \u2022 **\ucea0\ud504 \uc804\uccb4 1\uc704 \ud300 \uc6b0\uc218\uc0c1 &amp; \uac1c\uc778 \ucd5c\uc6b0\uc218\uc0c1**<br>\u2022 \uc7a5\uc560 \uc2dc 1.2\ucd08 \ub0b4 Bedrock \ubb34\uc911\ub2e8 \uc790\ub3d9 \uc804\ud658 |\n\n---\n\n## \ud83d\udcbc 3. \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uacbd\ub825 \ubc0f \uc9d1\uc911 R&amp;D (Work Experience \u2014 Strict Reverse-Chronological)\n\n### 1. \uc81c\uc8fc\uc624\ub974\ubbf8\ucea0\ud504 (AI / Cloud Intensive)\n- **\uc5ed\ud560**: **\ud300 \ub9ac\ub4dc &amp; \ud074\ub77c\uc6b0\ub4dc AI \uc544\ud0a4\ud14d\ud2b8** (\ud480\ud0c0\uc784) | **2025.10 ~ 2025.12**\n- **\ud575\uc2ec \uc131\uacfc**: Terraform IaC \uae30\ubc18 AWS ECS Fargate \ubc0f OpenSearch Serverless k-NN \ud074\ub7ec\uc2a4\ud130 100% \uc790\ub3d9\ud654 \ubc30\ud3ec. \ubb38\uc7a5\ubcc4 \ubca1\ud130-\uc6d0\ubb38 \uccad\ud06c \uc5ed\ucf54\uc0ac\uc778 \uc720\uc0ac\ub3c4 \uae30\ubc18 XAI \uc2e0\ub8b0\ub3c4 \uac80\uc99d \uc5d4\uc9c4 \ubc0f \ub85c\uceec \uc7a5\uc560 \uc2dc 1.2\ucd08 \ub0b4 AWS Bedrock \ubb34\uc911\ub2e8 \ud398\uc77c\uc624\ubc84 \uad6c\ud604. **\ucea0\ud504 \uc885\ud569 \ud3c9\uac00 1\uc704 \ud300 \ud504\ub85c\uc81d\ud2b8 \uc6b0\uc218\uc0c1 &amp; \uac1c\uc778 \uc131\uc801 \ucd5c\uc6b0\uc218\uc0c1 \ub3d9\uc2dc \uc218\uc0c1**.\n\n---\n\n### 2. \uc720\ucf58\ud06c\ub9ac\uc5d0\uc774\ud2f0\ube0c(\uc8fc) (Ucon Creative Co., Ltd.)\n- **\uc9c1\ucc45**: **\uac1c\ubc1c\uc2e4\uc7a5 / Head of Engineering** (\uc815\uaddc\uc9c1) | **2023.05 ~ 2025.08 (2\ub144 4\uac1c\uc6d4)**\n- **\ud575\uc2ec \uc5ed\ud560 \ubc0f \uc131\uacfc**:\n  - **Dronus-Net6 \uc548\ud2f0\ub4dc\ub860(C-UAS) \ube44\ud30c\uad34 \ud3ec\ud68d \ubc0f \uc790\uc728 \ud558\uc5ed \uccb4\uacc4 (\ub4dc\ub860 \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \u2014 \ube44\uc911 40%)**:\n    - **\uace0\uc555 CO2 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529**: \uace0\uc555 CO2 \uc194\ub808\ub178\uc774\ub4dc \ubc38\ube0c \ubc0f 6\uc5f0\ubc1c \uc11c\ubcf4 \ud68c\uc804 \ud0c4\ucc3d \ub4dc\ub77c\uc774\ubc84\ub97c STM32/PX4 \ube44\ud589\uc81c\uc5b4\uae30(FC) \uc778\ud130\ub7fd\ud2b8(ISR)\uc5d0 \uc9c1\uacb0 \uc784\ubca0\ub529, MAVLink \ud398\uc774\ub85c\ub4dc \uba85\ub839 \ud2b8\ub9ac\uac70 \uc5f0\ub3d9.\n    - **\ube44\ud589\uc81c\uc5b4 PID \ucee4\uc2a4\ud130\ub9c8\uc774\uc9d5 &amp; 50km/h \uace0\uc18d \ucd94\uaca9 \uc81c\uc5b4**: 50km/h \uace0\uc18d \uc694\uaca9 \ubc0f \ubc1c\uc0ac \ubc18\ub3d9 \uc5b5\uc81c\ub97c \uc704\ud55c PID\u00b7\uac00\uc18d\ub3c4 \ud53c\ub4dc\ud3ec\uc6cc\ub4dc \ud29c\ub2dd(0.2\ucd08 \ub0b4 \uc218\ud3c9 \ubcf5\uc6d0).\n    - **3D LiDAR SLAM \uae30\ubc18 \ud654\ubb3c \uc778\uc591 &amp; \ud558\uc5ed\uc7a5 \uc790\uc728 \ud22c\ud558**: 3D LiDAR SLAM \uae30\ubc18 \ud45c\uc801\u00b7\ud654\ubb3c \uc778\uc591(Lift) \ubc0f \uc9c0\uc815 \uad6c\uc5ed(Drop-off Zone) \uc815\ubc00 \ud22c\ud558(\uc624\ucc28 10cm \uc774\ub0b4) \uad6c\ud604.\n  - **\uc694\uac00\ud050(YogaQ) \uc628\ub514\ubc14\uc774\uc2a4 \ube44\uc804 AI &amp; \uc0dd\uccb4\uc5ed\ud559 RAG \ud50c\ub7ab\ud3fc (\ube44\uc911 25%)**:\n    - **2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778**: 13 TOPS Hailo-8L NPU(YOLOv8s-Pose 20.4ms)\uc640 ARM Cortex-A76 CPU(\uc21c\uc218 NumPy \ubd84\ub958 0.018ms) 2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778 \uc124\uacc4(PCIe DMA \uc624\ubc84\ud5e4\ub4dc 0.5ms \ub300\ube44 25\ubc30 \ub2e8\ucd95).\n    - **Safe Torso Scale Guard &amp; \ub514\ubc14\uc6b4\uc11c**: \uae09\uac01\ub3c4 \uc6d0\uadfc \ud22c\uc601 \uc65c\uace1\uc5d0 \ub530\ub978 25\ubc30 \uc88c\ud45c \ud3ed\ubc1c\uc744 \ud558\ud55c \ud074\ub7a8\ud551($\\text{scale} = \\max(H_{\\text{torso}}, 0.250 \\cdot ref)$)\uc73c\ub85c \uc5b5\uc81c ($max\\_abs < 4.81$) \ubc0f \ub9c8\ub974\ucf54\ud504 5-\ud504\ub808\uc784 \ub514\ubc14\uc6b4\uc11c \uad6c\ud604.\n    - **\uc644\uc804 \uc628\ub514\ubc14\uc774\uc2a4 \ub3c5\ub9bd \ucd94\ub860 (Zero Cloud Egress)**: $140 PoE \ub2e8\uc77c \uc5e3\uc9c0 \uc5b4\ud50c\ub77c\uc774\uc5b8\uc2a4\ub85c 33.4 FPS \uc2e4\uc2dc\uac04 \ucd94\ub860\uc744 \uc644\uacb0\ud558\uc5ec \ud074\ub77c\uc6b0\ub4dc GPU \uc778\ud504\ub77c \ube44\uc6a9($720/\uc6d4)\uc744 \uc81c\uac70(Zero Cloud Egress).\n\n---\n\n### 3. (\uc8fc)\uc81c\uc774\ub514\ub7a9 (JDLab Co., Ltd.)\n- **\uc9c1\ucc45**: **\uc218\uc11d\uc5f0\uad6c\uc6d0 / Principal Engineer** (\uc815\uaddc\uc9c1) | **2022.02 ~ 2022.05 (4\uac1c\uc6d4 \ubc0f \uc5f0\uc18d \uc5f0\uad6c)**\n- **\ud575\uc2ec \uc131\uacfc**: 5G BVLOS \ud658\uacbd\uc5d0\uc11c UDP \uae30\ubc18 WebRTC P2P \uc2a4\ud2b8\ub9ac\ubc0d \ud30c\uc774\ud504\ub77c\uc778\uc744 \uad6c\ucd95\ud574 \uc885\ub2e8\uac04(E2E) \uc601\uc0c1\u00b7\ud154\ub808\uba54\ud2b8\ub9ac \uc9c0\uc5f0 200ms \uc774\ud558 \ub2ec\uc131. MAVLink v2, DJI PSDK, Betaflight MSP, K-MOSA 4\uc885 \uc774\uae30\uc885 \ud504\ub85c\ud1a0\ucf5c \ud1b5\ud569 \uc815\uaddc\ud654 \ube0c\ub9ac\uc9c0 \ubc0f \ubb3c\ub9ac \uc870\uc885\uae30(ELRS 250Hz / TBS CRSF) \uc2a4\ud2f1 \uac1c\uc785 \uc2dc 15ms \uc774\ub0b4 \uc218\ub3d9 \uc870\uc885\uc73c\ub85c \uac15\uc81c \uc808\uccb4\ud558\ub294 \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30(Control Authority Arbiter) \uad6c\ud604. \uc870\uc885\uc0ac 6-DOF \ud589\ub3d9 \uc0dd\uccb4\uc778\uc2dd \uae30\ubc18 0.5\ucd08 Soft-Cloak \uc81c\uc5b4\uad8c \uc7a0\uae08(Control Air-Gap) \uc124\uacc4.\n\n---\n\n### 4. \uc774\uc804 \uae30\ubc18 \uacbd\ub825 \uc694\uc57d (Foundational Experience Overview)\n- **2020.02 ~ 2020.12 | \ud558\uc774\ud14c\ud06c \u2014 \uac1c\ubc1c\ud300\uc7a5**: \uc800\uc804\ub825 IoT \uc13c\uc11c \ub178\ub4dc \uc784\ubca0\ub514\ub4dc \ud38c\uc6e8\uc5b4 \ubc0f MQTT/LTE \uc6d0\uaca9 \uad00\uc81c \uc2dc\uc2a4\ud15c \uad6c\ucd95 (\uc804\ub825 \ucd5c\uc801\ud654\ub85c \ubc30\ud130\ub9ac \uc218\uba85 2.5\ubc30 \uc5f0\uc7a5).\n- **2019.03 ~ 2019.09 | \uc628\uc624\ud504\ub9c1\ud06c \u2014 \uac1c\ubc1c\ucc45\uc784**: Asterisk/FreePBX \uae30\ubc18 \ub300\uc6a9\ub7c9 VoIP CTI \uc74c\uc131 \ucc98\ub9ac \uc194\ub8e8\uc158 \ubc0f VR \uc2e4\uc2dc\uac04 \ud1b5\uc2e0 \uc5f0\ub3d9 \ubaa8\ub4c8 \uac1c\ubc1c.\n- **2014.07 ~ 2018.06 | \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uc804\ud5a5 \ubc0f \uc9d1\uc911 \ub3c5\ud559 (\uc77c\uc0b0)**: *\"36 Years of Systems Engineering Ahead\"*\ub97c \ubaa8\ud1a0\ub85c \ube44\uc988\ub2c8\uc2a4\u00b7\uad50\uc721 \ucee4\ub9ac\uc5b4\uc5d0\uc11c \uc18c\ud504\ud2b8\uc6e8\uc5b4 \ubc0f \uc784\ubca0\ub514\ub4dc \uc2dc\uc2a4\ud15c \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1\uc73c\ub85c \uc804\ud5a5, \uae30\ucd08 \uc804\uc0b0\ud559 \ubc0f \ub9ac\ub205\uc2a4\u00b7C/Python \uc9d1\uc911 \ud559\uc2b5.\n- **2005.12 ~ 2014.06 | (\uc8fc)\uc774\uc624\uc988 / \uc720\ub9bcADS \u2014 \uae30\ud68d\uc2e4\uc7a5 / \ucd1d\uad04 PM**: \uc804\uc790\uc815\ubd80 \uacf5\uacf5 \uc815\ubcf4\ud654 \uc0ac\uc5c5 \uc81c\uc548\u00b7\uc218\uc8fc \ucd1d\uad04 \ubc0f \ub300\uae30\uc5c5 B2B IT \ud504\ub85c\uc81d\ud2b8 \uad00\ub9ac.\n- **1985.03 ~ 2014.02 | \uae30\uc5c5 \ube44\uc988\ub2c8\uc2a4 \uc601\uc5b4 \ucee8\uc124\ud134\ud2b8 &amp; \ub300\ud45c\uac15\uc0ac (\ubcd1\ud589)**: \uc0bc\uc131HP, SK\ud154\ub808\ucf64, \ud604\ub300\uc790\ub3d9\ucc28 \ub4f1 \uc8fc\uc694 \ub300\uae30\uc5c5 \uc0ac\ub0b4 \uc784\uc9c1\uc6d0 \ub300\uc0c1 \uae00\ub85c\ubc8c \uae30\uc220\u00b7\ube44\uc988\ub2c8\uc2a4 \ucee4\ubba4\ub2c8\ucf00\uc774\uc158 \ucee8\uc124\ud305(\ub204\uc801 10,000+\uba85 \uad50\uc721).\n\n---\n\n## \ud83d\udcda 4. \uc9c1\ubb34 \uad50\uc721\u00b7\uc790\uaca9 \ubc0f \ud559\ub825 (Strict Reverse-Chronological)\n\n| \uae30\uac04 | \uad6c\ubd84 | \uae30\uad00 / \uc790\uaca9\uba85 | \ud575\uc2ec \ub0b4\uc6a9 \ubc0f \uac80\uc99d \uc131\uacfc |\n| :--- | :--- | :--- | :--- |\n| **2025.11** | \uc790\uaca9 | **AWS Certified Cloud Practitioner (CLF-C02)** | \ud074\ub77c\uc6b0\ub4dc \uc544\ud0a4\ud14d\ucc98, \ubcf4\uc548, \uc11c\ubc84\ub9ac\uc2a4 \uc778\ud504\ub77c \uc5ed\ub7c9 \uc778\uc99d |\n| **2025.10 ~ 2025.12** | \uad50\uc721\u00b7\uc218\uc0c1 | **\uc81c\uc8fc\uc624\ub974\ubbf8\ucea0\ud504 (AI/Cloud)** | AWS ECS Fargate, OpenSearch, Bedrock \uae30\ubc18 RAG/XAI \uad6c\ucd95 \u2022 **\uc885\ud569 1\uc704 \ud300 \uc6b0\uc218\uc0c1 &amp; \uac1c\uc778 \ucd5c\uc6b0\uc218\uc0c1** |\n| **2020.07 ~ 2021.06** | \uad50\uc721\u00b7\uc790\uaca9 | **\ud55c\uad6d\uc804\ud30c\uc9c4\ud765\ud611\ud68c (RAPA, 1,080h)** | 5G \uc790\uc728\uc8fc\ud589\u00b7\ubb34\uc778\uccb4\uacc4(C++, ROS/ROS2, Gazebo, FastSLAM, Voronoi, Hailo NPU) \u2022 **\ucd08\uacbd\ub7c9\ube44\ud589\uc7a5\uce58 \uba40\ud2f0\ucf65\ud130 1\uc885 \uc870\uc885\uc790 \ucde8\ub4dd** (\ube44\ud589 1,000+\uc2dc\uac04) |\n| **2018.07 ~ 2019.01** | \uad50\uc721 | **\ud558\uc774\ubbf8\ub514\uc5b4 \uc544\uce74\ub370\ubbf8 (1,120h)** | \ud480\uc2a4\ud0dd \uc18c\ud504\ud2b8\uc6e8\uc5b4 \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uc9d1\uc911 \uc774\uc218 (Java, JS, MySQL, \ube44\ub3d9\uae30 \ub124\ud2b8\uc6cc\ud06c \ud1b5\uc2e0) |\n| **1985.08 ~ 1994.06** | \ud559\ub825\u00b7\uc5b4\ud559 | **University of Maryland (\ubbf8\uad6d \uba54\ub9b4\ub79c\ub4dc\ub300)** | **\uacbd\uc601\ud559 \ud559\uc0ac (Management / Computer &amp; Information Science)** \u2022 **TOEFL 627\uc810** (\uc6d0\uc5b4\ubbfc\uae09 \uae30\uc220 \ubb38\uc11c \uc791\uc131\u00b7\ud611\uc0c1) |\n";
+    const mdCareer = "# \uc774\ubcd1\ub0a8 (Byungnam \"Tony\" Lee) \u2014 \uae30\uc220 \uacbd\ub825\uc11c (Technical Career Description)\n### \ubb34\uc778\uccb4\uacc4(\ub4dc\ub860) \uc784\ubca0\ub514\ub4dc AI &amp; \uc5e3\uc9c0 \uc2dc\uc2a4\ud15c \uc544\ud0a4\ud14d\ud2b8 \uc2e4\ubb34 \uae30\uc220 \uacbd\ub825\uc11c\n\n> **\"5G \ube44\uac00\uc2dc\uad8c(BVLOS) \uc774\uae30\uc885 \ub4dc\ub860 \uc9c0\uc0c1\uad00\uc81c(GCS), CO2 \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 \ubc0f LiDAR SLAM \uc790\uc728 \ud558\uc5ed \ud38c\uc6e8\uc5b4, \ud589\ub3d9 \uc0dd\uccb4\uc778\uc2dd \uae30\ubc18 Zero-Trust \uc81c\uc5b4\uad8c \uc7a0\uae08, Hailo-8 NPU \uc628\ubcf4\ub4dc \ube44\uc804 AI\ub97c \ub2e8\ub3c5 \uc124\uacc4\u00b7\uad6c\ud604\ud558\uc5ec \ucc28\uc138\ub300 \ubb34\uc778\uccb4\uacc4\uc758 \uc791\uc804 \uc790\uc728\uc131\uacfc \uc6b4\uc6a9 \uc548\uc804\uc131\uc744 \uadf9\ub300\ud654\ud558\uaca0\uc2b5\ub2c8\ub2e4.\"**\n\n---\n\n## \ud83c\udfaf \uc9c0\uc6d0 \uc9c1\ubb34 \ubc0f \uc785\uc99d\ub41c \ud575\uc2ec \uc5ed\ub7c9 (Target Role &amp; Verified Competencies)\n\n### **\uc9c0\uc6d0 \ubd84\uc57c: \ubb34\uc778\uccb4\uacc4(\ub4dc\ub860) \uc784\ubca0\ub514\ub4dc AI &amp; \uc5e3\uc9c0 \uc2dc\uc2a4\ud15c \uc544\ud0a4\ud14d\ud2b8**\n> **\"\uc785\uc0ac \uccab\ub0a0\ubd80\ud130 5G BVLOS \ub4dc\ub860 \uad00\uc81c\ub9dd \uad6c\ucd95, \uae30\uccb4 \uc784\ubca0\ub514\ub4dc \ud38c\uc6e8\uc5b4 \ubc0f CO2 \ub137 \uce90\ucc98 \uba54\ucee4\ub2c8\uc998 \uc81c\uc5b4, 50km/h PID \ucee4\uc2a4\ud130\ub9c8\uc774\uc9d5, SLAM \uae30\ubc18 \uc790\uc728 \ud558\uc5ed \uacbd\ub85c \uc0dd\uc131, \uc774\uae30\uc885 \ud504\ub85c\ud1a0\ucf5c \ube0c\ub9ac\uc9c0 \ubc0f Direct RF \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30\ub97c \uc5d4\ub4dc\ud22c\uc5d4\ub4dc\ub85c \ub2e8\ub3c5 \uc124\uacc4\u00b7\uad6c\ud604\ud560 \uc218 \uc788\ub294 \uc5ed\ub7c9\uc744 \uc785\uc99d\ud569\ub2c8\ub2e4.\"**\n\n| \ud575\uc2ec \uc218\ud589 \uc5ed\ub7c9 | \ub0b4\uac00 \ubd84\uba85\ud788 \uc218\ud589\ud560 \uc218 \uc788\ub294 \uad6c\uccb4\uc801 \uc2e4\ubb34 \uc5ed\ub7c9 | \uac80\uc99d \uc9c0\ud45c \ubc0f \uc0b0\ucd9c\ubb3c |\n| :--- | :--- | :--- |\n| **1. 5G BVLOS \ub4dc\ub860 GCS &amp; \uc774\uae30\uc885 \uad00\uc81c**<br>*(\ubb34\uc778\uccb4\uacc4 \ud1b5\uc2e0/\ubbf8\ub4e4\uc6e8\uc5b4 \u2014 \ube44\uc911 35%)* | \u2022 5G \ubb34\uc120\ub9dd \uae30\ubc18 \ucd08\uc800\uc9c0\uc5f0 WebRTC P2P \ube44\ub514\uc624/\ud154\ub808\uba54\ud2b8\ub9ac \ud30c\uc774\ud504\ub77c\uc778 \uad6c\ucd95<br>\u2022 MAVLink v2, DJI PSDK, Betaflight MSP, K-MOSA 4\uc885 \ud504\ub85c\ud1a0\ucf5c \ud1b5\ud569 \uc815\uaddc\ud654 \ube0c\ub9ac\uc9c0 \uc124\uacc4<br>\u2022 Direct RF(ELRS 250Hz/CRSF) \uc2a4\ud2f1 \uac1c\uc785 \uc2dc 15ms \uc774\ub0b4 \uc218\ub3d9 \uc870\uc885 \uac15\uc81c \uc808\uccb4 \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30 \uad6c\ud604 | \u2022 **WebRTC \uc885\ub2e8\uac04 \uc9c0\uc5f0 200ms \uc774\ud558 \uc2e4\uce21**<br>\u2022 4\uc885 \uc774\uae30\uc885 \uae30\uccb4 \ub3d9\uc2dc \uad00\uc81c \ubc0f \uc790\uc728 \ud3b8\ub300 \ube44\ud589<br>\u2022 [\ub4dc\ub860 GCS \uc0dd\ud0dc\uacc4 \uc544\ud0a4\ud14d\ucc98 \uba85\uc138](https://pf7.eggs.or.kr) |\n| **2. CO2 \ub137 \uce90\ucc98 &amp; SLAM \ud654\ubb3c \ud558\uc5ed \ub4dc\ub860**<br>*(\uae30\uccb4 \ud38c\uc6e8\uc5b4/SLAM/PID \u2014 \ube44\uc911 31%)* | \u2022 CO2 \ucd94\uc9c4 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 \ud38c\uc6e8\uc5b4 STM32/PX4 \uc778\ud130\ub7fd\ud2b8(ISR) \uc9c1\uacb0 \uc784\ubca0\ub529<br>\u2022 50km/h \uace0\uc18d \uc694\uaca9 \ubc0f \ubc1c\uc0ac \ubc18\ub3d9 \uc5b5\uc81c\ub97c \uc704\ud55c PID\u00b7\uac00\uc18d\ub3c4 \ud53c\ub4dc\ud3ec\uc6cc\ub4dc \ud29c\ub2dd(0.2\ucd08 \ub0b4 \uc218\ud3c9 \ubcf5\uc6d0)<br>\u2022 3D LiDAR SLAM \uae30\ubc18 \ud45c\uc801\u00b7\ud654\ubb3c \uc778\uc591(Lift) \ubc0f \uc9c0\uc815 \uad6c\uc5ed(Drop-off Zone) \uc815\ubc00 \ud22c\ud558(\uc624\ucc28 10cm \uc774\ub0b4) | \u2022 **50km/h \uace0\uc18d \ube44\ud589 \uc548\uc815\uc131 &amp; \ub137 \ubc18\ub3d9 \ubcf5\uc6d0**<br>\u2022 SLAM \uae30\ubc18 \uc790\uc728 \ud558\uc5ed \uacbd\ub85c \uc624\ucc28 10cm \uc774\ub0b4<br>\u2022 [Dronus-Net6 \ub808\ud37c\ub7f0\uc2a4](https://github.com/aiegoo/Uc-dronusnet6) |\n| **3. \uc628\ub514\ubc14\uc774\uc2a4 NPU \ube44\uc804 AI &amp; 3D \ubcf5\uc6d0**<br>*(YogaQ Edge AI &amp; RAG \u2014 \ube44\uc911 25%)* | \u2022 13 TOPS Hailo-8L NPU(20.4ms) + ARM Cortex-A76 CPU(\uc21c\uc218 NumPy 0.018ms) 2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778 \uc124\uacc4<br>\u2022 \ub2e8\uc77c 2D \uce74\uba54\ub77c \uae09\uac01\ub3c4 \uc6d0\uadfc \uc65c\uace1\uc5d0 \ub530\ub978 25\ubc30 \uc88c\ud45c \ubc1c\uc0b0\uc744 Safe Torso Scale Guard($max\\_abs < 4.81$)\ub85c \uc5b5\uc81c<br>\u2022 165\ucabd \ub3c4\uc11c OCR \uc9c0\uc2dd\ubca0\uc774\uc2a4 \uae30\ubc18 Typesense \ud558\uc774\ube0c\ub9ac\ub4dc RAG (p95 42ms, \ud560\ub8e8\uc2dc\ub124\uc774\uc158 85% \ucc28\ub2e8) | \u2022 **33.4 FPS \uc2e4\uc2dc\uac04 \ucd94\ub860 \uc644\uacb0 / \ub77c\ubca8 \uc9c0\ud130 \uc81c\ub85c**<br>\u2022 **$140 \ub2e8\uc77c \uc5b4\ud50c\ub77c\uc774\uc5b8\uc2a4\ub85c \uc6d4 GPU $720 \uc81c\uac70 (Zero Cloud Egress)**<br>\u2022 [YogaQ \uc5e3\uc9c0 NPU \uc544\ud0a4\ud14d\ucc98 \uba85\uc138](https://pf7.eggs.or.kr) |\n\n---\n\n### \ud83e\udded 1. \ucee4\ub9ac\uc5b4 \ud53c\ubd07 &amp; \uc774\uc804 \uacbd\ub825 \uc694\uc57d (Career Pivot &amp; Background)\n* **2014.07 ~ 2018.06 | \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uc804\ud5a5 \ubc0f \uc9d1\uc911 \ub3c5\ud559 (\uc77c\uc0b0)**: *\"36 Years of Systems Engineering Ahead\"*\ub97c \ubaa8\ud1a0\ub85c \ube44\uc988\ub2c8\uc2a4\u00b7\uad50\uc721 \ucee4\ub9ac\uc5b4\uc5d0\uc11c \uc18c\ud504\ud2b8\uc6e8\uc5b4 \ubc0f \uc784\ubca0\ub514\ub4dc \uc2dc\uc2a4\ud15c \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1\uc73c\ub85c \uc804\ud5a5, \uae30\ucd08 \uc804\uc0b0\ud559 \ubc0f \ub9ac\ub205\uc2a4\u00b7C/Python \uc9d1\uc911 \ud559\uc2b5.\n* **2005.12 ~ 2014.06 | (\uc8fc)\uc774\uc624\uc988 / \uc720\ub9bcADS \u2014 \uae30\ud68d\uc2e4\uc7a5 / \ucd1d\uad04 PM**: \uc804\uc790\uc815\ubd80 \uacf5\uacf5 \uc815\ubcf4\ud654 \uc0ac\uc5c5 \uc81c\uc548\u00b7\uc218\uc8fc \ucd1d\uad04 \ubc0f \ub300\uae30\uc5c5 B2B IT \ud504\ub85c\uc81d\ud2b8 \uad00\ub9ac.\n* **1985.03 ~ 2014.02 | \uae30\uc5c5 \ube44\uc988\ub2c8\uc2a4 \uc601\uc5b4 \ucee8\uc124\ud134\ud2b8 &amp; \ub300\ud45c\uac15\uc0ac (\ubcd1\ud589)**: \uc0bc\uc131HP, SK\ud154\ub808\ucf64, \ud604\ub300\uc790\ub3d9\ucc28 \ub4f1 \uc8fc\uc694 \ub300\uae30\uc5c5 \uc0ac\ub0b4 \uc784\uc9c1\uc6d0 \ub300\uc0c1 \uae00\ub85c\ubc8c \uae30\uc220\u00b7\ube44\uc988\ub2c8\uc2a4 \ucee4\ubba4\ub2c8\ucf00\uc774\uc158 \ucee8\uc124\ud305(\ub204\uc801 10,000+\uba85 \uad50\uc721).\n\n---\n\n## \ud83d\udcbc 2. \ub3c4\uba54\uc778 \ubc0f \uc8fc\uc694 \uae30\uad00\ubcc4 \ud504\ub85c\uc81d\ud2b8 \uc2ec\uce35 \uae30\uc220\uc11c (Project Technical Descriptions \u2014 Reverse-Chronological)\n\n### [\ub3c4\uba54\uc778 1] \u2601\ufe0f \uc5d4\ud130\ud504\ub77c\uc774\uc988 \ud074\ub77c\uc6b0\ub4dc AI &amp; \uc124\uba85\uac00\ub2a5\ud55c AI (\uc624\ub974\ubbf8 / AWS \u2014 \ube44\uc911 9%)\n#### \ud83d\udccc Project 1-1: AWS ECS Fargate &amp; OpenSearch Serverless XAI \uc544\ud0a4\ud14d\ucc98\n- **\uc218\ud589 \uae30\uac04**: 2025.10 ~ 2025.12 | **\uc5ed\ud560**: \ud300 \ub9ac\ub4dc &amp; \ud074\ub77c\uc6b0\ub4dc AI \uc544\ud0a4\ud14d\ud2b8 (\ud480\ud0c0\uc784)\n- **\ud575\uc2ec \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uad6c\ud604**:\n  1. Terraform IaC \uae30\ubc18 Multi-AZ \uc11c\ube0c\ub137, ALB, ECS Fargate, OpenSearch Serverless k-NN \ud074\ub7ec\uc2a4\ud130 100% \uc790\ub3d9\ud654 \ubc30\ud3ec.\n  2. \ubb38\uc7a5\ubcc4 \ubca1\ud130-\uc6d0\ubb38 \uccad\ud06c \uac04 \uc5ed\ucf54\uc0ac\uc778 \uc720\uc0ac\ub3c4 \uae30\ubc18 XAI \uc2e0\ub8b0\ub3c4 \uac80\uc99d \uc5d4\uc9c4 \uc124\uacc4.\n  3. \ub85c\uceec \uc7a5\uc560 \uc2dc 1.2\ucd08 \ub0b4 AWS Bedrock \ubb34\uc911\ub2e8 \ud398\uc77c\uc624\ubc84 \uad6c\ud604 (\uacb0\uc815\ub860\uc801 \ub3d9\uae30\ud654).\n  4. **\uc131\uacfc**: **\ucea0\ud504 \uc885\ud569 \ud3c9\uac00 1\uc704 \ud300 \ud504\ub85c\uc81d\ud2b8 \uc6b0\uc218\uc0c1 &amp; \uac1c\uc778 \uc131\uc801 \ucd5c\uc6b0\uc218\uc0c1 \ub3d9\uc2dc \uc218\uc0c1**.\n\n---\n\n### [\ub3c4\uba54\uc778 2] \ud83c\udfaf \uc548\ud2f0\ub4dc\ub860(C-UAS) \ub137 \uce90\ucc98 &amp; \uc628\ub514\ubc14\uc774\uc2a4 NPU (\uc720\ucf58\ud06c\ub9ac\uc5d0\uc774\ud2f0\ube0c \u2014 \ube44\uc911 56%)\n\n#### \ud83d\udccc Project 2-1: Dronus-Net6 \u2014 \uc548\ud2f0\ub4dc\ub860(C-UAS) \ube44\ud30c\uad34 \ud3ec\ud68d \ubc0f \uc790\uc728 \ud558\uc5ed \uccb4\uacc4 (\ub4dc\ub860 \ud50c\ub798\uadf8\uc2ed \u2014 \ube44\uc911 31%)\n- **\uc218\ud589 \uae30\uac04**: 2023.05 ~ 2025.08 | **\uc5ed\ud560**: \uac1c\ubc1c\uc2e4\uc7a5 / Head of Engineering (\uc815\uaddc\uc9c1)\n- **\uac1c\ubc1c \ud658\uacbd**: STM32, PX4 / ArduPilot Custom Firmware, C/C++, LiDAR SLAM, ROS2 Navigation, CO2 \uc194\ub808\ub178\uc774\ub4dc \uacf5\uc555 \ubc38\ube0c, \uc11c\ubcf4 \ud0c4\ucc3d \uc561\ucd94\uc5d0\uc774\ud130\n- **\ud575\uc2ec \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uad6c\ud604**:\n  1. **\uace0\uc555 CO2 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529 (Firmware Embedding)**:\n     - \uace0\uc555 CO2 \uc194\ub808\ub178\uc774\ub4dc \ubc38\ube0c \uad6c\ub3d9 \ud384\uc2a4(PWM/GPIO) \ud0c0\uc774\ubc0d \ub4dc\ub77c\uc774\ubc84\uc640 6\uc5f0\ubc1c \uc11c\ubcf4 \ud68c\uc804 \ud0c4\ucc3d \uc81c\uc5b4 \uc2dc\ud000\uc11c\ub97c \ube44\ud589\uc81c\uc5b4\uae30(FC) \uc778\ud130\ub7fd\ud2b8 \uc11c\ube44\uc2a4 \ub8e8\ud2f4(ISR)\uc5d0 \uc9c1\uacb0 \uc784\ubca0\ub529, MAVLink \ud398\uc774\ub85c\ub4dc \uaca9\ubc1c \uba85\ub839 \ud2b8\ub9ac\uac70 \uc5f0\ub3d9.\n  2. **\ube44\ud589\uc81c\uc5b4 PID \ucee4\uc2a4\ud130\ub9c8\uc774\uc9d5 &amp; 50km/h \uace0\uc18d \ucd94\uaca9 \uc81c\uc5b4**:\n     - \ub137 \ubc1c\uc0ac \uc2dc \ubc1c\uc0dd\ud558\ub294 \uc21c\uac04 \ubc18\ub3d9 \ucda9\uaca9\uc744 \uc5b5\uc81c\ud558\uace0 **\ucd5c\uace0 \uc18d\ub3c4 50km/h** \uace0\uc18d \uc694\uaca9 \ucd94\uaca9 \uc2dc \ub864/\ud53c\uce58 \uc790\uc138\ub97c 0.2\ucd08 \ub0b4 \uc218\ud3c9 \ubcf5\uc6d0\ud558\ub3c4\ub85d PX4/ArduPilot PID \uac8c\uc778 \ubc0f \uac00\uc18d\ub3c4 \ud53c\ub4dc\ud3ec\uc6cc\ub4dc \ud29c\ub2dd.\n  3. **3D LiDAR SLAM \uae30\ubc18 \ud45c\uc801\u00b7\ud654\ubb3c \uc778\uc591 &amp; \uc9c0\uc815 \uad6c\uc5ed \uc790\uc728 \ud22c\ud558 (Cargo Lift &amp; Drop-off Zone)**:\n     - 3D LiDAR SLAM \uae30\ubc18 \ud45c\uc801\u00b7\ud654\ubb3c \uc778\uc591(Lift) \ubc0f \uc9c0\uc815 \uad6c\uc5ed(Drop-off Zone) \uc815\ubc00 \ud22c\ud558(\uc624\ucc28 10cm \uc774\ub0b4) \uad6c\ud604.\n\n#### \ud83d\udccc Project 2-2: \uc694\uac00\ud050(YogaQ) \u2014 \uc628\ub514\ubc14\uc774\uc2a4 \ube44\uc804 AI (Hailo-8L) &amp; \uc0dd\uccb4\uc5ed\ud559 RAG \ud50c\ub7ab\ud3fc (\ube44\uc911 25%)\n- **\uac1c\ubc1c \ud658\uacbd**: Raspberry Pi 5, Hailo-8L (13 TOPS), YOLOv8s-Pose INT8 HEF, Typesense, Ollama, FastAPI, WebSocket\n- **\ud575\uc2ec \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uad6c\ud604**:\n  1. **2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778 (Two-Stage Decoupled Perception)**:\n     - 13 TOPS Hailo-8L NPU(YOLOv8s-Pose 20.4ms)\uc640 ARM Cortex-A76 CPU(\uc21c\uc218 NumPy \ubd84\ub958 0.018ms) 2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778 \uc124\uacc4(PCIe DMA \uc624\ubc84\ud5e4\ub4dc 0.5ms \ub300\ube44 25\ubc30 \ub2e8\ucd95).\n  2. **Safe Torso Scale Guard &amp; \ub514\ubc14\uc6b4\uc11c**:\n     - \ub2e8\uc77c 2D \uce74\uba54\ub77c \uae09\uac01\ub3c4 \uc6d0\uadfc \uc65c\uace1\uc5d0 \ub530\ub978 25\ubc30 \uc88c\ud45c \ubc1c\uc0b0\uc744 \ud558\ud55c \ud074\ub7a8\ud551($\\text{scale} = \\max(H_{\\text{torso}}, 0.250 \\cdot ref)$, $max\\_abs < 4.81$)\uc73c\ub85c \uc5b5\uc81c\ud558\ub294 Safe Torso Scale Guard \uc124\uacc4 \u2014 \ud611\uc18c \ud1b5\ub85c \uc8fc\ud589 \ubc0f \uae09\uae30\ub3d9 \uc2dc 3D \uac1d\uccb4 \uc778\uc2dd \uc548\uc815\ud654\uc5d0 \uc9c1\uacb0. \ub9c8\ub974\ucf54\ud504 5-\ud504\ub808\uc784 \ub514\ubc14\uc6b4\uc11c\ub85c \ub77c\ubca8 \uc9c0\ud130 \uc81c\ub85c\ud654 (99.9% \ud655\uc815 \uc7a0\uae08).\n  3. **\ucd08\uc800\uc9c0\uc5f0 \ud558\uc774\ube0c\ub9ac\ub4dc RAG &amp; \uc644\uc804 \uc628\ub514\ubc14\uc774\uc2a4 \ub3c5\ub9bd \ucd94\ub860 (Zero Cloud Egress)**:\n     - Typesense Dense(1024\ucc28\uc6d0)+BM25 \uacb0\ud569(p95 42ms), \uc2e0\uccb4 \uae08\uae30 \uc870\uac74 \ub9c8\uc2a4\ud0b9\uc73c\ub85c \ud560\ub8e8\uc2dc\ub124\uc774\uc158 85% \ucc28\ub2e8. $140 PoE \ub2e8\uc77c \uc5e3\uc9c0 \uc5b4\ud50c\ub77c\uc774\uc5b8\uc2a4\ub85c 33.4 FPS \uc2e4\uc2dc\uac04 \ucd94\ub860\uc744 \uc644\uacb0\ud558\uc5ec \ud074\ub77c\uc6b0\ub4dc GPU \uc778\ud504\ub77c \ube44\uc6a9($720/\uc6d4)\uc744 \uc81c\uac70(Zero Cloud Egress).\n\n---\n\n### [\ub3c4\uba54\uc778 3] \ud83d\udef8 5G BVLOS \ud074\ub77c\uc6b0\ub4dc \ub4dc\ub860 \uc9c0\uc0c1\uad00\uc81c(GCS) &amp; \uc774\uae30\uc885 \ubb34\uc778\uccb4\uacc4 \uc790\uc728\ube44\ud589 (\uc81c\uc774\ub514\ub7a9 \u2014 \ube44\uc911 35%)\n\n#### \ud83d\udccc Project 3-1: 5G \ube44\uac00\uc2dc\uad8c(BVLOS) \ud074\ub77c\uc6b0\ub4dc \ub4dc\ub860 GCS \ud1b5\ud569 \uad00\uc81c \ud50c\ub7ab\ud3fc (gcs-uno)\n- **\uc218\ud589 \uae30\uac04**: 2022.02 ~ 2022.05 | **\uc5ed\ud560**: \uc218\uc11d\uc5f0\uad6c\uc6d0 / Principal Engineer (\uc815\uaddc\uc9c1)\n- **\uac1c\ubc1c \ud658\uacbd**: Node.js, Webix Jet, RethinkDB, Redis, Nimble Streamer, C++/Qt5, MAVLink v1/v2, 5G Cellular\n- **\ud575\uc2ec \uad6c\ud604**: 5G BVLOS \ud658\uacbd\uc5d0\uc11c UDP \uae30\ubc18 WebRTC P2P \uc2a4\ud2b8\ub9ac\ubc0d \ud30c\uc774\ud504\ub77c\uc778\uc744 \uad6c\ucd95\ud574 \uc885\ub2e8\uac04(E2E) \uc601\uc0c1\u00b7\ud154\ub808\uba54\ud2b8\ub9ac \uc9c0\uc5f0 200ms \uc774\ud558 \ub2ec\uc131. PM2 \ub9c8\uc774\ud06c\ub85c\uc11c\ube44\uc2a4(`drones-server`, `drone-udp-server`, `gcs-tcp-server`, `io-server`), RethinkDB Changefeeds \uae30\ubc18 \uc81c\ub85c \ud3f4\ub9c1 \uc2e4\uc2dc\uac04 \ube0c\ub85c\ub4dc\uce90\uc2a4\ud2b8.\n\n#### \ud83d\udccc Project 3-2: \uc774\uae30\uc885 \ud504\ub85c\ud1a0\ucf5c \ube0c\ub9ac\uc9c0 \ubc0f \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30 (Control Authority Arbiter)\n- **\uac1c\ubc1c \ud658\uacbd**: Python, C++, MAVLink v2, DJI Mobile/Payload SDK, Betaflight MSP v1/v2, K-MOSA, POSIX PTY, Serial UART\n- **\ud575\uc2ec \uad6c\ud604**: MAVLink v2, DJI PSDK, Betaflight MSP, K-MOSA 4\uc885 \uc774\uae30\uc885 \ud504\ub85c\ud1a0\ucf5c \ud1b5\ud569 \uc815\uaddc\ud654 \ube0c\ub9ac\uc9c0 \uad6c\ucd95. \uc548\uc804 \uc870\uc885\uc0ac\uc758 \ubb3c\ub9ac \uc870\uc885\uae30(ELRS 250Hz / TBS CRSF) \uc2a4\ud2f1 \uac1c\uc785 \uc2dc 15ms \uc774\ub0b4 \uc218\ub3d9 \uc870\uc885\uc73c\ub85c \uac15\uc81c \uc808\uccb4\ud558\ub294 \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30(Control Authority Arbiter) \uad6c\ud604. \uc870\uc885\uc0ac 6-DOF \ud589\ub3d9 \uc0dd\uccb4\uc778\uc2dd \uae30\ubc18 0.5\ucd08 Soft-Cloak \uc81c\uc5b4\uad8c \uc7a0\uae08(Control Air-Gap) \uc124\uacc4.\n\n---\n\n## \ud83c\udfaf 3. \ud575\uc2ec \uc9c1\ubb34 \uacbd\uc7c1\ub825 \uc694\uc57d (Why Tony Lee?)\n1. **\ubb34\uc778\uccb4\uacc4 \ud558\ub4dc\uc6e8\uc5b4-\ud38c\uc6e8\uc5b4-\ud074\ub77c\uc6b0\ub4dc \uc218\uc9c1 \ud1b5\ud569 \ub2a5\ub825**: CO2 \ub9ac\ubcfc\ubc84 \uc561\ucd94\uc5d0\uc774\ud130 \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529, 50km/h PID \uc81c\uc5b4, LiDAR SLAM \uacbd\ub85c \ud0d0\uc0c9, 5G BVLOS \ud074\ub77c\uc6b0\ub4dc GCS\uae4c\uc9c0 \uc804 \uacc4\uce35\uc744 \uc5d4\ub4dc\ud22c\uc5d4\ub4dc\ub85c \ub2e8\ub3c5 \uc124\uacc4\u00b7\uad6c\ud604.\n2. **\ud604\uc7a5 \uc548\uc804 \uc6b0\uc120\uc758 \ubc29\uc5b4\uc801 \uc544\ud0a4\ud14d\ucc98**: Direct RF \uc218\ub3d9 \uc870\uc885 \uac1c\uc785 \uc2dc 15ms \ub0b4 \uac15\uc81c \uc808\uccb4\ub418\ub294 \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30\uc640 \uc0dd\uccb4\uc778\uc2dd \uc81c\uc5b4 \uc5d0\uc5b4\ub77d\uc73c\ub85c \uc0ac\uace0 \uac00\ub2a5\uc131 \uc120\uc81c \ubc29\uc9c0.\n3. **\uc6d0\uc5b4\ubbfc\uae09 \uae00\ub85c\ubc8c \uae30\uc220 \ucee4\ubba4\ub2c8\ucf00\uc774\uc158 &amp; \uac80\uc99d\ub41c \uc2e4\ud589\ub825**: \ubbf8\uad6d \uba54\ub9b4\ub79c\ub4dc\ub300 \ud559\uc0ac(Management/CS) \ubc0f TOEFL 627\uc810 \uae30\ubc18 \uc6d0\uc5b4\ubbfc\uae09 \uc601\uc5b4 \uc5ed\ub7c9\uc73c\ub85c \ud574\uc678 \ucd5c\uc2e0 \uc624\ud508\uc18c\uc2a4/\ub17c\ubb38 \uc9c0\uc5f0 \uc5c6\ub294 \ubd84\uc11d \ubc0f \uae00\ub85c\ubc8c \ubc29\uc0b0/\ubb34\uc778\uccb4\uacc4 \uae30\uc220 \ud611\ub825 \uc989\uac01 \uc8fc\ub3c4 \uac00\ub2a5.\n";
+    const mdPortfolio = "# \uc774\ubcd1\ub0a8 (Byungnam \"Tony\" Lee) \u2014 \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \ud3ec\ud2b8\ud3f4\ub9ac\uc624 (Engineering Portfolio)\n### \ubb34\uc778\uccb4\uacc4(\ub4dc\ub860) \uc784\ubca0\ub514\ub4dc AI &amp; \uc5e3\uc9c0 \uc2dc\uc2a4\ud15c \ud50c\ub798\uadf8\uc2ed \uc1fc\ucf00\uc774\uc2a4\n\n> **\"5G \ube44\uac00\uc2dc\uad8c(BVLOS) \uc790\uc728\ube44\ud589 \ub4dc\ub860 \uad00\uc81c, \uc548\ud2f0\ub4dc\ub860(C-UAS) CO2 \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 &amp; SLAM \ud654\ubb3c \ud558\uc5ed \ud38c\uc6e8\uc5b4, \uc774\uae30\uc885 \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30, Hailo-8 NPU \uc628\ubcf4\ub4dc \ube44\uc804 AI \ubc0f Typesense \ud558\uc774\ube0c\ub9ac\ub4dc RAG\ub97c \uc544\uc6b0\ub974\ub294 \ud50c\ub798\uadf8\uc2ed \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uc1fc\ucf00\uc774\uc2a4\uc785\ub2c8\ub2e4.\"**  \n\n---\n\n## \ud83c\udf10 \ub77c\uc774\ube0c \uc11c\ube44\uc2a4 &amp; \uc778\ud130\ub799\ud2f0\ube0c \ub370\ubaa8 (Live Demos)\n\n| \uc11c\ube44\uc2a4\uba85 | \uc124\uba85 | \ub77c\uc774\ube0c \ub9c1\ud06c |\n| :--- | :--- | :--- |\n| **5G BVLOS \ub4dc\ub860 GCS \uad00\uc81c \uc6f9** | \ub2e4\uc218 \uae30\uccb4 \ud154\ub808\uba54\ud2b8\ub9ac \ubc0f 200ms WebRTC \uc2e4\uc2dc\uac04 \uad00\uc81c \ub300\uc2dc\ubcf4\ub4dc | [pf1.eggs.or.kr](https://pf1.eggs.or.kr/portfolio.html) |\n| **Dronus-Net6 \uc548\ud2f0\ub4dc\ub860 \ub137 \uce90\ucc98** | CO2 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \ubc1c\uc0ac \ud38c\uc6e8\uc5b4 \ubc0f SLAM \uc790\uc728 \uc6b4\uc1a1 \ub808\ud37c\ub7f0\uc2a4 | [github.com/aiegoo/Uc-dronusnet6](https://github.com/aiegoo/Uc-dronusnet6) |\n| **\uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uae30\uc220 \ubb38\uc11c \ud5c8\ube0c** | 5G \ub4dc\ub860 GCS, \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529, Zero-Trust \ubcf4\uc548 \uc2e4\ubb34 \uc544\ud0a4\ud14d\ucc98 \ud3ec\ud138 | [pf7.eggs.or.kr](https://pf7.eggs.or.kr) |\n| **YogaQ Studio AI \ucc57\ubd07 \ub370\ubaa8** | Typesense \ud558\uc774\ube0c\ub9ac\ub4dc RAG \uae30\ubc18 \ud574\ubd80\ud559 \uc815\ub82c \ucf54\uce6d \ub300\ud654\ud615 \ucc57\ubd07 | [aiegoo.github.io/yoga/chat](https://aiegoo.github.io/yoga/chat) |\n| **YogaQ \uc2dc\ub9e8\ud2f1 \uac80\uc0c9 \uc5d4\uc9c4 \ub370\ubaa8** | \ucd08\uc800\uc9c0\uc5f0 Dense Vector + BM25 \ub3d9\uc801 \uac00\uc911\uce58 \ud558\uc774\ube0c\ub9ac\ub4dc \uac80\uc0c9 | [aiegoo.github.io/yoga/search](https://aiegoo.github.io/yoga/search) |\n\n---\n\n## \ud83c\udfc6 \ub300\ud45c \ud50c\ub798\uadf8\uc2ed \ud504\ub85c\uc81d\ud2b8 \uc1fc\ucf00\uc774\uc2a4 (Featured Flagship Projects)\n\n### 1. 5G BVLOS \ucd08\uc800\uc9c0\uc5f0 \ud074\ub77c\uc6b0\ub4dc \ub4dc\ub860 \uc9c0\uc0c1\uad00\uc81c\uc2dc\uc2a4\ud15c &amp; \uc774\uae30\uc885 \uc790\uc728\ube44\ud589 (Cloud Drone GCS &amp; Hetero Fleet C2)\n> **\ubb34\uc778\uccb4\uacc4 \ud575\uc2ec \uc544\ud0a4\ud14d\ucc98**: 5G \ubb34\uc120\ub9dd \uc800\uc9c0\uc5f0 WebRTC (&lt; 200ms), \uc774\uae30\uc885 4\uc885 \ud504\ub85c\ud1a0\ucf5c \ube0c\ub9ac\uc9c0, Direct RF vs 4G/5G \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30, BIV-6 \uc778\uc9c0 \uc5d0\uc5b4\ub77d, \uae30\uccb4 \ud0d1\uc7ac Hailo-8 NPU (26 TOPS)\n\n#### \ud83d\udda5\ufe0f \uc2e4\uc99d \ub77c\uc774\ube0c \ub370\ubaa8 &amp; \uc8fc\uc694 \uaddc\uaca9 (Live Specs)\n- **\ud575\uc2ec \uae30\uc220**: **5G Cellular BVLOS**, **WebRTC P2P (\uc885\ub2e8\uac04 200ms \uc774\ud558)**, **MAVLink v2 / ROS2**, **DJI PSDK**, **Betaflight MSP**, **K-MOSA \ubc00\uc2a4\ud399**, **Direct RF(ELRS/CRSF) \uc911\uc7ac\uae30**, **BIV-6 \ud589\ub3d9 \uc0dd\uccb4\uc778\uc2dd**, **DDIL SHA-256 \ud050**, **Hailo-8 M.2 (26 TOPS @ 2.5W)**, **QGroundControl (:14550)**\n- **\uae30\uc220 \uc0c1\uc138 \ubb38\uc11c**: [pf7.eggs.or.kr](https://pf7.eggs.or.kr)\n\n#### \ud83d\udcd0 \uc2dc\uc2a4\ud15c \uc544\ud0a4\ud14d\ucc98 \ub2e4\uc774\uc5b4\uadf8\ub7a8\n<div style=\"text-align: center; margin: 14px 0;\">\n  <img src=\"images/drone_gcs_architecture_topology.svg\" alt=\"5G BVLOS Cloud Drone GCS Architecture\" style=\"width: 100%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);\" />\n</div>\n\n#### \ud83d\udee0\ufe0f \ud575\uc2ec \uad6c\ud604 \ubc0f \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \ud56d\ubaa9 (Key Implementations \u2014 \ube44\uc911 35%)\n1. **4-Tier \ubd84\uc0b0 \ud1a0\ud3f4\ub85c\uc9c0 &amp; 200ms \ucd08\uc800\uc9c0\uc5f0 \uc2a4\ud2b8\ub9ac\ubc0d**:\n   - `drones-server`(\uae30\uccb4 \ud0a4 \uad00\ub9ac), `drone-udp-server`(\ub3d9\uc801 \uc778\uadf8\ub808\uc2a4 30k~65k), `gcs-tcp-server`(1\uc2dc\uac04 \uc5d0\ud398\uba38\ub7f4 \ube0c\ub9ac\uc9c0), `io-server` \ub9c8\uc774\ud06c\ub85c\uc11c\ube44\uc2a4 \ud074\ub7ec\uc2a4\ud130\ub9c1 \ubc0f UDP \uae30\ubc18 WebRTC P2P\ub85c \uc885\ub2e8\uac04 \uc9c0\uc5f0 200ms \uc774\ud558 \ub2ec\uc131.\n2. **\uc774\uae30\uc885 4\uc885 \ud504\ub85c\ud1a0\ucf5c \ud1b5\ud569 \uc5b4\ub311\ud130 &amp; MAVLink \uba40\ud2f0\ud50c\ub809\uc11c**:\n   - MAVLink-K(:14555), DJI PSDK(:14560), Betaflight MSP(:14565), K-MOSA(:14570) 4\uc885 \uaddc\uaca9\uc744 \ub2e8\uc77c \uc815\uaddc\ud654 `DroneTelemetry` \uc778\ud130\ud398\uc774\uc2a4\ub85c \uc735\ud569\ud558\uace0 QGroundControl\uc5d0 \ub2e4\uc911 \uae30\uccb4(sysid 1~4)\ub85c \ub2e8\uc77c \ud3ec\ud2b8(:14550) \ube0c\ub85c\ub4dc\uce90\uc2a4\ud2b8.\n3. **Direct RF vs 4G/5G \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30 (Control Authority Arbiter)**:\n   - \uace0\uc9c0\uc5f0 4G/5G \ud074\ub77c\uc6b0\ub4dc \uc81c\uc5b4 \uc911 \uc548\uc804 \uc870\uc885\uc0ac\uc758 \ubb3c\ub9ac \uc2a4\ud2f1(ELRS 250Hz / TBS CRSF) \ubcc0\uc704 \uac10\uc9c0 \uc2dc, 15ms \uc774\ub0b4\uc5d0 \uc989\uac01 \uc804\ud30c \uc218\ub3d9 \uc870\uc885\uc73c\ub85c \uac15\uc81c \ud578\ub4dc\uc624\ubc84\ud558\uc5ec \uae30\uccb4 \uc870\uc885 \uc548\uc815\uc131 \ubc0f \uc548\uc804\uc131 \ud655\ubcf4.\n\n---\n\n### 2. Dronus-Net6: \uc548\ud2f0\ub4dc\ub860(C-UAS) CO2 6\uc5f0\ubc1c \ub137 \uce90\ucc98 &amp; SLAM \ud654\ubb3c \ud558\uc5ed \ub4dc\ub860\n> **\uae30\uccb4 \ud38c\uc6e8\uc5b4 &amp; \ube44\ud589\uc5ed\ud559 \ud575\uc2ec**: CO2 \ucd94\uc9c4 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \ubc1c\uc0ac\uccb4 \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529, 50km/h PID \ucd94\uaca9 \ub8e8\ud504, LiDAR SLAM \ud654\ubb3c \uc778\uc591 \ubc0f Drop-off Zone \uc815\ubc00 \ud22c\ud558\n\n#### \ud83d\udee0\ufe0f \ud575\uc2ec \uad6c\ud604 \ubc0f \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \ud56d\ubaa9 (Key Implementations \u2014 \ube44\uc911 31%)\n1. **\uace0\uc555 CO2 \ucd94\uc9c4 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \ubc1c\uc0ac\uccb4 \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529 (Firmware Embedding)**:\n   - \uace0\uc555 CO2 \uc194\ub808\ub178\uc774\ub4dc \ubc38\ube0c \ud384\uc2a4 \uc81c\uc5b4(PWM/GPIO) \ub4dc\ub77c\uc774\ubc84\uc640 6\uc5f0\ubc1c \ud68c\uc804\uc2dd \uc11c\ubcf4 \ud0c4\ucc3d \uc2dc\ud000\uc11c\ub97c FC(STM32/PX4) \ud38c\uc6e8\uc5b4 \ub808\ubca8 \uc778\ud130\ub7fd\ud2b8(ISR)\uc5d0 \uc9c1\uacb0\ud558\uc5ec MAVLink \ud398\uc774\ub85c\ub4dc \uaca9\ubc1c \uba85\ub839\uc758 \uacb0\uc815\ub860\uc801(Deterministic) \ub3d9\uae30\ud654 \uad6c\ud604.\n2. **\ube44\ud589\uc81c\uc5b4 PID \ucee4\uc2a4\ud130\ub9c8\uc774\uc9d5 &amp; 50km/h \uace0\uc18d \ucd94\uaca9 \uc81c\uc5b4**:\n   - \ub137 \ubc1c\uc0ac \uc21c\uac04\uc758 \uac15\ud55c \uacf5\uc555 \ubc18\ub3d9 \ucda9\uaca9\uc744 \uc5b5\uc81c\ud558\uace0 **\ucd5c\uace0 \uc18d\ub3c4 50km/h** \uae09\uae30\ub3d9 \uc2dc \uc790\uc138\uac00 \ud769\uc5b4\uc9c0\uc9c0 \uc54a\ub3c4\ub85d PX4/ArduPilot \uc790\uc138/\uc18d\ub3c4 PID \ub8e8\ud504 \uc7ac\uc124\uacc4 ($K_p, K_i, K_d$ \uac8c\uc778 \ud29c\ub2dd \ubc0f \uac00\uc18d\ub3c4 \ud53c\ub4dc\ud3ec\uc6cc\ub4dc\ub85c 0.2\ucd08 \ub0b4 \uc218\ud3c9 \ubcf5\uc6d0).\n3. **LiDAR SLAM \uae30\ubc18 \ud654\ubb3c \uc778\uc591 &amp; \ud558\uc5ed\uc7a5 \uc790\uc728 \ud22c\ud558 (Cargo Lift &amp; Drop-off)**:\n   - 3D LiDAR SLAM \uc2e4\uc2dc\uac04 \ub9e4\ud551/\uacbd\ub85c \ud0d0\uc0c9\uc744 \ud1b5\ud574 \ud3ec\ud68d\ub41c \ud45c\uc801 \ub4dc\ub860 \ubc0f \uc911\ub7c9\ubb3c(Cargo)\uc744 \uc778\uc591(Lift)\ud558\uc5ec \uc548\uc804 \ud558\uc5ed \uad6c\uc5ed(Drop-off Zone)\uae4c\uc9c0 \uc790\uc728 \ubcf5\uadc0 \ud6c4 \uc624\ucc28 10cm \uc774\ub0b4\ub85c \uc548\uc804 \ud22c\ud558 \uc644\ub8cc.\n\n---\n\n### 3. \uc694\uac00\ud050 (YogaQ) \u2014 \uc628\ub514\ubc14\uc774\uc2a4 \ube44\uc804 AI \uc5e3\uc9c0 \uc778\uc2dd &amp; \uc0dd\uccb4\uc5ed\ud559 RAG \ud50c\ub7ab\ud3fc\n> **\uc5e3\uc9c0 AI \ud575\uc2ec \uc544\ud0a4\ud14d\ucc98**: Hailo-8L NPU 2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778, Safe Torso Scale Guard, Typesense \ud558\uc774\ube0c\ub9ac\ub4dc RAG, $140 PoE \ub2e8\uc77c \uc5b4\ud50c\ub77c\uc774\uc5b8\uc2a4 (\ube44\uc911 25%)\n\n#### \ud83d\udcd0 \uc2dc\uc2a4\ud15c \uc544\ud0a4\ud14d\ucc98 \ub2e4\uc774\uc5b4\uadf8\ub7a8\n<div style=\"text-align: center; margin: 14px 0;\">\n  <img src=\"images/yogaq_architecture_pipeline.svg\" alt=\"YogaQ Two-Stage Decoupled Perception Architecture\" style=\"width: 100%; border-radius: 10px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.04);\" />\n</div>\n\n#### \ud83d\udee0\ufe0f \ud575\uc2ec \uad6c\ud604 \ubc0f \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \ud56d\ubaa9 (Key Implementations)\n1. **2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778**: 13 TOPS Hailo-8L NPU(YOLOv8s-Pose 20.4ms) + ARM Cortex-A76 CPU(\uc21c\uc218 NumPy 0.018ms)\ub85c PCIe DMA \ubc84\uc2a4 \uc655\ubcf5 \uc624\ubc84\ud5e4\ub4dc(0.5ms) \ub300\ube44 25\ubc30 \ube60\ub978 \ucd08\uc800\uc9c0\uc5f0 \uc2e4\uc99d.\n2. **Safe Torso Scale Guard**: \ub2e8\uc77c 2D \uce74\uba54\ub77c \uae09\uac01\ub3c4 \uc6d0\uadfc \uc65c\uace1\uc5d0 \ub530\ub978 25\ubc30 \uc88c\ud45c \ubc1c\uc0b0\uc744 \ud558\ud55c \ud074\ub7a8\ud551($\\text{scale} = \\max(H_{\\text{torso}}, 0.250 \\cdot ref)$, $max\\_abs < 4.81$)\uc73c\ub85c \uc5b5\uc81c\ud558\ub294 Safe Torso Scale Guard \uc124\uacc4 \u2014 \ud611\uc18c \ud1b5\ub85c \uc8fc\ud589 \ubc0f \uae09\uae30\ub3d9 \uc2dc 3D \uac1d\uccb4 \uc778\uc2dd \uc548\uc815\ud654\uc5d0 \uc9c1\uacb0. \ub9c8\ub974\ucf54\ud504 5-\ud504\ub808\uc784 \ub514\ubc14\uc6b4\uc11c\ub85c \ub77c\ubca8 \uc9c0\ud130 \uc81c\ub85c\ud654 (99.9% \ud655\uc815 \uc7a0\uae08).\n3. **Typesense \ud558\uc774\ube0c\ub9ac\ub4dc RAG &amp; \uc778\ud504\ub77c \uacbd\ub7c9\ud654 (Zero Cloud Egress)**: Dense(1024\ucc28\uc6d0)+BM25 \uacb0\ud569(p95 42ms), \uc2e0\uccb4 \uae08\uae30 \ub9c8\uc2a4\ud0b9\uc73c\ub85c \ud560\ub8e8\uc2dc\ub124\uc774\uc158 85% \ucc28\ub2e8. $140 \ub2e8\uc77c \uc5b4\ud50c\ub77c\uc774\uc5b8\uc2a4\ub85c \uc6d4 $720 GPU \uc778\ud504\ub77c $0 \ub2ec\uc131 \ubc0f \uc644\uc804 \uc628\ub514\ubc14\uc774\uc2a4 \ub3c5\ub9bd \ucd94\ub860 \uc2e4\uc99d.\n\n---\n\n### 4. AWS \uc5d4\ud130\ud504\ub77c\uc774\uc988 GenAI &amp; \uc124\uba85\uac00\ub2a5\ud55c AI (Enterprise Cloud AI / \uc624\ub974\ubbf8 1\uc704)\n> **\ud074\ub77c\uc6b0\ub4dc \uc544\ud0a4\ud14d\ucc98 \ubc31\ubcf8**: AWS ECS Fargate, OpenSearch Serverless, AWS Bedrock \ubb34\uc911\ub2e8 Failover (\ube44\uc911 9%)\n- **\uacf5\uc2dd \uc218\uc0c1**: \ud83c\udfc6 **\uc81c\uc8fc\uc624\ub974\ubbf8\ucea0\ud504 \uc885\ud569 \ud3c9\uac00 1\uc704 \ud300 \ud504\ub85c\uc81d\ud2b8 \uc6b0\uc218\uc0c1 &amp; \uac1c\uc778 \uc131\uc801 \ucd5c\uc6b0\uc218\uc0c1 \ub3d9\uc2dc \uc218\uc0c1**\n\n---\n\n## \ud83d\udcca \uc885\ud569 \ud504\ub85c\uc81d\ud2b8 \ub9e4\ud2b8\ub9ad\uc2a4 \ube44\uad50\n\n| \ud504\ub85c\uc81d\ud2b8\uba85 | \ud575\uc2ec \ub3c4\uba54\uc778 | \uc8fc\uc694 \uc131\uacfc &amp; \ud601\uc2e0\uc810 | \uae30\uc220 \uac80\uc99d \ubb38\uc11c |\n| :--- | :--- | :--- | :--- |\n| **Cloud Drone GCS &amp; Fleet C2** | 5G \ube44\uac00\uc2dc\uad8c \ud1b5\uc2e0 &amp; \uc774\uae30\uc885 \uc81c\uc5b4 | **WebRTC &lt; 200ms**, 4\uc885 \ud504\ub85c\ud1a0\ucf5c \ud1b5\ud569, Direct RF 15ms \uc911\uc7ac | [\ub4dc\ub860 \uc544\ud0a4\ud14d\ucc98 \ubb38\uc11c](https://pf7.eggs.or.kr) |\n| **Dronus-Net6 \uc548\ud2f0\ub4dc\ub860 \ub137 \uce90\ucc98** | \uae30\uccb4 \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529 &amp; SLAM \ud558\uc5ed | **50km/h PID \ucd94\uaca9**, CO2 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \uaca9\ubc1c, \ud654\ubb3c \uc778\uc591/Drop-off | [Dronus-Net6 \ub808\ud37c\ub7f0\uc2a4](https://github.com/aiegoo/Uc-dronusnet6) |\n| **\uc694\uac00\ud050 (YogaQ)** | \uc628\ub514\ubc14\uc774\uc2a4 NPU &amp; \ud558\uc774\ube0c\ub9ac\ub4dc RAG | **NPU 20.4ms + CPU 0.018ms**, Safe Torso \uac00\ub4dc, RAG 42ms | [YogaQ \uae30\uc220 \uba85\uc138](https://pf7.eggs.or.kr) |\n| **Enterprise AWS GenAI** | \ud074\ub77c\uc6b0\ub4dc AI &amp; \ubaa8\ub378 \uc124\uba85\uac00\ub2a5\uc131 | **\uc81c\uc8fc\uc624\ub974\ubbf8 1\uc704 \uc218\uc0c1**, 99.99% \uace0\uac00\uc6a9\uc131 \ud3f4\ubc31 | [\ud074\ub77c\uc6b0\ub4dc \uc544\ud0a4\ud14d\ucc98](https://pf7.eggs.or.kr) |\n";
+    const mdTech = "# 4. \ud3ec\ud2b8\ud3f4\ub9ac\uc624 \uae30\uc220 \ubb38\uc11c (Technical Dossier)\n### \ubb34\uc778\uccb4\uacc4(\ub4dc\ub860) &amp; \uc628\ub514\ubc14\uc774\uc2a4 \uc5e3\uc9c0 AI \uc2ec\uce35 \uc2dc\uc2a4\ud15c \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \uba85\uc138\n\n---\n\n## 1. 5G BVLOS \ub4dc\ub860 GCS, Dronus-Net6 \ud38c\uc6e8\uc5b4 \ubc0f \uc81c\uc5b4\uad8c \uc911\uc7ac \uc544\ud0a4\ud14d\ucc98\n> **5G \ube44\uac00\uc2dc\uad8c(BVLOS) \uc790\uc728\ube44\ud589 \uad00\uc81c, \uc548\ud2f0\ub4dc\ub860(C-UAS) CO2 6\uc5f0\ubc1c \ub137 \uce90\ucc98 &amp; SLAM \ud654\ubb3c \ud558\uc5ed \ud38c\uc6e8\uc5b4, \uc774\uae30\uc885 \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30 \uba85\uc138 (\ube44\uc911 66%)**\n\n### 1.1 5G BVLOS \ud074\ub77c\uc6b0\ub4dc \uad00\uc81c \ubc31\ubcf8 &amp; WebRTC \ucd08\uc800\uc9c0\uc5f0 \ubbf8\ub514\uc5b4 \ud30c\uc774\ud504\ub77c\uc778\n- **\uc778\ud504\ub77c \ubc0f \uae30\uc220\uc801 \ub2f9\uba74 \uacfc\uc81c**: LTE/5G \ubb34\uc120\ub9dd\uc758 \uae30\uc9c0\uad6d \ud578\ub4dc\uc624\ubc84 \ubc0f \ubb34\uc120 \uc2e0\ud638 \ubcc0\ub3d9\uc73c\ub85c \uc778\ud55c TCP \uc7ac\uc804\uc1a1 \uc9c0\uc5f0\uc744 \ud68c\ud53c\ud574\uc57c \ud568.\n- **\uc544\ud0a4\ud14d\ucc98 \uc124\uacc4 &amp; \uc800\uc9c0\uc5f0 \uc2e4\uce21**: WebRTC P2P(UDP \uae30\ubc18 RTP/SRTP)\ub97c \uad00\uc81c \uc13c\ud130\uc640 \uae30\uccb4 \uac04 \uc9c1\uacb0\ud558\uc5ec **\uc885\ub2e8\uac04 200ms \uc774\ud558 \ucd08\uc800\uc9c0\uc5f0** \ube44\ub514\uc624 \uc2a4\ud2b8\ub9ac\ubc0d \ub2ec\uc131. PM2 \ub9c8\uc774\ud06c\ub85c\uc11c\ube44\uc2a4(`drones-server`, `drone-udp-server`, `gcs-tcp-server`, `io-server`) \ubc0f RethinkDB Changefeeds \uae30\ubc18 \uc81c\ub85c \ud3f4\ub9c1(Zero Polling) \uc2e4\uc2dc\uac04 \ube0c\ub85c\ub4dc\uce90\uc2a4\ud2b8.\n\n### 1.2 \uc774\uae30\uc885 \ube44\ud589\uc81c\uc5b4\uae30 \ud1b5\uc2e0 \ubc84\uc2a4 \ubc0f Transport HAL\n- **\uc774\uae30\uc885 \ud504\ub85c\ud1a0\ucf5c \ud1b5\ud569**: MAVLink v2(:14555), DJI PSDK(:14560), Betaflight MSP(:14565), K-MOSA(:14570) 4\uac1c \uaddc\uaca9\uc744 \ub2e8\uc77c `DroneTelemetry` \uc778\ud130\ud398\uc774\uc2a4\ub85c \uc815\uaddc\ud654\ud558\uace0 QGroundControl\uc5d0 \ub2e4\uc911 \uae30\uccb4(sysid 1~4)\ub85c \ub2e8\uc77c MAVLink \ud3ec\ud2b8(:14550) \ube0c\ub85c\ub4dc\uce90\uc2a4\ud2b8.\n- **Transport HAL**: `UDPTransport`(SITL \uc2dc\ubbac\ub808\uc774\uc158)\uc640 `SerialTransport`(\ubb3c\ub9ac Pixhawk \ub4f1 HIL\uc6a9 UART/PTY)\ub97c \uc644\ubcbd \ubd84\ub9ac\ud558\uc5ec \ucf54\ub4dc \uc218\uc815 \uc5c6\ub294 \ubb34\uc911\ub2e8 \uc2a4\uc704\uce6d \ubcf4\uc7a5.\n\n### 1.3 Direct RF \uc218\ub3d9 \uc870\uc885 vs 4G/5G \uc140\ub8f0\ub7ec \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30 (Control Authority Arbiter)\n- **\uc81c\uc5b4\uad8c \ucda9\ub3cc \ubc29\uc5b4**: \uc548\uc804 \uc870\uc885\uc0ac\uac00 \ubb3c\ub9ac \uc870\uc885\uae30(ELRS 250Hz / TBS CRSF) \uc2a4\ud2f1\uc744 15% \uc774\uc0c1 \ubcc0\uc704\uc2dc\ud0ac \uacbd\uc6b0, \uc778\ud130\ub7fd\ud2b8\ub85c \uac10\uc9c0\ud558\uc5ec **15ms \uc774\ub0b4\uc5d0 4G/5G \uc790\uc728\ube44\ud589 \uba85\ub839\uc744 \uc989\uc2dc \ubb34\ud6a8\ud654\ud558\uace0 Direct RF \uc218\ub3d9 \uc870\uc885\uc73c\ub85c \uac15\uc81c \uc808\uccb4**.\n\n### 1.4 Dronus-Net6: CO2 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \ub137 \uce90\ucc98 \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529 &amp; SLAM \ud654\ubb3c \ud558\uc5ed\n- **\uace0\uc555 CO2 6\uc5f0\ubc1c \ub9ac\ubcfc\ubc84 \uaca9\ubc1c \ud38c\uc6e8\uc5b4 \uc784\ubca0\ub529 (Firmware Embedding)**:\n  - \ud68c\uc804\uc2dd \ud0c4\ucc3d \uc11c\ubcf4 \uc2a4\ud15d \ubaa8\ud130\uc640 \uace0\uc555 CO2 \uc194\ub808\ub178\uc774\ub4dc \ubc38\ube0c \uad6c\ub3d9 \ud384\uc2a4(PWM/GPIO) \ud0c0\uc774\ubc0d \ub4dc\ub77c\uc774\ubc84\ub97c \ube44\ud589\uc81c\uc5b4\uae30(FC) \uc778\ud130\ub7fd\ud2b8 \uc11c\ube44\uc2a4 \ub8e8\ud2f4(ISR)\uc5d0 \uc9c1\uacb0 \uad6c\ud604. MAVLink \ud398\uc774\ub85c\ub4dc \uba85\ub839\uc758 \uacb0\uc815\ub860\uc801(Deterministic) \ub3d9\uae30\ud654 \uaca9\ubc1c.\n- **\ube44\ud589\uc81c\uc5b4 PID \ucee4\uc2a4\ud130\ub9c8\uc774\uc9d5 &amp; 50km/h \uace0\uc18d \ucd94\uaca9 \uc81c\uc5b4**:\n  - \ub137 \ubc1c\uc0ac \uc21c\uac04\uc758 \uac15\ud55c \uacf5\uc555 \ubc18\ub3d9 \ucda9\uaca9\uc744 \uc5b5\uc81c\ud558\uace0 **\ucd5c\uace0 \uc18d\ub3c4 50km/h** \uae09\uae30\ub3d9 \uc2dc \uc790\uc138\uac00 \ud769\uc5b4\uc9c0\uc9c0 \uc54a\ub3c4\ub85d PX4/ArduPilot 3\ucd95 \ub808\uc774\ud2b8 PID \uc81c\uc5b4 \ub8e8\ud504\ub97c \uc7ac\uc124\uacc4 ($u(t) = K_p e(t) + K_i \\int e(\\tau)d\\tau + K_d \\frac{de(t)}{dt} + K_{ff} a_{target}$).\n- **LiDAR SLAM \uae30\ubc18 \ud654\ubb3c \uc778\uc591 &amp; \ud558\uc5ed\uc7a5 \uc790\uc728 \ud22c\ud558 (Cargo Lift &amp; Drop-off)**:\n  - 3D LiDAR SLAM \uc2e4\uc2dc\uac04 \ub9e4\ud551/\uacbd\ub85c \ud0d0\uc0c9\uc744 \ud1b5\ud574 \ud3ec\ud68d\ub41c \ud45c\uc801 \ub4dc\ub860 \ubc0f \uc911\ub7c9\ubb3c(Cargo)\uc744 \uc778\uc591(Lift)\ud558\uc5ec \uc548\uc804 \ud558\uc5ed \uad6c\uc5ed(Drop-off Zone)\uae4c\uc9c0 \uc790\uc728 \ubcf5\uadc0 \ud6c4 \uc624\ucc28 10cm \uc774\ub0b4\ub85c \uc548\uc804 \ud22c\ud558 \uc644\ub8cc.\n\n### 1.5 BIV-6 \uc870\uc885\uc0ac \ud589\ub3d9\uc0dd\uccb4\uc778\uc2dd &amp; DDIL \uc554\ud638\ud654 \ud050 &amp; \uc628\ubcf4\ub4dc Hailo-8 NPU\n- **BIV-6 \uc5d0\uc5b4\ub77d**: \uc870\uc885\uc0ac 6-DOF \uc0dd\uccb4\uc5ed\ud559 \ubca1\ud130 \ucc44\uc810\uc73c\ub85c \ub2e8\ub9d0 \ud0c8\ucde8 \uc2dc 0.5\ucd08 \ub0b4 Soft-Cloak \uae30\ub3d9 \ucc28\ub2e8.\n- **DDIL SHA-256 \ud050**: \uc801 \uc804\uc790\uc804 \uc7ac\ubc0d \uc2dc \uac10\uc2dc \ub370\uc774\ud130\ub97c \uc554\ud638\ud654 \ud574\uc2dc\uccb4\uc778\uc5d0 \ubcf4\uad00\ud558\uc5ec \ubcf5\uad6c \uc2dc \ub204\ub77d 0\uac74 \uacb0\uc815\ub860\uc801 \ub3d9\uae30\ud654.\n- **\uae30\uccb4 \ud0d1\uc7ac Hailo-8 NPU**: 26 TOPS NPU\ub85c 60fps \uc2e4\uc2dc\uac04 \uc628\ubcf4\ub4dc \uac1d\uccb4 \uc778\uc2dd \ubc0f Gazebo 3D \uc5f0\ub3d9 \uc790\uc728 \ud68c\ud53c.\n\n---\n\n## 2. \uc694\uac00\ud050(YogaQ): \uc628\ub514\ubc14\uc774\uc2a4 \ube44\uc804 AI (Hailo-8L) &amp; \ucd08\uc800\uc9c0\uc5f0 \ud558\uc774\ube0c\ub9ac\ub4dc RAG \uc544\ud0a4\ud14d\ucc98\n> **\uc628\ub514\ubc14\uc774\uc2a4 \uc5e3\uc9c0 AI\uc640 \uc2dc\ub9e8\ud2f1 \uac80\uc0c9\uc744 \uacb0\ud569\ud558\uc5ec \ud074\ub77c\uc6b0\ub4dc GPU \ube44\uc6a9 0\uc6d0\ud654\uc640 \uc2e4\uc2dc\uac04 \uc0dd\uccb4\uc5ed\ud559 \ucf54\uce6d\uc744 \uc2e4\ud604\ud55c \ud575\uc2ec \uc124\uacc4 \uacb0\uc815 (\ube44\uc911 25%)**  \n> \ud83d\udcd0 **\uae30\uc220 \uc2e4\uc99d \uc544\ud0a4\ud14d\ucc98**: [pf7.eggs.or.kr](https://pf7.eggs.or.kr)\n\n### 2.1 \ud074\ub77c\uc6b0\ub4dc GPU\uc758 \ud55c\uacc4\uc640 2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d (Two-Stage Decoupled Perception)\n- **\uc2dc\uc2a4\ud15c \uc778\ud504\ub77c \ubc0f \uae30\uc220\uc801 \ub2f9\uba74 \uacfc\uc81c**: 30 FPS \ube44\ub514\uc624 \uc2a4\ud2b8\ub9bc\uc744 \ud074\ub77c\uc6b0\ub4dc\ub85c \uc804\uc1a1 \uc2dc \ub9e4\ud2b8 1\ub300\ub2f9 **\uc6d4 $720\uc758 \uc778\ud504\ub77c \ube44\uc6a9**\uacfc \ud0c8\uc758 \uc601\uc0c1 \uc678\ubd80 \uc720\ucd9c \ub9ac\uc2a4\ud06c(GDPR)\uac00 \ubc1c\uc0dd\ud568.\n- **2\ub2e8\uacc4 \ubd84\ub9ac \uac00\uc18d \ud30c\uc774\ud504\ub77c\uc778**: Stage-1 \ube44\uc804 \ubc31\ubcf8\uc740 13 TOPS Hailo-8L NPU(YOLOv8s-Pose 20.4ms)\uc5d0\uc11c \ucc98\ub9ac\ud558\uace0, Stage-2 \ubd84\ub958\uae30\ub294 ARM Cortex-A76 CPU\uc5d0\uc11c \uc21c\uc218 NumPy \uc5f0\uc0b0(0.018ms)\uc73c\ub85c \uc9c1\uacb0. \uc18c\ud615 \ud150\uc11c\uc758 PCIe DMA \ubc84\uc2a4 \uc655\ubcf5 \uc624\ubc84\ud5e4\ub4dc(0.5ms) \ub300\ube44 CPU \uc9c1\uc811 \uc5f0\uc0b0\uc774 **25\ubc30 \ube60\ub978 \ucd08\uc800\uc9c0\uc5f0** \ub2ec\uc131.\n\n### 2.2 \uad11\ud559 \uacb0\uc190 \uadf9\ubcf5: Safe Torso Scale Guard &amp; \ub514\ubc14\uc6b4\uc11c\n- **Safe Torso Scale Guard**: \ub2e8\uc77c 2D \uce74\uba54\ub77c \uae09\uac01\ub3c4 \uc6d0\uadfc \uc65c\uace1\uc5d0 \ub530\ub978 25\ubc30 \uc88c\ud45c \ubc1c\uc0b0\uc744 \ud558\ud55c \ud074\ub7a8\ud551($\\text{scale} = \\max(H_{\\text{torso}}, 0.250 \\cdot ref)$, $max\\_abs < 4.81$)\uc73c\ub85c \uc5b5\uc81c\ud558\ub294 Safe Torso Scale Guard \uc124\uacc4 \u2014 \ud611\uc18c \ud1b5\ub85c \uc8fc\ud589 \ubc0f \uae09\uae30\ub3d9 \uc2dc 3D \uac1d\uccb4 \uc778\uc2dd \uc548\uc815\ud654\uc5d0 \uc9c1\uacb0.\n- **\ub9c8\ub974\ucf54\ud504 5-\ud504\ub808\uc784 \ub514\ubc14\uc6b4\uc11c**: `vinyasa_transition` \uc644\ucda9\uc744 \ud1b5\ud574 \uc218\ub9ac\uc57c \ub098\ub9c8\uc2a4\uce74\ub77c \uc804\uc774 \uad6c\uac04 99.9% \ud655\uc815 \uc0c1\ud0dc \uc7a0\uae08.\n\n### 2.3 \ucd08\uc800\uc9c0\uc5f0 \ud558\uc774\ube0c\ub9ac\ub4dc RAG &amp; \uc778\ud504\ub77c \uacbd\ub7c9\ud654 (Zero Cloud Egress)\n- **Typesense \ud558\uc774\ube0c\ub9ac\ub4dc RAG**: 165\ucabd \ub3c4\uc11c OCR \uc9c0\uc2dd\ubca0\uc774\uc2a4 \uae30\ubc18 Dense(bge-m3 1024\ucc28\uc6d0) + BM25 \ub3d9\uc801 \uacb0\ud569. \uc2e0\uccb4 \uae08\uae30 \uc870\uac74(\ub514\uc2a4\ud06c\u00b7\uc784\uc2e0) \ud398\ub110\ud2f0 \ub9c8\uc2a4\ud0b9\uc73c\ub85c **\ud560\ub8e8\uc2dc\ub124\uc774\uc158 85% \ucc28\ub2e8** (p95 42ms).\n- **$140 \ub2e8\uc77c \uc5b4\ud50c\ub77c\uc774\uc5b8\uc2a4**: RPi5 + NPU + \uad11\uac01 \uce74\uba54\ub77c\ub97c PoE \ub2e8\uc77c \ucf00\uc774\ube14\ub85c \uad6c\ub3d9\ud558\uc5ec **\uc6d4 GPU \uc778\ud504\ub77c $0.00 \ub2ec\uc131** (Zero Cloud Egress). \uc911\uc559 \ud074\ub77c\uc6b0\ub4dc GPU \uc5f0\uc0b0 \ubd80\ud558 0(O(1) \uc120\ud615 \ud655\uc7a5\uc131)\uc744 \uc2e4\uce21 \uac80\uc99d\ud558\uace0, \ud604\uc7a5 \uc5e3\uc9c0 \ub178\ub4dc \ub2e8\ub3c5 33.4 FPS \uc2e4\uc2dc\uac04 \ud53c\ub4dc\ubc31\uc744 \uc644\uacb0\ud558\ub294 \uc2dc\uc2a4\ud15c \uc544\ud0a4\ud14d\ucc98 \uad6c\ucd95.\n\n---\n\n## 3. AWS \uc5d4\ud130\ud504\ub77c\uc774\uc988 GenAI &amp; \uc124\uba85\uac00\ub2a5\ud55c AI(XAI) \uc544\ud0a4\ud14d\ucc98 (\uc81c\uc8fc\uc624\ub974\ubbf8 \uc885\ud569 1\uc704)\n- **Terraform IaC \uae30\ubc18 \uc11c\ubc84\ub9ac\uc2a4 \uc778\ud504\ub77c**: Multi-AZ \uc11c\ube0c\ub137, ALB, ECS Fargate, OpenSearch Serverless k-NN \uc778\ub371\uc2a4\ub97c IaC\ub85c 100% \uc790\ub3d9\ud654 (\ube44\uc911 9%). \ubb38\uc7a5\ubcc4 \ubca1\ud130-\uc6d0\ubb38 \uccad\ud06c \uac04 \uc5ed\ucf54\uc0ac\uc778 \uc720\uc0ac\ub3c4 \uae30\ubc18 \uc2e0\ub8b0\ub3c4 \uc2dc\uac01\ud654, \uc7a5\uc560 \uc2dc 1.2\ucd08 \ub0b4 AWS Bedrock \ubb34\uc911\ub2e8 \uc790\ub3d9 \uc804\ud658 (99.99% \uace0\uac00\uc6a9\uc131).\n\n---\n\n## 4. \uc2e4\ubb34 \ud2b8\ub7ec\ube14\uc288\ud305 \ubc0f \uc7a5\uc560 \uadf9\ubcf5 \ucf00\uc774\uc2a4 \uc2a4\ud130\ub514 (Production Troubleshoot)\n\n| \ud575\uc2ec \uc2dc\uc2a4\ud15c | \uc2e4\uc81c \ubc1c\uc0dd\ud55c \uc7a5\uc560 \ubc0f \uae30\uc220\uc801 \ub09c\uc81c | \uadfc\ubcf8 \uc6d0\uc778 \ubd84\uc11d | \uc5d4\uc9c0\ub2c8\uc5b4\ub9c1 \ud574\uacb0\ucc45 \ubc0f \uc2e4\uc99d \uacb0\uacfc |\n| :--- | :--- | :--- | :--- |\n| **5G \ub4dc\ub860 GCS** | 5G \ubb34\uc120\ub9dd \ud328\ud0b7 \uc190\uc2e4 \uc2dc \uad00\uc81c \ud654\uba74 \ud504\ub9ac\uc9d5 \ubc0f \uc81c\uc5b4 \uba85\ub839 \uc218\ucd08 \uc9c0\uc5f0 | TCP \uc7ac\uc804\uc1a1 \ub300\uae30 \ubc0f \ube44\ub514\uc624 \ub514\ucf54\ub529 \ubc84\ud37c \uc9c0\uc5f0 \ub204\uc801 | **WebRTC P2P (UDP RTP)** \ud30c\uc774\ud504\ub77c\uc778\uc73c\ub85c \uc804\uba74 \uc804\ud658\ud558\uace0 \uc801\uc751\ud615 \uc9c0\ud130 \ubc84\ud37c\ub97c \uc801\uc6a9\ud558\uc5ec \uc9c0\uc5f0 \uc2dc\uac04 200ms \uc774\ud558 \uc720\uc9c0 |\n| **Dronus-Net6** | CO2 \ub137 \ubc1c\uc0ac \uc21c\uac04 \uae30\uccb4 \ub864/\ud53c\uce58 \ucd95\uc774 \uae09\uaca9\ud788 \uae30\uc6b8\uc5b4\uc9c0\uba70 50km/h \ucd94\uaca9 \uc2dc \uc790\uc138 \ubd95\uad34 | \uace0\uc555 \uacf5\uc555 \ubd84\ucd9c\uc758 \uac15\ud55c \ubc18\uc791\uc6a9\ub825 \ubc0f \ubaa8\ud130 \ucd94\ub825 \uc751\ub2f5 \uc9c0\uc5f0 | **\uac00\uc18d\ub3c4 \ud53c\ub4dc\ud3ec\uc6cc\ub4dc(FeedForward) \ubc0f D \uac8c\uc778 \uc120\uc81c \uc5b5\uc81c \uc54c\uace0\ub9ac\uc998**\uc744 FC \ud38c\uc6e8\uc5b4\uc5d0 \uc774\uc2dd\ud558\uc5ec \ubc1c\uc0ac \ubc18\ub3d9 0.2\ucd08 \ub0b4 \uc218\ud3c9 \ubcf5\uc6d0 \uc644\ub8cc |\n| **\ub4dc\ub860 \uc81c\uc5b4\uad8c \ucda9\ub3cc** | 4G/5G \uace0\uc9c0\uc5f0 \uc140\ub8f0\ub7ec \uc81c\uc5b4 \uc911 \uae34\uae09 \uc218\ub3d9 \uc804\ud658 \uc9c0\uc5f0\uc73c\ub85c \ucda9\ub3cc \uc704\ud5d8 | \uc6d0\uaca9 \ud074\ub77c\uc6b0\ub4dc \uc81c\uc5b4\uc640 \ub85c\uceec \uc870\uc885\uae30 \uac04 \uc6b0\uc120\uc21c\uc704 \uc911\uc7ac \uba54\ucee4\ub2c8\uc998 \ubd80\uc7ac | **Direct RF \uc2a4\ud2f1 \ubcc0\uc704 \uac10\uc9c0 \uc81c\uc5b4\uad8c \uc911\uc7ac\uae30**\ub97c \uad6c\ucd95\ud558\uc5ec \ubb3c\ub9ac \uc2a4\ud2f1 \uac1c\uc785 \uc2dc **15ms \uc774\ub0b4 \uc989\uac01 \uc218\ub3d9 \uc870\uc885\uc73c\ub85c \uac15\uc81c \ud578\ub4dc\uc624\ubc84** |\n| **YogaQ \uc5e3\uc9c0 \uc778\uc2dd** | \uc804\uad74 \uc790\uc138 \uc2dc \ubc1c\ubaa9/\uace8\ubc18 \ud0a4\ud3ec\uc778\ud2b8\uac00 \ud654\uba74 \ubc16\uc73c\ub85c 25\ubc30 \ud3ed\ubc1c \uc774\ud0c8 | \uc0c1\uccb4 \uc219\uc784 \uc2dc 2D \ud22c\uc601 \ubab8\ud1b5 \uae38\uc774\uac00 12\ubc30 \uc218\ucd95\ud558\uc5ec \uc815\uaddc\ud654 \ubd84\ubaa8\uac00 0\uc73c\ub85c \uc218\ub834 | **Safe Torso Scale Guard** \ud558\ud55c \ud074\ub7a8\ud551($0.250 \\cdot ref$) \uc54c\uace0\ub9ac\uc998\uc744 \uc801\uc6a9\ud558\uc5ec \uc88c\ud45c \ud3ed\ubc1c 100% \ubc29\uc9c0 ($max\\_abs < 4.81$) |\n";
+
+    // Configure marked options
     marked.setOptions({
       gfm: true,
-      breaks: true
+      breaks: true,
+      tables: true
     });
 
-    // Helper: Render Markdown with Mermaid support
-    function renderMarkdownToElement(rawMdId, targetElementId) {
-      const rawText = document.getElementById(rawMdId).textContent.trim();
-      const targetEl = document.getElementById(targetElementId);
-      
-      // Parse markdown to HTML
-      const html = marked.parse(rawText);
-      targetEl.innerHTML = html;
-
-      // Transform ```mermaid code blocks to <pre class="mermaid">
-      const codeBlocks = targetEl.querySelectorAll('pre code.language-mermaid');
-      codeBlocks.forEach(code => {
-        const pre = code.parentElement;
-        const mermaidDiv = document.createElement('div');
-        mermaidDiv.className = 'mermaid my-6 bg-slate-50 p-4 rounded-xl border border-slate-200 text-center overflow-x-auto';
-        mermaidDiv.textContent = code.textContent;
-        pre.parentNode.replaceChild(mermaidDiv, pre);
-      });
+    // Helper to fix image paths
+    function fixImagePaths(markdown) {
+      return markdown
+        .replace(/src="images\//g, 'src="docs/images/')
+        .replace(/src="profile_formal_suit\.png"/g, 'src="docs/images/profile_formal_suit.png"')
+        .replace(/src="tonyillust_gray\.png"/g, 'src="docs/images/tonyillust_gray.png"');
     }
 
-    // Switch Tabs
+    // Render markdown to HTML
+    document.getElementById('content-resume').innerHTML = marked.parse(fixImagePaths(mdResume));
+    document.getElementById('content-career').innerHTML = marked.parse(fixImagePaths(mdCareer));
+    document.getElementById('content-portfolio').innerHTML = marked.parse(fixImagePaths(mdPortfolio));
+    document.getElementById('content-tech').innerHTML = marked.parse(fixImagePaths(mdTech));
+
+    // Tab Switching Function
     function switchTab(tabId) {
-      // Update Tab Pane visibility
-      document.querySelectorAll('.tab-pane').forEach(el => {
-        el.classList.add('hidden');
+      // Hide all panes
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
+      // Remove active class from all buttons
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('active');
+        el.classList.remove('text-white');
+        el.classList.add('text-slate-200');
+        el.classList.add('bg-slate-800');
       });
-      const targetTab = document.getElementById(tabId);
-      if (targetTab) {
-        targetTab.classList.remove('hidden');
+
+      // Show selected pane
+      document.getElementById(tabId).classList.remove('hidden');
+
+      // Add active to current button
+      const btn = document.getElementById('btn-' + tabId);
+      if (btn) {
+        btn.classList.add('active');
+        btn.classList.add('text-white');
+        btn.classList.remove('text-slate-200');
+        btn.classList.remove('bg-slate-800');
       }
 
-      // Update button active state
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
+      // Scroll smoothly to top of card
+      window.scrollTo({
+        top: 280,
+        behavior: 'smooth'
       });
-      const activeBtn = document.getElementById('btn-' + tabId);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-      }
-
-      // Scroll to top of content
-      window.scrollTo({ top: 380, behavior: 'smooth' });
-
-      // Re-trigger mermaid render if not rendered yet
-      setTimeout(() => {
-        try {
-          mermaid.run();
-        } catch(e) {
-          console.warn('Mermaid render error:', e);
-        }
-      }, 50);
     }
-
-    // Initial Load
-    document.addEventListener('DOMContentLoaded', () => {
-      renderMarkdownToElement('raw-md-resume', 'content-resume');
-      renderMarkdownToElement('raw-md-career', 'content-career');
-      renderMarkdownToElement('raw-md-portfolio', 'content-portfolio');
-      renderMarkdownToElement('raw-md-tech', 'content-tech');
-
-      // Initialize Mermaid
-      mermaid.initialize({
-        startOnLoad: true,
-        theme: 'default',
-        securityLevel: 'loose',
-        flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
-      });
-
-      // Handle URL query parameter for tab selection (e.g. ?tab=tab-career)
-      const urlParams = new URLSearchParams(window.location.search);
-      const tabParam = urlParams.get('tab');
-      if (tabParam && document.getElementById(tabParam)) {
-        switchTab(tabParam);
-      }
-    });
   </script>
-
 </body>
 </html>
