@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "style": "PhotoCraft Soft 3D Sculpted",
+  "updated_at": "2026-11-23",
+  "icons": [
+    {
+      "id": "workflow_check_pass",
+      "category": "workflow",
+      "display_name": "Workflow Check Pass",
+      "filename": "workflow_check_pass_soft3d_v1.png",
+      "relative_path": "workflow/workflow_check_pass_soft3d_v1.png",
+      "style": "photcraft_custom_soft3d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "version": 1,
+      "status": "approved"
+    },
+    {
+      "id": "tech_hardware_accel",
+      "category": "technology",
+      "display_name": "Tech Hardware Accel",
+      "filename": "tech_hardware_accel_soft3d_v1.png",
+      "relative_path": "technology/tech_hardware_accel_soft3d_v1.png",
+      "style": "photcraft_custom_soft3d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "version": 1,
+      "status": "approved"
+    },
+    {
+      "id": "workflow_warning_guard",
+      "category": "workflow",
+      "display_name": "Workflow Warning Guard",
+      "filename": "workflow_warning_guard_soft3d_v1.png",
+      "relative_path": "workflow/workflow_warning_guard_soft3d_v1.png",
+      "style": "photcraft_custom_soft3d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "version": 1,
+      "status": "approved"
+    },
+    {
+      "id": "tech_safe_shield",
+      "category": "technology",
+      "display_name": "Tech Safe Shield",
+      "filename": "tech_safe_shield_soft3d_v1.png",
+      "relative_path": "technology/tech_safe_shield_soft3d_v1.png",
+      "style": "photcraft_custom_soft3d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "version": 1,
+      "status": "approved"
+    },
+    {
+      "id": "media_camera_sensor",
+      "category": "technology",
+      "display_name": "Media Camera Sensor",
+      "filename": "media_camera_sensor_soft3d_v1.png",
+      "relative_path": "technology/media_camera_sensor_soft3d_v1.png",
+      "style": "photcraft_custom_soft3d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "version": 1,
+      "status": "approved"
+    },
+    {
+      "id": "ai_target_pose",
+      "category": "ai",
+      "display_name": "Ai Target Pose",
+      "filename": "ai_target_pose_soft3d_v1.png",
+      "relative_path": "ai/ai_target_pose_soft3d_v1.png",
+      "style": "photcraft_custom_soft3d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "version": 1,
+      "status": "approved"
+    },
+    {
+      "id": "tech_edge_npu",
+      "category": "technology",
+      "display_name": "Tech Edge Npu",
+      "filename": "tech_edge_npu_soft3d_v1.png",
+      "relative_path": "technology/tech_edge_npu_soft3d_v1.png",
+      "style": "photcraft_custom_soft3d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "version": 1,
+      "status": "approved"
+    },
+    {
+      "id": "pose_asana_yoga",
+      "category": "pose",
+      "display_name": "Pose Asana Yoga",
+      "filename": "pose_asana_yoga_soft3d_v1.png",
+      "relative_path": "pose/pose_asana_yoga_soft3d_v1.png",
+      "style": "photcraft_custom_soft3d",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "version": 1,
+      "status": "approved"
+    }
+  ]
+}
